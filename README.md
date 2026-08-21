@@ -1,121 +1,70 @@
-# Modeling Wicked Problems
+# Modeling Wicked Problems: A Multi-Objective Optimization Approach
+A Multi-Objective Optimization (MOO) model in Python that recovers the implicit value weights behind a real public policy, using Singapore's Certificate of Entitlement (COE) system as the case study.
 
-A multi-objective optimisation model that recovers the implicit value weights behind a real
-public policy, using Singapore's Certificate of Entitlement system as the case study.
+## The Goal
+The purpose of this project is not to solve 'Wicked Problems', but to build a tool that translates conflicting perspectives into a shared, mathematical language.
 
-## What this is
+Public argument about policy usually treats disagreement as error. One side's preferred outcome looks to the other like proof that the system is broken. Often it is not. It is the same problem with a different weighting.
 
-Public argument about policy usually treats disagreement as error. One side's preferred
-outcome looks to the other like proof the system is broken. Often it is not. It is the same
-problem with a different weighting.
+By visualizing the exact, *data-driven trade-offs* between competing priorities, this framework aims to move public discourse from a "who is right/wrong?" debate to a more productive "which trade-off do we choose?" negotiation. The model then runs the question in reverse: given a policy that someone actually chose, what would you have to value for that choice to be the "correct" one?
 
-This project takes that claim and makes it operational. It models a policy as a
-multi-objective problem, generates the Pareto front, and then runs the question backwards:
-given a policy someone actually chose, what would you have to value for that choice to be
-optimal?
+### 1. The Thesis (Philosophical Paper)
+* **Title:** "The Problem with your Solution"
+* **Concept:** A philosophical analysis of why "wicked problems" cannot be solved by a single "correct" solution. It argues that competing ideologies are "incommensurable" (like Kuhn's paradigms) and that the first step to a solution is not "winning," but "translation".
 
-The goal is not to solve the problem. It is to move the argument from "who is right" to
-"which trade-off do we choose," and to put a number on the distance between two positions.
+### 2. The Proof (The Model)
+* **Method:** A **Multi-Objective Optimization (MOO)** model built in Python using Pymoo.
+* **Function:** The model acts as the "translator". It ingests conflicting objectives as mathematical functions and outputs a **Pareto front**, a visual graph showing all the "optimal" possible compromises. It then maps every possible set of value weights to the compromise that each one would choose.
 
-## Why the COE
+## The Case Study: Singapore's COE
+Singapore allocates the right to own a vehicle through a quota and a bidding system, and the public argument about it is exactly the confusion described above. A tradesman who needs a van, a family that wants a car, and a commuter who wants clear roads all read the others' preferred settings as evidence that the system has failed. They are describing three different points on the same Pareto front.
 
-Singapore allocates the right to own a vehicle through a quota and a bidding system. The
-public argument about it is exactly the confusion described above. A tradesman who needs a
-van, a family that wants a car, and a commuter who wants clear roads all read the others'
-preferred settings as evidence the system has failed. They are describing three different
-points on the same frontier.
+I picked it over the alternatives (public health, urban housing) for three reasons:
+* **It is tractable.** The quota formula is published, bidding results go back to 2002, vehicle population and road speed data are open, and the revenue appears as a named line in the national Budget. Almost nothing in the model has to be invented.
+* **It has not already been done.** The public health version would have reproduced a Pareto front that already exists in published economics literature. That is replication, not analysis.
+* **It is live.** The zero vehicle growth rate is legislated only until 31 January 2028, so the parameter this model varies is one that comes up for a real decision inside two years.
 
-It is also tractable. The quota formula is published, the bidding results go back to 2002,
-vehicle population and road speed data are open, and the revenue appears as a named line in
-the national Budget. Almost nothing in the model has to be invented.
+## What the Model Produces
+Three objectives (cost of ownership, road congestion, government revenue) against three policy levers (the growth rate for cars, the growth rate for commercial vehicles, and the power output threshold separating the two car categories).
 
-And it is live. The zero vehicle growth rate is legislated only until 31 January 2028, so
-the parameter this model varies is one that comes up for decision inside two years.
+* **The feasible space.** Every possible policy sampled and plotted at once, with the Pareto front along its boundary. The dominated interior is what a genuinely failed policy looks like, as opposed to one you simply disagree with. This distinction is the entire point of the project.
+* **The preference map.** With three objectives the weight vector is a triangle, so the whole space of possible value systems renders as one ternary plot, colored by which policy each value system would pick.
+* **The recovered weights.** Locating the current policy on the front and reading off the weight region that makes it optimal. The output is a ratio that nobody published, inferred from what was actually chosen.
 
-## What it produces
+## What I Am Not Claiming
+This section matters more than the feature list above.
 
-Three objectives: cost of ownership, road congestion, and government revenue. Three policy
-levers: the growth rate for cars, the growth rate for commercial vehicles, and the power
-output threshold that separates the two car categories.
+* This does not predict COE prices and was not built to.
+* The recovered weights are what the policy implies under this specific model. They are not anybody's internal reasoning.
+* No Singapore minister has ever framed the COE as a revenue instrument. I checked this specifically. The stated purpose from 1990 onward is vehicle population control under land scarcity, and the "revenue motive" reading is commentary. Revenue stays in the model as an objective because the recovered weight is the test, not the assumption.
+* The congestion objective is the weakest of the three. It is calibrated from roughly twenty annual observations over a period when the vehicle population barely moved, which makes the fitted exponent poorly identified. The uncertainty is reported rather than hidden.
+* Most importantly, MOO assumes a fixed mapping from decisions to outcomes, and wicked problems do not have one, partly because intervening changes the problem. There is good reason to think the COE altered the very demand behavior it was measuring. So this does not model a wicked problem. It forces one into a tame formulation, and tries to make every choice involved in that forcing visible and contestable.
 
-From those:
+## Project Status (Work in Progress)
+This is an active, self-directed research project.
 
-**The feasible space.** Every possible policy sampled and plotted at once, with the Pareto
-front along its boundary. The dominated interior is what a genuinely failed policy looks
-like, as distinct from one you simply disagree with.
-
-**The preference map.** With three objectives the weight vector is a triangle, so the entire
-space of possible value systems renders as a single ternary plot, coloured by which policy
-each value system would choose.
-
-**The recovered weights.** Locating the current policy on the front and reading off the
-weight region that makes it optimal. The result is a ratio nobody published, inferred from
-what was actually chosen.
-
-## What it does not claim
-
-This matters more than the feature list.
-
-It does not predict COE prices, and is not built for that.
-
-The recovered weights are what the policy implies under this specific model. They are not
-anyone's internal reasoning.
-
-The congestion objective is the weakest of the three. It is calibrated from roughly twenty
-annual observations across a period when the vehicle population barely varied, which is close
-to the worst case for identifying a volume-delay relationship. The uncertainty is reported
-rather than hidden.
-
-Most fundamentally, multi-objective optimisation assumes a fixed mapping from decisions to
-outcomes. Rittel and Webber's wicked problems do not have one, partly because intervening
-changes the problem. There is good reason to think the COE altered the very demand behaviour
-it was measuring. So this does not model a wicked problem. It forces one into a tame
-formulation and tries to make every choice involved in that forcing visible and contestable.
-
-## Status
-
-Research and specification complete. Build in progress.
-
-- [x] Scenario selection and scoping
-- [x] Policy mechanism research and data source verification
-- [x] Specification, assumptions register, build sequence
-- [ ] Data pipeline and fitted models
-- [ ] Front generation and preference mapping
-- [ ] Frontend and deployment
-- [ ] Case study writeup
+* [x] **Philosophy:** The philosophical paper is in the drafting stage.
+* [x] **Scenario:** Locked to Singapore's COE, with the alternatives documented and rejected.
+* [x] **Research:** Policy mechanism verified against primary sources, data sources confirmed live.
+* [x] **Specification:** Brief, assumptions register and build sequence complete.
+* [ ] **Data:** Pipeline and fitted models.
+* [ ] **Model:** Front generation and preference mapping.
+* [ ] **Frontend:** Visualization and deployment.
+* [ ] **Writeup:** Case study.
 
 ## Documentation
-
 The reasoning behind this project is a deliverable, not scaffolding.
 
-| Document | What it covers |
-|---|---|
-| [`docs/PROJECT_BRIEF.md`](docs/PROJECT_BRIEF.md) | Full specification, model design, data sources, and what may not be claimed |
-| [`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md) | Every belief the model rests on, with a status and a falsification condition |
-| [`docs/BUILD_SEQUENCE.md`](docs/BUILD_SEQUENCE.md) | Ordered stages with gates, cheapest fatal checks first |
-| [`docs/decision-log.md`](docs/decision-log.md) | Choices made, alternatives rejected, and why |
-| [`docs/case-study.md`](docs/case-study.md) | The writeup, including what the research overturned |
+* [`docs/PROJECT_BRIEF.md`](docs/PROJECT_BRIEF.md) - Full specification, model design, data sources, and what may not be claimed.
+* [`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md) - Every belief the model rests on, with a status and a falsification condition.
+* [`docs/BUILD_SEQUENCE.md`](docs/BUILD_SEQUENCE.md) - Ordered build stages with gates, cheapest fatal checks first.
+* [`docs/decision-log.md`](docs/decision-log.md) - Choices made, alternatives rejected, and why.
+* [`docs/case-study.md`](docs/case-study.md) - The writeup, including what the research overturned.
 
-The assumptions register is the load-bearing one. An early version of this specification
-treated the COE quota as a policy lever. It is not. It is computed by a published formula, and
-finding that out on day one rebuilt the core of the model. That rebuild is documented rather
-than quietly corrected.
+The assumptions register is the one that does the work. An early version of this specification treated the COE quota as a policy lever. It is not one. It is computed by a published formula, and finding that out on day one rebuilt the core of the model. I documented that rebuild instead of quietly correcting it.
 
-## Stack
-
-Python with pymoo for the optimisation, pandas and statsmodels for the fitted relationships,
-Plotly for the visualisation. The frontier and preference map are computed offline and shipped
-as static JSON, so the deployed site needs no backend and no database.
-
-## Data
-
-All sources are Singapore government open data: LTA bidding results and vehicle statistics via
-data.gov.sg, LTA quarterly quota press releases for the formula and deregistration counts, and
-Ministry of Finance revenue tables. Raw downloads are committed so the pipeline reproduces from
-a clean clone.
-
-## Companion paper
-
-**"The Problem with your Solution"** argues that competing ideologies can be internally coherent
-and mutually incommensurable, in Kuhn's sense, and that the first step is translation rather than
-victory. This repository is the attempt to build the translator.
+## Tech & Concepts
+* **Core Tech:** Python, Pymoo, pandas and statsmodels for the fitted relationships, Plotly for visualization.
+* **Architecture:** The front and the preference map are computed offline and shipped as static JSON, so the deployed site needs no backend and no database.
+* **Data:** Singapore government open data. LTA bidding results and vehicle statistics via data.gov.sg, LTA quarterly quota press releases for the formula and deregistration counts, Ministry of Finance revenue tables. Raw downloads are committed so the pipeline reproduces from a clean clone.
+* **Core Concepts:** Multi-Objective Optimization (MOO), Pareto efficiency, Decision Science, Public Policy Analysis, Perspectivism, Wicked Problems.
