@@ -62,3 +62,53 @@ Alternative considered: a full `pip freeze` lockfile, which is stricter reproduc
 for now because the direct pins already fix every version a result depends on, and a lockfile
 is one more file to keep honest across three weeks. If a numeric result turns out to move
 between transitive versions, that is the reason to add one.
+
+## 2026-08-23. Stage 1 measures three errors, not one
+
+The build sequence asks for the error against the analytic fronts. A single number would have
+hidden the thing that turned out to matter, so the suite reports three per benchmark per seed.
+
+Analytic residual is the distance from each generated point to the closed form, exact for
+DTLZ2 where radial distance is perpendicular distance, and a conservative overestimate for
+ZDT1 where it is measured vertically. Generational distance measures convergence alone.
+Inverted generational distance measures convergence and coverage together, so it is the one
+that catches a run that landed on the front but only covered a slice of it. A fourth check
+looks at the tail decision variables, which both problems attain their front at a known
+setting of, and is the only check that does not pass through objective space.
+
+Alternative considered: IGD alone against `problem.pareto_front()`, which is the usual way
+these benchmarks get reported. Rejected on two counts. It conflates convergence with coverage
+in one number, which is exactly the distinction that turned out to be the finding. And it
+takes the reference set from the library under test. The reference fronts are generated here
+from the published closed forms instead, so the check is on pymoo rather than internal to it.
+
+## 2026-08-23. Stage 1 tolerances measured before they were set
+
+Every tolerance was fixed by running five seeds first, recording the worst case, and rounding
+up with roughly two to eight times headroom. The observed worst case sits in a comment beside
+each tolerance in `tests/test_optimiser_validation.py`. No tolerance was adjusted to make a
+test pass.
+
+Checked in the other direction as well. Dropping both runs from 400 generations to 5 fails
+every one of the ten checks, so the gate is not vacuous.
+
+## 2026-08-23. DTLZ2 error under NSGA-II is coverage, not convergence
+
+Stage 1 passed, but it surfaced something that affects stage 11 rather than stage 1.
+
+On DTLZ2 the three-objective error is roughly four times the two-objective error on ZDT1, and
+the split between the metrics says why. GD sits at 0.013 and does not move. IGD sits at 0.049.
+Quadrupling generations from 400 to 1600 changes IGD by less than a percent, at 0.0487. Raising
+population from 200 to 500 to 1000 at fixed generations takes IGD to 0.0312 then 0.0217 while
+GD stays flat at 0.012 to 0.014. Averages of three seeds throughout.
+
+So the points reach the front and do not spread evenly across it. This is the known behaviour
+of crowding distance in three objectives, and the brief freezes NSGA-II, so it is not a defect
+to fix. The consequence is that on the COE problem, which is also three-objective, front
+coverage is bought with population size and not with runtime. Stage 11 sizes its population on
+that basis, and the reported IGD is the reason.
+
+Alternative not taken: NSGA-III or a reference-direction method, which is the standard remedy
+and would spread the points evenly. Not taken because the algorithm is frozen in section 0.1 of
+the brief. Recording it here so the case study can state what the freeze cost rather than
+presenting NSGA-II as the only option.
