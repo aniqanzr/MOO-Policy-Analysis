@@ -77,7 +77,7 @@ The reasoning behind this project is a deliverable, not scaffolding.
 * [`docs/decision-log.md`](docs/decision-log.md) - Choices made, alternatives rejected, and why.
 * [`docs/case-study.md`](docs/case-study.md) - The writeup, including what the research overturned.
 
-The assumptions register is the one that does the work. An early version of this specification treated the COE quota as a policy lever. It is not one. It is computed by a published formula, and finding that out on day one rebuilt the core of the model. I documented that rebuild instead of quietly correcting it.
+The assumptions register is the one that does the work. An early version of this specification treated the COE quota as a policy lever. It is not one. It is computed by a published formula, and finding that out on day one rebuilt the core of the model. I documented that rebuild instead of correcting it.
 
 ## Tech & Concepts
 * **Core Tech:** Python, Pymoo, pandas and statsmodels for the fitted relationships, Plotly for visualization.
