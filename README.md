@@ -52,6 +52,22 @@ This is an active, self-directed research project.
 * [ ] **Frontend:** Visualization and deployment.
 * [ ] **Writeup:** Case study.
 
+## Running It
+Python 3.11.
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+pytest
+```
+
+Raw data downloads are committed, so the pipeline runs from a clean clone without fetching
+anything. Layout follows section 7 of the brief: `src/fit` holds the fitted relationships,
+`src/model` the quota formula, objectives and constraints, `src/optimise` the pymoo runs and
+the weight simplex map, `src/export` the JSON writers, and `web` the static frontend that
+reads that JSON.
+
 ## Documentation
 The reasoning behind this project is a deliverable, not scaffolding.
 

@@ -1,0 +1,11 @@
+# Section 7 of docs/PROJECT_BRIEF.md fixes the stack. Anything added here needs a reason in
+# docs/decision-log.md. Versions are the ones resolved on 2026-08-23 under Python 3.11.
+pymoo==0.6.2
+numpy==2.4.6
+pandas==3.0.5
+statsmodels==0.14.6
+plotly==6.9.0
+# Scripted pulls from the data.gov.sg datastore API. Logged 2026-08-23.
+requests==2.34.2
+# Runs the section 5.4 validation suite. Logged 2026-08-23.
+pytest==9.1.1
