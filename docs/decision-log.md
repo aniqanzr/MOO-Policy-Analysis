@@ -112,3 +112,54 @@ Alternative not taken: NSGA-III or a reference-direction method, which is the st
 and would spread the points evenly. Not taken because the algorithm is frozen in section 0.1 of
 the brief. Recording it here so the case study can state what the freeze cost rather than
 presenting NSGA-II as the only option.
+
+## 2026-08-23. Ingestion lives in src/ingest, which section 7 does not name
+
+Section 7 lists `src/fit`, `src/model`, `src/optimise` and `src/export`. The pull script is
+none of those. It is the stage before the fits, so it went in `src/ingest` alongside them
+rather than in a `scripts/` directory off the root.
+
+The repo layout is a provisional item, not a frozen one, and this touches nothing in the
+frozen list. The static architecture stays static: this is a build-time script that writes
+files into the repo, not a service.
+
+Alternative considered: `scripts/pull_data.py` at the root, which is the more common
+convention for one-off pulls. Rejected because ingestion is a pipeline stage that later stages
+depend on and it reads better sitting in the same tree as the stages that consume it.
+
+## 2026-08-23. One registry behind both the pull script and the manual list
+
+`src/ingest/sources.py` holds all fourteen sources from section 8, the eight that have an API
+and the six that do not, in one list. The pull script iterates the first group and prints the
+second as the hand-download list.
+
+Alternative considered: hardcode the dataset IDs in the pull script and keep the manual list
+in prose in `data/raw/README.md`. Rejected because the two would drift. A source added to the
+brief and not to the script would be silently missing rather than visibly unfetched.
+
+## 2026-08-23. Stage 2 gate blocked, no network route to any government host
+
+The gate asks for certainty about what has been ingested and what has to be fetched by hand.
+Half of that is deliverable and half is not.
+
+This session's egress policy allows package registries and the Anthropic API and nothing else.
+`api-open.data.gov.sg`, `data.gov.sg`, `www.lta.gov.sg`, `www.mof.gov.sg`,
+`tablebuilder.singstat.gov.sg` and `datamall2.mytransport.sg` all return 403 at the proxy on
+CONNECT, as does `example.com`, so this is a blanket policy rather than anything specific to
+these hosts. The proxy documentation says to report a 403 rather than route around it, so no
+attempt was made to.
+
+What this means for the gate. Not one of the eight dataset IDs in section 8 has been checked
+against the live API. They are transcribed and well formed, thirty-two hex characters after a
+`d_` prefix, and no two collide, but well formed is not the same as live, and the brief says
+explicitly to re-check them because IDs and coverage change. Stage 2 fails.
+
+What was done instead. The pull script is written and tested against a local stub of the
+data.gov.sg API covering the paths that matter: a dataset that resolves, one that 404s, an
+endpoint that makes you poll before it hands over a URL, and one that 503s before recovering.
+Those tests check the script. They say nothing about whether the IDs are live, and the test
+module says so at the top so a green run is not mistaken for a passed gate.
+
+What was deliberately not done. No placeholder CSVs were written into `data/raw`. An empty
+`data/raw` is an honest record of a blocked gate. Files with plausible-looking contents would
+propagate into the fits, and the never-invent-a-number rule exists for exactly this moment.
