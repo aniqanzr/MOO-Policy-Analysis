@@ -465,25 +465,36 @@ No dependencies beyond this without a reason in the decision log.
 
 ## 8. Data sources
 
-All verified live during the day one scan. Re-check before relying on any of them, since IDs
-and coverage change.
+All verified live during the day one scan. Re-verified and pulled at stage 2 on 2026-08-31.
+Every id below still resolves. Coverage and defect notes are from the stage 2 pull, and the
+detail sits in `data/raw/README.md` and rows A-12 to A-15 of the assumptions register.
 
 **COE and quota**
 - COE bidding results and prices, LTA on data.gov.sg, `d_69b3380ad7e51aff3a7dcc84eba52b8a`.
-  One row per category per exercise from April 2002. Fields include bidding period, exercise
-  number, category, quota, bids received, quota premium.
+  One row per category per exercise. Fields include bidding period, exercise number, category,
+  quota, bids received, quota premium. Coverage is **2010-01 to 2026-08**, not from April 2002
+  as the day one scan recorded. Carries two wrong values and thousands separators in two
+  columns. See A-12 and A-13.
 - Motor vehicle quota, quota premium and prevailing quota premium, monthly, SingStat and LTA,
-  `d_22094bf608253d36c0c63b52d852dd6e`. Carries the 2002 and 2020 footnotes.
+  `d_22094bf608253d36c0c63b52d852dd6e`. Coverage 2002Feb to 2026Jul, so this is the only source
+  for the 2002 to 2009 span and the reference where it conflicts with the long table. The 2020
+  suspension shows as `-` for April, May and June. The footnotes themselves are not in the API
+  payload and have to come from the SingStat table page.
 - LTA quarterly quota press releases with Annex A, containing the full worked quota
   arithmetic. Authoritative source for the formula in 3.1. Pull several quarters, not one.
 
 **Vehicle population and registrations**
-- Annual motor vehicle population by type, `d_2873f3b1b2a836103f51f696350b98fa`.
-- Monthly motor vehicle population by type, `d_2ecb009f1e1ec5a816a454944dec4022`.
 - Motor vehicle population under the Vehicle Quota System, monthly,
-  `d_ede1a559013d10f234d209ac5e9fd9b4`.
+  `d_ede1a559013d10f234d209ac5e9fd9b4`. 1990May to 2026Jun, on VQS categories. This is the
+  series the accumulator backtest runs against.
 - New registration of motor vehicles under the VQS, monthly,
-  `d_529752a3d78beb78bd4f38e3be37f1b6`.
+  `d_529752a3d78beb78bd4f38e3be37f1b6`. 1990May to 2026Jan, so it trails the population series
+  by five months.
+- Annual motor vehicle population by type, `d_2873f3b1b2a836103f51f696350b98fa`. 2005 to 2024,
+  body-type split. Secondary to the VQS series above.
+- Monthly motor vehicle population by type, `d_2ecb009f1e1ec5a816a454944dec4022`. **Stops at
+  2018-02** and renames its own categories partway through. Not usable for the backtest. See
+  A-14.
 - LTA DataMall static data, MVP01 and MVP02 tables, including COE revalidation counts.
 
 Deregistration counts are not published as a standalone series. They appear inside LTA Annual
@@ -492,8 +503,9 @@ Vehicle Statistics and as inputs to the Annex A arithmetic. Extract them from th
 **Congestion**
 - Average speed during peak hours, LTA, `d_26f6afadf2f86b2004f9a1e28f5564cc`. Annual from
   2004. Expressway and arterial split. Peak hour is 8 to 9am and 6 to 7pm weekdays.
-- Public roads, annual, SingStat and LTA, `d_f73d13943f7a3cc1aca76b18fea75013`. Lane-km by
-  road category from 1990.
+- Public roads, annual, SingStat and LTA, `d_f73d13943f7a3cc1aca76b18fea75013`. By road
+  category, 1990 to 2025. Described here as lane-km, but the file states no unit and the unit
+  is unconfirmed. BPR capacity scales with it directly. See A-15.
 
 **Revenue**
 - Ministry of Finance Analysis of Revenue and Expenditure, annual. The Vehicle Quota Premiums
@@ -504,7 +516,9 @@ Vehicle Statistics and as inputs to the Annex A arithmetic. Extract them from th
 - NLB Infopedia for the 1990 Select Committee history.
 
 data.gov.sg exposes a datastore search API, so pulls can be scripted. Commit raw downloads so
-the pipeline reproduces from a clean clone.
+the pipeline reproduces from a clean clone. `python -m src.ingest.pull_datagov` does the pull
+and writes `data/raw/manifest.json`. Everything else in this section is a manual download.
+`docs/manual-downloads.md` lists what and why.
 
 ---
 

@@ -9,6 +9,13 @@ an assumption wrong, you do not understand it well enough to build on it.
 Statuses: `unverified`, `verified`, `falsified`, `accepted-as-limitation`.
 
 **Updated after the day one scan.** Three rows falsified, two resolved, three new rows added.
+
+**Updated after the stage 2 pull, 2026-08-31.** Seven new rows, A-12 to A-18. Six are
+falsifications, and mostly of things nobody had thought to doubt: that two official sources of
+the same numbers agree, that a published file keeps its own formatting conventions, that a
+dataset listed in section 8 is current, that a republication keeps up with its original. Two go
+the other way and remove work rather than adding it, A-16 and A-17. A-05 and A-11 amended.
+A-15 was opened and closed the same day.
 Everything below carries a source note. Where a source is secondary, that is stated and the
 row is medium-confidence until a primary document is opened.
 
@@ -96,8 +103,9 @@ Falsified by: calibrated capacity producing speeds far from published LTA figure
 Touches:      4.3, O2
 Notes:        Data exists and is better than expected: annual average peak-hour speeds from
               2004, split expressway and arterial, peak hour defined as 8 to 9am and 6 to 7pm
-              weekdays. Capacity available as lane-km by road category from 1990. But see
-              A-09 for why having the data does not make this objective safe. BPR is also a
+              weekdays. Capacity available by road category from 1990, described in section 8
+              as lane-km, though the unit is not stated in the file itself and is now A-15. But
+              see A-09 for why having the data does not make this objective safe. BPR is also a
               link-level function being applied at network level, which is a known
               simplification and may end as accepted-as-limitation rather than verified.
 
@@ -189,6 +197,169 @@ Notes:        Nine breaks currently listed in the brief. Some dates came from pr
               Treat the secondary-sourced dates as medium confidence and verify against LTA
               archives before they enter a regression as dummies. An unexplained break in the
               residuals is the practical falsification test.
+
+              Stage 2 update. The SingStat footnotes for table M651121, now committed at
+              `data/raw/singstat-metadata.json`, are a primary source and confirm four dates
+              without opening a PDF. Open bidding fully replaced closed bidding from the April
+              2002 exercise, with February and March 2002 running one of each. Category A added
+              the 97kW criterion from the February 2014 exercise. From 6 August 2012 all taxis
+              pay the Category A prevailing quota premium rather than bidding. Bidding was
+              suspended in April, May and June 2020, and the April 2020 PQP applied through
+              July 2020. Check these against the nine rows in the brief at stage 4.
+
+              The same footnotes define PQP as a moving average of the quota premium over the
+              last three months in which bidding was actually held, which is the definition
+              A-04 needs for renewals and is not the same as a plain three-month average.
+
+### A-12. The two COE bidding sources agree where they overlap
+Status:       falsified
+Source:       `src/ingest/crosscheck_coe.py` against the two committed raw files
+Falsified by: n/a
+Touches:      4.1, 4.4, stage 3, stage 6
+Notes:        They overlap from 2010-01 and disagree on two of 7,840 compared values. Both
+              are in `coe-bidding-results` (`d_69b3380ad7e51aff3a7dcc84eba52b8a`) and both
+              have the same signature, a value repeated from the row above.
+
+              2010-01 bidding 2 Category D premium reads 20090, which is Category C's premium
+              from the line above. The wide table says 852, and 852 is what a motorcycle COE
+              cost in January 2010.
+
+              2010-02 bidding 1 Category B quota reads 1154, which is Category A's quota from
+              the line above. The wide table says 693. The tie-break is arithmetic: the wide
+              table's five category quotas sum to 2984, which is its own published total for
+              that exercise. The long table's sum to 3445.
+
+              So `quota-premium-monthly` (`d_22094bf608253d36c0c63b52d852dd6e`) is the
+              reference where the two conflict. Two values is small, but the Category D one is
+              a 23-fold error sitting in a series whose real range is under 1000, which would
+              dominate a log-log fit on Category D and misstate stage 3 revenue for that
+              exercise. Correct downstream, visibly. Do not edit the committed raw file.
+
+              Re-run the cross-check after any re-pull. A third conflict appearing means the
+              upstream table changed and this row needs revisiting.
+
+### A-13. Published series are internally consistent enough to parse numerically without inspection
+Status:       falsified
+Source:       the committed raw files
+Falsified by: n/a
+Touches:      every fit, stage 3 onward
+Notes:        Two separate problems, both silent under a naive read.
+
+              `coe-bidding-results` writes thousands separators in `bids_success` and
+              `bids_received` from 2023-05 onward, and only in those two columns. `quota` and
+              `premium` are clean across the whole file. A default `read_csv` gives two numeric
+              columns and two object columns with no error raised.
+
+              `vehicle-population-monthly` renames its own categories mid-series, `Cars` and
+              `Rental Cars` to 2017-07, then `Car` and `Rental cars` from 2017-08. Grouping by
+              the raw label splits each series in two.
+
+              The general form of this is the thing to carry forward: a published file changing
+              its own conventions partway through. Check the distinct values of every key column
+              against period before grouping on it.
+
+### A-14. The monthly vehicle population dataset covers the modelling period
+Status:       falsified
+Source:       `d_2ecb009f1e1ec5a816a454944dec4022`, coverage read off the pulled file
+Falsified by: n/a
+Touches:      4.2, A-04, stage 7
+Notes:        It runs 2012-01 to 2018-02 and stops. Seventy-four months, eight years stale.
+              Section 8 lists it without a coverage claim, so nothing in the brief was wrong,
+              but it cannot carry the accumulator backtest.
+
+              `vqs-population-monthly` (`d_ede1a559013d10f234d209ac5e9fd9b4`) replaces it.
+              It runs 1990May to 2026Jun and is broken out on the VQS categories the model
+              actually uses, A, B, C, D, taxis, weekend cars and VQS-exempt vehicles, rather
+              than the body-type split. That is the better source for stage 7 on both counts.
+
+              The annual companion `d_2873f3b1b2a836103f51f696350b98fa` covers 2005 to 2024,
+              which is also short of the 1990 record. Same remedy.
+
+### A-15. The lane-km figure means lane-kilometres
+Status:       verified
+Source:       SingStat TableBuilder metadata for table M650321, `uoM` field on all five series.
+              Committed at `data/raw/singstat-metadata.json`.
+Falsified by: n/a
+Touches:      4.3, O2, A-05, A-09
+Notes:        Opened because the CSV states no unit and section 8 asserted one. Closed the same
+              day from the upstream table's own metadata, which gives `Lane-Kilometres` for all
+              five series and names LTA as the source.
+
+              Worth keeping as a row rather than deleting. It mattered more than a units
+              footnote usually does: BPR capacity scales directly with this number, so a wrong
+              unit rescales the volume-capacity ratio by roughly a factor of three, and A-09
+              says that ratio barely varies across the sample. A constant scale error on a
+              near-constant regressor is close to unidentifiable from the fit itself, so this
+              was not something the model would have caught later.
+
+              The table footnote also confirms the coverage caveat A-09 carries from a
+              secondary source: LTA-maintained roads only, excluding other agencies and
+              privately-owned areas.
+
+### A-16. Deregistration counts are not published as a standalone series
+Status:       falsified
+Source:       SingStat TableBuilder table M650291, "Motor Vehicles De-Registered Under Vehicle
+              Quota System, Monthly". Metadata committed at `data/raw/singstat-metadata.json`.
+Falsified by: n/a
+Touches:      3.1, 4.2, A-04, stage 4
+Notes:        Section 8 states these counts are not published standalone and that they have to
+              be extracted from Annex A PDFs and LTA Annual Vehicle Statistics. Stage 4 budgets
+              that extraction as the week-one bottleneck.
+
+              The series exists. Monthly, from 1990 May to 2026 Jul, sourced to LTA, broken out
+              as Category A cars, Category B cars, weekend and off-peak cars, Category C goods
+              vehicles and buses, Category D motorcycles, taxis, and VQS-exempt vehicles. That
+              is the same category split as the population and new-registration series already
+              in section 8, so it lines up with them directly.
+
+              Only the metadata is pulled so far. The series values are not committed and
+              nothing reads them, because adding a source to section 8 is a decision for the
+              stage 2 gate rather than one to make while pulling.
+
+              Two things to check before it replaces the Annex A extraction rather than
+              cross-checking it. Whether this series is the same quantity the quota formula's
+              rolling four-quarter deregistration average is computed from, and whether it
+              separates guaranteed deregistrations, which the formula nets out and which A-04
+              says are large enough for LTA to account for explicitly. If it does not separate
+              them, some Annex A extraction is still needed and this series becomes a check on
+              it. That would still be a large saving.
+
+### A-17. The MOF Vehicle Quota Premiums line is only available as a PDF
+Status:       falsified
+Source:       SingStat TableBuilder table M130571, "Government Operating Revenue, Annual",
+              series 1.2.1 "Vehicle Quota Premiums", in millions of dollars, 1997 to 2026.
+              Sourced to the Accountant-General's Department.
+Falsified by: n/a
+Touches:      4.4, A-10, stage 3
+Notes:        Section 8 sources the reconciliation target from the MOF Analysis of Revenue and
+              Expenditure. That document is a PDF and is not reachable from this environment.
+              The same line is available from SingStat as a machine-readable annual series.
+
+              The table footnote confirms the alignment problem A-10 already flags: the figures
+              are financial years beginning 1 April, and FY2026 is a budgeted estimate rather
+              than an outturn, so the most recent year must be excluded from the reconciliation
+              or labelled as an estimate.
+
+              Do not treat this as settled. AGD and MOF publish from the same accounts and the
+              line carries the same name, but that the two figures are identical is an
+              assumption until one year is checked against the MOF document by hand. A-10 is
+              the reconciliation test and it should not be run against a target that has itself
+              only been assumed. Spot-check one year first.
+
+### A-18. data.gov.sg republications are current with their SingStat originals
+Status:       falsified
+Source:       end periods in `data/raw/manifest.json` against `data/raw/singstat-metadata.json`
+Falsified by: n/a
+Touches:      section 8, any series cut-off
+Notes:        Every wide source in section 8 is a republished SingStat table, and each lags its
+              original. Quota and premium by one month, VQS population by one month, public
+              roads not at all, and new registrations under the VQS by six months, ending
+              2026 Jan on data.gov.sg against 2026 Jul upstream.
+
+              Small for a model fitted on decades. It matters for two things: stating the
+              sample period honestly, and not reading a republication lag as a real gap in
+              registrations. If the most recent months turn out to matter, pull the wide
+              sources from SingStat instead of data.gov.sg.
 
 ---
 
