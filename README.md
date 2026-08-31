@@ -32,7 +32,6 @@ Three objectives (cost of ownership, road congestion, government revenue) agains
 * **The recovered weights.** Locating the current policy on the front and reading off the weight region that makes it optimal. The output is a ratio that nobody published, inferred from what was actually chosen.
 
 ## What I Am Not Claiming
-This section matters more than the feature list above.
 
 * This does not predict COE prices and was not built to.
 * The recovered weights are what the policy implies under this specific model. They are not anybody's internal reasoning.
