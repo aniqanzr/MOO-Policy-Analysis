@@ -1,0 +1,751 @@
+{
+  "generated": "2026-08-31T08:59:20Z",
+  "generated_by": "src/ingest/pull_singstat.py",
+  "note": "Metadata only. No series values are pulled here.",
+  "tables": {
+    "M651121": {
+      "id": "M651121",
+      "title": "Motor Vehicle Quota, Quota Premium And Prevailing Quota Premium, Monthly",
+      "frequency": "Monthly",
+      "dataSource": "LAND TRANSPORT AUTHORITY",
+      "footnote": "Period refers to month of bidding exercise.  February and March 2002 1st bidding refers to closed bidding system, 2nd bidding refers to open bidding system.  From April 2002 bidding exercise, the COE Open Bidding System fully replaced the Closed Bidding System.  Under the Open Bidding System, two bidding exercises would be held each month on alternate fortnights: i) The first exercise will usually start on the first Monday of the month and end two days later on Wednesday; ii) The second exercise will usually start on the third Monday of the month and end two days later on Wednesday.  If a public holiday falls within the three-day bidding exercise, the bidding period would be extended accordingly.  Quota premium is the successful bid price paid by all successful bidders.  COE bidding exercises were suspended in the months of April, May and June 2020 due to the implementation of elevated safe distancing measures.  With the suspension of the COE Bidding exercises during this period, the April 2020 Prevailing Quota Premium (PQP) would also apply in May, June and July 2020.",
+      "dataLastUpdated": "25/08/2026",
+      "startPeriod": "2002 Feb",
+      "endPeriod": "2026 Aug",
+      "series": [
+        {
+          "seriesNo": "10",
+          "rowText": "Total Quota, 1st Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "11",
+          "rowText": "Total Successful Bids, 1st Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "12",
+          "rowText": "Total Bids Received, 1st Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "13",
+          "rowText": "Total Quota, 2nd Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "14",
+          "rowText": "Total Successful Bids, 2nd Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "15",
+          "rowText": "Total Bids Received, 2nd Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "20",
+          "rowText": "Cars Up To 1600cc And 97kW, Quota, 1st Bidding",
+          "uoM": "Number",
+          "footnote": "From Feb 2014 bidding exercise onwards, Category A will add a new engine power criterion of up to 97kW to the existing engine capacity threshold of up to 1600cc.  Prior to Aug 2012, taxi operators can bid for a new COE or pay Prevailing Quota Premium (PQP) to register a taxi under Category A.  The latter is only in the case of a new taxi that replaces a deregistered one within 6 months.  From 6 Aug 2012 onwards, all taxis pay for COEs based on the PQP of Category A."
+        },
+        {
+          "seriesNo": "21",
+          "rowText": "Cars Up To 1600cc And 97kW, Successful Bids, 1st Bidding",
+          "uoM": "Number",
+          "footnote": "From Feb 2014 bidding exercise onwards, Category A will add a new engine power criterion of up to 97kW to the existing engine capacity threshold of up to 1600cc.  Prior to Aug 2012, taxi operators can bid for a new COE or pay Prevailing Quota Premium (PQP) to register a taxi under Category A.  The latter is only in the case of a new taxi that replaces a deregistered one within 6 months.  From 6 Aug 2012 onwards, all taxis pay for COEs based on the PQP of Category A."
+        },
+        {
+          "seriesNo": "22",
+          "rowText": "Cars Up To 1600cc And 97kW, Bids Received, 1st Bidding",
+          "uoM": "Number",
+          "footnote": "From Feb 2014 bidding exercise onwards, Category A will add a new engine power criterion of up to 97kW to the existing engine capacity threshold of up to 1600cc.  Prior to Aug 2012, taxi operators can bid for a new COE or pay Prevailing Quota Premium (PQP) to register a taxi under Category A.  The latter is only in the case of a new taxi that replaces a deregistered one within 6 months.  From 6 Aug 2012 onwards, all taxis pay for COEs based on the PQP of Category A."
+        },
+        {
+          "seriesNo": "23",
+          "rowText": "Cars Up To 1600cc And 97kW, Quota Premium, 1st Bidding",
+          "uoM": "Dollar",
+          "footnote": "From Feb 2014 bidding exercise onwards, Category A will add a new engine power criterion of up to 97kW to the existing engine capacity threshold of up to 1600cc.  Prior to Aug 2012, taxi operators can bid for a new COE or pay Prevailing Quota Premium (PQP) to register a taxi under Category A.  The latter is only in the case of a new taxi that replaces a deregistered one within 6 months.  From 6 Aug 2012 onwards, all taxis pay for COEs based on the PQP of Category A."
+        },
+        {
+          "seriesNo": "24",
+          "rowText": "Cars Up To 1600cc And 97kW, Quota, 2nd Bidding",
+          "uoM": "Number",
+          "footnote": "From Feb 2014 bidding exercise onwards, Category A will add a new engine power criterion of up to 97kW to the existing engine capacity threshold of up to 1600cc.  Prior to Aug 2012, taxi operators can bid for a new COE or pay Prevailing Quota Premium (PQP) to register a taxi under Category A.  The latter is only in the case of a new taxi that replaces a deregistered one within 6 months.  From 6 Aug 2012 onwards, all taxis pay for COEs based on the PQP of Category A."
+        },
+        {
+          "seriesNo": "25",
+          "rowText": "Cars Up To 1600cc And 97kW, Successful Bids, 2nd Bidding",
+          "uoM": "Number",
+          "footnote": "From Feb 2014 bidding exercise onwards, Category A will add a new engine power criterion of up to 97kW to the existing engine capacity threshold of up to 1600cc.  Prior to Aug 2012, taxi operators can bid for a new COE or pay Prevailing Quota Premium (PQP) to register a taxi under Category A.  The latter is only in the case of a new taxi that replaces a deregistered one within 6 months.  From 6 Aug 2012 onwards, all taxis pay for COEs based on the PQP of Category A."
+        },
+        {
+          "seriesNo": "26",
+          "rowText": "Cars Up To 1600cc And 97kW, Bids Received, 2nd Bidding",
+          "uoM": "Number",
+          "footnote": "From Feb 2014 bidding exercise onwards, Category A will add a new engine power criterion of up to 97kW to the existing engine capacity threshold of up to 1600cc.  Prior to Aug 2012, taxi operators can bid for a new COE or pay Prevailing Quota Premium (PQP) to register a taxi under Category A.  The latter is only in the case of a new taxi that replaces a deregistered one within 6 months.  From 6 Aug 2012 onwards, all taxis pay for COEs based on the PQP of Category A."
+        },
+        {
+          "seriesNo": "27",
+          "rowText": "Cars Up To 1600cc And 97kW, Quota Premium, 2nd Bidding",
+          "uoM": "Dollar",
+          "footnote": "From Feb 2014 bidding exercise onwards, Category A will add a new engine power criterion of up to 97kW to the existing engine capacity threshold of up to 1600cc.  Prior to Aug 2012, taxi operators can bid for a new COE or pay Prevailing Quota Premium (PQP) to register a taxi under Category A.  The latter is only in the case of a new taxi that replaces a deregistered one within 6 months.  From 6 Aug 2012 onwards, all taxis pay for COEs based on the PQP of Category A."
+        },
+        {
+          "seriesNo": "28",
+          "rowText": "Cars Up To 1600cc And 97kW, Prevailing Quota Premium, 2nd Bidding",
+          "uoM": "Dollar",
+          "footnote": "From Feb 2014 bidding exercise onwards, Category A will add a new engine power criterion of up to 97kW to the existing engine capacity threshold of up to 1600cc.  Prior to Aug 2012, taxi operators can bid for a new COE or pay Prevailing Quota Premium (PQP) to register a taxi under Category A.  The latter is only in the case of a new taxi that replaces a deregistered one within 6 months.  From 6 Aug 2012 onwards, all taxis pay for COEs based on the PQP of Category A.  Prevailing Quota Premium (PQP) will only be available after the close of the second open bidding exercise of each month.  It is the moving average of the quota premium over the last 3 months. "
+        },
+        {
+          "seriesNo": "30",
+          "rowText": "Cars Above 1600cc Or 97kW, Quota, 1st Bidding",
+          "uoM": "Number",
+          "footnote": "From Feb 2014 bidding exercise onwards, Category A will add a new engine power criterion of up to 97kW to the existing engine capacity threshold of up to 1600cc."
+        },
+        {
+          "seriesNo": "31",
+          "rowText": "Cars Above 1600cc Or 97kW, Successful Bids, 1st Bidding",
+          "uoM": "Number",
+          "footnote": "From Feb 2014 bidding exercise onwards, Category A will add a new engine power criterion of up to 97kW to the existing engine capacity threshold of up to 1600cc."
+        },
+        {
+          "seriesNo": "32",
+          "rowText": "Cars Above 1600cc Or 97kW, Bids Received, 1st Bidding",
+          "uoM": "Number",
+          "footnote": "From Feb 2014 bidding exercise onwards, Category A will add a new engine power criterion of up to 97kW to the existing engine capacity threshold of up to 1600cc."
+        },
+        {
+          "seriesNo": "33",
+          "rowText": "Cars Above 1600cc Or 97kW, Quota Premium, 1st Bidding",
+          "uoM": "Dollar",
+          "footnote": "From Feb 2014 bidding exercise onwards, Category A will add a new engine power criterion of up to 97kW to the existing engine capacity threshold of up to 1600cc."
+        },
+        {
+          "seriesNo": "34",
+          "rowText": "Cars Above 1600cc Or 97kW, Quota, 2nd Bidding",
+          "uoM": "Number",
+          "footnote": "From Feb 2014 bidding exercise onwards, Category A will add a new engine power criterion of up to 97kW to the existing engine capacity threshold of up to 1600cc."
+        },
+        {
+          "seriesNo": "35",
+          "rowText": "Cars Above 1600cc Or 97kW, Successful Bids, 2nd Bidding",
+          "uoM": "Number",
+          "footnote": "From Feb 2014 bidding exercise onwards, Category A will add a new engine power criterion of up to 97kW to the existing engine capacity threshold of up to 1600cc."
+        },
+        {
+          "seriesNo": "36",
+          "rowText": "Cars Above 1600cc Or 97kW, Bids Received, 2nd Bidding",
+          "uoM": "Number",
+          "footnote": "From Feb 2014 bidding exercise onwards, Category A will add a new engine power criterion of up to 97kW to the existing engine capacity threshold of up to 1600cc."
+        },
+        {
+          "seriesNo": "37",
+          "rowText": "Cars Above 1600cc Or 97kW, Quota Premium, 2nd Bidding",
+          "uoM": "Dollar",
+          "footnote": "From Feb 2014 bidding exercise onwards, Category A will add a new engine power criterion of up to 97kW to the existing engine capacity threshold of up to 1600cc."
+        },
+        {
+          "seriesNo": "38",
+          "rowText": "Cars Above 1600cc Or 97kW, Prevailing Quota Premium, 2nd Bidding",
+          "uoM": "Dollar",
+          "footnote": "From Feb 2014 bidding exercise onwards, Category A will add a new engine power criterion of up to 97kW to the existing engine capacity threshold of up to 1600cc.  Prevailing Quota Premium (PQP) will only be available after the close of the second open bidding exercise of each month.  It is the moving average of the quota premium (QP) in the latest 3 months in which bidding exercises were conducted and varies monthly depending on the QP from those bidding exercises."
+        },
+        {
+          "seriesNo": "40",
+          "rowText": "Goods Vehicles & Buses, Quota, 1st Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "41",
+          "rowText": "Goods Vehicles & Buses, Successful Bids, 1st Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "42",
+          "rowText": "Goods Vehicles & Buses, Bids Received, 1st Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "43",
+          "rowText": "Goods Vehicles & Buses, Quota Premium, 1st Bidding",
+          "uoM": "Dollar",
+          "footnote": null
+        },
+        {
+          "seriesNo": "44",
+          "rowText": "Goods Vehicles & Buses, Quota, 2nd Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "45",
+          "rowText": "Goods Vehicles & Buses, Successful Bids, 2nd Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "46",
+          "rowText": "Goods Vehicles & Buses, Bids Received, 2nd Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "47",
+          "rowText": "Goods Vehicles & Buses, Quota Premium, 2nd Bidding",
+          "uoM": "Dollar",
+          "footnote": null
+        },
+        {
+          "seriesNo": "48",
+          "rowText": "Goods Vehicles & Buses, Prevailing Quota Premium, 2nd Bidding",
+          "uoM": "Dollar",
+          "footnote": "Prevailing Quota Premium (PQP) will only be available after the close of the second open bidding exercise of each month.  It is the moving average of the quota premium (QP) in the latest 3 months in which bidding exercises were conducted and varies monthly depending on the QP from those bidding exercises."
+        },
+        {
+          "seriesNo": "50",
+          "rowText": "Motorcycles, Quota, 1st Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "51",
+          "rowText": "Motorcycles, Successful Bids, 1st Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "52",
+          "rowText": "Motorcycles, Bids Received, 1st Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "53",
+          "rowText": "Motorcycles, Quota Premium, 1st Bidding",
+          "uoM": "Dollar",
+          "footnote": null
+        },
+        {
+          "seriesNo": "54",
+          "rowText": "Motorcycles, Quota, 2nd Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "55",
+          "rowText": "Motorcycles, Successful Bids, 2nd Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "56",
+          "rowText": "Motorcycles, Bids Received, 2nd Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "57",
+          "rowText": "Motorcycles, Quota Premium, 2nd Bidding",
+          "uoM": "Dollar",
+          "footnote": null
+        },
+        {
+          "seriesNo": "58",
+          "rowText": "Motorcycles, Prevailing Quota Premium, 2nd Bidding",
+          "uoM": "Dollar",
+          "footnote": "Prevailing Quota Premium (PQP) will only be available after the close of the second open bidding exercise of each month.  It is the moving average of the quota premium (QP) in the latest 3 months in which bidding exercises were conducted and varies monthly depending on the QP from those bidding exercises."
+        },
+        {
+          "seriesNo": "60",
+          "rowText": "Open Category, Quota, 1st Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "61",
+          "rowText": "Open Category, Successful Bids, 1st Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "62",
+          "rowText": "Open Category, Bids Received, 1st Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "63",
+          "rowText": "Open Category, Quota Premium, 1st Bidding",
+          "uoM": "Dollar",
+          "footnote": null
+        },
+        {
+          "seriesNo": "64",
+          "rowText": "Open Category, Quota, 2nd Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "65",
+          "rowText": "Open Category, Successful Bids, 2nd Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "66",
+          "rowText": "Open Category, Bids Received, 2nd Bidding",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "67",
+          "rowText": "Open Category, Quota Premium, 2nd Bidding",
+          "uoM": "Dollar",
+          "footnote": null
+        }
+      ],
+      "republished_on_datagov_as": "d_22094bf608253d36c0c63b52d852dd6e",
+      "role": "source of a section 8 dataset"
+    },
+    "M650341": {
+      "id": "M650341",
+      "title": "Motor Vehicle Population Under Vehicle Quota System, (As At End Of Period), Monthly",
+      "frequency": "Monthly",
+      "dataSource": "LAND TRANSPORT AUTHORITY",
+      "footnote": "Figures include weekend/off-peak cars & tax exempted vehicles",
+      "dataLastUpdated": "21/08/2026",
+      "startPeriod": "1990 May",
+      "endPeriod": "2026 Jul",
+      "series": [
+        {
+          "seriesNo": "1",
+          "rowText": "Total Motor Vehicles",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1",
+          "rowText": "Category A: Cars",
+          "uoM": "Number",
+          "footnote": "For cars registered with Certificates of Entitlement (COEs) obtained before Feb 2014 bidding exercises, Category A cars refer to cars with engine capacity up to 1600cc and Category B cars refer to cars with engine capacity above 1,600cc.  For cars registered with COEs obtained from Feb 2014 1st bidding exercise onwards but before the May 2022 1st bidding exercise, Category A cars refer to cars with engine capacity up to 1600cc and Maximum Power Output up to 97kW (130bhp) and Category B cars refer to cars with engine capacity above 1600cc or Maximum Power Output above 97kW (130bhp).  For cars registered with COEs obtained from the May 2022 1st bidding exercise onwards, Category A cars refer to cars, except fully electric cars, with engine capacity up to 1600cc and Maximum Power Output up to 97kW (130bhp); and fully electric cars with Maximum Power Output up to 110kW (147bhp) and Category B cars refer to cars, except fully electric cars, with engine capacity above 1600cc or Maximum Power Output above 97kW (130bhp); and fully electric cars with Maximum Power Output above 110kW (147bhp)."
+        },
+        {
+          "seriesNo": "1.2",
+          "rowText": "Category B: Cars",
+          "uoM": "Number",
+          "footnote": "For cars registered with Certificates of Entitlement (COEs) obtained before Feb 2014 bidding exercises, Category A cars refer to cars with engine capacity up to 1600cc and Category B cars refer to cars with engine capacity above 1,600cc.  For cars registered with COEs obtained from Feb 2014 1st bidding exercise onwards but before the May 2022 1st bidding exercise, Category A cars refer to cars with engine capacity up to 1600cc and Maximum Power Output up to 97kW (130bhp) and Category B cars refer to cars with engine capacity above 1600cc or Maximum Power Output above 97kW (130bhp).  For cars registered with COEs obtained from the May 2022 1st bidding exercise onwards, Category A cars refer to cars, except fully electric cars, with engine capacity up to 1600cc and Maximum Power Output up to 97kW (130bhp); and fully electric cars with Maximum Power Output up to 110kW (147bhp) and Category B cars refer to cars, except fully electric cars, with engine capacity above 1600cc or Maximum Power Output above 97kW (130bhp); and fully electric cars with Maximum Power Output above 110kW (147bhp)."
+        },
+        {
+          "seriesNo": "1.3",
+          "rowText": "Weekend Cars/Off Peak Cars",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.4",
+          "rowText": "Category C: Goods Vehicles & Buses",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.5",
+          "rowText": "Category D: Motorcycles & Scooters",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.6",
+          "rowText": "Taxis",
+          "uoM": "Number",
+          "footnote": "Prior to Aug 2012, taxi operators can bid for a new Certificate of Entitlement (COE) or pay Prevailing Quota Premium (PQP) to register a taxi under Category A.  The latter is only in the case of a new taxi that replaces a deregistered one within 6 months.  From Aug 2012, all taxis pay for COEs based on the PQP of Category A."
+        },
+        {
+          "seriesNo": "1.7",
+          "rowText": "Vehicles Exempted From VQS",
+          "uoM": "Number",
+          "footnote": "Includes vehicles which are exempted from the Vehicle Quota System (VQS), for example, scheduled and school buses, emergency vehicles, diplomatic vehicles, vehicles under the Disabled Person Scheme and vehicles for off-the-road use."
+        }
+      ],
+      "republished_on_datagov_as": "d_ede1a559013d10f234d209ac5e9fd9b4",
+      "role": "source of a section 8 dataset"
+    },
+    "M650281": {
+      "id": "M650281",
+      "title": "New Registration Of Motor Vehicles Under Vehicle Quota System , Monthly",
+      "frequency": "Monthly",
+      "dataSource": "LAND TRANSPORT AUTHORITY",
+      "footnote": "Figures include weekend/off-peak cars & tax exempted vehicles",
+      "dataLastUpdated": "21/08/2026",
+      "startPeriod": "1990 May",
+      "endPeriod": "2026 Jul",
+      "series": [
+        {
+          "seriesNo": "1",
+          "rowText": "Total New Motor Vehicles Registered",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.2",
+          "rowText": "Category A: Cars",
+          "uoM": "Number",
+          "footnote": "For cars registered with Certificates of Entitlement (COEs) obtained before Feb 2014 bidding exercises, Category A cars refer to cars with engine capacity up to 1600cc and Category B cars refer to cars with engine capacity above 1,600cc.  For cars registered with COEs obtained from Feb 2014 1st bidding exercise onwards but before the May 2022 1st bidding exercise, Category A cars refer to cars with engine capacity up to 1600cc and Maximum Power Output up to 97kW (130bhp) and Category B cars refer to cars with engine capacity above 1600cc or Maximum Power Output above 97kW (130bhp).  For cars registered with COEs obtained from the May 2022 1st bidding exercise onwards, Category A cars refer to cars, except fully electric cars, with engine capacity up to 1600cc and Maximum Power Output up to 97kW (130bhp); and fully electric cars with Maximum Power Output up to 110kW (147bhp) and Category B cars refer to cars, except fully electric cars, with engine capacity above 1600cc or Maximum Power Output above 97kW (130bhp); and fully electric cars with Maximum Power Output above 110kW (147bhp)."
+        },
+        {
+          "seriesNo": "1.3",
+          "rowText": "Category B: Cars",
+          "uoM": "Number",
+          "footnote": "For cars registered with Certificates of Entitlement (COEs) obtained before Feb 2014 bidding exercises, Category A cars refer to cars with engine capacity up to 1600cc and Category B cars refer to cars with engine capacity above 1,600cc.  For cars registered with COEs obtained from Feb 2014 1st bidding exercise onwards but before the May 2022 1st bidding exercise, Category A cars refer to cars with engine capacity up to 1600cc and Maximum Power Output up to 97kW (130bhp) and Category B cars refer to cars with engine capacity above 1600cc or Maximum Power Output above 97kW (130bhp).  For cars registered with COEs obtained from the May 2022 1st bidding exercise onwards, Category A cars refer to cars, except fully electric cars, with engine capacity up to 1600cc and Maximum Power Output up to 97kW (130bhp); and fully electric cars with Maximum Power Output up to 110kW (147bhp) and Category B cars refer to cars, except fully electric cars, with engine capacity above 1600cc or Maximum Power Output above 97kW (130bhp); and fully electric cars with Maximum Power Output above 110kW (147bhp)."
+        },
+        {
+          "seriesNo": "1.4",
+          "rowText": "Weekend Cars/Off Peak Cars",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.5",
+          "rowText": "Category C: Goods Vehicles & Buses",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.5.1",
+          "rowText": "Category C: Goods Vehicles & Buses Not Under ETS",
+          "uoM": "Number",
+          "footnote": "Refers to the Early Turnover Scheme (ETS).  Between 24 Apr 2013 and 30 Apr 2016, vehicle owners can de-register their existing diesel-propelled Category C vehicles that were registered before 1 Jan 2001 and register a replacement vehicle within 1 month of de-registration by paying a discounted Prevailing Quota Premium (PQP) under the ETS.  From 1 Aug 2015, the ETS was extended to existing diesel-propelled Category C vehicles that were registered between 1 Jan 2001 and 30 Sep 2006 and will be de-registered between 1 Aug 2015 and 31 Jul 2017."
+        },
+        {
+          "seriesNo": "1.5.2",
+          "rowText": "Category C: Goods Vehicles & Buses Under ETS",
+          "uoM": "Number",
+          "footnote": "ETS refers to the Early Turnover Scheme.  Between 24 Apr 2013 and 31 Jul 2017, vehicle owners can de-register their existing diesel-propelled Category C vehicles that were registered before 1 Jan 2001 and register a replacement vehicle within 1 month of de-registration by paying a discounted Prevailing Quota Premium (PQP) under the ETS.  From 1 Aug 2015, the ETS was extended to existing diesel-propelled Category C vehicles that were registered between 1 Jan 2001 and 30 Sep 2006 and will be de-registered between 1 Aug 2015 and 31 Mar 2021.  From 1 April 2021 to 31 March 2023, vehicle owners can de-register their existing Euro 2/3/4 Category C diesel vehicles and register an eligible replacement vehicle within 1 month of deregistration by paying a discounted Prevailing Quota Premium under the enhanced ETS."
+        },
+        {
+          "seriesNo": "1.6",
+          "rowText": "Category D: Motorcycles & Scooters",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.7",
+          "rowText": "Taxis",
+          "uoM": "Number",
+          "footnote": "Prior to Aug 2012, taxi operators can bid for a new Certificate of Entitlement (COE) or pay Prevailing Quota Premium (PQP) to register a taxi under Category A.  The latter is only in the case of a new taxi that replaces a deregistered one within 6 months.  From Aug 2012, all taxis pay for COEs based on the PQP of Category A."
+        },
+        {
+          "seriesNo": "1.8",
+          "rowText": "Vehicles Exempted From VQS",
+          "uoM": "Number",
+          "footnote": "Includes vehicles which are exempted from the Vehicle Quota System (VQS), for example, scheduled and school buses, emergency vehicles, diplomatic vehicles, vehicles under the Disabled Person Scheme and vehicles for off-the-road use."
+        }
+      ],
+      "republished_on_datagov_as": "d_529752a3d78beb78bd4f38e3be37f1b6",
+      "role": "source of a section 8 dataset"
+    },
+    "M650321": {
+      "id": "M650321",
+      "title": "Public Roads (End Of Period), Annual",
+      "frequency": "Annual",
+      "dataSource": "LAND TRANSPORT AUTHORITY",
+      "footnote": "Data include all public roads maintained by the Land Transport Authority.  Excludes all roads maintained by the other agencies and on privately-owned areas.",
+      "dataLastUpdated": "27/04/2026",
+      "startPeriod": "1990",
+      "endPeriod": "2025",
+      "series": [
+        {
+          "seriesNo": "1",
+          "rowText": "Total Paved Roads",
+          "uoM": "Lane-Kilometres",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1",
+          "rowText": "Expressways",
+          "uoM": "Lane-Kilometres",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.2",
+          "rowText": "Arterial Roads",
+          "uoM": "Lane-Kilometres",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.3",
+          "rowText": "Primary Access",
+          "uoM": "Lane-Kilometres",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.4",
+          "rowText": "Local Access",
+          "uoM": "Lane-Kilometres",
+          "footnote": null
+        }
+      ],
+      "republished_on_datagov_as": "d_f73d13943f7a3cc1aca76b18fea75013",
+      "role": "source of a section 8 dataset"
+    },
+    "M650291": {
+      "id": "M650291",
+      "title": "Motor Vehicles De-Registered Under Vehicle Quota System, Monthly",
+      "frequency": "Monthly",
+      "dataSource": "LAND TRANSPORT AUTHORITY",
+      "footnote": "Figures include weekend/off-peak cars & tax exempted vehicles",
+      "dataLastUpdated": "21/08/2026",
+      "startPeriod": "1990 May",
+      "endPeriod": "2026 Jul",
+      "series": [
+        {
+          "seriesNo": "1",
+          "rowText": "Total Motor Vehicles De-Registered",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1",
+          "rowText": "Category A: Cars",
+          "uoM": "Number",
+          "footnote": "For cars registered with Certificates of Entitlement (COEs) obtained before Feb 2014 bidding exercises, Category A cars refer to cars with engine capacity up to 1600cc and Category B cars refer to cars with engine capacity above 1,600cc.  For cars registered with COEs obtained from Feb 2014 1st bidding exercise onwards but before the May 2022 1st bidding exercise, Category A cars refer to cars with engine capacity up to 1600cc and Maximum Power Output up to 97kW (130bhp) and Category B cars refer to cars with engine capacity above 1600cc or Maximum Power Output above 97kW (130bhp).  For cars registered with COEs obtained from the May 2022 1st bidding exercise onwards, Category A cars refer to cars, except fully electric cars, with engine capacity up to 1600cc and Maximum Power Output up to 97kW (130bhp); and fully electric cars with Maximum Power Output up to 110kW (147bhp) and Category B cars refer to cars, except fully electric cars, with engine capacity above 1600cc or Maximum Power Output above 97kW (130bhp); and fully electric cars with Maximum Power Output above 110kW (147bhp)."
+        },
+        {
+          "seriesNo": "1.2",
+          "rowText": "Category B: Cars",
+          "uoM": "Number",
+          "footnote": "For cars registered with Certificates of Entitlement (COEs) obtained before Feb 2014 bidding exercises, Category A cars refer to cars with engine capacity up to 1600cc and Category B cars refer to cars with engine capacity above 1,600cc.  For cars registered with COEs obtained from Feb 2014 1st bidding exercise onwards but before the May 2022 1st bidding exercise, Category A cars refer to cars with engine capacity up to 1600cc and Maximum Power Output up to 97kW (130bhp) and Category B cars refer to cars with engine capacity above 1600cc or Maximum Power Output above 97kW (130bhp).  For cars registered with COEs obtained from the May 2022 1st bidding exercise onwards, Category A cars refer to cars, except fully electric cars, with engine capacity up to 1600cc and Maximum Power Output up to 97kW (130bhp); and fully electric cars with Maximum Power Output up to 110kW (147bhp) and Category B cars refer to cars, except fully electric cars, with engine capacity above 1600cc or Maximum Power Output above 97kW (130bhp); and fully electric cars with Maximum Power Output above 110kW (147bhp)."
+        },
+        {
+          "seriesNo": "1.3",
+          "rowText": "Weekend Cars/Off Peak Cars",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.4",
+          "rowText": "Category C: Goods Vehicles & Buses",
+          "uoM": "Number",
+          "footnote": "Data include vehicles de-registered and eventually placed under the Early Turnover Scheme (ETS).  Between 24 Apr 2013 and 31 Jul 2017, vehicle owners can de-register their existing diesel-propelled Category C vehicles that were registered before 1 Jan 2001 and register a replacement vehicle within 1 month of de-registration by paying a discounted Prevailing Quota Premium (PQP) under the ETS.  From 1 Aug 2015, the ETS was extended to existing diesel-propelled Category C vehicles that were registered between 1 Jan 2001 and 30 Sep 2006 and will be de-registered between 1 Aug 2015 and 31 Mar 2021.  From 1 April 2021 to 31 March 2023, vehicle owners can deregister their existing Euro 2/3/4 Category C diesel vehicles and register an eligible replacement vehicle within 1 month of deregistration by paying a discounted Prevailing Quota Premium under the enhanced ETS."
+        },
+        {
+          "seriesNo": "1.5",
+          "rowText": "Category D: Motorcycles & Scooters",
+          "uoM": "Number",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.6",
+          "rowText": "Taxis",
+          "uoM": "Number",
+          "footnote": "Prior to Aug 2012, taxi operators can bid for a new Certificate of Entitlement (COE) or pay Prevailing Quota Premium (PQP) to register a taxi under Category A.  The latter is only in the case of a new taxi that replaces a deregistered one within 6 months.  From Aug 2012, all taxis pay for COEs based on the PQP of Category A."
+        },
+        {
+          "seriesNo": "1.7",
+          "rowText": "Vehicles Exempted From VQS",
+          "uoM": "Number",
+          "footnote": "Includes vehicles which are exempted from the Vehicle Quota System (VQS), for example, scheduled and school buses, emergency vehicles, diplomatic vehicles, vehicles under the Disabled Person Scheme and vehicles for off-the-road use."
+        }
+      ],
+      "role": "candidate, not in section 8",
+      "why_pulled": "Monthly deregistrations under the VQS, by category. Section 8 states deregistration counts are not published as a standalone series and stage 4 budgets a week to extract them from Annex A PDFs. This table is that series."
+    },
+    "M130571": {
+      "id": "M130571",
+      "title": "Government Operating Revenue, Annual",
+      "frequency": "Annual",
+      "dataSource": "ACCOUNTANT-GENERAL'S DEPARTMENT",
+      "footnote": "Data refer to the Government's financial year, which begins on 1 April of the current year and ends on 31 March of the following year.  Data for FY2026 are budgeted estimates.  Data for FY2025 are revised estimates. Data up to FY2024 are actual figures.  Figures may not add up due to rounding.  A revised estimate refers to updates to a previously published estimate for a given Financial Year (FY).  Actual figures are the finalised, audited financial position of the Government.",
+      "dataLastUpdated": "20/03/2026",
+      "startPeriod": "1997",
+      "endPeriod": "2026",
+      "series": [
+        {
+          "seriesNo": "1",
+          "rowText": "Total Government Operating Revenue",
+          "uoM": "Million Dollars",
+          "footnote": "Operating revenue refers to receipts credited to the Consolidated Revenue Account and Development Fund Account, excluding investment and interest income, capital receipts, investment adjustments and receipts related to the Significant Infrastructure Government Loan Act 2021."
+        },
+        {
+          "seriesNo": "1.1",
+          "rowText": "Tax Revenue",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.1",
+          "rowText": "Income Tax",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.1.1",
+          "rowText": "Corporate Income Tax",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.1.2",
+          "rowText": "Personal Income Tax",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.1.3",
+          "rowText": "Withholding Tax",
+          "uoM": "Million Dollars",
+          "footnote": "A non-resident is liable to pay income tax on Singapore-sourced income. Under the law, when payment of a specified nature (e.g. royalty, interest, etc.) is made to a non-resident company or individual, the payer must withhold a percentage of that payment and pay the amount withheld to IRAS.  The amount withheld is the Withholding Tax."
+        },
+        {
+          "seriesNo": "1.1.1.4",
+          "rowText": "Statutory Boards' Contributions",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.3",
+          "rowText": "Asset Taxes",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.3.1",
+          "rowText": "Property Tax",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.3.2",
+          "rowText": "Estate Duty",
+          "uoM": "Million Dollars",
+          "footnote": "Estate Duty refers to a tax on the total market value of a person's assets (cash and non-cash) at the date of his or her death.  Estate Duty does not apply to a person who dies on or after 15 February 2008, although there are still some collections from the estates of people who had passed away earlier."
+        },
+        {
+          "seriesNo": "1.1.4",
+          "rowText": "Customs, Excise And Carbon Taxes",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.4.1",
+          "rowText": "Liquors",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.4.2",
+          "rowText": "Tobacco",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.4.3",
+          "rowText": "Petroleum Products",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.4.4",
+          "rowText": "Motor Vehicles",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.4.5",
+          "rowText": "Compressed Natural Gas Unit Duty",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.4.6",
+          "rowText": "Other Customs And Excise Duties",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.4.7",
+          "rowText": "Carbon Tax",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.5",
+          "rowText": "Goods And Services Tax",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.6",
+          "rowText": "Motor Vehicle Taxes",
+          "uoM": "Million Dollars",
+          "footnote": "Motor Vehicles Taxes comprises additional registration fees, road tax, special tax on heavy-oil engines, passenger vehicle seating fees and non-motor vehicle licences, but exclude excise duties on motor vehicles which are classified under Customs, Excise and Carbon Taxes."
+        },
+        {
+          "seriesNo": "1.1.7",
+          "rowText": "Betting Taxes",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.8",
+          "rowText": "Stamp Duty",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.9",
+          "rowText": "Foreign Worker Levy",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.10",
+          "rowText": "Water Conservation Tax",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.1.11",
+          "rowText": "Other Taxes",
+          "uoM": "Million Dollars",
+          "footnote": "Prior to FY2020, Other Taxes comprise Foreign Worker Levy, Water Conservation Tax, Development Charge and Annual Tonnage Tax.  From FY2020, Other Taxes comprise Annual Tonnage Tax, Development Charge (for FY2020 and FY2021), and Land Betterment Charge (from FY2022 onwards).  From FY2022, Land Betterment Charge replaced Development Charge."
+        },
+        {
+          "seriesNo": "1.2",
+          "rowText": "Fees And Charges",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.2.1",
+          "rowText": "Vehicle Quota Premiums",
+          "uoM": "Million Dollars",
+          "footnote": null
+        },
+        {
+          "seriesNo": "1.2.2",
+          "rowText": "Fees And Charges (Excluding Vehicle Quota Premiums)",
+          "uoM": "Million Dollars",
+          "footnote": "Includes revenue from licenses, permits, services rendered, goods supplied, and rental.  Prior to FY2026, it also included collections from fines and penalties and reimbursements.  Year-on-year comparison for Fees and Charges (Excluding Vehicle Quota Premiums) and Others between FY2025 and FY2026 may not be meaningful due to changes in scope (see explanatory notes in the Revenue and Expenditure Estimates for the Financial Year 2026/2027 published by the Ministry of Finance)  www.singaporebudget.gov.sg/revenue-and-expenditure/revenue-expenditure-estimates"
+        },
+        {
+          "seriesNo": "1.3",
+          "rowText": "Others",
+          "uoM": "Million Dollars",
+          "footnote": "Includes miscellaneous operating revenue.  From FY2026 onwards, this also includes fines and penalties, and reimbursements.  Year-on-year comparison for Fees and Charges (Excluding Vehicle Quota Premiums) and Others between FY2025 and FY2026 may not be meaningful due to changes in scope (see explanatory notes in the Revenue and Expenditure Estimates for the Financial Year 2026/2027 published by the Ministry of Finance)   www.singaporebudget.gov.sg/revenue-and-expenditure/revenue-expenditure-estimates"
+        }
+      ],
+      "role": "candidate, not in section 8",
+      "why_pulled": "Government operating revenue, annual, including a Vehicle Quota Premiums line. Candidate ground truth for the A-10 reconciliation, which section 8 currently sources from the MOF Analysis of Revenue and Expenditure."
+    }
+  }
+}

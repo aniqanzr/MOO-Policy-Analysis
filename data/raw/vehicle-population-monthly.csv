@@ -1,0 +1,445 @@
+month,vehicle_type,number
+2012-01,Cars,593555
+2012-01,Rental Cars,13970
+2012-01,Taxi,27059
+2012-01,Buses,17037
+2012-01,Goods & Other Vehicles,159854
+2012-01,Motorcycles,146388
+2012-02,Cars,594925
+2012-02,Rental Cars,14033
+2012-02,Taxi,27163
+2012-02,Buses,17076
+2012-02,Goods & Other Vehicles,160105
+2012-02,Motorcycles,146397
+2012-03,Cars,596098
+2012-03,Rental Cars,14164
+2012-03,Taxi,27266
+2012-03,Buses,17093
+2012-03,Goods & Other Vehicles,160223
+2012-03,Motorcycles,146316
+2012-04,Cars,597000
+2012-04,Rental Cars,14250
+2012-04,Taxi,27618
+2012-04,Buses,17144
+2012-04,Goods & Other Vehicles,160394
+2012-04,Motorcycles,146024
+2012-05,Cars,598018
+2012-05,Rental Cars,14312
+2012-05,Taxi,27733
+2012-05,Buses,17154
+2012-05,Goods & Other Vehicles,160441
+2012-05,Motorcycles,145963
+2012-06,Cars,599493
+2012-06,Rental Cars,14349
+2012-06,Taxi,27849
+2012-06,Buses,17190
+2012-06,Goods & Other Vehicles,160492
+2012-06,Motorcycles,145819
+2012-07,Cars,600598
+2012-07,Rental Cars,14430
+2012-07,Taxi,28101
+2012-07,Buses,17217
+2012-07,Goods & Other Vehicles,160580
+2012-07,Motorcycles,145605
+2012-08,Cars,601298
+2012-08,Rental Cars,14540
+2012-08,Taxi,28176
+2012-08,Buses,17214
+2012-08,Goods & Other Vehicles,160555
+2012-08,Motorcycles,145388
+2012-09,Cars,602481
+2012-09,Rental Cars,14585
+2012-09,Taxi,28364
+2012-09,Buses,17238
+2012-09,Goods & Other Vehicles,160551
+2012-09,Motorcycles,144923
+2012-10,Cars,603460
+2012-10,Rental Cars,14664
+2012-10,Taxi,28243
+2012-10,Buses,17241
+2012-10,Goods & Other Vehicles,160440
+2012-10,Motorcycles,144588
+2012-11,Cars,604311
+2012-11,Rental Cars,14784
+2012-11,Taxi,28187
+2012-11,Buses,17223
+2012-11,Goods & Other Vehicles,160423
+2012-11,Motorcycles,144332
+2012-12,Cars,605149
+2012-12,Rental Cars,14862
+2012-12,Taxi,28210
+2012-12,Buses,17162
+2012-12,Goods & Other Vehicles,160417
+2012-12,Motorcycles,144110
+2013-01,Cars,605947
+2013-01,Rental Cars,14915
+2013-01,Taxi,28297
+2013-01,Buses,17182
+2013-01,Goods & Other Vehicles,160278
+2013-01,Motorcycles,143681
+2013-02,Cars,605961
+2013-02,Rental Cars,14990
+2013-02,Taxi,28245
+2013-02,Buses,17226
+2013-02,Goods & Other Vehicles,160099
+2013-02,Motorcycles,143596
+2013-03,Cars,606026
+2013-03,Rental Cars,15046
+2013-03,Taxi,28075
+2013-03,Buses,17244
+2013-03,Goods & Other Vehicles,159913
+2013-03,Motorcycles,143424
+2013-04,Cars,605754
+2013-04,Rental Cars,15164
+2013-04,Taxi,27911
+2013-04,Buses,17296
+2013-04,Goods & Other Vehicles,159912
+2013-04,Motorcycles,143134
+2013-05,Cars,605882
+2013-05,Rental Cars,15257
+2013-05,Taxi,27719
+2013-05,Buses,17314
+2013-05,Goods & Other Vehicles,159993
+2013-05,Motorcycles,143307
+2013-06,Cars,606373
+2013-06,Rental Cars,15392
+2013-06,Taxi,27781
+2013-06,Buses,17330
+2013-06,Goods & Other Vehicles,159953
+2013-06,Motorcycles,143307
+2013-07,Cars,606492
+2013-07,Rental Cars,15469
+2013-07,Taxi,27707
+2013-07,Buses,17321
+2013-07,Goods & Other Vehicles,160035
+2013-07,Motorcycles,143616
+2013-08,Cars,606722
+2013-08,Rental Cars,15706
+2013-08,Taxi,27471
+2013-08,Buses,17341
+2013-08,Goods & Other Vehicles,160128
+2013-08,Motorcycles,143821
+2013-09,Cars,607191
+2013-09,Rental Cars,15825
+2013-09,Taxi,27475
+2013-09,Buses,17354
+2013-09,Goods & Other Vehicles,160192
+2013-09,Motorcycles,144116
+2013-10,Cars,607104
+2013-10,Rental Cars,15996
+2013-10,Taxi,27516
+2013-10,Buses,17383
+2013-10,Goods & Other Vehicles,160235
+2013-10,Motorcycles,144442
+2013-11,Cars,607079
+2013-11,Rental Cars,16144
+2013-11,Taxi,27492
+2013-11,Buses,17387
+2013-11,Goods & Other Vehicles,160109
+2013-11,Motorcycles,144529
+2013-12,Cars,607292
+2013-12,Rental Cars,16396
+2013-12,Taxi,27695
+2013-12,Buses,17509
+2013-12,Goods & Other Vehicles,160344
+2013-12,Motorcycles,144934
+2014-01,Cars,607225
+2014-01,Rental Cars,16604
+2014-01,Taxi,27779
+2014-01,Buses,17500
+2014-01,Goods & Other Vehicles,160178
+2014-01,Motorcycles,145209
+2014-02,Cars,606938
+2014-02,Rental Cars,16726
+2014-02,Taxi,27698
+2014-02,Buses,17449
+2014-02,Goods & Other Vehicles,160015
+2014-02,Motorcycles,145269
+2014-03,Cars,605982
+2014-03,Rental Cars,17008
+2014-03,Taxi,27700
+2014-03,Buses,17363
+2014-03,Goods & Other Vehicles,159415
+2014-03,Motorcycles,145059
+2014-04,Cars,605184
+2014-04,Rental Cars,17164
+2014-04,Taxi,27754
+2014-04,Buses,17304
+2014-04,Goods & Other Vehicles,159011
+2014-04,Motorcycles,144888
+2014-05,Cars,604780
+2014-05,Rental Cars,17327
+2014-05,Taxi,27709
+2014-05,Buses,17328
+2014-05,Goods & Other Vehicles,159302
+2014-05,Motorcycles,144839
+2014-06,Cars,604633
+2014-06,Rental Cars,17458
+2014-06,Taxi,27865
+2014-06,Buses,17358
+2014-06,Goods & Other Vehicles,159742
+2014-06,Motorcycles,144815
+2014-07,Cars,604022
+2014-07,Rental Cars,17583
+2014-07,Taxi,27937
+2014-07,Buses,17414
+2014-07,Goods & Other Vehicles,160333
+2014-07,Motorcycles,144790
+2014-08,Cars,603749
+2014-08,Rental Cars,17786
+2014-08,Taxi,27970
+2014-08,Buses,17419
+2014-08,Goods & Other Vehicles,160708
+2014-08,Motorcycles,144806
+2014-09,Cars,603262
+2014-09,Rental Cars,18009
+2014-09,Taxi,28119
+2014-09,Buses,17465
+2014-09,Goods & Other Vehicles,161105
+2014-09,Motorcycles,145044
+2014-10,Cars,602336
+2014-10,Rental Cars,18186
+2014-10,Taxi,28329
+2014-10,Buses,17514
+2014-10,Goods & Other Vehicles,161530
+2014-10,Motorcycles,144945
+2014-11,Cars,601435
+2014-11,Rental Cars,18488
+2014-11,Taxi,28512
+2014-11,Buses,17526
+2014-11,Goods & Other Vehicles,161700
+2014-11,Motorcycles,144890
+2014-12,Cars,600176
+2014-12,Rental Cars,18847
+2014-12,Taxi,28736
+2014-12,Buses,17554
+2014-12,Goods & Other Vehicles,161698
+2014-12,Motorcycles,145026
+2015-01,Cars,598219
+2015-01,Rental Cars,19060
+2015-01,Taxi,28515
+2015-01,Buses,17595
+2015-01,Goods & Other Vehicles,161660
+2015-01,Motorcycles,145003
+2015-02,Cars,597152
+2015-02,Rental Cars,19400
+2015-02,Taxi,28537
+2015-02,Buses,17604
+2015-02,Goods & Other Vehicles,161455
+2015-02,Motorcycles,144871
+2015-03,Cars,594357
+2015-03,Rental Cars,19665
+2015-03,Taxi,28672
+2015-03,Buses,17612
+2015-03,Goods & Other Vehicles,169867
+2015-03,Motorcycles,144737
+2015-04,Cars,591731
+2015-04,Rental Cars,20219
+2015-04,Taxi,28606
+2015-04,Buses,17667
+2015-04,Goods & Other Vehicles,160861
+2015-04,Motorcycles,144627
+2015-05,Cars,589863
+2015-05,Rental Cars,20838
+2015-05,Taxi,28792
+2015-05,Buses,17708
+2015-05,Goods & Other Vehicles,161123
+2015-05,Motorcycles,144432
+2015-06,Cars,589615
+2015-06,Rental Cars,21949
+2015-06,Taxi,28686
+2015-06,Buses,17787
+2015-06,Goods & Other Vehicles,161390
+2015-06,Motorcycles,144332
+2015-07,Cars,585384
+2015-07,Rental Cars,23163
+2015-07,Taxi,28557
+2015-07,Buses,17837
+2015-07,Goods & Other Vehicles,161700
+2015-07,Motorcycles,144232
+2015-08,Cars,583470
+2015-08,Rental Cars,24573
+2015-08,Taxi,28572
+2015-08,Buses,17895
+2015-08,Goods & Other Vehicles,161510
+2015-08,Motorcycles,144176
+2015-09,Cars,581208
+2015-09,Rental Cars,26013
+2015-09,Taxi,28479
+2015-09,Buses,17956
+2015-09,Goods & Other Vehicles,161549
+2015-09,Motorcycles,144109
+2015-10,Cars,579199
+2015-10,Rental Cars,27097
+2015-10,Taxi,28558
+2015-10,Buses,17989
+2015-10,Goods & Other Vehicles,161796
+2015-10,Motorcycles,144012
+2015-11,Cars,577631
+2015-11,Rental Cars,27988
+2015-11,Taxi,28402
+2015-11,Buses,18075
+2015-11,Goods & Other Vehicles,161901
+2015-11,Motorcycles,143934
+2015-12,Cars,575353
+2015-12,Rental Cars,29369
+2015-12,Taxi,28259
+2015-12,Buses,18183
+2015-12,Goods & Other Vehicles,162182
+2015-12,Motorcycles,143900
+2016-01,Cars,573793
+2016-01,Rental Cars,30433
+2016-01,Taxi,28258
+2016-01,Buses,18259
+2016-01,Goods & Other Vehicles,162365
+2016-01,Motorcycles,143858
+2016-02,Cars,572014
+2016-02,Rental Cars,31257
+2016-02,Taxi,28212
+2016-02,Buses,18328
+2016-02,Goods & Other Vehicles,162405
+2016-02,Motorcycles,143650
+2016-03,Cars,567993
+2016-03,Rental Cars,32545
+2016-03,Taxi,28286
+2016-03,Buses,18388
+2016-03,Goods & Other Vehicles,162205
+2016-03,Motorcycles,143314
+2016-04,Cars,566130
+2016-04,Rental Cars,33997
+2016-04,Taxi,28280
+2016-04,Buses,18399
+2016-04,Goods & Other Vehicles,161712
+2016-04,Motorcycles,143347
+2016-05,Cars,564877
+2016-05,Rental Cars,36002
+2016-05,Taxi,28211
+2016-05,Buses,18459
+2016-05,Goods & Other Vehicles,162306
+2016-05,Motorcycles,143255
+2016-06,Cars,563833
+2016-06,Rental Cars,38353
+2016-06,Taxi,28193
+2016-06,Buses,18529
+2016-06,Goods & Other Vehicles,162617
+2016-06,Motorcycles,143192
+2016-07,Cars,561595
+2016-07,Rental Cars,40604
+2016-07,Taxi,28054
+2016-07,Buses,18562
+2016-07,Goods & Other Vehicles,162876
+2016-07,Motorcycles,143228
+2016-08,Cars,559159
+2016-08,Rental Cars,43462
+2016-08,Taxi,27890
+2016-08,Buses,18663
+2016-08,Goods & Other Vehicles,163038
+2016-08,Motorcycles,143338
+2016-09,Cars,558090
+2016-09,Rental Cars,45917
+2016-09,Taxi,27708
+2016-09,Buses,18715
+2016-09,Goods & Other Vehicles,162958
+2016-09,Motorcycles,143331
+2016-10,Cars,556304
+2016-10,Rental Cars,48150
+2016-10,Taxi,27532
+2016-10,Buses,18774
+2016-10,Goods & Other Vehicles,163104
+2016-10,Motorcycles,143166
+2016-11,Cars,554567
+2016-11,Rental Cars,49785
+2016-11,Taxi,27495
+2016-11,Buses,18792
+2016-11,Goods & Other Vehicles,163251
+2016-11,Motorcycles,143031
+2016-12,Cars,552427
+2016-12,Rental Cars,51336
+2016-12,Taxi,27534
+2016-12,Buses,18804
+2016-12,Goods & Other Vehicles,163277
+2016-12,Motorcycles,143052
+2017-01,Cars,550395
+2017-01,Rental Cars,53589
+2017-01,Taxi,27202
+2017-01,Buses,18805
+2017-01,Goods & Other Vehicles,163041
+2017-01,Motorcycles,142856
+2017-02,Cars,548754
+2017-02,Rental Cars,55224
+2017-02,Taxi,26986
+2017-02,Buses,18788
+2017-02,Goods & Other Vehicles,162604
+2017-02,Motorcycles,142914
+2017-03,Cars,547024
+2017-03,Rental Cars,58027
+2017-03,Taxi,26734
+2017-03,Buses,18569
+2017-03,Goods & Other Vehicles,157524
+2017-03,Motorcycles,142704
+2017-04,Cars,545584
+2017-04,Rental Cars,59753
+2017-04,Taxi,26476
+2017-04,Buses,18558
+2017-04,Goods & Other Vehicles,156682
+2017-04,Motorcycles,142311
+2017-05,Cars,544979
+2017-05,Rental Cars,61732
+2017-05,Taxi,26172
+2017-05,Buses,18589
+2017-05,Goods & Other Vehicles,157470
+2017-05,Motorcycles,142207
+2017-06,Cars,545024
+2017-06,Rental Cars,63259
+2017-06,Taxi,25699
+2017-06,Buses,18632
+2017-06,Goods & Other Vehicles,158365
+2017-06,Motorcycles,142118
+2017-07,Cars,544638
+2017-07,Rental Cars,64401
+2017-07,Taxi,25325
+2017-07,Buses,18695
+2017-07,Goods & Other Vehicles,159006
+2017-07,Motorcycles,142144
+2017-08,Car,544474
+2017-08,Rental cars,65603
+2017-08,Taxi,24863
+2017-08,Buses,18778
+2017-08,Goods & Other Vehicles,159912
+2017-08,Motorcycle and Scooter,141924
+2017-09,Car,543991
+2017-09,Rental cars,65470
+2017-09,Taxi,24468
+2017-09,Buses,18827
+2017-09,Goods & Other Vehicles,160507
+2017-09,Motorcycle and Scooter,141893
+2017-10,Car,544002
+2017-10,Rental cars,66001
+2017-10,Taxi,23944
+2017-10,Buses,18953
+2017-10,Goods & Other Vehicles,160935
+2017-10,Motorcycle and Scooter,141707
+2017-11,Car,544708
+2017-11,Rental cars,66658
+2017-11,Taxi,23439
+2017-11,Buses,19032
+2017-11,Goods & Other Vehicles,161406
+2017-11,Motorcycle and Scooter,141718
+2017-12,Car,546706
+2017-12,Rental cars,68083
+2017-12,Taxi,23140
+2017-12,Buses,19285
+2017-12,Goods & Other Vehicles,162712
+2017-12,Motorcycle and Scooter,141916
+2018-01,Car,545490
+2018-01,Rental cars,67834
+2018-01,Taxi,22891
+2018-01,Buses,19262
+2018-01,Goods & Other Vehicles,162366
+2018-01,Motorcycle and Scooter,141384
+2018-02,Car,545906
+2018-02,Rental cars,67931
+2018-02,Taxi,22440
+2018-02,Buses,19251
+2018-02,Goods & Other Vehicles,162148
+2018-02,Motorcycle and Scooter,140864
