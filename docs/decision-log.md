@@ -113,113 +113,63 @@ and would spread the points evenly. Not taken because the algorithm is frozen in
 the brief. Recording it here so the case study can state what the freeze cost rather than
 presenting NSGA-II as the only option.
 
-## 2026-08-31. Stage 2 pulls the portal's own CSV, not the datastore API
+## 2026-08-31. No credential in the repo or the environment, DataMall deferred
 
-Section 8 says the datastore search API makes pulls scriptable, which is true, but it is not
-what `src/ingest/pull_datagov.py` saves. It calls `initiate-download` and `poll-download` on
-`api-open.data.gov.sg` and stores the CSV those hand back, which is the same file a person gets
-by clicking Download on the portal.
+`data/raw/README.md` was going to tell future sessions to put an LTA DataMall account key in a
+`.env` file. That is wrong for this setup and the instruction was removed before it could be
+followed.
 
-The reason is provenance. Stage 3 reconciles computed revenue against a published government
-figure, and if that fails the first question is whether the ingestion is faithful. Bytes that
-match the published file answer it. A table reassembled from paginated JSON, with column order
-and value formatting chosen by this code, does not.
+Three storage options were on the table and all three leak. A committed `.env` publishes the key
+the moment the repo goes public, which it will. An uncommitted `.env` does not survive between
+sessions, because the build runs in Claude Code on the web where there is no durable local
+filesystem, so the only way to make one persist is to commit it. A cloud environment variable is
+visible to anyone using the environment, so it is not private either.
 
-The datastore path is kept as a fallback and used automatically if the download endpoints fail,
-since they sit on a different host and hand out short-lived S3 links, either of which a network
-policy can block while still allowing the datastore. Which path produced a file is recorded per
-file in `data/raw/manifest.json`, because a reconstruction and a published file should not be
-indistinguishable after the fact.
+Decided: no credential goes in the repo or the environment at all. A source that needs an account
+key is deferred rather than authenticated. `src/ingest/fetch.py` reads no environment variable and
+touches only open endpoints. `.env` stays in `.gitignore` as a safety net against an accidental
+commit, which is not the same as permission to create one. The rule is written into `CLAUDE.md`
+so it binds future sessions, and stage 0 in `docs/BUILD_SEQUENCE.md` no longer reads as though a
+credential file is expected.
 
-Alternative considered: datastore pagination only, which is simpler and one host instead of
-three. Rejected for the provenance reason above. Two independent pulls produced identical
-checksums on all eight files, so the recorded sha256 is worth comparing against on a re-pull.
+DataMall static data, MVP01 and MVP02, is the one section 8 source affected. It is marked
+`deferred` in `src/ingest/sources.py`. Nothing currently depends on it: every other section 8
+source is open, and the VQS population and new registration series cover the accumulator's
+inputs. Revalidation counts only become load-bearing if stage 7 shows the accumulator cannot
+reproduce the published population series without them, which is A-04's falsification test.
 
-## 2026-08-31. Section 8 coverage claims are encoded, not just read
+Alternative considered: keep the DataMall pull and have each session paste a key at runtime. Not
+taken. It makes the pipeline non-reproducible from a clean clone, which is the thing raw data is
+committed to preserve, and it puts a live key one careless commit away from a public repo. If the
+files turn out to be needed they get downloaded by hand through a browser and committed as data,
+which reproduces cleanly and involves no key.
 
-`src/ingest/sources.py` carries what section 8 claims about each source's coverage as a field,
-and the pull script checks the pulled file against it and prints the mismatches.
+## 2026-08-31. `src/ingest` added to the section 7 layout
 
-This was going to be a paragraph in a report. Making it a check means the next re-pull catches
-a coverage change instead of relying on someone noticing. It found the thing it was written to
-find: section 8 says the COE bidding results run from April 2002 and the file starts at
-2010-01.
+Section 7 does not name an ingestion package. Added `src/ingest` with `sources.py`, the section 8
+list in machine-readable form, and `fetch.py`, the pull script stage 2 asks for.
 
-That date was not invented. It is when open bidding fully replaced closed bidding, which the
-SingStat footnote for the same table states. Someone recorded the regime start as the dataset
-start during the day one scan. Section 8 now carries the file's actual coverage and A-11 carries
-the regime date, which is where it belonged.
+Alternative considered: a single script at the repo root, or putting the pull inside `src/fit`
+where the data is first consumed. Rejected because the source list is referenced by the pull
+script, by `data/raw/README.md` and by stage 4's manual downloads, and one file it can drift away
+from is better than three. `sources.py` holds no coefficients and no functional forms, so it does
+not blur the boundary section 7 draws between the packages.
 
-## 2026-08-31. The two COE sources are cross-checked, and the wide one wins
+## 2026-08-31. Stage 2 gate not passed: every source host is blocked at the egress proxy
 
-`src/ingest/crosscheck_coe.py` compares every overlapping value between the two sources section
-8 lists for COE bidding. 7,840 values, 152 disagreements, of which 150 are the same number
-written two ways.
+The pull script is written and the source list is complete, but not one dataset id has been
+verified to resolve and no file has been downloaded. Every host in section 8 is refused at the
+network egress proxy with a 403 on CONNECT: `data.gov.sg`, `www.data.gov.sg`,
+`api-production.data.gov.sg`, `api-open.data.gov.sg`, `tablebuilder.singstat.gov.sg`,
+`www.lta.gov.sg`, `www.mof.gov.sg` and `datamall2.mytransport.sg`. Both the shell and the
+fetch tool are refused, so this is the environment's policy rather than a client problem, and
+the proxy documentation says not to route around a policy denial.
 
-The two real conflicts both sit in `coe-bidding-results` and both repeat the value from the row
-above. `quota-premium-monthly` is taken as the reference, on evidence rather than preference:
-its five category quotas sum to its own published total for the exercise in question and the
-long table's do not. The script prints that sum so the reasoning is visible rather than
-asserted.
+Recorded rather than worked around. `python -m src.ingest.fetch --check-only` reproduces it and
+names each failure. Stage 2's gate is knowing exactly what you have, and right now the answer is
+nothing, so stages 3 and 4 do not start. The failed run's `manifest.json` was deleted rather than
+committed: a manifest is a record of what was retrieved, and committing one full of proxy errors
+would put a false state in a clean clone.
 
-Alternative considered: correcting the two values in `data/raw` and moving on. Rejected. Raw
-means raw, and a silent edit to a committed download is exactly the kind of thing that is
-impossible to find six weeks later. The correction belongs downstream where it is visible in
-the code and the diff.
-
-Alternative also considered: dropping the long table and using only the wide one, which covers
-2002 onward and has fewer defects. Not taken because the long table is the tidier shape and
-extends one month further, and because two sources that can be checked against each other are
-worth more than one that cannot.
-
-## 2026-08-31. SingStat metadata is pulled and committed alongside the data
-
-`src/ingest/pull_singstat.py` fetches TableBuilder metadata for the four section 8 sources that
-are republished SingStat tables, and commits it to `data/raw/singstat-metadata.json`.
-
-data.gov.sg serves the numbers without the units or the footnotes. Neither is recoverable from
-the CSV: the public roads file gives 10,265 for 2025 and says nothing about what is counted.
-The working rules say never invent a number, and reading a unit off a magnitude is a soft way
-of doing exactly that. A-15 was opened on that basis and closed by the `uoM` field this script
-saves.
-
-It paid for itself beyond the unit. The same pull produced primary-source confirmation of four
-A-11 break dates, the definition of prevailing quota premium that A-04 needs, and the fact that
-the data.gov.sg republications lag their originals by up to six months.
-
-Alternative considered: recording the unit by hand in the assumptions register with a link.
-Rejected because a committed artifact survives and is re-checkable, and because the metadata
-turned out to carry a good deal more than the one field it was fetched for.
-
-## 2026-08-31. Two discovered sources are pulled as metadata only, not adopted
-
-SingStat publishes a monthly deregistration series (M650291) and the Vehicle Quota Premiums
-revenue line (M130571). Section 8 assumes the first does not exist and sources the second from
-a PDF. Between them they remove the stage 4 bottleneck and unblock stage 3.
-
-Only their metadata is committed. No series values are pulled and nothing reads them.
-
-Adding a data source to section 8 changes what stages 3 and 4 do, and stage 2 was told to stop
-at its gate. The evidence that these sources exist is committed so the decision can be made
-with the files in hand, and the decision itself is left alone.
-
-Alternative considered: pulling both series now, on the grounds that they are obviously wanted
-and the cost is a minute. Rejected. The point of a gate is that discoveries which look
-obviously good are exactly the ones that should stop at it. A-16 also lists two open questions
-about the deregistration series that decide whether it replaces the Annex A extraction or only
-cross-checks it, and neither is answered yet.
-
-## 2026-08-31. `src/ingest` added to the layout in section 7
-
-Section 7 lists `fit`, `model`, `optimise` and `export` under `src`. The pull scripts are none
-of those. They are added as `src/ingest`, with the package docstring saying that nothing in it
-cleans or interprets anything.
-
-Alternative considered: a top-level `scripts/` directory, which is the usual home for
-run-once tooling. Rejected because these are not run-once. The manifest exists so the pull can
-be repeated and compared, and A-12 has to be re-run after any re-pull. Alternative also
-considered: putting them in `src/fit`, which is where the data is consumed. Rejected because
-ingestion and fitting failing for the same reason would then be indistinguishable.
-
-The architecture is unchanged. Python still computes offline and writes JSON, and there is
-still no server.
+Section 8 warns that ids and coverage change, so the ids are carried forward as unverified. If
+one has moved, that surfaces on the first successful run and gets logged then.

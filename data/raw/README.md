@@ -1,55 +1,102 @@
-# Raw downloads
+# Raw data
 
-Published files as served, unchanged. Nothing here is cleaned, reshaped or corrected. They are
-committed so the pipeline reproduces from a clean clone without hitting the network.
+Downloaded source files, committed on purpose so the pipeline reproduces from a clean clone.
+Nothing under `data/` is gitignored. Do not clean this directory.
 
-The eight CSVs are the data.gov.sg sources from section 8 of `docs/PROJECT_BRIEF.md`, pulled by
-`python -m src.ingest.pull_datagov`. `manifest.json` records, per file, the resource id, a
-sha256, the row count, the period range and whether the pull came from the portal's own CSV or
-was rebuilt from datastore records. Two independent pulls on 2026-08-31 produced identical
-checksums, so the hashes are worth comparing against on a later re-pull.
+Section 8 of `docs/PROJECT_BRIEF.md` names every source. `src/ingest/sources.py` restates that
+list in machine-readable form and is the file to change when a source moves. This README
+explains how each kind of file gets here.
 
-## What each file is
+## How files arrive
 
-| file | resource id | coverage |
-| --- | --- | --- |
-| `coe-bidding-results.csv` | `d_69b3380ad7e51aff3a7dcc84eba52b8a` | 2010-01 to 2026-08 |
-| `quota-premium-monthly.csv` | `d_22094bf608253d36c0c63b52d852dd6e` | 2002Feb to 2026Jul |
-| `vehicle-population-annual.csv` | `d_2873f3b1b2a836103f51f696350b98fa` | 2005 to 2024 |
-| `vehicle-population-monthly.csv` | `d_2ecb009f1e1ec5a816a454944dec4022` | 2012-01 to 2018-02 |
-| `vqs-population-monthly.csv` | `d_ede1a559013d10f234d209ac5e9fd9b4` | 1990May to 2026Jun |
-| `vqs-new-registrations-monthly.csv` | `d_529752a3d78beb78bd4f38e3be37f1b6` | 1990May to 2026Jan |
-| `peak-hour-speed-annual.csv` | `d_26f6afadf2f86b2004f9a1e28f5564cc` | 2004 to 2025 |
-| `public-roads-annual.csv` | `d_f73d13943f7a3cc1aca76b18fea75013` | 1990 to 2025 |
+**Scripted.** The open data.gov.sg datasets are pulled by `python -m src.ingest.fetch` from the
+repo root. It resolves each dataset id, pages the datastore API until the record count is
+exhausted, writes `data/raw/<key>.csv`, and records row counts, column names and a sha256 per
+file in `data/raw/manifest.json`. Run `--check-only` to confirm the ids still resolve without
+downloading. Every endpoint it touches is open and needs no account.
 
-## Read this before parsing any of it
+**By hand.** The Annex A quota press releases, LTA Annual Vehicle Statistics, the MOF Analysis
+of Revenue and Expenditure, MOT Parliamentary replies and the NLB Infopedia history are PDFs
+and tables with no open API. Download them, put them here, and add a line to the table below
+saying what the file is and the URL it came from. The URL matters more than the file name: a
+committed PDF with no recorded provenance cannot be re-verified.
 
-Findings from the stage 2 pull. Registered as A-12 through A-15 in `docs/ASSUMPTIONS.md`.
+## Credentials
 
-**The two COE sources conflict on two values.** `coe-bidding-results.csv` carries a wrong
-premium at 2010-01 bidding 2 Category D and a wrong quota at 2010-02 bidding 1 Category B. Both
-repeat the value from the row above. `quota-premium-monthly.csv` has the correct figures and its
-per-category quotas sum to its own published total where the long table's do not. Run
-`python -m src.ingest.crosscheck_coe` to reproduce. Do not correct the files here. Handle it
-downstream where the correction is visible.
+**No credential is stored anywhere in this repo, and none should be added.**
 
-**`coe-bidding-results.csv` writes thousands separators** in `bids_success` and `bids_received`
-from 2023-05 onward, and only in those two columns. `quota` and `premium` are clean throughout.
-A naive numeric read silently turns those two columns into strings.
+Not in a `.env` file, not in an example env file, not in a config module, not in a cloud
+environment variable. Three reasons, and they compound:
 
-**The 2010 to 2002 span is only in `quota-premium-monthly.csv`.** The long table starts at
-2010-01. Anything needing the full post-2002 record, the revenue reconciliation included, reads
-the wide table for the earlier years.
+- This repo will be made public. A committed key is a published key.
+- The build runs in Claude Code on the web. There is no durable local filesystem, so an
+  uncommitted local `.env` does not survive between sessions and the only way to make one
+  persist is to commit it.
+- Environment variables set on the cloud environment are visible to anyone using that
+  environment, so they are not a private store either.
 
-**April, May and June 2020 are suspended exercises,** written `-` in the wide table and simply
-absent from the long table. They are not zero-quota months. Prevailing quota premium is still
-published for them, because it is a trailing average.
+`.env` stays in `.gitignore` as a safety net against an accidental commit. That is not
+permission to create one.
 
-**`vehicle-population-monthly.csv` stops at 2018-02** and changes its own category labels
-partway through, using `Cars` and `Rental Cars` to 2017-07 and `Car` and `Rental cars` from
-2017-08. Use `vqs-population-monthly.csv` for the accumulator backtest instead. It runs from
-1990May and is on the VQS categories the model uses.
+A source that requires an account key is deferred rather than authenticated. If it later turns
+out to be needed, the files are downloaded by hand outside this repo, through a browser, and
+the resulting data files are committed here like any other manual download. The key never
+touches the repo or the environment.
 
-**The unit in `public-roads-annual.csv` is not stated in the file.** Section 8 describes it as
-lane-km. The magnitudes rule out centre-line kilometres but the unit is unconfirmed against a
-primary source, and BPR capacity scales directly with it. See A-15.
+### LTA DataMall
+
+Deferred. Section 8 lists DataMall static data, tables MVP01 and MVP02, including COE
+revalidation counts. DataMall requires a registered account key, so under the rule above it is
+not fetched.
+
+Nothing currently depends on it. Every other section 8 source is open, and the vehicle
+population, VQS population and VQS new registration series cover the accumulator's inputs.
+Revalidation counts would only become load-bearing if stage 7 shows the accumulator cannot
+reproduce the published population series without them, which is A-04's falsification test.
+
+If that happens: download the MVP01 and MVP02 files by hand from
+<https://datamall.lta.gov.sg/> and commit them here with a row in the table below. No key gets
+stored, no `.env` gets created, and `src/ingest/fetch.py` stays credential-free. The same
+applies if COE revalidation counts turn out to be needed for the revalidation adjustment in the
+quota formula.
+
+## What is here
+
+Nothing yet. The scripted pull has not run successfully.
+
+| File | Source | Method | Retrieved | URL |
+| ---- | ------ | ------ | --------- | --- |
+|      |        |        |           |     |
+
+## What could not be reached automatically
+
+Stage 2 status as of 2026-08-31. The stage 2 gate, knowing exactly what you have and exactly
+what you must download by hand, is **not passed**.
+
+**Blocked by the network egress policy, not by the sources.** Every host in section 8 is
+refused at the proxy with a 403 on CONNECT, so no dataset id has been verified to resolve and
+no file has been downloaded. The affected hosts:
+
+```
+data.gov.sg                   api-production.data.gov.sg
+www.data.gov.sg               api-open.data.gov.sg
+tablebuilder.singstat.gov.sg  www.lta.gov.sg
+www.mof.gov.sg                datamall2.mytransport.sg
+```
+
+`python -m src.ingest.fetch --check-only` reproduces this and names each failure. Re-run it
+once the egress policy allows those hosts. Until then the eight scriptable sources are
+unverified, and section 8's warning that ids and coverage change has not been acted on.
+
+**Requires manual download regardless of network policy**, because there is no open API:
+
+- `lta_annex_a_quota_releases`, quarterly quota press releases with Annex A. Stage 4 needs
+  eight to twelve straddling the regime changes plus recent quarters.
+- `lta_annual_vehicle_statistics`, the other published home of deregistration counts.
+- `mof_revenue_and_expenditure`, the Vehicle Quota Premiums line, fiscal years.
+- `mot_parliamentary_replies`, policy mechanics and framing.
+- `nlb_infopedia_select_committee`, 1990 history, secondary source, framing only.
+
+**Deferred**, needs an account key that this project does not store:
+
+- `lta_datamall_mvp01_mvp02`. See above.
