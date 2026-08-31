@@ -35,7 +35,7 @@ Three objectives (cost of ownership, road congestion, government revenue) agains
 
 * This does not predict COE prices and was not built to.
 * The recovered weights are what the policy implies under this specific model. They are not anybody's internal reasoning.
-* No Singapore minister has ever framed the COE as a revenue instrument. I checked this specifically. The stated purpose from 1990 onward is vehicle population control under land scarcity, and the "revenue motive" reading is commentary. Revenue stays in the model as an objective because the recovered weight is the test, not the assumption.
+* No Singapore minister has ever framed the COE as a revenue instrument (verified). The stated purpose from 1990 onward is vehicle population control under land scarcity, and the "revenue motive" reading is commentary. Revenue stays in the model as an objective because the recovered weight is the test, not the assumption.
 * The congestion objective is the weakest of the three. It is calibrated from roughly twenty annual observations over a period when the vehicle population barely moved, which makes the fitted exponent poorly identified. The uncertainty is reported rather than hidden.
 * Most importantly, MOO assumes a fixed mapping from decisions to outcomes, and wicked problems do not have one, partly because intervening changes the problem. There is good reason to think the COE altered the very demand behavior it was measuring. So this does not model a wicked problem. It forces one into a tame formulation, and tries to make every choice involved in that forcing visible and contestable.
 
