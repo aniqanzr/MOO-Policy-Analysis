@@ -10,12 +10,18 @@ Statuses: `unverified`, `verified`, `falsified`, `accepted-as-limitation`.
 
 **Updated after the day one scan.** Three rows falsified, two resolved, three new rows added.
 
-**Updated after the stage 2 pull, 2026-08-31.** Seven new rows, A-12 to A-18. Six are
+**Updated after the stage 2 pull, 2026-08-31.** Eight new rows, A-12 to A-19. Seven are
 falsifications, and mostly of things nobody had thought to doubt: that two official sources of
 the same numbers agree, that a published file keeps its own formatting conventions, that a
-dataset listed in section 8 is current, that a republication keeps up with its original. Two go
-the other way and remove work rather than adding it, A-16 and A-17. A-05 and A-11 amended.
-A-15 was opened and closed the same day.
+dataset listed in section 8 is current, that a republication keeps up with its original, that a
+published quota stays published. Two go the other way and remove work rather than adding it,
+A-16 and A-17, both now adopted into section 8. A-05 and A-11 amended. A-15 was opened and
+closed the same day.
+
+**A-16 is the one that changes the plan.** The deregistration series reconciles exactly against
+four Annex A quarters, so stage 4 no longer needs bulk PDF extraction for it. Read the row
+before acting on that: the published count is gross, the formula from August 2023 runs on a net
+figure that is not published, and the gap is currently negligible for a reason that expires.
 Everything below carries a source note. Where a source is secondary, that is stated and the
 row is medium-confidence until a primary document is opened.
 
@@ -211,6 +217,15 @@ Notes:        Nine breaks currently listed in the brief. Some dates came from pr
               last three months in which bidding was actually held, which is the definition
               A-04 needs for renewals and is not the same as a plain three-month average.
 
+              The four committed Annex A PDFs pin the February 2023 break more precisely than
+              the brief's table row does. The window and the slice changed together: before,
+              row B1 covered six months and B2 took 50 percent of it; after, B1 covers twelve
+              months and the slice is 25 percent. Both yield one quarter of the trailing
+              average, so this is a change in the averaging window, not in the replacement
+              rate. The 25 percent is arithmetic either way, exactly as the working rules say.
+              The annexes also date the growth rate freeze to February 2018 at 0 percent for
+              Cat A, B and D and 0.25 percent for Cat C, stated as running until January 2025.
+
 ### A-12. The two COE bidding sources agree where they overlap
 Status:       falsified
 Source:       `src/ingest/crosscheck_coe.py` against the two committed raw files
@@ -297,54 +312,75 @@ Notes:        Opened because the CSV states no unit and section 8 asserted one. 
               privately-owned areas.
 
 ### A-16. Deregistration counts are not published as a standalone series
-Status:       falsified
-Source:       SingStat TableBuilder table M650291, "Motor Vehicles De-Registered Under Vehicle
-              Quota System, Monthly". Metadata committed at `data/raw/singstat-metadata.json`.
+Status:       falsified. The series exists, and it has been reconciled against Annex A.
+Source:       SingStat M650291, committed at `data/raw/vqs-deregistrations-monthly.json`.
+              Four Annex A PDFs at `data/raw/annex-a`. Check reproduced by
+              `python -m src.ingest.crosscheck_deregistrations`.
 Falsified by: n/a
 Touches:      3.1, 4.2, A-04, stage 4
-Notes:        Section 8 states these counts are not published standalone and that they have to
-              be extracted from Annex A PDFs and LTA Annual Vehicle Statistics. Stage 4 budgets
-              that extraction as the week-one bottleneck.
+Notes:        Section 8 held that these counts are not published standalone and that stage 4
+              would extract them from Annex A. The series exists: monthly, 1990 May to 2026
+              Jul, LTA-sourced, on the VQS categories.
 
-              The series exists. Monthly, from 1990 May to 2026 Jul, sourced to LTA, broken out
-              as Category A cars, Category B cars, weekend and off-peak cars, Category C goods
-              vehicles and buses, Category D motorcycles, taxis, and VQS-exempt vehicles. That
-              is the same category split as the population and new-registration series already
-              in section 8, so it lines up with them directly.
+              Adopted as primary, and the condition attached to that adoption has been met.
+              Twenty comparisons across four consecutive quarters straddling February 2023,
+              two quarters under each regime, reconcile exactly. Not approximately. Every
+              category in every quarter.
 
-              Only the metadata is pulled so far. The series values are not committed and
-              nothing reads them, because adding a source to section 8 is a decision for the
-              stage 2 gate rather than one to make while pulling.
+              **What the series is.** M650291 on the four VQS category lines is Annex A row
+              B1, total vehicle deregistrations, gross, over whatever window that annex names.
 
-              Two things to check before it replaces the Annex A extraction rather than
-              cross-checking it. Whether this series is the same quantity the quota formula's
-              rolling four-quarter deregistration average is computed from, and whether it
-              separates guaranteed deregistrations, which the formula nets out and which A-04
-              says are large enough for LTA to account for explicitly. If it does not separate
-              them, some Annex A extraction is still needed and this series becomes a check on
-              it. That would still be a large saving.
+              **What it is not, and this is the answer to the open question.** It is not
+              effective deregistrations net of guaranteed deregistrations. From the August 2023
+              annex the formula runs on B1 minus B2, where B2 is the guaranteed deregistration
+              subset. B2 is not in the published series and is not derivable from it. Before
+              August 2023 no netting row exists at all, so the net quantity the brief describes
+              is something Annex A constructs rather than something published.
+
+              **Why that is survivable now and may not stay so.** B2 was 1 vehicle against a
+              B1 of 44,612 in the window tested, 0.002 percent. The scheme had just started.
+              It identifies Category A and B vehicles holding five-year non-extendable COEs, and
+              those were first issued from May 2023, so B2 grows as they approach expiry. Do not
+              read the current gap as a permanent one. Re-run the check on recent quarters
+              before assuming gross still approximates net.
+
+              **Two traps.** Sum the four category lines. M650291's own total row also counts
+              taxis and VQS-exempt vehicles, which Annex A's total column excludes, and it runs
+              about 2,400 a year higher, over 5 percent. Separately, row C4, redistribution from
+              guaranteed deregistrations, is material where B2 is not: 1,025 in the August 2023
+              quarter against a total quota of 11,019. C4 is Annex A only.
+
+              **Consequence for stage 4.** The bulk PDF extraction is no longer needed for the
+              deregistration series itself. Annex A is still needed for B2 and C4 in the
+              cut-and-fill era, and for the growth allowance and named adjustments, which were
+              never in this series. The saving is large. It is not the whole of stage 4.
 
 ### A-17. The MOF Vehicle Quota Premiums line is only available as a PDF
-Status:       falsified
-Source:       SingStat TableBuilder table M130571, "Government Operating Revenue, Annual",
-              series 1.2.1 "Vehicle Quota Premiums", in millions of dollars, 1997 to 2026.
-              Sourced to the Accountant-General's Department.
+Status:       falsified. Adopted as primary. Verification against MOF still outstanding.
+Source:       SingStat M130571, series 1.2.1 "Vehicle Quota Premiums", millions of dollars,
+              FY1997 to FY2026, sourced to the Accountant-General's Department. Committed at
+              `data/raw/government-operating-revenue-annual.json`.
 Falsified by: n/a
 Touches:      4.4, A-10, stage 3
-Notes:        Section 8 sources the reconciliation target from the MOF Analysis of Revenue and
-              Expenditure. That document is a PDF and is not reachable from this environment.
-              The same line is available from SingStat as a machine-readable annual series.
+Notes:        Adopted as primary for the A-10 reconciliation target. Machine-readable, so
+              stage 3 is unblocked.
 
-              The table footnote confirms the alignment problem A-10 already flags: the figures
-              are financial years beginning 1 April, and FY2026 is a budgeted estimate rather
-              than an outturn, so the most recent year must be excluded from the reconciliation
-              or labelled as an estimate.
+              **Bound the window before running A-10.** The table footnote is explicit that
+              actual figures run to FY2024 only. FY2025 are revised estimates and FY2026 are
+              budgeted estimates. Reconciling against an estimate and reporting the gap as a
+              pipeline error would be a self-inflicted finding. The usable window is FY1997 to
+              FY2024. Figures are financial years beginning 1 April, so align first.
 
-              Do not treat this as settled. AGD and MOF publish from the same accounts and the
-              line carries the same name, but that the two figures are identical is an
-              assumption until one year is checked against the MOF document by hand. A-10 is
-              the reconciliation test and it should not be run against a target that has itself
-              only been assumed. Spot-check one year first.
+              **The verification is still open.** AGD and MOF publish from the same accounts
+              and the line carries the same name, but that the two figures are identical is
+              still an assumption. One financial year spot-checked against the MOF Analysis of
+              Revenue and Expenditure settles it, and A-10 should not be treated as passed
+              until that is done.
+
+              The MOF document could not be fetched. `singaporebudget.gov.sg` was added to the
+              environment allowlist, but the apex host redirects every request to
+              `www.singaporebudget.gov.sg`, which is not on the list, so the redirect is denied.
+              Adding the `www` host is the whole fix. See `docs/manual-downloads.md`.
 
 ### A-18. data.gov.sg republications are current with their SingStat originals
 Status:       falsified
@@ -360,6 +396,30 @@ Notes:        Every wide source in section 8 is a republished SingStat table, an
               sample period honestly, and not reading a republication lag as a real gap in
               registrations. If the most recent months turn out to matter, pull the wide
               sources from SingStat instead of data.gov.sg.
+
+### A-19. The quota published for a quarter is the quota that quarter ran on
+Status:       falsified
+Source:       comparison rows across the committed Annex A PDFs at `data/raw/annex-a`
+Falsified by: n/a
+Touches:      3.1, 5.3, stage 13
+Notes:        The May 2023 annex gives a total quota of 9,575 for May to Jul 2023. The August
+              2023 annex, printing the same quarter as its comparison row, gives 10,431.
+              Category A moves from 2,798 to 3,358 and Category B from 2,367 to 2,663.
+
+              The difference is the cut-and-fill redistribution, which began at the second
+              bidding exercise of May 2023, after that quarter's annex was published. So the
+              quarter was reopened mid-flight rather than misprinted.
+
+              Two consequences. A quarter's quota has no single published value, and which one
+              is correct depends on the question: the ex-ante figure is what the policy
+              intended, the ex-post figure is what was actually bid for. Stage 13 locates the
+              current policy position on the frontier, and that position moves depending on
+              which is used. Take the ex-post figure, since the objectives are computed from
+              what happened, and say so.
+
+              This also means an annex is not a durable record of its own quarter. When
+              extracting, prefer the later annex's comparison row over the earlier annex's
+              headline row, and record which was used.
 
 ---
 

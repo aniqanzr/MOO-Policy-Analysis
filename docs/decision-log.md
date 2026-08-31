@@ -223,3 +223,77 @@ ingestion and fitting failing for the same reason would then be indistinguishabl
 
 The architecture is unchanged. Python still computes offline and writes JSON, and there is
 still no server.
+
+## 2026-08-31. Both discovered sources adopted into section 8
+
+M650291 becomes the primary source for deregistrations and M130571 the primary target for the
+A-10 revenue reconciliation. Section 8 carries both, and the two claims they contradict are
+struck from it.
+
+Adoption of M650291 was made conditional on reconciling against Annex A first, and the
+condition has been met rather than deferred. Four consecutive quarters straddling February
+2023, two under each regime, twenty comparisons, all exact.
+
+What the reconciliation actually settled is narrower than the headline. The published series is
+Annex A row B1, gross deregistrations. It is not the effective figure net of guaranteed
+deregistrations that the formula has used since August 2023, because that netting row is
+constructed inside Annex A and published nowhere. So stage 4 drops the bulk extraction for the
+series and keeps Annex A for rows B2 and C4, the growth allowance and the named adjustments.
+
+The gap between gross and net is currently 1 vehicle in 44,612. That is not a reason to ignore
+it. B2 counts five-year non-extendable COEs, first issued May 2023, so it grows as they near
+expiry. Recorded in A-16 as a condition with an expiry date rather than as a settled fact.
+
+Alternative considered: adopting M650291 outright on the strength of the exact match and
+dropping Annex A from stage 4 entirely. Rejected because the match is on B1, and B1 is not what
+the formula consumes. An exact reconciliation on the wrong quantity is more dangerous than an
+approximate one on the right quantity, because nothing downstream would ever flag it.
+
+## 2026-08-31. Annex A reference values are transcribed into code, with their row labels
+
+`src/ingest/annexa.py` carries the B1 figures from four annexes as data, each with the row
+label and the window that row states, beside the committed PDF it came from.
+
+Transcribing numbers out of a PDF by hand is exactly what the never-invent-a-number rule is
+about, so the transcription is checked rather than trusted: every quarter's four category
+figures sum to the total that same annex prints, independently, and the cross-check then
+compares all of it against a series pulled from a different agency.
+
+Alternative considered: parsing the PDFs programmatically, which removes the transcription step
+altogether. Rejected for now on dependency grounds, since no PDF library is in the stack and
+adding one to read four files that are already committed buys little. If stage 4 needs many
+more quarters, that is the point to add `pypdf` and log it.
+
+## 2026-08-31. Reference values kept separate from model inputs
+
+The Annex A figures in `src/ingest/annexa.py` are test fixtures. Nothing in `src/model` or
+`src/fit` reads that module, and the docstring says so.
+
+Worth stating because the file looks like a data source and is not one. Its numbers exist to
+falsify a claim about another series. If a coefficient ever needs one of them, it should come
+from the committed PDF through a documented extraction, not by importing a test fixture.
+
+## 2026-08-31. The quota a quarter ran on is the later annex's figure
+
+A-19 records that a quarter's published quota gets restated. The May 2023 annex gives 9,575 for
+its own quarter and the August 2023 annex gives 10,431 for the same one, the difference being a
+cut-and-fill injection made after the first annex went out.
+
+Decision: take the ex-post figure, the later annex's comparison row, and say so wherever a
+historical quota appears.
+
+The alternative is defensible and is the reason this is logged rather than just done. The
+ex-ante figure is what the policy actually decided at the time, and stage 13 recovers implied
+weights from a policy position, so an argument exists for using what the decision-maker set
+rather than what the quarter ended up with. Taking ex-post because the objectives are computed
+from realised outcomes: realised revenue, realised population, realised congestion. Pairing an
+ex-ante quota with ex-post objectives would be the actual error.
+
+## 2026-08-31. DataMall deferred rather than chased
+
+MVP01 and MVP02 are out of week one. Two independent reasons, either sufficient: the claim that
+they carry COE revalidation counts has never been checked against the tables, and DataMall
+needs an account key nobody has.
+
+Recorded so it does not read as an open blocker. If A-04 turns out to need renewal counts that
+nothing else supplies, it comes back at stage 4 with the content claim verified first.

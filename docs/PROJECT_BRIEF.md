@@ -467,7 +467,8 @@ No dependencies beyond this without a reason in the decision log.
 
 All verified live during the day one scan. Re-verified and pulled at stage 2 on 2026-08-31.
 Every id below still resolves. Coverage and defect notes are from the stage 2 pull, and the
-detail sits in `data/raw/README.md` and rows A-12 to A-15 of the assumptions register.
+detail sits in `data/raw/README.md` and rows A-12 to A-19 of the assumptions register. Two
+SingStat sources were adopted here at the stage 2 gate and are marked primary below.
 
 **COE and quota**
 - COE bidding results and prices, LTA on data.gov.sg, `d_69b3380ad7e51aff3a7dcc84eba52b8a`.
@@ -482,6 +483,11 @@ detail sits in `data/raw/README.md` and rows A-12 to A-15 of the assumptions reg
   payload and have to come from the SingStat table page.
 - LTA quarterly quota press releases with Annex A, containing the full worked quota
   arithmetic. Authoritative source for the formula in 3.1. Pull several quarters, not one.
+  `python -m src.ingest.pull_annexa` fetches the set recorded in `src/ingest/annexa.py`. Four
+  quarters straddling February 2023 are committed under `data/raw/annex-a`. Still needed for
+  the growth allowance, the named adjustments, and rows B2 and C4 of the cut-and-fill era,
+  none of which appear in any published series. A quarter's quota can be restated in a later
+  annex, so prefer the later comparison row. See A-19.
 
 **Vehicle population and registrations**
 - Motor vehicle population under the Vehicle Quota System, monthly,
@@ -495,21 +501,37 @@ detail sits in `data/raw/README.md` and rows A-12 to A-15 of the assumptions reg
 - Monthly motor vehicle population by type, `d_2ecb009f1e1ec5a816a454944dec4022`. **Stops at
   2018-02** and renames its own categories partway through. Not usable for the backtest. See
   A-14.
-- LTA DataMall static data, MVP01 and MVP02 tables, including COE revalidation counts.
+- Motor vehicles deregistered under the VQS, monthly, SingStat table `M650291`. 1990 May to
+  2026 Jul, on the VQS categories. **Primary source for deregistrations.** Adopted at the
+  stage 2 gate after reconciling exactly against four Annex A quarters, twenty comparisons,
+  both sides of the February 2023 regime change.
 
-Deregistration counts are not published as a standalone series. They appear inside LTA Annual
-Vehicle Statistics and as inputs to the Annex A arithmetic. Extract them from there.
+  Sum the four category lines. The table's own total row also counts taxis and VQS-exempt
+  vehicles, which Annex A's total excludes, and runs over 5 percent higher. What this series
+  carries is Annex A row B1, gross deregistrations. It does not carry row B2, the guaranteed
+  deregistration subset the formula has netted off since August 2023, which stays an Annex A
+  extraction. B2 is currently negligible and will not stay so. See A-16.
+- LTA DataMall static data, MVP01 and MVP02 tables, said to include COE revalidation counts.
+  **Deferred, not blocked.** The content claim is unverified, the credential path is
+  unresolved, and nothing in week one depends on it. Revisit at stage 4 if renewals prove to
+  need it.
 
 **Congestion**
 - Average speed during peak hours, LTA, `d_26f6afadf2f86b2004f9a1e28f5564cc`. Annual from
   2004. Expressway and arterial split. Peak hour is 8 to 9am and 6 to 7pm weekdays.
 - Public roads, annual, SingStat and LTA, `d_f73d13943f7a3cc1aca76b18fea75013`. By road
-  category, 1990 to 2025. Described here as lane-km, but the file states no unit and the unit
-  is unconfirmed. BPR capacity scales with it directly. See A-15.
+  category, 1990 to 2025. Lane-kilometres, confirmed from the SingStat metadata for the
+  upstream table M650321 rather than assumed. LTA-maintained roads only. See A-15.
 
 **Revenue**
+- Government operating revenue, annual, SingStat table `M130571`, series 1.2.1 "Vehicle Quota
+  Premiums", millions of dollars, from the Accountant-General's Department. **Primary source
+  for the A-10 reconciliation target.** Financial years beginning 1 April. Actual figures run
+  to FY2024 only: FY2025 are revised estimates and FY2026 budgeted, so the usable window is
+  FY1997 to FY2024.
 - Ministry of Finance Analysis of Revenue and Expenditure, annual. The Vehicle Quota Premiums
-  line under Operating Revenue.
+  line under Operating Revenue. Now the verification rather than the source: one financial year
+  spot-checked against `M130571` before A-10 is treated as passed. See A-17.
 
 **Policy context**
 - MOT newsroom Parliamentary replies and ministerial statements.
