@@ -63,6 +63,15 @@ revenue funds, which is not the same as describing what it is for. Present the r
 as commentary, or leave it to the recovered weight. Also do not claim the revenue is
 hypothecated or earmarked.
 
+**No credential goes in this repo or in the environment.** Not a `.env` file, not an example
+env file, not a config module, not a cloud environment variable. The repo will be public, the
+build runs in Claude Code on the web where an uncommitted local file does not survive between
+sessions, and cloud environment variables are visible to anyone using the environment. `.env`
+stays gitignored as a safety net, which is not permission to create one. A source that needs an
+account key is deferred, not authenticated. If it turns out to be needed, download the files by
+hand through a browser and commit the data files. LTA DataMall is the live case and it is
+deferred. See `data/raw/README.md`.
+
 ## Scope discipline
 
 Do not add a database, a backend server, Category D as a decision dimension, user data upload,

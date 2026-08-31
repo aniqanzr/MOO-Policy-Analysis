@@ -1,7 +1,8 @@
-# Secrets
+# Secrets. No credential is stored in this repo or the environment, so nothing here should
+# ever need to exist. These rules are a safety net against an accidental commit, not
+# permission to create one. See the rule in CLAUDE.md and data/raw/README.md.
 .env
 .env.*
-!.env.example
 
 # Python caches and build output
 __pycache__/
