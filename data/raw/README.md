@@ -9,6 +9,13 @@ sha256, the row count, the period range and whether the pull came from the porta
 was rebuilt from datastore records. Two independent pulls on 2026-08-31 produced identical
 checksums, so the hashes are worth comparing against on a later re-pull.
 
+Three further sets came in when two SingStat tables were adopted into section 8 at the stage 2
+gate. `python -m src.ingest.pull_singstat` writes `singstat-metadata.json`, which carries the
+units and footnotes data.gov.sg strips, plus `vqs-deregistrations-monthly.json` (M650291) and
+`government-operating-revenue-annual.json` (M130571). Both are saved as the API serves them,
+because reshaping to CSV would drop per-series footnotes that carry real conditions.
+`python -m src.ingest.pull_annexa` writes the four PDFs under `annex-a/`.
+
 ## What each file is
 
 | file | resource id | coverage |
@@ -50,6 +57,20 @@ partway through, using `Cars` and `Rental Cars` to 2017-07 and `Car` and `Rental
 2017-08. Use `vqs-population-monthly.csv` for the accumulator backtest instead. It runs from
 1990May and is on the VQS categories the model uses.
 
-**The unit in `public-roads-annual.csv` is not stated in the file.** Section 8 describes it as
-lane-km. The magnitudes rule out centre-line kilometres but the unit is unconfirmed against a
-primary source, and BPR capacity scales directly with it. See A-15.
+**The unit in `public-roads-annual.csv` is not stated in the file.** It is lane-kilometres,
+confirmed from `singstat-metadata.json` for the upstream table M650321, and covers
+LTA-maintained roads only. Read it from there rather than inferring it. See A-15.
+
+**`vqs-deregistrations-monthly.json` is gross, and its total row is not Annex A's total.**
+Sum the four VQS category lines. The file's own total row also counts taxis and VQS-exempt
+vehicles and runs over 5 percent higher. The four category lines are Annex A row B1 exactly,
+verified across four quarters by `python -m src.ingest.crosscheck_deregistrations`. The
+guaranteed deregistration subset the formula nets off from August 2023 is not in this file.
+See A-16.
+
+**`government-operating-revenue-annual.json` is actual only to FY2024.** FY2025 are revised
+estimates and FY2026 budgeted, per the table footnote. Financial years begin 1 April. See A-17.
+
+**The Annex A PDFs under `annex-a/` restate each other.** The May 2023 annex gives that
+quarter a total quota of 9,575; the August 2023 annex, printing the same quarter, gives 10,431.
+Mid-quarter injection, not a misprint. Prefer the later annex's comparison row. See A-19.

@@ -1,0 +1,3459 @@
+{
+  "theme": "Economy & Prices",
+  "subject": "Public Finance",
+  "topic": "Government Revenue and Expenditure",
+  "id": "M130571",
+  "groupTitle": null,
+  "title": "Government Operating Revenue, Annual",
+  "frequency": "Annual",
+  "adjustmentType": null,
+  "datasource": "ACCOUNTANT-GENERAL'S DEPARTMENT",
+  "footnote": "Data refer to the Government's financial year, which begins on 1 April of the current year and ends on 31 March of the following year.  Data for FY2026 are budgeted estimates.  Data for FY2025 are revised estimates. Data up to FY2024 are actual figures.  Figures may not add up due to rounding.  A revised estimate refers to updates to a previously published estimate for a given Financial Year (FY).  Actual figures are the finalised, audited financial position of the Government.",
+  "generatedBy": "SingStat Table Builder",
+  "dataLastUpdated": "20/03/2026",
+  "dateGenerated": "31/08/2026",
+  "offset": null,
+  "limit": "5000",
+  "sortBy": null,
+  "timeFilter": null,
+  "between": null,
+  "search": null,
+  "row": [
+    {
+      "seriesNo": "1",
+      "rowText": "Total Government Operating Revenue",
+      "uoM": "Million Dollars",
+      "footnote": "Operating revenue refers to receipts credited to the Consolidated Revenue Account and Development Fund Account, excluding investment and interest income, capital receipts, investment adjustments and receipts related to the Significant Infrastructure Government Loan Act 2021.",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "29180.6"
+        },
+        {
+          "key": "1998",
+          "value": "27911.7"
+        },
+        {
+          "key": "1999",
+          "value": "30644.9"
+        },
+        {
+          "key": "2000",
+          "value": "31438.8"
+        },
+        {
+          "key": "2001",
+          "value": "28495.3"
+        },
+        {
+          "key": "2002",
+          "value": "25469.1"
+        },
+        {
+          "key": "2003",
+          "value": "25315"
+        },
+        {
+          "key": "2004",
+          "value": "27469.5"
+        },
+        {
+          "key": "2005",
+          "value": "28171"
+        },
+        {
+          "key": "2006",
+          "value": "31288.9"
+        },
+        {
+          "key": "2007",
+          "value": "40374.8"
+        },
+        {
+          "key": "2008",
+          "value": "41086.2"
+        },
+        {
+          "key": "2009",
+          "value": "39546.5"
+        },
+        {
+          "key": "2010",
+          "value": "46060.2"
+        },
+        {
+          "key": "2011",
+          "value": "51077.2"
+        },
+        {
+          "key": "2012",
+          "value": "55814.5"
+        },
+        {
+          "key": "2013",
+          "value": "57020.3"
+        },
+        {
+          "key": "2014",
+          "value": "60838.2"
+        },
+        {
+          "key": "2015",
+          "value": "64823.2"
+        },
+        {
+          "key": "2016",
+          "value": "68964.4"
+        },
+        {
+          "key": "2017",
+          "value": "75815.7"
+        },
+        {
+          "key": "2018",
+          "value": "73738.3"
+        },
+        {
+          "key": "2019",
+          "value": "74273.8"
+        },
+        {
+          "key": "2020",
+          "value": "67376.5"
+        },
+        {
+          "key": "2021",
+          "value": "82486.5"
+        },
+        {
+          "key": "2022",
+          "value": "91015"
+        },
+        {
+          "key": "2023",
+          "value": "103441.6"
+        },
+        {
+          "key": "2024",
+          "value": "115520.8"
+        },
+        {
+          "key": "2025",
+          "value": "130860.6"
+        },
+        {
+          "key": "2026",
+          "value": "134753.9"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1",
+      "rowText": "Tax Revenue",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "23011.1"
+        },
+        {
+          "key": "1998",
+          "value": "21551.1"
+        },
+        {
+          "key": "1999",
+          "value": "22623.5"
+        },
+        {
+          "key": "2000",
+          "value": "25627.6"
+        },
+        {
+          "key": "2001",
+          "value": "24172.4"
+        },
+        {
+          "key": "2002",
+          "value": "21502.3"
+        },
+        {
+          "key": "2003",
+          "value": "21501.2"
+        },
+        {
+          "key": "2004",
+          "value": "23798.6"
+        },
+        {
+          "key": "2005",
+          "value": "25686.7"
+        },
+        {
+          "key": "2006",
+          "value": "28827"
+        },
+        {
+          "key": "2007",
+          "value": "36630.3"
+        },
+        {
+          "key": "2008",
+          "value": "37708.8"
+        },
+        {
+          "key": "2009",
+          "value": "36616.6"
+        },
+        {
+          "key": "2010",
+          "value": "41848"
+        },
+        {
+          "key": "2011",
+          "value": "46076.1"
+        },
+        {
+          "key": "2012",
+          "value": "50118.5"
+        },
+        {
+          "key": "2013",
+          "value": "51145.6"
+        },
+        {
+          "key": "2014",
+          "value": "54109.8"
+        },
+        {
+          "key": "2015",
+          "value": "55647.3"
+        },
+        {
+          "key": "2016",
+          "value": "58699.3"
+        },
+        {
+          "key": "2017",
+          "value": "66362.6"
+        },
+        {
+          "key": "2018",
+          "value": "66202.6"
+        },
+        {
+          "key": "2019",
+          "value": "67645.1"
+        },
+        {
+          "key": "2020",
+          "value": "61408.5"
+        },
+        {
+          "key": "2021",
+          "value": "74760.9"
+        },
+        {
+          "key": "2022",
+          "value": "82707.6"
+        },
+        {
+          "key": "2023",
+          "value": "94328.6"
+        },
+        {
+          "key": "2024",
+          "value": "103876.2"
+        },
+        {
+          "key": "2025",
+          "value": "115832.6"
+        },
+        {
+          "key": "2026",
+          "value": "119417.9"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.1",
+      "rowText": "Income Tax",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "10195.3"
+        },
+        {
+          "key": "1998",
+          "value": "11331.2"
+        },
+        {
+          "key": "1999",
+          "value": "11747.9"
+        },
+        {
+          "key": "2000",
+          "value": "13538.4"
+        },
+        {
+          "key": "2001",
+          "value": "13231"
+        },
+        {
+          "key": "2002",
+          "value": "11495.7"
+        },
+        {
+          "key": "2003",
+          "value": "10271"
+        },
+        {
+          "key": "2004",
+          "value": "11468"
+        },
+        {
+          "key": "2005",
+          "value": "12912"
+        },
+        {
+          "key": "2006",
+          "value": "14135.2"
+        },
+        {
+          "key": "2007",
+          "value": "16620.8"
+        },
+        {
+          "key": "2008",
+          "value": "19286.4"
+        },
+        {
+          "key": "2009",
+          "value": "17211.3"
+        },
+        {
+          "key": "2010",
+          "value": "18686.8"
+        },
+        {
+          "key": "2011",
+          "value": "20578.9"
+        },
+        {
+          "key": "2012",
+          "value": "22411.4"
+        },
+        {
+          "key": "2013",
+          "value": "22049.9"
+        },
+        {
+          "key": "2014",
+          "value": "23940"
+        },
+        {
+          "key": "2015",
+          "value": "24890.4"
+        },
+        {
+          "key": "2016",
+          "value": "26378"
+        },
+        {
+          "key": "2017",
+          "value": "32065.3"
+        },
+        {
+          "key": "2018",
+          "value": "30818.1"
+        },
+        {
+          "key": "2019",
+          "value": "32535.1"
+        },
+        {
+          "key": "2020",
+          "value": "32997"
+        },
+        {
+          "key": "2021",
+          "value": "37132.4"
+        },
+        {
+          "key": "2022",
+          "value": "42154.4"
+        },
+        {
+          "key": "2023",
+          "value": "49434.5"
+        },
+        {
+          "key": "2024",
+          "value": "52995.4"
+        },
+        {
+          "key": "2025",
+          "value": "59214.4"
+        },
+        {
+          "key": "2026",
+          "value": "62698.8"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.1.1",
+      "rowText": "Corporate Income Tax",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "6808.8"
+        },
+        {
+          "key": "1998",
+          "value": "6256.2"
+        },
+        {
+          "key": "1999",
+          "value": "6564.6"
+        },
+        {
+          "key": "2000",
+          "value": "8316.3"
+        },
+        {
+          "key": "2001",
+          "value": "7821.4"
+        },
+        {
+          "key": "2002",
+          "value": "6822.4"
+        },
+        {
+          "key": "2003",
+          "value": "5921.5"
+        },
+        {
+          "key": "2004",
+          "value": "6106.7"
+        },
+        {
+          "key": "2005",
+          "value": "7339.7"
+        },
+        {
+          "key": "2006",
+          "value": "8473.6"
+        },
+        {
+          "key": "2007",
+          "value": "9250.4"
+        },
+        {
+          "key": "2008",
+          "value": "10553.6"
+        },
+        {
+          "key": "2009",
+          "value": "9550.9"
+        },
+        {
+          "key": "2010",
+          "value": "10686.6"
+        },
+        {
+          "key": "2011",
+          "value": "12096.3"
+        },
+        {
+          "key": "2012",
+          "value": "12821.3"
+        },
+        {
+          "key": "2013",
+          "value": "12679.6"
+        },
+        {
+          "key": "2014",
+          "value": "13371.5"
+        },
+        {
+          "key": "2015",
+          "value": "13815.1"
+        },
+        {
+          "key": "2016",
+          "value": "13602.2"
+        },
+        {
+          "key": "2017",
+          "value": "14944"
+        },
+        {
+          "key": "2018",
+          "value": "16032"
+        },
+        {
+          "key": "2019",
+          "value": "16731.9"
+        },
+        {
+          "key": "2020",
+          "value": "16111.9"
+        },
+        {
+          "key": "2021",
+          "value": "18195.9"
+        },
+        {
+          "key": "2022",
+          "value": "23071.8"
+        },
+        {
+          "key": "2023",
+          "value": "28985.9"
+        },
+        {
+          "key": "2024",
+          "value": "30926.6"
+        },
+        {
+          "key": "2025",
+          "value": "35242.8"
+        },
+        {
+          "key": "2026",
+          "value": "37768.5"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.1.2",
+      "rowText": "Personal Income Tax",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "2347.8"
+        },
+        {
+          "key": "1998",
+          "value": "2959.3"
+        },
+        {
+          "key": "1999",
+          "value": "3040.2"
+        },
+        {
+          "key": "2000",
+          "value": "3543.6"
+        },
+        {
+          "key": "2001",
+          "value": "3732.4"
+        },
+        {
+          "key": "2002",
+          "value": "3422.8"
+        },
+        {
+          "key": "2003",
+          "value": "3132.7"
+        },
+        {
+          "key": "2004",
+          "value": "3132"
+        },
+        {
+          "key": "2005",
+          "value": "3425.1"
+        },
+        {
+          "key": "2006",
+          "value": "3743.1"
+        },
+        {
+          "key": "2007",
+          "value": "4536.8"
+        },
+        {
+          "key": "2008",
+          "value": "5414.2"
+        },
+        {
+          "key": "2009",
+          "value": "6113.5"
+        },
+        {
+          "key": "2010",
+          "value": "6469.6"
+        },
+        {
+          "key": "2011",
+          "value": "6871.4"
+        },
+        {
+          "key": "2012",
+          "value": "7713.7"
+        },
+        {
+          "key": "2013",
+          "value": "7688.1"
+        },
+        {
+          "key": "2014",
+          "value": "8926.7"
+        },
+        {
+          "key": "2015",
+          "value": "9234.9"
+        },
+        {
+          "key": "2016",
+          "value": "10526.2"
+        },
+        {
+          "key": "2017",
+          "value": "10724"
+        },
+        {
+          "key": "2018",
+          "value": "11705.8"
+        },
+        {
+          "key": "2019",
+          "value": "12367.7"
+        },
+        {
+          "key": "2020",
+          "value": "12747.8"
+        },
+        {
+          "key": "2021",
+          "value": "14222.5"
+        },
+        {
+          "key": "2022",
+          "value": "15524.2"
+        },
+        {
+          "key": "2023",
+          "value": "17510.3"
+        },
+        {
+          "key": "2024",
+          "value": "19058.2"
+        },
+        {
+          "key": "2025",
+          "value": "20639.6"
+        },
+        {
+          "key": "2026",
+          "value": "21797"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.1.3",
+      "rowText": "Withholding Tax",
+      "uoM": "Million Dollars",
+      "footnote": "A non-resident is liable to pay income tax on Singapore-sourced income. Under the law, when payment of a specified nature (e.g. royalty, interest, etc.) is made to a non-resident company or individual, the payer must withhold a percentage of that payment and pay the amount withheld to IRAS.  The amount withheld is the Withholding Tax.",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "337"
+        },
+        {
+          "key": "1998",
+          "value": "316"
+        },
+        {
+          "key": "1999",
+          "value": "467"
+        },
+        {
+          "key": "2000",
+          "value": "486"
+        },
+        {
+          "key": "2001",
+          "value": "815"
+        },
+        {
+          "key": "2002",
+          "value": "626"
+        },
+        {
+          "key": "2003",
+          "value": "729"
+        },
+        {
+          "key": "2004",
+          "value": "824"
+        },
+        {
+          "key": "2005",
+          "value": "898.4"
+        },
+        {
+          "key": "2006",
+          "value": "964"
+        },
+        {
+          "key": "2007",
+          "value": "1150.3"
+        },
+        {
+          "key": "2008",
+          "value": "1176"
+        },
+        {
+          "key": "2009",
+          "value": "1137.2"
+        },
+        {
+          "key": "2010",
+          "value": "957.4"
+        },
+        {
+          "key": "2011",
+          "value": "1258"
+        },
+        {
+          "key": "2012",
+          "value": "1337.3"
+        },
+        {
+          "key": "2013",
+          "value": "1152.4"
+        },
+        {
+          "key": "2014",
+          "value": "1126"
+        },
+        {
+          "key": "2015",
+          "value": "1402"
+        },
+        {
+          "key": "2016",
+          "value": "1474.1"
+        },
+        {
+          "key": "2017",
+          "value": "1531.6"
+        },
+        {
+          "key": "2018",
+          "value": "1589.9"
+        },
+        {
+          "key": "2019",
+          "value": "1637.3"
+        },
+        {
+          "key": "2020",
+          "value": "1618.3"
+        },
+        {
+          "key": "2021",
+          "value": "1858.6"
+        },
+        {
+          "key": "2022",
+          "value": "2107.6"
+        },
+        {
+          "key": "2023",
+          "value": "2190.4"
+        },
+        {
+          "key": "2024",
+          "value": "2369"
+        },
+        {
+          "key": "2025",
+          "value": "2491.9"
+        },
+        {
+          "key": "2026",
+          "value": "2625.4"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.1.4",
+      "rowText": "Statutory Boards' Contributions",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "701.7"
+        },
+        {
+          "key": "1998",
+          "value": "1799.7"
+        },
+        {
+          "key": "1999",
+          "value": "1676.1"
+        },
+        {
+          "key": "2000",
+          "value": "1192.4"
+        },
+        {
+          "key": "2001",
+          "value": "862.2"
+        },
+        {
+          "key": "2002",
+          "value": "624.5"
+        },
+        {
+          "key": "2003",
+          "value": "487.8"
+        },
+        {
+          "key": "2004",
+          "value": "1405.4"
+        },
+        {
+          "key": "2005",
+          "value": "1248.8"
+        },
+        {
+          "key": "2006",
+          "value": "954.5"
+        },
+        {
+          "key": "2007",
+          "value": "1683.3"
+        },
+        {
+          "key": "2008",
+          "value": "2142.6"
+        },
+        {
+          "key": "2009",
+          "value": "409.7"
+        },
+        {
+          "key": "2010",
+          "value": "573.2"
+        },
+        {
+          "key": "2011",
+          "value": "353.2"
+        },
+        {
+          "key": "2012",
+          "value": "539.1"
+        },
+        {
+          "key": "2013",
+          "value": "529.8"
+        },
+        {
+          "key": "2014",
+          "value": "515.9"
+        },
+        {
+          "key": "2015",
+          "value": "438.3"
+        },
+        {
+          "key": "2016",
+          "value": "775.4"
+        },
+        {
+          "key": "2017",
+          "value": "4865.8"
+        },
+        {
+          "key": "2018",
+          "value": "1490.5"
+        },
+        {
+          "key": "2019",
+          "value": "1798.1"
+        },
+        {
+          "key": "2020",
+          "value": "2519.1"
+        },
+        {
+          "key": "2021",
+          "value": "2855.3"
+        },
+        {
+          "key": "2022",
+          "value": "1450.8"
+        },
+        {
+          "key": "2023",
+          "value": "747.9"
+        },
+        {
+          "key": "2024",
+          "value": "641.7"
+        },
+        {
+          "key": "2025",
+          "value": "840.1"
+        },
+        {
+          "key": "2026",
+          "value": "507.8"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.3",
+      "rowText": "Asset Taxes",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "2335.3"
+        },
+        {
+          "key": "1998",
+          "value": "1529.4"
+        },
+        {
+          "key": "1999",
+          "value": "1314.1"
+        },
+        {
+          "key": "2000",
+          "value": "1605.7"
+        },
+        {
+          "key": "2001",
+          "value": "1517.5"
+        },
+        {
+          "key": "2002",
+          "value": "1307.8"
+        },
+        {
+          "key": "2003",
+          "value": "1512"
+        },
+        {
+          "key": "2004",
+          "value": "2058.2"
+        },
+        {
+          "key": "2005",
+          "value": "1909.6"
+        },
+        {
+          "key": "2006",
+          "value": "2112.3"
+        },
+        {
+          "key": "2007",
+          "value": "2581.9"
+        },
+        {
+          "key": "2008",
+          "value": "2903.6"
+        },
+        {
+          "key": "2009",
+          "value": "1987.3"
+        },
+        {
+          "key": "2010",
+          "value": "2803.2"
+        },
+        {
+          "key": "2011",
+          "value": "3901.9"
+        },
+        {
+          "key": "2012",
+          "value": "3768.3"
+        },
+        {
+          "key": "2013",
+          "value": "4181.9"
+        },
+        {
+          "key": "2014",
+          "value": "4340.6"
+        },
+        {
+          "key": "2015",
+          "value": "4455"
+        },
+        {
+          "key": "2016",
+          "value": "4359.5"
+        },
+        {
+          "key": "2017",
+          "value": "4439.7"
+        },
+        {
+          "key": "2018",
+          "value": "4649.1"
+        },
+        {
+          "key": "2019",
+          "value": "4761.7"
+        },
+        {
+          "key": "2020",
+          "value": "3127.8"
+        },
+        {
+          "key": "2021",
+          "value": "4672.2"
+        },
+        {
+          "key": "2022",
+          "value": "5095.3"
+        },
+        {
+          "key": "2023",
+          "value": "5937.5"
+        },
+        {
+          "key": "2024",
+          "value": "6639.5"
+        },
+        {
+          "key": "2025",
+          "value": "6987.2"
+        },
+        {
+          "key": "2026",
+          "value": "7318.1"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.3.1",
+      "rowText": "Property Tax",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "2275.8"
+        },
+        {
+          "key": "1998",
+          "value": "1490.1"
+        },
+        {
+          "key": "1999",
+          "value": "1246.5"
+        },
+        {
+          "key": "2000",
+          "value": "1534.5"
+        },
+        {
+          "key": "2001",
+          "value": "1433.9"
+        },
+        {
+          "key": "2002",
+          "value": "1232.2"
+        },
+        {
+          "key": "2003",
+          "value": "1330.2"
+        },
+        {
+          "key": "2004",
+          "value": "1701.6"
+        },
+        {
+          "key": "2005",
+          "value": "1828.9"
+        },
+        {
+          "key": "2006",
+          "value": "2014.2"
+        },
+        {
+          "key": "2007",
+          "value": "2428.2"
+        },
+        {
+          "key": "2008",
+          "value": "2856.2"
+        },
+        {
+          "key": "2009",
+          "value": "1979.1"
+        },
+        {
+          "key": "2010",
+          "value": "2798"
+        },
+        {
+          "key": "2011",
+          "value": "3898.9"
+        },
+        {
+          "key": "2012",
+          "value": "3760.1"
+        },
+        {
+          "key": "2013",
+          "value": "4178.8"
+        },
+        {
+          "key": "2014",
+          "value": "4340.1"
+        },
+        {
+          "key": "2015",
+          "value": "4455.6"
+        },
+        {
+          "key": "2016",
+          "value": "4359.2"
+        },
+        {
+          "key": "2017",
+          "value": "4439.7"
+        },
+        {
+          "key": "2018",
+          "value": "4648.9"
+        },
+        {
+          "key": "2019",
+          "value": "4761.4"
+        },
+        {
+          "key": "2020",
+          "value": "3128.2"
+        },
+        {
+          "key": "2021",
+          "value": "4671.7"
+        },
+        {
+          "key": "2022",
+          "value": "5095.3"
+        },
+        {
+          "key": "2023",
+          "value": "5936.9"
+        },
+        {
+          "key": "2024",
+          "value": "6639.2"
+        },
+        {
+          "key": "2025",
+          "value": "6987"
+        },
+        {
+          "key": "2026",
+          "value": "7318"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.3.2",
+      "rowText": "Estate Duty",
+      "uoM": "Million Dollars",
+      "footnote": "Estate Duty refers to a tax on the total market value of a person's assets (cash and non-cash) at the date of his or her death.  Estate Duty does not apply to a person who dies on or after 15 February 2008, although there are still some collections from the estates of people who had passed away earlier.",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "59.4"
+        },
+        {
+          "key": "1998",
+          "value": "39.4"
+        },
+        {
+          "key": "1999",
+          "value": "67.6"
+        },
+        {
+          "key": "2000",
+          "value": "71.2"
+        },
+        {
+          "key": "2001",
+          "value": "83.5"
+        },
+        {
+          "key": "2002",
+          "value": "75.6"
+        },
+        {
+          "key": "2003",
+          "value": "181.8"
+        },
+        {
+          "key": "2004",
+          "value": "356.6"
+        },
+        {
+          "key": "2005",
+          "value": "80.7"
+        },
+        {
+          "key": "2006",
+          "value": "98"
+        },
+        {
+          "key": "2007",
+          "value": "153.7"
+        },
+        {
+          "key": "2008",
+          "value": "47.4"
+        },
+        {
+          "key": "2009",
+          "value": "8.2"
+        },
+        {
+          "key": "2010",
+          "value": "5.2"
+        },
+        {
+          "key": "2011",
+          "value": "2.9"
+        },
+        {
+          "key": "2012",
+          "value": "8.2"
+        },
+        {
+          "key": "2013",
+          "value": "3.1"
+        },
+        {
+          "key": "2014",
+          "value": "0.5"
+        },
+        {
+          "key": "2015",
+          "value": "-0.6"
+        },
+        {
+          "key": "2016",
+          "value": "0.3"
+        },
+        {
+          "key": "2017",
+          "value": "0"
+        },
+        {
+          "key": "2018",
+          "value": "0.3"
+        },
+        {
+          "key": "2019",
+          "value": "0.3"
+        },
+        {
+          "key": "2020",
+          "value": "-0.4"
+        },
+        {
+          "key": "2021",
+          "value": "0.5"
+        },
+        {
+          "key": "2022",
+          "value": "0"
+        },
+        {
+          "key": "2023",
+          "value": "0.6"
+        },
+        {
+          "key": "2024",
+          "value": "0.3"
+        },
+        {
+          "key": "2025",
+          "value": "0.2"
+        },
+        {
+          "key": "2026",
+          "value": "0.1"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.4",
+      "rowText": "Customs, Excise And Carbon Taxes",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "1633.3"
+        },
+        {
+          "key": "1998",
+          "value": "1566.1"
+        },
+        {
+          "key": "1999",
+          "value": "1573.5"
+        },
+        {
+          "key": "2000",
+          "value": "1846.8"
+        },
+        {
+          "key": "2001",
+          "value": "1803.3"
+        },
+        {
+          "key": "2002",
+          "value": "1729.6"
+        },
+        {
+          "key": "2003",
+          "value": "1900.9"
+        },
+        {
+          "key": "2004",
+          "value": "1924.1"
+        },
+        {
+          "key": "2005",
+          "value": "1973.5"
+        },
+        {
+          "key": "2006",
+          "value": "1886.6"
+        },
+        {
+          "key": "2007",
+          "value": "1985.3"
+        },
+        {
+          "key": "2008",
+          "value": "2065.2"
+        },
+        {
+          "key": "2009",
+          "value": "2125.3"
+        },
+        {
+          "key": "2010",
+          "value": "2048.5"
+        },
+        {
+          "key": "2011",
+          "value": "2132.8"
+        },
+        {
+          "key": "2012",
+          "value": "2141.7"
+        },
+        {
+          "key": "2013",
+          "value": "2189.4"
+        },
+        {
+          "key": "2014",
+          "value": "2539.7"
+        },
+        {
+          "key": "2015",
+          "value": "2833"
+        },
+        {
+          "key": "2016",
+          "value": "2730"
+        },
+        {
+          "key": "2017",
+          "value": "3132.9"
+        },
+        {
+          "key": "2018",
+          "value": "3075"
+        },
+        {
+          "key": "2019",
+          "value": "3263.5"
+        },
+        {
+          "key": "2020",
+          "value": "3581.8"
+        },
+        {
+          "key": "2021",
+          "value": "3749.7"
+        },
+        {
+          "key": "2022",
+          "value": "3460.1"
+        },
+        {
+          "key": "2023",
+          "value": "3301.2"
+        },
+        {
+          "key": "2024",
+          "value": "3425.1"
+        },
+        {
+          "key": "2025",
+          "value": "3981.8"
+        },
+        {
+          "key": "2026",
+          "value": "4155.1"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.4.1",
+      "rowText": "Liquors",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "347.9"
+        },
+        {
+          "key": "1998",
+          "value": "341.6"
+        },
+        {
+          "key": "1999",
+          "value": "342.3"
+        },
+        {
+          "key": "2000",
+          "value": "345.2"
+        },
+        {
+          "key": "2001",
+          "value": "333.6"
+        },
+        {
+          "key": "2002",
+          "value": "359.2"
+        },
+        {
+          "key": "2003",
+          "value": "355"
+        },
+        {
+          "key": "2004",
+          "value": "348.8"
+        },
+        {
+          "key": "2005",
+          "value": "367.5"
+        },
+        {
+          "key": "2006",
+          "value": "395.5"
+        },
+        {
+          "key": "2007",
+          "value": "413.6"
+        },
+        {
+          "key": "2008",
+          "value": "414.5"
+        },
+        {
+          "key": "2009",
+          "value": "432.5"
+        },
+        {
+          "key": "2010",
+          "value": "469.5"
+        },
+        {
+          "key": "2011",
+          "value": "495.9"
+        },
+        {
+          "key": "2012",
+          "value": "516.6"
+        },
+        {
+          "key": "2013",
+          "value": "518.3"
+        },
+        {
+          "key": "2014",
+          "value": "634"
+        },
+        {
+          "key": "2015",
+          "value": "637.6"
+        },
+        {
+          "key": "2016",
+          "value": "639.7"
+        },
+        {
+          "key": "2017",
+          "value": "662.9"
+        },
+        {
+          "key": "2018",
+          "value": "677.6"
+        },
+        {
+          "key": "2019",
+          "value": "677.8"
+        },
+        {
+          "key": "2020",
+          "value": "741.5"
+        },
+        {
+          "key": "2021",
+          "value": "758.7"
+        },
+        {
+          "key": "2022",
+          "value": "820.8"
+        },
+        {
+          "key": "2023",
+          "value": "774.7"
+        },
+        {
+          "key": "2024",
+          "value": "754.7"
+        },
+        {
+          "key": "2025",
+          "value": "746.5"
+        },
+        {
+          "key": "2026",
+          "value": "735.8"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.4.2",
+      "rowText": "Tobacco",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "393.6"
+        },
+        {
+          "key": "1998",
+          "value": "412.7"
+        },
+        {
+          "key": "1999",
+          "value": "395.6"
+        },
+        {
+          "key": "2000",
+          "value": "499.8"
+        },
+        {
+          "key": "2001",
+          "value": "538.9"
+        },
+        {
+          "key": "2002",
+          "value": "650.7"
+        },
+        {
+          "key": "2003",
+          "value": "742.7"
+        },
+        {
+          "key": "2004",
+          "value": "721"
+        },
+        {
+          "key": "2005",
+          "value": "712.6"
+        },
+        {
+          "key": "2006",
+          "value": "620.8"
+        },
+        {
+          "key": "2007",
+          "value": "700"
+        },
+        {
+          "key": "2008",
+          "value": "793.5"
+        },
+        {
+          "key": "2009",
+          "value": "931.6"
+        },
+        {
+          "key": "2010",
+          "value": "889.1"
+        },
+        {
+          "key": "2011",
+          "value": "967.1"
+        },
+        {
+          "key": "2012",
+          "value": "969.1"
+        },
+        {
+          "key": "2013",
+          "value": "1042.8"
+        },
+        {
+          "key": "2014",
+          "value": "1227.7"
+        },
+        {
+          "key": "2015",
+          "value": "1205.2"
+        },
+        {
+          "key": "2016",
+          "value": "985.9"
+        },
+        {
+          "key": "2017",
+          "value": "1174.1"
+        },
+        {
+          "key": "2018",
+          "value": "1121.6"
+        },
+        {
+          "key": "2019",
+          "value": "1159.8"
+        },
+        {
+          "key": "2020",
+          "value": "1475.6"
+        },
+        {
+          "key": "2021",
+          "value": "1356.3"
+        },
+        {
+          "key": "2022",
+          "value": "1113.8"
+        },
+        {
+          "key": "2023",
+          "value": "1057.8"
+        },
+        {
+          "key": "2024",
+          "value": "1106.1"
+        },
+        {
+          "key": "2025",
+          "value": "1150.7"
+        },
+        {
+          "key": "2026",
+          "value": "1295.4"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.4.3",
+      "rowText": "Petroleum Products",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "607.1"
+        },
+        {
+          "key": "1998",
+          "value": "538"
+        },
+        {
+          "key": "1999",
+          "value": "466.7"
+        },
+        {
+          "key": "2000",
+          "value": "493.3"
+        },
+        {
+          "key": "2001",
+          "value": "445.1"
+        },
+        {
+          "key": "2002",
+          "value": "395.9"
+        },
+        {
+          "key": "2003",
+          "value": "387"
+        },
+        {
+          "key": "2004",
+          "value": "379.6"
+        },
+        {
+          "key": "2005",
+          "value": "372.6"
+        },
+        {
+          "key": "2006",
+          "value": "357.8"
+        },
+        {
+          "key": "2007",
+          "value": "386.2"
+        },
+        {
+          "key": "2008",
+          "value": "398.1"
+        },
+        {
+          "key": "2009",
+          "value": "413.3"
+        },
+        {
+          "key": "2010",
+          "value": "418.8"
+        },
+        {
+          "key": "2011",
+          "value": "416.4"
+        },
+        {
+          "key": "2012",
+          "value": "414.8"
+        },
+        {
+          "key": "2013",
+          "value": "414.2"
+        },
+        {
+          "key": "2014",
+          "value": "419.4"
+        },
+        {
+          "key": "2015",
+          "value": "583.8"
+        },
+        {
+          "key": "2016",
+          "value": "595.9"
+        },
+        {
+          "key": "2017",
+          "value": "827.2"
+        },
+        {
+          "key": "2018",
+          "value": "784"
+        },
+        {
+          "key": "2019",
+          "value": "985.5"
+        },
+        {
+          "key": "2020",
+          "value": "874.2"
+        },
+        {
+          "key": "2021",
+          "value": "1108.5"
+        },
+        {
+          "key": "2022",
+          "value": "1055.5"
+        },
+        {
+          "key": "2023",
+          "value": "1012.1"
+        },
+        {
+          "key": "2024",
+          "value": "964.7"
+        },
+        {
+          "key": "2025",
+          "value": "1000.7"
+        },
+        {
+          "key": "2026",
+          "value": "997.8"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.4.4",
+      "rowText": "Motor Vehicles",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "280.6"
+        },
+        {
+          "key": "1998",
+          "value": "269.9"
+        },
+        {
+          "key": "1999",
+          "value": "364.3"
+        },
+        {
+          "key": "2000",
+          "value": "503.4"
+        },
+        {
+          "key": "2001",
+          "value": "480.2"
+        },
+        {
+          "key": "2002",
+          "value": "320.1"
+        },
+        {
+          "key": "2003",
+          "value": "413.6"
+        },
+        {
+          "key": "2004",
+          "value": "472.1"
+        },
+        {
+          "key": "2005",
+          "value": "518.3"
+        },
+        {
+          "key": "2006",
+          "value": "509.8"
+        },
+        {
+          "key": "2007",
+          "value": "482.5"
+        },
+        {
+          "key": "2008",
+          "value": "455.6"
+        },
+        {
+          "key": "2009",
+          "value": "343.6"
+        },
+        {
+          "key": "2010",
+          "value": "266.5"
+        },
+        {
+          "key": "2011",
+          "value": "248"
+        },
+        {
+          "key": "2012",
+          "value": "233.3"
+        },
+        {
+          "key": "2013",
+          "value": "206.2"
+        },
+        {
+          "key": "2014",
+          "value": "250.5"
+        },
+        {
+          "key": "2015",
+          "value": "399"
+        },
+        {
+          "key": "2016",
+          "value": "502.2"
+        },
+        {
+          "key": "2017",
+          "value": "463.1"
+        },
+        {
+          "key": "2018",
+          "value": "486.3"
+        },
+        {
+          "key": "2019",
+          "value": "435.3"
+        },
+        {
+          "key": "2020",
+          "value": "282.1"
+        },
+        {
+          "key": "2021",
+          "value": "327.5"
+        },
+        {
+          "key": "2022",
+          "value": "257"
+        },
+        {
+          "key": "2023",
+          "value": "254.8"
+        },
+        {
+          "key": "2024",
+          "value": "402.8"
+        },
+        {
+          "key": "2025",
+          "value": "423.3"
+        },
+        {
+          "key": "2026",
+          "value": "467"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.4.5",
+      "rowText": "Compressed Natural Gas Unit Duty",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "0"
+        },
+        {
+          "key": "1998",
+          "value": "0"
+        },
+        {
+          "key": "1999",
+          "value": "0"
+        },
+        {
+          "key": "2000",
+          "value": "0"
+        },
+        {
+          "key": "2001",
+          "value": "0"
+        },
+        {
+          "key": "2002",
+          "value": "0"
+        },
+        {
+          "key": "2003",
+          "value": "0"
+        },
+        {
+          "key": "2004",
+          "value": "0"
+        },
+        {
+          "key": "2005",
+          "value": "0"
+        },
+        {
+          "key": "2006",
+          "value": "0"
+        },
+        {
+          "key": "2007",
+          "value": "0"
+        },
+        {
+          "key": "2008",
+          "value": "0"
+        },
+        {
+          "key": "2009",
+          "value": "0"
+        },
+        {
+          "key": "2010",
+          "value": "0"
+        },
+        {
+          "key": "2011",
+          "value": "0.7"
+        },
+        {
+          "key": "2012",
+          "value": "3.2"
+        },
+        {
+          "key": "2013",
+          "value": "2.8"
+        },
+        {
+          "key": "2014",
+          "value": "2.6"
+        },
+        {
+          "key": "2015",
+          "value": "2.2"
+        },
+        {
+          "key": "2016",
+          "value": "1.5"
+        },
+        {
+          "key": "2017",
+          "value": "0.6"
+        },
+        {
+          "key": "2018",
+          "value": "0.1"
+        },
+        {
+          "key": "2019",
+          "value": "0"
+        },
+        {
+          "key": "2020",
+          "value": "0"
+        },
+        {
+          "key": "2021",
+          "value": "0"
+        },
+        {
+          "key": "2022",
+          "value": "0"
+        },
+        {
+          "key": "2023",
+          "value": "0"
+        },
+        {
+          "key": "2024",
+          "value": "0"
+        },
+        {
+          "key": "2025",
+          "value": "0"
+        },
+        {
+          "key": "2026",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.4.6",
+      "rowText": "Other Customs And Excise Duties",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "4.2"
+        },
+        {
+          "key": "1998",
+          "value": "3.9"
+        },
+        {
+          "key": "1999",
+          "value": "4.6"
+        },
+        {
+          "key": "2000",
+          "value": "5"
+        },
+        {
+          "key": "2001",
+          "value": "5.4"
+        },
+        {
+          "key": "2002",
+          "value": "3.8"
+        },
+        {
+          "key": "2003",
+          "value": "2.6"
+        },
+        {
+          "key": "2004",
+          "value": "2.6"
+        },
+        {
+          "key": "2005",
+          "value": "2.5"
+        },
+        {
+          "key": "2006",
+          "value": "2.7"
+        },
+        {
+          "key": "2007",
+          "value": "3"
+        },
+        {
+          "key": "2008",
+          "value": "3.6"
+        },
+        {
+          "key": "2009",
+          "value": "4.2"
+        },
+        {
+          "key": "2010",
+          "value": "4.5"
+        },
+        {
+          "key": "2011",
+          "value": "4.7"
+        },
+        {
+          "key": "2012",
+          "value": "4.8"
+        },
+        {
+          "key": "2013",
+          "value": "5.1"
+        },
+        {
+          "key": "2014",
+          "value": "5.5"
+        },
+        {
+          "key": "2015",
+          "value": "5.3"
+        },
+        {
+          "key": "2016",
+          "value": "5"
+        },
+        {
+          "key": "2017",
+          "value": "4.9"
+        },
+        {
+          "key": "2018",
+          "value": "5.5"
+        },
+        {
+          "key": "2019",
+          "value": "5.1"
+        },
+        {
+          "key": "2020",
+          "value": "1"
+        },
+        {
+          "key": "2021",
+          "value": "0.8"
+        },
+        {
+          "key": "2022",
+          "value": "1.3"
+        },
+        {
+          "key": "2023",
+          "value": "1.6"
+        },
+        {
+          "key": "2024",
+          "value": "0.7"
+        },
+        {
+          "key": "2025",
+          "value": "1.7"
+        },
+        {
+          "key": "2026",
+          "value": "1.8"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.4.7",
+      "rowText": "Carbon Tax",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "2020",
+          "value": "207.5"
+        },
+        {
+          "key": "2021",
+          "value": "197.9"
+        },
+        {
+          "key": "2022",
+          "value": "211.6"
+        },
+        {
+          "key": "2023",
+          "value": "200.2"
+        },
+        {
+          "key": "2024",
+          "value": "196"
+        },
+        {
+          "key": "2025",
+          "value": "658.8"
+        },
+        {
+          "key": "2026",
+          "value": "657.3"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.5",
+      "rowText": "Goods And Services Tax",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "1927.1"
+        },
+        {
+          "key": "1998",
+          "value": "1657.4"
+        },
+        {
+          "key": "1999",
+          "value": "1994.6"
+        },
+        {
+          "key": "2000",
+          "value": "2120.9"
+        },
+        {
+          "key": "2001",
+          "value": "2134.2"
+        },
+        {
+          "key": "2002",
+          "value": "2165"
+        },
+        {
+          "key": "2003",
+          "value": "2956.8"
+        },
+        {
+          "key": "2004",
+          "value": "3469.6"
+        },
+        {
+          "key": "2005",
+          "value": "3815.3"
+        },
+        {
+          "key": "2006",
+          "value": "3977.6"
+        },
+        {
+          "key": "2007",
+          "value": "6165.1"
+        },
+        {
+          "key": "2008",
+          "value": "6486.7"
+        },
+        {
+          "key": "2009",
+          "value": "6913.7"
+        },
+        {
+          "key": "2010",
+          "value": "8198"
+        },
+        {
+          "key": "2011",
+          "value": "8687"
+        },
+        {
+          "key": "2012",
+          "value": "9038"
+        },
+        {
+          "key": "2013",
+          "value": "9512.7"
+        },
+        {
+          "key": "2014",
+          "value": "10215"
+        },
+        {
+          "key": "2015",
+          "value": "10345.1"
+        },
+        {
+          "key": "2016",
+          "value": "11078.3"
+        },
+        {
+          "key": "2017",
+          "value": "10959.5"
+        },
+        {
+          "key": "2018",
+          "value": "11137.1"
+        },
+        {
+          "key": "2019",
+          "value": "11163.7"
+        },
+        {
+          "key": "2020",
+          "value": "10345.7"
+        },
+        {
+          "key": "2021",
+          "value": "12627.7"
+        },
+        {
+          "key": "2022",
+          "value": "14093.4"
+        },
+        {
+          "key": "2023",
+          "value": "16648.1"
+        },
+        {
+          "key": "2024",
+          "value": "20044.3"
+        },
+        {
+          "key": "2025",
+          "value": "21303.1"
+        },
+        {
+          "key": "2026",
+          "value": "22254.9"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.6",
+      "rowText": "Motor Vehicle Taxes",
+      "uoM": "Million Dollars",
+      "footnote": "Motor Vehicles Taxes comprises additional registration fees, road tax, special tax on heavy-oil engines, passenger vehicle seating fees and non-motor vehicle licences, but exclude excise duties on motor vehicles which are classified under Customs, Excise and Carbon Taxes.",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "1743"
+        },
+        {
+          "key": "1998",
+          "value": "1204.7"
+        },
+        {
+          "key": "1999",
+          "value": "1719.3"
+        },
+        {
+          "key": "2000",
+          "value": "2505.8"
+        },
+        {
+          "key": "2001",
+          "value": "1972.1"
+        },
+        {
+          "key": "2002",
+          "value": "1445.7"
+        },
+        {
+          "key": "2003",
+          "value": "1485.8"
+        },
+        {
+          "key": "2004",
+          "value": "1392.4"
+        },
+        {
+          "key": "2005",
+          "value": "1432.2"
+        },
+        {
+          "key": "2006",
+          "value": "1745"
+        },
+        {
+          "key": "2007",
+          "value": "2189.2"
+        },
+        {
+          "key": "2008",
+          "value": "1834.7"
+        },
+        {
+          "key": "2009",
+          "value": "1855.6"
+        },
+        {
+          "key": "2010",
+          "value": "1850.9"
+        },
+        {
+          "key": "2011",
+          "value": "1919.6"
+        },
+        {
+          "key": "2012",
+          "value": "1802.9"
+        },
+        {
+          "key": "2013",
+          "value": "1654.6"
+        },
+        {
+          "key": "2014",
+          "value": "1602.9"
+        },
+        {
+          "key": "2015",
+          "value": "1759.7"
+        },
+        {
+          "key": "2016",
+          "value": "2148.4"
+        },
+        {
+          "key": "2017",
+          "value": "2152.5"
+        },
+        {
+          "key": "2018",
+          "value": "2623.4"
+        },
+        {
+          "key": "2019",
+          "value": "2418.9"
+        },
+        {
+          "key": "2020",
+          "value": "2133.1"
+        },
+        {
+          "key": "2021",
+          "value": "2225.7"
+        },
+        {
+          "key": "2022",
+          "value": "2163.3"
+        },
+        {
+          "key": "2023",
+          "value": "2107.9"
+        },
+        {
+          "key": "2024",
+          "value": "2424.8"
+        },
+        {
+          "key": "2025",
+          "value": "2389.5"
+        },
+        {
+          "key": "2026",
+          "value": "2800.1"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.7",
+      "rowText": "Betting Taxes",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "1295.7"
+        },
+        {
+          "key": "1998",
+          "value": "1272"
+        },
+        {
+          "key": "1999",
+          "value": "1372.8"
+        },
+        {
+          "key": "2000",
+          "value": "1493.9"
+        },
+        {
+          "key": "2001",
+          "value": "1575.2"
+        },
+        {
+          "key": "2002",
+          "value": "1549.5"
+        },
+        {
+          "key": "2003",
+          "value": "1524.1"
+        },
+        {
+          "key": "2004",
+          "value": "1534"
+        },
+        {
+          "key": "2005",
+          "value": "1500.6"
+        },
+        {
+          "key": "2006",
+          "value": "1571.1"
+        },
+        {
+          "key": "2007",
+          "value": "1713.5"
+        },
+        {
+          "key": "2008",
+          "value": "1771"
+        },
+        {
+          "key": "2009",
+          "value": "1727"
+        },
+        {
+          "key": "2010",
+          "value": "2278.7"
+        },
+        {
+          "key": "2011",
+          "value": "2373.4"
+        },
+        {
+          "key": "2012",
+          "value": "2304.8"
+        },
+        {
+          "key": "2013",
+          "value": "2378.8"
+        },
+        {
+          "key": "2014",
+          "value": "2591"
+        },
+        {
+          "key": "2015",
+          "value": "2719"
+        },
+        {
+          "key": "2016",
+          "value": "2682"
+        },
+        {
+          "key": "2017",
+          "value": "2688.2"
+        },
+        {
+          "key": "2018",
+          "value": "2663.9"
+        },
+        {
+          "key": "2019",
+          "value": "2619.9"
+        },
+        {
+          "key": "2020",
+          "value": "1721.7"
+        },
+        {
+          "key": "2021",
+          "value": "2313.3"
+        },
+        {
+          "key": "2022",
+          "value": "2766.1"
+        },
+        {
+          "key": "2023",
+          "value": "3174"
+        },
+        {
+          "key": "2024",
+          "value": "3228.9"
+        },
+        {
+          "key": "2025",
+          "value": "3627.8"
+        },
+        {
+          "key": "2026",
+          "value": "3772.2"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.8",
+      "rowText": "Stamp Duty",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "1687.9"
+        },
+        {
+          "key": "1998",
+          "value": "952.8"
+        },
+        {
+          "key": "1999",
+          "value": "1412.5"
+        },
+        {
+          "key": "2000",
+          "value": "1257.4"
+        },
+        {
+          "key": "2001",
+          "value": "757.7"
+        },
+        {
+          "key": "2002",
+          "value": "695.4"
+        },
+        {
+          "key": "2003",
+          "value": "742.9"
+        },
+        {
+          "key": "2004",
+          "value": "815.4"
+        },
+        {
+          "key": "2005",
+          "value": "966.7"
+        },
+        {
+          "key": "2006",
+          "value": "2015"
+        },
+        {
+          "key": "2007",
+          "value": "3676.7"
+        },
+        {
+          "key": "2008",
+          "value": "1431.6"
+        },
+        {
+          "key": "2009",
+          "value": "2386.2"
+        },
+        {
+          "key": "2010",
+          "value": "3276.5"
+        },
+        {
+          "key": "2011",
+          "value": "3175.1"
+        },
+        {
+          "key": "2012",
+          "value": "4309.5"
+        },
+        {
+          "key": "2013",
+          "value": "3929.9"
+        },
+        {
+          "key": "2014",
+          "value": "2783.6"
+        },
+        {
+          "key": "2015",
+          "value": "2768.9"
+        },
+        {
+          "key": "2016",
+          "value": "3278.5"
+        },
+        {
+          "key": "2017",
+          "value": "4905.1"
+        },
+        {
+          "key": "2018",
+          "value": "4606.9"
+        },
+        {
+          "key": "2019",
+          "value": "4199"
+        },
+        {
+          "key": "2020",
+          "value": "3895.7"
+        },
+        {
+          "key": "2021",
+          "value": "6762.3"
+        },
+        {
+          "key": "2022",
+          "value": "5950.2"
+        },
+        {
+          "key": "2023",
+          "value": "5806.3"
+        },
+        {
+          "key": "2024",
+          "value": "6578.9"
+        },
+        {
+          "key": "2025",
+          "value": "6798.3"
+        },
+        {
+          "key": "2026",
+          "value": "6918.9"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.9",
+      "rowText": "Foreign Worker Levy",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "2020",
+          "value": "3112.9"
+        },
+        {
+          "key": "2021",
+          "value": "4675.3"
+        },
+        {
+          "key": "2022",
+          "value": "5599.2"
+        },
+        {
+          "key": "2023",
+          "value": "6428.7"
+        },
+        {
+          "key": "2024",
+          "value": "6751.4"
+        },
+        {
+          "key": "2025",
+          "value": "7142.9"
+        },
+        {
+          "key": "2026",
+          "value": "7455.4"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.10",
+      "rowText": "Water Conservation Tax",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "2020",
+          "value": "336.5"
+        },
+        {
+          "key": "2021",
+          "value": "331.7"
+        },
+        {
+          "key": "2022",
+          "value": "333.9"
+        },
+        {
+          "key": "2023",
+          "value": "335.8"
+        },
+        {
+          "key": "2024",
+          "value": "360.7"
+        },
+        {
+          "key": "2025",
+          "value": "404.9"
+        },
+        {
+          "key": "2026",
+          "value": "410"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.1.11",
+      "rowText": "Other Taxes",
+      "uoM": "Million Dollars",
+      "footnote": "Prior to FY2020, Other Taxes comprise Foreign Worker Levy, Water Conservation Tax, Development Charge and Annual Tonnage Tax.  From FY2020, Other Taxes comprise Annual Tonnage Tax, Development Charge (for FY2020 and FY2021), and Land Betterment Charge (from FY2022 onwards).  From FY2022, Land Betterment Charge replaced Development Charge.",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "2193.6"
+        },
+        {
+          "key": "1998",
+          "value": "2037.4"
+        },
+        {
+          "key": "1999",
+          "value": "1488.8"
+        },
+        {
+          "key": "2000",
+          "value": "1258.8"
+        },
+        {
+          "key": "2001",
+          "value": "1181.4"
+        },
+        {
+          "key": "2002",
+          "value": "1113.6"
+        },
+        {
+          "key": "2003",
+          "value": "1107.8"
+        },
+        {
+          "key": "2004",
+          "value": "1136.8"
+        },
+        {
+          "key": "2005",
+          "value": "1176.7"
+        },
+        {
+          "key": "2006",
+          "value": "1384.1"
+        },
+        {
+          "key": "2007",
+          "value": "1697.8"
+        },
+        {
+          "key": "2008",
+          "value": "1929.5"
+        },
+        {
+          "key": "2009",
+          "value": "2410"
+        },
+        {
+          "key": "2010",
+          "value": "2705.6"
+        },
+        {
+          "key": "2011",
+          "value": "3307.3"
+        },
+        {
+          "key": "2012",
+          "value": "4341.8"
+        },
+        {
+          "key": "2013",
+          "value": "5248.4"
+        },
+        {
+          "key": "2014",
+          "value": "6097.1"
+        },
+        {
+          "key": "2015",
+          "value": "5876.2"
+        },
+        {
+          "key": "2016",
+          "value": "6044.5"
+        },
+        {
+          "key": "2017",
+          "value": "6019.3"
+        },
+        {
+          "key": "2018",
+          "value": "6628.9"
+        },
+        {
+          "key": "2019",
+          "value": "6683.2"
+        },
+        {
+          "key": "2020",
+          "value": "156.3"
+        },
+        {
+          "key": "2021",
+          "value": "270.7"
+        },
+        {
+          "key": "2022",
+          "value": "1091.7"
+        },
+        {
+          "key": "2023",
+          "value": "1154.6"
+        },
+        {
+          "key": "2024",
+          "value": "1427.2"
+        },
+        {
+          "key": "2025",
+          "value": "3982.6"
+        },
+        {
+          "key": "2026",
+          "value": "1634.4"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.2",
+      "rowText": "Fees And Charges",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "4000.2"
+        },
+        {
+          "key": "1998",
+          "value": "3152.3"
+        },
+        {
+          "key": "1999",
+          "value": "4563.8"
+        },
+        {
+          "key": "2000",
+          "value": "5649.7"
+        },
+        {
+          "key": "2001",
+          "value": "4133.6"
+        },
+        {
+          "key": "2002",
+          "value": "3805"
+        },
+        {
+          "key": "2003",
+          "value": "3492.1"
+        },
+        {
+          "key": "2004",
+          "value": "3366"
+        },
+        {
+          "key": "2005",
+          "value": "2246.3"
+        },
+        {
+          "key": "2006",
+          "value": "2202.8"
+        },
+        {
+          "key": "2007",
+          "value": "3629.6"
+        },
+        {
+          "key": "2008",
+          "value": "3212.4"
+        },
+        {
+          "key": "2009",
+          "value": "2765.2"
+        },
+        {
+          "key": "2010",
+          "value": "3986.4"
+        },
+        {
+          "key": "2011",
+          "value": "4699.1"
+        },
+        {
+          "key": "2012",
+          "value": "5279.8"
+        },
+        {
+          "key": "2013",
+          "value": "5624.7"
+        },
+        {
+          "key": "2014",
+          "value": "6404.5"
+        },
+        {
+          "key": "2015",
+          "value": "8673.6"
+        },
+        {
+          "key": "2016",
+          "value": "9759.5"
+        },
+        {
+          "key": "2017",
+          "value": "9075.2"
+        },
+        {
+          "key": "2018",
+          "value": "7106.1"
+        },
+        {
+          "key": "2019",
+          "value": "6274.8"
+        },
+        {
+          "key": "2020",
+          "value": "5478.6"
+        },
+        {
+          "key": "2021",
+          "value": "6828.1"
+        },
+        {
+          "key": "2022",
+          "value": "7709.7"
+        },
+        {
+          "key": "2023",
+          "value": "8547.7"
+        },
+        {
+          "key": "2024",
+          "value": "11054.2"
+        },
+        {
+          "key": "2025",
+          "value": "14135.5"
+        },
+        {
+          "key": "2026",
+          "value": "13328.1"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.2.1",
+      "rowText": "Vehicle Quota Premiums",
+      "uoM": "Million Dollars",
+      "footnote": "",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "1798.9"
+        },
+        {
+          "key": "1998",
+          "value": "1271.3"
+        },
+        {
+          "key": "1999",
+          "value": "2513"
+        },
+        {
+          "key": "2000",
+          "value": "3105.1"
+        },
+        {
+          "key": "2001",
+          "value": "2088.6"
+        },
+        {
+          "key": "2002",
+          "value": "1778.2"
+        },
+        {
+          "key": "2003",
+          "value": "1542.9"
+        },
+        {
+          "key": "2004",
+          "value": "1256.6"
+        },
+        {
+          "key": "2005",
+          "value": "321.4"
+        },
+        {
+          "key": "2006",
+          "value": "93.5"
+        },
+        {
+          "key": "2007",
+          "value": "673.5"
+        },
+        {
+          "key": "2008",
+          "value": "367.4"
+        },
+        {
+          "key": "2009",
+          "value": "623.3"
+        },
+        {
+          "key": "2010",
+          "value": "1602.1"
+        },
+        {
+          "key": "2011",
+          "value": "2112"
+        },
+        {
+          "key": "2012",
+          "value": "2572.1"
+        },
+        {
+          "key": "2013",
+          "value": "2721.7"
+        },
+        {
+          "key": "2014",
+          "value": "3394.1"
+        },
+        {
+          "key": "2015",
+          "value": "5424.8"
+        },
+        {
+          "key": "2016",
+          "value": "6550.6"
+        },
+        {
+          "key": "2017",
+          "value": "5796.1"
+        },
+        {
+          "key": "2018",
+          "value": "3616.4"
+        },
+        {
+          "key": "2019",
+          "value": "2865.4"
+        },
+        {
+          "key": "2020",
+          "value": "2297.2"
+        },
+        {
+          "key": "2021",
+          "value": "3217.8"
+        },
+        {
+          "key": "2022",
+          "value": "3763.3"
+        },
+        {
+          "key": "2023",
+          "value": "4489.2"
+        },
+        {
+          "key": "2024",
+          "value": "6379.2"
+        },
+        {
+          "key": "2025",
+          "value": "8660.4"
+        },
+        {
+          "key": "2026",
+          "value": "9423.7"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.2.2",
+      "rowText": "Fees And Charges (Excluding Vehicle Quota Premiums)",
+      "uoM": "Million Dollars",
+      "footnote": "Includes revenue from licenses, permits, services rendered, goods supplied, and rental.  Prior to FY2026, it also included collections from fines and penalties and reimbursements.  Year-on-year comparison for Fees and Charges (Excluding Vehicle Quota Premiums) and Others between FY2025 and FY2026 may not be meaningful due to changes in scope (see explanatory notes in the Revenue and Expenditure Estimates for the Financial Year 2026/2027 published by the Ministry of Finance)  www.singaporebudget.gov.sg/revenue-and-expenditure/revenue-expenditure-estimates",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "2201.3"
+        },
+        {
+          "key": "1998",
+          "value": "1881.1"
+        },
+        {
+          "key": "1999",
+          "value": "2050.8"
+        },
+        {
+          "key": "2000",
+          "value": "2544.6"
+        },
+        {
+          "key": "2001",
+          "value": "2044.9"
+        },
+        {
+          "key": "2002",
+          "value": "2026.9"
+        },
+        {
+          "key": "2003",
+          "value": "1949.3"
+        },
+        {
+          "key": "2004",
+          "value": "2109.5"
+        },
+        {
+          "key": "2005",
+          "value": "1924.8"
+        },
+        {
+          "key": "2006",
+          "value": "2109.4"
+        },
+        {
+          "key": "2007",
+          "value": "2956.1"
+        },
+        {
+          "key": "2008",
+          "value": "2845"
+        },
+        {
+          "key": "2009",
+          "value": "2141.8"
+        },
+        {
+          "key": "2010",
+          "value": "2384.3"
+        },
+        {
+          "key": "2011",
+          "value": "2587.2"
+        },
+        {
+          "key": "2012",
+          "value": "2707.7"
+        },
+        {
+          "key": "2013",
+          "value": "2903"
+        },
+        {
+          "key": "2014",
+          "value": "3010.5"
+        },
+        {
+          "key": "2015",
+          "value": "3248.8"
+        },
+        {
+          "key": "2016",
+          "value": "3208.9"
+        },
+        {
+          "key": "2017",
+          "value": "3279.1"
+        },
+        {
+          "key": "2018",
+          "value": "3489.7"
+        },
+        {
+          "key": "2019",
+          "value": "3409.4"
+        },
+        {
+          "key": "2020",
+          "value": "3181.4"
+        },
+        {
+          "key": "2021",
+          "value": "3610.3"
+        },
+        {
+          "key": "2022",
+          "value": "3946.4"
+        },
+        {
+          "key": "2023",
+          "value": "4058.5"
+        },
+        {
+          "key": "2024",
+          "value": "4675.1"
+        },
+        {
+          "key": "2025",
+          "value": "5475.1"
+        },
+        {
+          "key": "2026",
+          "value": "3904.4"
+        }
+      ]
+    },
+    {
+      "seriesNo": "1.3",
+      "rowText": "Others",
+      "uoM": "Million Dollars",
+      "footnote": "Includes miscellaneous operating revenue.  From FY2026 onwards, this also includes fines and penalties, and reimbursements.  Year-on-year comparison for Fees and Charges (Excluding Vehicle Quota Premiums) and Others between FY2025 and FY2026 may not be meaningful due to changes in scope (see explanatory notes in the Revenue and Expenditure Estimates for the Financial Year 2026/2027 published by the Ministry of Finance)   www.singaporebudget.gov.sg/revenue-and-expenditure/revenue-expenditure-estimates",
+      "columns": [
+        {
+          "key": "1997",
+          "value": "2170"
+        },
+        {
+          "key": "1998",
+          "value": "3207.6"
+        },
+        {
+          "key": "1999",
+          "value": "3457.9"
+        },
+        {
+          "key": "2000",
+          "value": "162.1"
+        },
+        {
+          "key": "2001",
+          "value": "189.7"
+        },
+        {
+          "key": "2002",
+          "value": "161.6"
+        },
+        {
+          "key": "2003",
+          "value": "321.3"
+        },
+        {
+          "key": "2004",
+          "value": "304.7"
+        },
+        {
+          "key": "2005",
+          "value": "238.1"
+        },
+        {
+          "key": "2006",
+          "value": "259.1"
+        },
+        {
+          "key": "2007",
+          "value": "114.9"
+        },
+        {
+          "key": "2008",
+          "value": "165"
+        },
+        {
+          "key": "2009",
+          "value": "164.8"
+        },
+        {
+          "key": "2010",
+          "value": "225.8"
+        },
+        {
+          "key": "2011",
+          "value": "302"
+        },
+        {
+          "key": "2012",
+          "value": "416.1"
+        },
+        {
+          "key": "2013",
+          "value": "250"
+        },
+        {
+          "key": "2014",
+          "value": "323.8"
+        },
+        {
+          "key": "2015",
+          "value": "502.2"
+        },
+        {
+          "key": "2016",
+          "value": "505.7"
+        },
+        {
+          "key": "2017",
+          "value": "377.8"
+        },
+        {
+          "key": "2018",
+          "value": "429.6"
+        },
+        {
+          "key": "2019",
+          "value": "353.9"
+        },
+        {
+          "key": "2020",
+          "value": "489.4"
+        },
+        {
+          "key": "2021",
+          "value": "897.5"
+        },
+        {
+          "key": "2022",
+          "value": "597.7"
+        },
+        {
+          "key": "2023",
+          "value": "565.3"
+        },
+        {
+          "key": "2024",
+          "value": "590.4"
+        },
+        {
+          "key": "2025",
+          "value": "892.5"
+        },
+        {
+          "key": "2026",
+          "value": "2008"
+        }
+      ]
+    }
+  ]
+}

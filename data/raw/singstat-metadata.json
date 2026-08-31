@@ -1,7 +1,7 @@
 {
-  "generated": "2026-08-31T08:59:20Z",
+  "generated": "2026-08-31T09:14:37Z",
   "generated_by": "src/ingest/pull_singstat.py",
-  "note": "Metadata only. No series values are pulled here.",
+  "note": "Metadata for every table listed. Values are pulled only for the tables adopted into section 8, and are saved as served in their own files.",
   "tables": {
     "M651121": {
       "id": "M651121",
@@ -314,8 +314,8 @@
           "footnote": null
         }
       ],
-      "republished_on_datagov_as": "d_22094bf608253d36c0c63b52d852dd6e",
-      "role": "source of a section 8 dataset"
+      "role": "upstream of a section 8 data.gov.sg source, metadata only",
+      "republished_on_datagov_as": "d_22094bf608253d36c0c63b52d852dd6e"
     },
     "M650341": {
       "id": "M650341",
@@ -376,8 +376,8 @@
           "footnote": "Includes vehicles which are exempted from the Vehicle Quota System (VQS), for example, scheduled and school buses, emergency vehicles, diplomatic vehicles, vehicles under the Disabled Person Scheme and vehicles for off-the-road use."
         }
       ],
-      "republished_on_datagov_as": "d_ede1a559013d10f234d209ac5e9fd9b4",
-      "role": "source of a section 8 dataset"
+      "role": "upstream of a section 8 data.gov.sg source, metadata only",
+      "republished_on_datagov_as": "d_ede1a559013d10f234d209ac5e9fd9b4"
     },
     "M650281": {
       "id": "M650281",
@@ -450,8 +450,8 @@
           "footnote": "Includes vehicles which are exempted from the Vehicle Quota System (VQS), for example, scheduled and school buses, emergency vehicles, diplomatic vehicles, vehicles under the Disabled Person Scheme and vehicles for off-the-road use."
         }
       ],
-      "republished_on_datagov_as": "d_529752a3d78beb78bd4f38e3be37f1b6",
-      "role": "source of a section 8 dataset"
+      "role": "upstream of a section 8 data.gov.sg source, metadata only",
+      "republished_on_datagov_as": "d_529752a3d78beb78bd4f38e3be37f1b6"
     },
     "M650321": {
       "id": "M650321",
@@ -494,8 +494,8 @@
           "footnote": null
         }
       ],
-      "republished_on_datagov_as": "d_f73d13943f7a3cc1aca76b18fea75013",
-      "role": "source of a section 8 dataset"
+      "role": "upstream of a section 8 data.gov.sg source, metadata only",
+      "republished_on_datagov_as": "d_f73d13943f7a3cc1aca76b18fea75013"
     },
     "M650291": {
       "id": "M650291",
@@ -556,8 +556,12 @@
           "footnote": "Includes vehicles which are exempted from the Vehicle Quota System (VQS), for example, scheduled and school buses, emergency vehicles, diplomatic vehicles, vehicles under the Disabled Person Scheme and vehicles for off-the-road use."
         }
       ],
-      "role": "candidate, not in section 8",
-      "why_pulled": "Monthly deregistrations under the VQS, by category. Section 8 states deregistration counts are not published as a standalone series and stage 4 budgets a week to extract them from Annex A PDFs. This table is that series."
+      "role": "primary for deregistrations, conditional on A-16",
+      "condition": "Reconcile against three or four Annex A quarters straddling February 2023 before stage 4 drops the PDF extraction. The open question is whether this published count is the same quantity as the effective deregistrations net of guaranteed deregistrations that the quota formula uses.",
+      "file": "vqs-deregistrations-monthly.json",
+      "series_count": 8,
+      "widest_span": "1990 May to 2026 Jul",
+      "longest_series_periods": 435
     },
     "M130571": {
       "id": "M130571",
@@ -744,8 +748,12 @@
           "footnote": "Includes miscellaneous operating revenue.  From FY2026 onwards, this also includes fines and penalties, and reimbursements.  Year-on-year comparison for Fees and Charges (Excluding Vehicle Quota Premiums) and Others between FY2025 and FY2026 may not be meaningful due to changes in scope (see explanatory notes in the Revenue and Expenditure Estimates for the Financial Year 2026/2027 published by the Ministry of Finance)   www.singaporebudget.gov.sg/revenue-and-expenditure/revenue-expenditure-estimates"
         }
       ],
-      "role": "candidate, not in section 8",
-      "why_pulled": "Government operating revenue, annual, including a Vehicle Quota Premiums line. Candidate ground truth for the A-10 reconciliation, which section 8 currently sources from the MOF Analysis of Revenue and Expenditure."
+      "role": "primary for the A-10 reconciliation target",
+      "condition": "Spot check one financial year against the MOF Analysis of Revenue and Expenditure before A-10 is run against it. Actual figures run to FY2024 only.",
+      "file": "government-operating-revenue-annual.json",
+      "series_count": 29,
+      "widest_span": "1997 to 2026",
+      "longest_series_periods": 30
     }
   }
 }
