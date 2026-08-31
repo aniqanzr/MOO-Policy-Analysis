@@ -16,11 +16,10 @@ copies of one series invites reading the wrong one.
 Two further tables were adopted into section 8 at the stage 2 gate, and for those SingStat is
 the source rather than the upstream, so metadata and values are both pulled.
 
-M650291, monthly deregistrations under the VQS. Adopted as primary for deregistrations,
-conditional on the A-16 reconciliation against Annex A quarters straddling February 2023.
-
-M130571, government operating revenue, for the Vehicle Quota Premiums line. Adopted as primary
-for the A-10 reconciliation target, with a spot check against the MOF document as verification.
+Which tables those are comes from `sources.py`, not from a list here, so the registry stays the
+one place section 8 is written down. M650291 is primary for deregistrations and M130571 is the
+A-10 reconciliation target. The condition each adoption carries is recorded below and in the
+register.
 
 Responses are saved as served, as JSON. Reshaping to CSV would drop the per-series footnotes,
 and on both these tables the footnotes carry conditions the model has to respect: which years
@@ -36,6 +35,7 @@ from pathlib import Path
 import requests
 
 from src.ingest.singstat import SingStatError, metadata, series_span, tabledata
+from src.ingest.sources import SINGSTAT, by_key
 
 OUT_DIR = Path(__file__).resolve().parents[2] / "data" / "raw"
 METADATA_FILE = "singstat-metadata.json"
@@ -48,26 +48,19 @@ UPSTREAM_OF_DATAGOV = {
     "M650321": "d_f73d13943f7a3cc1aca76b18fea75013",
 }
 
-# Adopted into section 8 at the stage 2 gate. Metadata and values.
-ADOPTED = {
-    "M650291": {
-        "slug": "vqs-deregistrations-monthly",
-        "role": "primary for deregistrations, conditional on A-16",
-        "condition": (
-            "Reconcile against three or four Annex A quarters straddling February 2023 before "
-            "stage 4 drops the PDF extraction. The open question is whether this published "
-            "count is the same quantity as the effective deregistrations net of guaranteed "
-            "deregistrations that the quota formula uses."
-        ),
-    },
-    "M130571": {
-        "slug": "government-operating-revenue-annual",
-        "role": "primary for the A-10 reconciliation target",
-        "condition": (
-            "Spot check one financial year against the MOF Analysis of Revenue and Expenditure "
-            "before A-10 is run against it. Actual figures run to FY2024 only."
-        ),
-    },
+# Adopted into section 8 at the stage 2 gate. Read from the registry rather than restated
+# here, so the two cannot drift. The conditions attached to each adoption live with the source.
+ADOPTED = {source.table_id: source for source in SINGSTAT}
+
+CONDITIONS = {
+    "M650291": (
+        "Reconciled against four Annex A quarters straddling February 2023. What it carries is "
+        "row B1, gross, not the effective figure net of guaranteed deregistrations. See A-16."
+    ),
+    "M130571": (
+        "Spot check one financial year against the MOF Analysis of Revenue and Expenditure "
+        "before A-10 is run against it. Actual figures run to FY2024 only. See A-17."
+    ),
 }
 
 KEEP = ("id", "title", "frequency", "dataSource", "footnote",
@@ -108,7 +101,7 @@ def main(argv=None):
             entry["republished_on_datagov_as"] = resource_id
             tables[table_id] = entry
 
-        for table_id, spec in ADOPTED.items():
+        for table_id, source in ADOPTED.items():
             try:
                 entry = summarise(metadata(session, table_id))
                 data = tabledata(session, table_id)
@@ -116,13 +109,13 @@ def main(argv=None):
                 failures.append((table_id, str(exc)))
                 continue
 
-            filename = f"{spec['slug']}.json"
+            filename = source.raw_filename
             payload = json.dumps(data, indent=2) + "\n"
             (args.out / filename).write_text(payload)
 
             first, last, longest = series_span(data)
-            entry["role"] = spec["role"]
-            entry["condition"] = spec["condition"]
+            entry["role"] = f"section 8 primary, needed for {', '.join(source.needed_for)}"
+            entry["condition"] = CONDITIONS[table_id]
             entry["file"] = filename
             entry["series_count"] = len(data["row"])
             entry["widest_span"] = f"{first} to {last}"

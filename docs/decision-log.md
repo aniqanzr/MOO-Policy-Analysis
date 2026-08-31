@@ -297,3 +297,79 @@ needs an account key nobody has.
 
 Recorded so it does not read as an open blocker. If A-04 turns out to need renewal counts that
 nothing else supplies, it comes back at stage 4 with the content claim verified first.
+
+## 2026-08-31. No credential in the repo or the environment, DataMall deferred
+
+`data/raw/README.md` was going to tell future sessions to put an LTA DataMall account key in a
+`.env` file. That is wrong for this setup and the instruction was removed before it could be
+followed.
+
+Three storage options were on the table and all three leak. A committed `.env` publishes the key
+the moment the repo goes public, which it will. An uncommitted `.env` does not survive between
+sessions, because the build runs in Claude Code on the web where there is no durable local
+filesystem, so the only way to make one persist is to commit it. A cloud environment variable is
+visible to anyone using the environment, so it is not private either.
+
+Decided: no credential goes in the repo or the environment at all. A source that needs an account
+key is deferred rather than authenticated. `src/ingest/fetch.py` reads no environment variable and
+touches only open endpoints. `.env` stays in `.gitignore` as a safety net against an accidental
+commit, which is not the same as permission to create one. The rule is written into `CLAUDE.md`
+so it binds future sessions, and stage 0 in `docs/BUILD_SEQUENCE.md` no longer reads as though a
+credential file is expected.
+
+DataMall static data, MVP01 and MVP02, is the one section 8 source affected. It is marked
+`deferred` in `src/ingest/sources.py`. Nothing currently depends on it: every other section 8
+source is open, and the VQS population and new registration series cover the accumulator's
+inputs. Revalidation counts only become load-bearing if stage 7 shows the accumulator cannot
+reproduce the published population series without them, which is A-04's falsification test.
+
+Alternative considered: keep the DataMall pull and have each session paste a key at runtime. Not
+taken. It makes the pipeline non-reproducible from a clean clone, which is the thing raw data is
+committed to preserve, and it puts a live key one careless commit away from a public repo. If the
+files turn out to be needed they get downloaded by hand through a browser and committed as data,
+which reproduces cleanly and involves no key.
+
+## 2026-08-31. Stage 2 gate not passed: every source host is blocked at the egress proxy
+
+**Superseded the same day. Read the entries below.** This records a parallel session whose
+egress policy blocked every section 8 host. A second session on a different environment
+reached all of them, verified the eight dataset ids and pulled the files now in `data/raw`.
+Kept because the failure was real and the reasoning about not routing around a policy denial
+stands. The conclusion that stage 2 had nothing does not.
+
+The pull script is written and the source list is complete, but not one dataset id has been
+verified to resolve and no file has been downloaded. Every host in section 8 is refused at the
+network egress proxy with a 403 on CONNECT: `data.gov.sg`, `www.data.gov.sg`,
+`api-production.data.gov.sg`, `api-open.data.gov.sg`, `tablebuilder.singstat.gov.sg`,
+`www.lta.gov.sg`, `www.mof.gov.sg` and `datamall2.mytransport.sg`. Both the shell and the
+fetch tool are refused, so this is the environment's policy rather than a client problem, and
+the proxy documentation says not to route around a policy denial.
+
+Recorded rather than worked around. `python -m src.ingest.fetch --check-only` reproduces it and
+names each failure. Stage 2's gate is knowing exactly what you have, and right now the answer is
+nothing, so stages 3 and 4 do not start. The failed run's `manifest.json` was deleted rather than
+committed: a manifest is a record of what was retrieved, and committing one full of proxy errors
+would put a false state in a clean clone.
+
+Section 8 warns that ids and coverage change, so the ids are carried forward as unverified. If
+one has moved, that surfaces on the first successful run and gets logged then.
+
+## 2026-08-31. One source registry, not two
+
+Two sessions ran stage 2 in parallel and each wrote a section 8 registry: `sources.py` with a
+`Source` dataclass keyed by method, and a second registry inside this branch's pull scripts.
+Merging them left the repo with two machine-readable copies of section 8, which is the exact
+drift `tests/test_ingest_sources.py` exists to catch.
+
+Kept `sources.py` and its test contract, because the test came with it and a registry with an
+enforced shape beats a registry without one. Folded this branch's verified coverage into it,
+since that side actually reached the hosts and the other side could not.
+
+The other session's `fetch.py` is dropped in favour of `pull_datagov.py`. Not a quality
+judgement on the code, which is reasonable. It targets `api-production.data.gov.sg` for
+metadata, which is blocked here and was never reached there, so nothing in it has run against a
+live endpoint. `pull_datagov.py` pulled all eight files twice with identical checksums.
+
+Alternative considered: keeping both and letting them converge later. Rejected. Two registries
+disagreeing about what section 8 says is worse than either being wrong on its own, because
+nothing would say which one the pipeline read.

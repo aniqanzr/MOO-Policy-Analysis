@@ -24,9 +24,11 @@ import csv
 import sys
 from pathlib import Path
 
+from src.ingest.sources import by_key
+
 RAW_DIR = Path(__file__).resolve().parents[2] / "data" / "raw"
-LONG_FILE = "coe-bidding-results.csv"
-WIDE_FILE = "quota-premium-monthly.csv"
+LONG_FILE = by_key("coe_bidding_results").raw_filename
+WIDE_FILE = by_key("quota_and_premium_monthly").raw_filename
 
 # Category labels in the long table mapped to the series-name prefix in the wide table.
 CATEGORIES = {
@@ -51,6 +53,15 @@ ORDINALS = {"1": "1st", "2": "2nd"}
 
 # The wide table writes a suspended or unpublished exercise as one of these.
 MISSING = {"", "-", "na", "n.a.", "s"}
+
+# The two conflicts found when this check was written, both in the long table, both repeating
+# the value from the row above. Recorded so the script can tell an already-understood defect
+# from a new one. A-12 says the thing to watch for is a third conflict appearing, which would
+# mean the upstream table changed, so that is what the exit status reports.
+KNOWN_CONFLICTS = {
+    ("2010-01", "2", "Category D", "premium", "20090", "852"),
+    ("2010-02", "1", "Category B", "quota", "1154", "693"),
+}
 
 
 def wide_column(month):
@@ -147,10 +158,15 @@ def main(argv=None):
         print("  the long table writes thousands separators, the wide table does not.")
         print("  read those columns as strings and strip commas before any numeric use.")
 
+    unexpected = [c for c in conflicts if tuple(c) not in KNOWN_CONFLICTS]
+    missing = KNOWN_CONFLICTS - {tuple(c) for c in conflicts}
+
     print(f"\ngenuine value conflicts: {len(conflicts)}")
-    for month, bidding, category, field, left, right in conflicts:
+    for record in conflicts:
+        month, bidding, category, field, left, right = record
+        status = "new" if tuple(record) not in KNOWN_CONFLICTS else "known, see A-12"
         print(f"  {month} bidding {bidding} {category} {field}: "
-              f"long={left} wide={right}")
+              f"long={left} wide={right}  [{status}]")
         if field == "quota":
             parts, published = category_totals(header, wide, month, ORDINALS[bidding])
             if published is not None:
@@ -158,8 +174,20 @@ def main(argv=None):
                 print(f"    wide per-category quota sums to {parts} against its own "
                       f"published total of {published}, {agrees}")
 
+    if missing:
+        print("\nConflicts recorded in A-12 that no longer appear:")
+        for month, bidding, category, field, left, right in sorted(missing):
+            print(f"  {month} bidding {bidding} {category} {field}")
+        print("  Upstream may have fixed them. Update A-12 and KNOWN_CONFLICTS.")
+
+    if unexpected:
+        print(f"\n{len(unexpected)} conflict(s) not recorded in A-12. The upstream table has")
+        print("changed. Investigate before running anything downstream.")
+
     print()
-    return 1 if conflicts else 0
+    # Nonzero on a change, not on the defects already understood and written up. A check that
+    # always fails is a check nobody reads.
+    return 1 if (unexpected or missing) else 0
 
 
 if __name__ == "__main__":

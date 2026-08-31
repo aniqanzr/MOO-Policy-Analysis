@@ -1,7 +1,9 @@
-"""Scripted pulls of the raw sources listed in section 8 of docs/PROJECT_BRIEF.md.
+"""Stage 2 ingestion: the source registry and the data.gov.sg pull script.
 
-Nothing in this package cleans, reshapes or interprets anything. It fetches published files
-as they are served, writes them to /data/raw unchanged, and records what was fetched. Cleaning
-happens downstream against the committed bytes, so a clean clone reproduces the pipeline
-without hitting the network again.
+Section 8 of docs/PROJECT_BRIEF.md names every dataset. `sources.py` restates that list in
+one machine-readable place so the pull script and `data/raw/README.md` cannot drift apart
+from it. `fetch.py` pulls the scriptable ones and records what it got.
+
+No credential is read, stored or required anywhere in this package. Sources that need one
+are deferred, not authenticated. See `data/raw/README.md`.
 """

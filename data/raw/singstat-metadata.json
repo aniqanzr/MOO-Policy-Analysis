@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-31T09:14:37Z",
+  "generated": "2026-08-31T09:29:40Z",
   "generated_by": "src/ingest/pull_singstat.py",
   "note": "Metadata for every table listed. Values are pulled only for the tables adopted into section 8, and are saved as served in their own files.",
   "tables": {
@@ -556,9 +556,9 @@
           "footnote": "Includes vehicles which are exempted from the Vehicle Quota System (VQS), for example, scheduled and school buses, emergency vehicles, diplomatic vehicles, vehicles under the Disabled Person Scheme and vehicles for off-the-road use."
         }
       ],
-      "role": "primary for deregistrations, conditional on A-16",
-      "condition": "Reconcile against three or four Annex A quarters straddling February 2023 before stage 4 drops the PDF extraction. The open question is whether this published count is the same quantity as the effective deregistrations net of guaranteed deregistrations that the quota formula uses.",
-      "file": "vqs-deregistrations-monthly.json",
+      "role": "section 8 primary, needed for 4 deregistrations, 10 quota formula, 7 accumulator backtest",
+      "condition": "Reconciled against four Annex A quarters straddling February 2023. What it carries is row B1, gross, not the effective figure net of guaranteed deregistrations. See A-16.",
+      "file": "vqs_deregistrations_monthly.json",
       "series_count": 8,
       "widest_span": "1990 May to 2026 Jul",
       "longest_series_periods": 435
@@ -748,9 +748,9 @@
           "footnote": "Includes miscellaneous operating revenue.  From FY2026 onwards, this also includes fines and penalties, and reimbursements.  Year-on-year comparison for Fees and Charges (Excluding Vehicle Quota Premiums) and Others between FY2025 and FY2026 may not be meaningful due to changes in scope (see explanatory notes in the Revenue and Expenditure Estimates for the Financial Year 2026/2027 published by the Ministry of Finance)   www.singaporebudget.gov.sg/revenue-and-expenditure/revenue-expenditure-estimates"
         }
       ],
-      "role": "primary for the A-10 reconciliation target",
-      "condition": "Spot check one financial year against the MOF Analysis of Revenue and Expenditure before A-10 is run against it. Actual figures run to FY2024 only.",
-      "file": "government-operating-revenue-annual.json",
+      "role": "section 8 primary, needed for 3 revenue reconciliation",
+      "condition": "Spot check one financial year against the MOF Analysis of Revenue and Expenditure before A-10 is run against it. Actual figures run to FY2024 only. See A-17.",
+      "file": "government_operating_revenue_annual.json",
       "series_count": 29,
       "widest_span": "1997 to 2026",
       "longest_series_periods": 30

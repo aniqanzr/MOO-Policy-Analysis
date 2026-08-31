@@ -15,7 +15,8 @@ Week one covers stages 0 through 9. The brief freezes at the end of stage 9.
 
 ### Stage 0. Setup
 Repo, `docs/` in place with the brief, assumptions register and this file, `CLAUDE.md` at root,
-dependencies installed, `.env` gitignored.
+dependencies installed, `.env` gitignored as a safety net. No credential is stored in the
+repo or the environment; see the rule in `CLAUDE.md`.
 
 **Gate:** none. Housekeeping.
 

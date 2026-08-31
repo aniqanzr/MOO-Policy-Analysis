@@ -34,7 +34,7 @@ from src.ingest.datagov import (
     download_via_datastore,
 )
 from src.ingest.periods import covers, span
-from src.ingest.sources import SOURCES, WIDE
+from src.ingest.sources import DATASTORE
 
 RAW_DIR = Path(__file__).resolve().parents[2] / "data" / "raw"
 MANIFEST = "manifest.json"
@@ -49,7 +49,7 @@ def read_periods(source, text):
     except StopIteration:
         return []
 
-    if source.shape == WIDE:
+    if source.shape == "wide":
         return [column for column in header if column != "DataSeries"]
 
     if source.period_field not in header:
@@ -87,14 +87,14 @@ def measure(source, payload):
 def pull_one(session, source, out_dir, verify_only):
     """Verify one source and, unless verifying only, download and measure it."""
     entry = {
-        "slug": source.slug,
-        "resource_id": source.resource_id,
+        "key": source.key,
+        "dataset_id": source.dataset_id,
         "title": source.title,
-        "note": source.note,
+        "needed_for": list(source.needed_for),
     }
 
     try:
-        described = describe(session, source.resource_id)
+        described = describe(session, source.dataset_id)
     except ThrottledError as exc:
         entry["status"] = "throttled"
         entry["error"] = str(exc)
@@ -117,12 +117,12 @@ def pull_one(session, source, out_dir, verify_only):
         return entry
 
     try:
-        payload = download_published_csv(session, source.resource_id)
+        payload = download_published_csv(session, source.dataset_id)
         entry["retrieved_via"] = "published-csv"
     except (SourceError, requests.RequestException) as exc:
         entry["published_csv_error"] = str(exc)
         try:
-            payload = download_via_datastore(session, source.resource_id)
+            payload = download_via_datastore(session, source.dataset_id)
             entry["retrieved_via"] = "datastore-rebuild"
         except ThrottledError as fallback_exc:
             entry["status"] = "throttled"
@@ -133,7 +133,7 @@ def pull_one(session, source, out_dir, verify_only):
             entry["error"] = str(fallback_exc)
             return entry
 
-    filename = f"{source.slug}.csv"
+    filename = source.raw_filename
     (out_dir / filename).write_bytes(payload)
     entry["file"] = filename
     entry["status"] = "downloaded"
@@ -146,8 +146,8 @@ def report(entries, stream=sys.stdout):
     write = lambda line="": print(line, file=stream)
 
     write("")
-    write(f"{'source':<32}{'status':<13}{'rows':>7}  coverage")
-    write("-" * 88)
+    write(f"{'source':<36}{'status':<13}{'rows':>7}  coverage")
+    write("-" * 92)
     for entry in entries:
         coverage = ""
         if entry.get("period_first"):
@@ -155,7 +155,7 @@ def report(entries, stream=sys.stdout):
             if entry.get("period_ordering") == "file":
                 coverage += " (file order)"
         write(
-            f"{entry['slug']:<32}{entry['status']:<13}"
+            f"{entry['key']:<36}{entry['status']:<13}"
             f"{entry.get('rows', ''):>7}  {coverage}"
         )
 
@@ -169,7 +169,7 @@ def report(entries, stream=sys.stdout):
         write("Coverage narrower than section 8 claims:")
         for entry in mismatches:
             write(
-                f"  {entry['slug']}: section 8 says from {entry['claimed_start']}, "
+                f"  {entry['key']}: section 8 says from {entry['claimed_start']}, "
                 f"the file starts at {entry['period_first']}"
             )
 
@@ -177,19 +177,19 @@ def report(entries, stream=sys.stdout):
         write("")
         write("Rebuilt from datastore records rather than the published CSV:")
         for entry in rebuilt:
-            write(f"  {entry['slug']}: {entry.get('published_csv_error', '')}")
+            write(f"  {entry['key']}: {entry.get('published_csv_error', '')}")
 
     if throttled:
         write("")
         write("Rate limited, not resolved either way. Re-run before concluding anything:")
         for entry in throttled:
-            write(f"  {entry['slug']} ({entry['resource_id']}): {entry['error']}")
+            write(f"  {entry['key']} ({entry['dataset_id']}): {entry['error']}")
 
     if unreachable:
         write("")
         write("Could not be reached:")
         for entry in unreachable:
-            write(f"  {entry['slug']} ({entry['resource_id']}): {entry['error']}")
+            write(f"  {entry['key']} ({entry['dataset_id']}): {entry['error']}")
 
     write("")
     return not unreachable and not throttled
@@ -207,7 +207,7 @@ def main(argv=None):
         args.out.mkdir(parents=True, exist_ok=True)
 
     with requests.Session() as session:
-        entries = [pull_one(session, s, args.out, args.verify) for s in SOURCES]
+        entries = [pull_one(session, s, args.out, args.verify) for s in DATASTORE]
 
     if not args.verify:
         manifest = {

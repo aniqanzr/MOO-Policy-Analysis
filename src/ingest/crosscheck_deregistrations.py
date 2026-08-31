@@ -26,9 +26,10 @@ import sys
 from pathlib import Path
 
 from src.ingest.annexa import QUARTERS
+from src.ingest.sources import by_key
 
 RAW = Path(__file__).resolve().parents[2] / "data" / "raw"
-SERIES_FILE = "vqs-deregistrations-monthly.json"
+SERIES_FILE = by_key("vqs_deregistrations_monthly").raw_filename
 
 MONTHS = ("Jan", "Feb", "Mar", "Apr", "May", "Jun",
           "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
