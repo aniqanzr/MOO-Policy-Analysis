@@ -89,6 +89,15 @@ Notes:        Three complications confirmed by the scan. COEs can be renewed by 
               term in the quota formula refers to, so it is large enough that LTA accounts
               for it explicitly. The backtest is the arbiter.
 
+              2026-08-31. Renewal counts would be easiest to read straight off the LTA
+              DataMall MVP01 and MVP02 tables, which include COE revalidation counts. DataMall
+              needs an account key and this project stores no credential, so that source is
+              deferred and the backtest runs without it. See the decision log entry of the same
+              date. If the accumulator cannot reproduce the published series and renewals are
+              the reason, the files get downloaded by hand and committed. That is the point at
+              which this row's falsification test would otherwise be answered by a data gap
+              rather than by the model.
+
 ### A-05. The BPR volume-delay function adequately maps vehicle population to congestion
 Status:       unverified
 Source:       standard transport literature
