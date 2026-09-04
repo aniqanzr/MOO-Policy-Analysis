@@ -266,3 +266,59 @@ Rejected because O3 needs this arithmetic at stage 10 and importing it from the 
 would be worse. A new `src/validate` package was also considered and rejected: section 7 fixes
 the layout and one more package for one file is not worth the drift.
 
+## 2026-09-04. A-20 was tested on the source rather than on MOF
+
+A-20 recorded that computed revenue runs above the published line before FY2010 and below it
+after, with no cause. The obvious next move was an MOF document from that era. Not taken, and
+not only because it is a manual download.
+
+A break in a ratio can sit in either term. The term that matters for the rest of the build is
+`quota-premium-monthly`, because it is the only source for 2002 to 2009 and that span is where
+stage 6 would see elasticity drift if there is any. If the columns changed meaning at 2010, the
+revenue divergence would be the least of it: the premium fit would read a data artefact as a
+change in the world. If they did not, the pre-2010 span is usable and the revenue break is
+somebody else's accounting.
+
+Decided: audit the file. `src/ingest/verify_quota_premium.py` runs six checks and
+`tests/test_quota_premium_table.py` holds them as assertions. None of them separates the two
+eras.
+
+The strongest of the six was not planned. The prevailing quota premium is published as the
+moving average of the quota premium over the latest three months in which bidding was held,
+which makes it a third column that has to agree with the premium column arithmetically.
+Computed from the premium column it reproduces every published PQP to within 83 cents, in
+100 percent of category-months, in both eras. That is a much sharper instrument than the
+plausibility checks that were the plan, because three published columns would have had to be
+rewritten together to fake it.
+
+Alternative considered: fitting the premium series and looking for a structural break at 2010.
+Rejected. It answers a different question. A break in a fitted relationship is consistent with
+either a data artefact or a real change in the market, which is the confusion the audit exists
+to remove, and stage 6 would then be reading its own input.
+
+Cost of the choice: this establishes that the columns did not change meaning, not that the
+pre-2010 values are individually right. There is no second table back there to check them
+against value by value, which is what A-12 could do for the overlap. That limit is written into
+A-21 rather than left implied.
+
+## 2026-09-04. The registration check subtracts registrations that need no bid
+
+COEs awarded against new registrations under the VQS looked at first like evidence against the
+later era: the raw ratio sits near 1.00 before 2010 and falls to 0.81 by 2022. Reading that as
+a data problem would have been wrong in an interesting way.
+
+The gap is Category C. In 2022, 7,477 of 9,578 goods vehicle registrations were under the Early
+Turnover Scheme, which issues a replacement COE with no bidding, against 2,017 successful
+Category C bids. Taxis are the same shape since August 2012, when they moved to paying the
+Category A prevailing quota premium. Both schemes post-date the 2010 break, so they make the
+later era look worse for a reason that has nothing to do with the table.
+
+Decided: report both the raw and the adjusted ratio, and subtract only the two registration
+rows that are published as needing no bid. Adjusted, the ratio is 0.99 to 1.05 before the break
+and 0.96 to 1.08 after.
+
+Alternative considered: dropping the check, since it is a magnitude comparison rather than an
+identity and a COE won in one month can be registered in the next. Kept, because it is the only
+external series that covers both eras, and a check that would have caught a factor-of-two error
+is worth having even if it would not catch a five percent one.
+

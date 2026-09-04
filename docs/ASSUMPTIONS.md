@@ -24,6 +24,12 @@ tells you to suspect first were checked and ruled out. A-10 is rewritten, A-17's
 done, and two rows are added: A-19 for what the residual is likely to be, A-20 for the years
 where the published line and the bidding record disagree in the other direction.
 
+**Updated after the A-20 source audit, 2026-09-04.** The pre-2010 break was tested against
+`quota-premium-monthly` rather than against MOF. Six checks, none of which separates the two
+eras, so the columns mean the same thing across 2010 and the 2002 to 2009 span is usable for
+the stage 6 fits. A-21 is the new row and holds the evidence. A-20 keeps its status and now
+says where the break is not.
+
 Everything below carries a source note. Where a source is secondary, that is stated and the
 row is medium-confidence until a primary document is opened.
 
@@ -299,6 +305,13 @@ Notes:        They overlap from 2010-01 and disagree on two of 7,840 compared va
               Re-run the cross-check after any re-pull. A third conflict appearing means the
               upstream table changed and this row needs revisiting.
 
+              2026-09-04. Both defects fall in FY2009, January and February 2010, so neither
+              touches a reconciliation from FY2010 onward. Priced out, the Category D premium
+              error is 7.3 million and the Category B quota error is 10.7 million, both in the
+              long table and both absent from the wide one. Over FY2010 to FY2024 the two
+              tables give revenue figures that agree to the cent, which is the check in
+              A-21.
+
 ### A-13. Published series are internally consistent enough to parse numerically without inspection
 Status:       falsified
 Source:       the committed raw files
@@ -485,6 +498,70 @@ Notes:        From FY2002 to FY2009 the computed figure runs above the published
               series or in any long-run claim about COE revenue. Settling it needs an MOF
               document from that era, which is a manual download and is not worth the time
               before the freeze.
+
+              2026-09-04, the other side of it was tested instead. A break in a ratio can sit
+              in either term, and the bidding table is the term that matters for the rest of
+              the build, because it is the only source for 2002 to 2009. It was audited
+              against the checks in A-21 and nothing separates the two eras. So the break is
+              in the published revenue line and not in `quota-premium-monthly`. That does not
+              explain the line, it locates the thing that needs explaining, and the practical
+              effect above is unchanged.
+
+### A-21. The wide bidding table's columns mean the same thing across the whole span
+Status:       verified, with the limits below
+Source:       `python -m src.ingest.verify_quota_premium`, tests in
+              `tests/test_quota_premium_table.py`. Column definitions from the SingStat
+              M651121 metadata committed at `data/raw/singstat-metadata.json`
+Falsified by: any of the six checks separating the two eras on a re-pull, in particular the
+              PQP identity failing in one era and holding in the other
+Touches:      4.1, 4.4, stage 3, stage 6, A-12, A-20
+Notes:        Opened because A-20 found a break at 2010 and the break has two possible homes.
+              `quota-premium-monthly` is the only source for 2002 to 2009, the long table
+              starts at 2010-01, and stage 6 would read a change in what the columns mean as
+              elasticity drift. So the file was tested rather than the revenue line.
+
+              What the publisher says. Quota, successful bids and bids received are counts.
+              Quota premium and prevailing quota premium are dollars. The period is the month
+              of the bidding exercise. Two exercises are held each month under open bidding,
+              which fully replaced closed bidding from the April 2002 exercise, with February
+              and March 2002 running one of each. "Quota premium is the successful bid price
+              paid by all successful bidders", so it is a per-exercise clearing price, not an
+              average of anything.
+
+              What the file shows. Twenty-four exercises in every full year, eighteen in 2020
+              for the suspension, twenty-two in 2002 because it starts in February. The five
+              category quotas sum to the file's own published total in all 582 exercises,
+              both eras. The two biddings of a month carry the same premium in 1.7 percent of
+              category-months before 2010 and 0.5 percent after, so the premium column is not
+              a monthly figure written twice in either era.
+
+              The sharp check. The prevailing quota premium is published as the moving average
+              of the quota premium over the latest three months in which bidding was held.
+              That makes PQP a function of the premium column. Computed from the premium
+              column, it reproduces every published PQP to within 83 cents, in 100 percent of
+              category-months, 93 per category before 2010 and 199 after. Three published
+              columns would have had to be rewritten together for that to survive a change in
+              meaning.
+
+              Two external checks. COEs awarded track new registrations under the VQS once
+              registrations that need no bid are removed, which are Early Turnover Scheme
+              goods vehicles and taxis paying the prevailing quota premium from August 2012.
+              The adjusted ratio runs 0.99 to 1.05 before the break and 0.96 to 1.08 after.
+              And over FY2010 to FY2024 the wide and long tables give identical revenue under
+              the same multiplication.
+
+              Limits, and they matter. This says the columns did not change meaning, not that
+              the pre-2010 values are individually correct. There is no second table to check
+              them against value by value, which is exactly what A-12 could do for the
+              overlap. The registration check is a magnitude check rather than an identity,
+              since a COE won in one month can be registered in the next. And before August
+              2012 a taxi could bid instead of paying the prevailing quota premium, so the
+              early years subtract a few registrations that did involve a bid.
+
+              For stage 6. The 2002 to 2009 span is usable in the premium fits on the same
+              terms as the rest of the sample. Read a break in the fitted elasticity there as
+              a break in the world, not as a change in the file. The regime changes that do
+              sit in that span are in A-11 and belong in the break table.
 
 ---
 

@@ -479,7 +479,9 @@ detail sits in `data/raw/README.md` and rows A-12 to A-15 of the assumptions reg
   `d_22094bf608253d36c0c63b52d852dd6e`. Coverage 2002Feb to 2026Jul, so this is the only source
   for the 2002 to 2009 span and the reference where it conflicts with the long table. The 2020
   suspension shows as `-` for April, May and June. The footnotes themselves are not in the API
-  payload and have to come from the SingStat table page.
+  payload and have to come from the SingStat table page. Audited at stage 3 and its columns
+  carry the same meaning across the whole span, so the 2002 to 2009 years are usable in the
+  fits. See A-21 and `python -m src.ingest.verify_quota_premium`.
 - LTA quarterly quota press releases with Annex A, containing the full worked quota
   arithmetic. Authoritative source for the formula in 3.1. Pull several quarters, not one.
 
