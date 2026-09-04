@@ -203,6 +203,11 @@ def run(keys: list[str] | None = None, check_only: bool = False) -> dict[str, An
             for s in SOURCES
             if s.method == "manual"
         ],
+        "singstat": [
+            {"key": s.key, "title": s.title, "url": s.url, "needed_for": list(s.needed_for)}
+            for s in SOURCES
+            if s.method == "singstat"
+        ],
         "deferred": [
             {"key": s.key, "title": s.title, "url": s.url, "reason": s.notes}
             for s in SOURCES
@@ -224,7 +229,9 @@ def main(argv: list[str] | None = None) -> int:
     failed = [e for e in manifest["datastore"] if e.get("error")]
 
     print()
-    print("Not fetched by this script, download by hand:")
+    print("Not fetched by this script:")
+    for item in manifest["singstat"]:
+        print(f"  singstat  {item['key']}  {item['url']}")
     for item in manifest["manual"]:
         print(f"  manual    {item['key']}  {item['url']}")
     for item in manifest["deferred"]:

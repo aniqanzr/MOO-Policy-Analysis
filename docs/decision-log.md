@@ -173,3 +173,96 @@ would put a false state in a clean clone.
 
 Section 8 warns that ids and coverage change, so the ids are carried forward as unverified. If
 one has moved, that surfaces on the first successful run and gets logged then.
+
+## 2026-09-04. Stage 3 reconciles against SingStat M130571, with the MOF PDF as the check
+
+Section 8 names the MOF Analysis of Revenue and Expenditure as the reconciliation target. It is
+a PDF. A-17 found the same line published as SingStat table M130571 series 1.2.1, annual, in
+millions of dollars, sourced to the Accountant-General's Department, and warned that A-10
+should not be run against a target that had itself only been assumed to match.
+
+Decided: pull M130571 as the target, and use the MOF document for the spot check rather than as
+the source. `src/ingest/pull_revenue.py` writes `data/raw/vehicle-quota-premiums-annual.csv`
+and a metadata sidecar. `www.singaporebudget.gov.sg` turned out to be reachable now, where
+stage 2 found it blocked, so the check ran in this session instead of waiting on a human. Table
+2.1 of the Review of FY2025 gives 6.38 billion for FY2024 against SingStat's 6379.2 million.
+The PDF is committed and the comparison is a test.
+
+Alternative considered: parse the MOF PDF as the target and skip SingStat. Rejected. The PDF is
+one financial year per document, so a series means a document per year and a parser that breaks
+whenever the layout changes. The machine-readable series reproduces from a clean clone and the
+PDF still does the job that only it can do, which is being a second publication to check
+against.
+
+Cost of the choice: the check covers one year. If AGD and MOF ever diverge on an earlier year,
+this will not notice. A-20 is a reason to think the early years deserve their own look.
+
+## 2026-09-04. The actual-versus-estimate cutoff is read from the footnote, not hardcoded
+
+M130571 publishes FY1997 to FY2026 in one row. FY2026 is budgeted, FY2025 is revised, and
+everything up to FY2024 is actual. Reconciling against an estimate measures the estimate.
+
+Decided: `src/model/revenue.py` reads the sentence "Data up to FY2024 are actual figures" out of
+the committed table footnote and refuses any later year, with the reason in the error. The pull
+script fails loudly if that sentence ever stops appearing, so the two cannot drift apart
+silently.
+
+Alternative considered: a `LATEST_ACTUAL_FY = 2024` constant with a comment. Rejected because it
+goes stale in March every year, silently, and the failure is a reconciliation against a budget
+estimate that looks like a result.
+
+## 2026-09-04. Revenue is computed from the wide table, and both bases are reported
+
+Two choices inside the stage 3 arithmetic, both with a defensible alternative.
+
+Source. Quota, successful bids and premium come from `quota-premium-monthly.csv` rather than
+`coe-bidding-results.csv`. A-12 found two conflicting values and settled the wide table as the
+reference, and the wide table also reaches back to 2002Feb where the long table starts at
+2010-01. The alternative, the long table, is the more convenient shape and is what section 8
+calls the spine of the reconciliation. Taking it would have imported a 23-fold error in the
+January 2010 Category D premium.
+
+Basis. Section 4.4 specifies quota times premium. What was actually paid is successful bids
+times premium, since an undersubscribed exercise issues fewer COEs than it releases. Both are
+computed and both are reported. The gap is 1.4 percent in FY2024, so the choice does not matter
+for the gate, and reporting both costs nothing and makes the definition explicit.
+
+## 2026-09-04. Stage 3 fails its gate, and the residual is recorded rather than closed
+
+Computed revenue is 79.3 percent of the published line for FY2024. The build sequence says a
+failure here is a pipeline bug. Four candidate bugs were checked and ruled out: a missing
+category, fiscal versus calendar misalignment, the suspended 2020 exercises, and the source
+defects in A-12 and A-13. The shortfall survives all four, is one-signed from FY2011 onward,
+and is not sensitive to the choice of basis.
+
+Decided: record the residual and what it most likely is, rather than adding a term to close it.
+A renewal or taxi volume that makes the numbers agree would be a fitted plug, and this project
+does not put an invented number in a config file and call it calibration. A-19 holds the
+explanation and its falsification test, A-10 says what the shortfall costs the model, and O3 is
+labelled bid revenue rather than government revenue everywhere it appears.
+
+Alternative considered: proceeding as though the gate passed on the grounds that 79 percent is
+close enough for a demonstration. Rejected. The gate exists to catch exactly this before
+anything is built on top of it, and the honest version is more interesting than the clean one.
+
+Second alternative considered: stopping the build here until renewal counts are obtained. Not
+taken. The counts sit behind LTA DataMall, which needs an account key and is deferred under the
+no-credential rule, and A-04 already needs the same files for the accumulator at stage 7. If
+they get downloaded by hand for that, this row is answerable at the same time. Blocking week
+one on a manual download that stage 7 will force anyway costs more than it buys.
+
+## 2026-09-04. Stage 3 code sits in src/model, the gate sits in tests
+
+Section 7 puts the revenue reconciliation under `/tests`. The arithmetic it runs on is O3,
+total premium collected, which section 7 puts under `/src/model`.
+
+Decided: split them. `src/model/revenue.py` computes revenue from the bidding record and
+compares it against the published line, and is runnable so the numbers can be read without
+running pytest. `tests/test_revenue_reconciliation.py` is the gate, and pins both the result
+and the four pipeline checks that make the result mean anything.
+
+Alternative considered: putting the whole thing in `tests/`, which is what section 7 says.
+Rejected because O3 needs this arithmetic at stage 10 and importing it from the test package
+would be worse. A new `src/validate` package was also considered and rejected: section 7 fixes
+the layout and one more package for one file is not worth the drift.
+

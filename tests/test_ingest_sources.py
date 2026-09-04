@@ -25,7 +25,7 @@ def test_keys_are_unique():
 
 
 def test_methods_are_known():
-    assert {s.method for s in S.SOURCES} <= {"datastore", "manual", "deferred"}
+    assert {s.method for s in S.SOURCES} <= {"datastore", "singstat", "manual", "deferred"}
 
 
 def test_dataset_ids_belong_to_datastore_sources_only():

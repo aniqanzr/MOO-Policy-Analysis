@@ -508,8 +508,16 @@ Vehicle Statistics and as inputs to the Annex A arithmetic. Extract them from th
   is unconfirmed. BPR capacity scales with it directly. See A-15.
 
 **Revenue**
-- Ministry of Finance Analysis of Revenue and Expenditure, annual. The Vehicle Quota Premiums
-  line under Operating Revenue.
+- Government Operating Revenue, annual, SingStat TableBuilder table `M130571`, series 1.2.1
+  Vehicle Quota Premiums, in millions of dollars, FY1997 to FY2026, sourced to the
+  Accountant-General's Department. This is the stage 3 reconciliation target, pulled by
+  `python -m src.ingest.pull_revenue`. Financial years beginning 1 April. The table footnote
+  says which years are actual figures and which are revised or budgeted estimates, and only
+  actuals are reconciliation targets. Usable from FY2010, see A-20.
+- Ministry of Finance Analysis of Revenue and Expenditure, annual. The same line, one financial
+  year per PDF. Not the target any more, and not needed as one. It is the second publication
+  the SingStat figure is checked against under A-17, and
+  `data/raw/mof-review-of-fy2025.pdf` is the year that check was run on.
 
 **Policy context**
 - MOT newsroom Parliamentary replies and ministerial statements.

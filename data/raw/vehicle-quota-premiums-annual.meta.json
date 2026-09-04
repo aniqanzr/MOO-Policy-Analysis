@@ -1,0 +1,27 @@
+{
+  "generated": "2026-09-04T03:57:47Z",
+  "generated_by": "src/ingest/pull_revenue.py",
+  "endpoint": "https://tablebuilder.singstat.gov.sg/api/table/tabledata/M130571",
+  "params": {
+    "seriesNoORrowNo": "1.2.1"
+  },
+  "table": {
+    "id": "M130571",
+    "title": "Government Operating Revenue, Annual",
+    "frequency": "Annual",
+    "dataSource": "ACCOUNTANT-GENERAL'S DEPARTMENT",
+    "dataLastUpdated": "20/03/2026",
+    "footnote": "Data refer to the Government's financial year, which begins on 1 April of the current year and ends on 31 March of the following year.  Data for FY2026 are budgeted estimates.  Data for FY2025 are revised estimates. Data up to FY2024 are actual figures.  Figures may not add up due to rounding.  A revised estimate refers to updates to a previously published estimate for a given Financial Year (FY).  Actual figures are the finalised, audited financial position of the Government."
+  },
+  "series": {
+    "seriesNo": "1.2.1",
+    "rowText": "Vehicle Quota Premiums",
+    "uoM": "Million Dollars",
+    "footnote": null
+  },
+  "latest_actual_financial_year": 2024,
+  "file": "vehicle-quota-premiums-annual.csv",
+  "rows": 30,
+  "sha256": "564fbdfb03e212cd888142c2e3e7442301fddf480b4a5c6e002ea807745b50aa",
+  "note": "Financial years beginning 1 April, not calendar years. Figures after the latest actual year are revised or budgeted estimates and are not reconciliation targets. See A-10 and A-17."
+}

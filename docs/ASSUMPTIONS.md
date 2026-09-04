@@ -16,6 +16,14 @@ the same numbers agree, that a published file keeps its own formatting conventio
 dataset listed in section 8 is current, that a republication keeps up with its original. Two go
 the other way and remove work rather than adding it, A-16 and A-17. A-05 and A-11 amended.
 A-15 was opened and closed the same day.
+
+**Updated after the stage 3 reconciliation, 2026-09-04.** A-10 ran and did not pass. Computed
+revenue from the bidding record is 79 percent of the published Vehicle Quota Premiums line for
+FY2024, the shortfall is one-signed from FY2011 onward, and the four pipeline causes the brief
+tells you to suspect first were checked and ruled out. A-10 is rewritten, A-17's spot check is
+done, and two rows are added: A-19 for what the residual is likely to be, A-20 for the years
+where the published line and the bidding record disagree in the other direction.
+
 Everything below carries a source note. Where a source is secondary, that is stated and the
 row is medium-confidence until a primary document is opened.
 
@@ -183,16 +191,60 @@ Notes:        The speed series is annual from 2004, so roughly twenty observatio
               do not smooth it. Published road length also covers only LTA-maintained roads.
 
 ### A-10. Computed revenue can be reconciled against published government figures
-Status:       unverified — NEW
-Source:       MOF Analysis of Revenue and Expenditure, "Vehicle Quota Premiums" line
+Status:       falsified as stated. The residual is accepted as a limitation, not closed
+Source:       SingStat table M130571 series 1.2.1, the Vehicle Quota Premiums line, spot
+              checked against the MOF document under A-17. Computation in
+              `src/model/revenue.py`, tests in `tests/test_revenue_reconciliation.py`
 Falsified by: computed revenue diverging from the published figure by more than a reasonable
               margin after period alignment
-Touches:      4.4, 5.4
-Notes:        This is a validation test the project did not previously have, and it is the
-              only one that checks the premium series handling and quota accounting against
-              external ground truth. Two things to get right: the MOF line covers all five
-              categories, and the figures are fiscal years, so align periods before comparing.
-              A failure here is a bug in the pipeline, not a finding about MOF.
+Touches:      4.4, 5.4, O3, stage 3, stage 10
+Notes:        Run 2026-09-04 against FY2024, the latest financial year with actual figures.
+              FY2025 is a revised estimate and FY2026 is budgeted, so both are excluded, and
+              the module refuses them rather than leaving it to whoever runs it. The cutoff is
+              read from the table footnote in the committed metadata, so a re-pull that moves
+              it moves the refusal too.
+
+              FY2024, April 2024 to March 2025, millions of dollars:
+
+                  computed, quota times premium            5,057.4
+                  computed, successful bids times premium  4,987.6
+                  published                                6,379.2
+                  residual                                 1,321.8
+                  computed as a share of published            79.3%
+
+              The brief says a failure here is a pipeline bug rather than a finding about the
+              published figure. Four candidate bugs were checked and none of them accounts for
+              it.
+
+              Categories. All five are summed, per A-06. FY2024 has 24 of 24 exercises and
+              120 of 120 category cells, none missing, and every category contributes.
+
+              Period alignment. Shifting the twelve-month window to the calendar year, one
+              month early and one month late moves the total across a range of 456, against a
+              residual of 1,321.8. Every window falls short of the published figure.
+
+              Suspended exercises. April to June 2020 are absent rather than counted as zero.
+              FY2024 has no suspended exercises in any case.
+
+              Source defects. Quota, successful bids and premium come from the wide table,
+              which A-12 settled as the reference where the two bidding sources conflict, and
+              thousands separators are stripped on read per A-13.
+
+              The choice of basis does not close it either. Successful bids times premium is
+              98.6 percent of quota times premium, so it moves the wrong way and by too
+              little.
+
+              The residual is one-signed from FY2011 onward and its share sits between 78 and
+              92 percent. That pattern is what makes it structural rather than a slip.
+              A-19 records the leading explanation and what would settle it. A-20 records the
+              years before FY2010, where the two run the other way and the reason is not
+              established.
+
+              What this costs the model. O3 computed from the bidding record is bid revenue,
+              which is roughly four fifths of the published line in FY2024. It is not
+              government revenue from the COE system and must not be described as such, and
+              the published line is not a calibration target for it while the missing term is
+              missing.
 
 ### A-11. The structural break table is complete and correctly dated
 Status:       unverified — NEW
@@ -355,6 +407,16 @@ Notes:        Section 8 sources the reconciliation target from the MOF Analysis 
               the reconciliation test and it should not be run against a target that has itself
               only been assumed. Spot-check one year first.
 
+              2026-09-04, done for one year. `www.singaporebudget.gov.sg` is now reachable from
+              this environment, where stage 2 found it blocked. Table 2.1 of "Review of
+              Financial Year 2025", in the Revenue and Expenditure Estimates for FY2026, gives
+              Vehicle Quota Premiums as 6.38 billion actual FY2024. SingStat gives 6379.2
+              million for the same year. The two agree to the precision MOF publishes at. The
+              PDF is committed at `data/raw/mof-review-of-fy2025.pdf` and the check is a test,
+              not a note. One year is one year: this says the two publications carry the same
+              number for FY2024, not that they do for every year, and A-20 is a reason to be
+              careful about the early ones.
+
 ### A-18. data.gov.sg republications are current with their SingStat originals
 Status:       falsified
 Source:       end periods in `data/raw/manifest.json` against `data/raw/singstat-metadata.json`
@@ -369,6 +431,60 @@ Notes:        Every wide source in section 8 is a republished SingStat table, an
               sample period honestly, and not reading a republication lag as a real gap in
               registrations. If the most recent months turn out to matter, pull the wide
               sources from SingStat instead of data.gov.sg.
+
+### A-19. The stage 3 residual is payment made at the prevailing quota premium without a bid
+Status:       unverified — NEW, and the leading explanation of the A-10 shortfall
+Source:       consequence of the stage 3 run. Scheme mechanics from the SingStat M651121
+              footnotes committed at `data/raw/singstat-metadata.json`, which define the
+              prevailing quota premium and record that from 6 August 2012 taxis pay the
+              Category A prevailing quota premium rather than bidding
+Falsified by: a published count of COE renewals over a financial year that, priced at the
+              prevailing quota premium, leaves the residual substantially unexplained; or the
+              residual persisting after such counts are added
+Touches:      4.4, O3, A-04, A-10, stage 3, stage 10
+Notes:        A COE renewal is a payment of the prevailing quota premium with no bid attached.
+              The bidding record cannot contain it, by construction. Taxis have been in the
+              same position since August 2012. Both are vehicle quota premiums and both are
+              missing from anything computed off quota and clearing price, which is the shape
+              the residual has: one-signed, present in every year from FY2011, and largest in
+              the years when premiums are highest.
+
+              Size. FY2024's residual of 1,321.8 million is 16,582 COEs at that year's
+              quota-weighted mean premium of 79,714. That is an arithmetic restatement of the
+              residual, not a renewal count, and it is not evidence for anything on its own.
+
+              No committed source gives renewal counts. LTA DataMall MVP01 and MVP02 do,
+              according to the day one scan, and they are deferred under the no-credential
+              rule with the files to be downloaded by hand if they become load-bearing. A-04
+              already names the same gap for the accumulator. If those files are fetched for
+              stage 7, this row is answerable at the same time and for no extra cost.
+
+              Until then the residual stays unexplained rather than explained-by-assumption,
+              and O3 stays labelled as bid revenue.
+
+### A-20. The published revenue line is comparable with computed bid revenue across the sample
+Status:       falsified — NEW
+Source:       `python -m src.model.revenue --series`, FY2002 to FY2024 against M130571
+Falsified by: n/a
+Touches:      4.4, stage 3, any use of the revenue line before FY2010
+Notes:        From FY2002 to FY2009 the computed figure runs above the published one, not
+              below it. FY2002 is 129 percent of the published line, FY2005 is 563 percent and
+              FY2006 is 1,601 percent, which is 1,497.2 million computed against 93.5 million
+              published. FY2010 sits just above parity at 105 percent and FY2011 just below at
+              99 percent. From FY2011 the sign is stable the other way and stays there.
+
+              The bidding arithmetic is not obviously wrong in those years. Quotas were large
+              and premiums were low, and the computed totals are of a size the exercises
+              support. Something about the published line changed, and no footnote on M130571
+              says what. A netting-off of rebates paid on deregistration would produce this
+              shape in a period of heavy deregistration, but that is a guess and this register
+              does not carry guesses as facts.
+
+              Practical effect. Treat the target as usable from FY2010 onward. Do not
+              reconcile against a pre-2010 year, and do not use the pre-2010 line as a revenue
+              series or in any long-run claim about COE revenue. Settling it needs an MOF
+              document from that era, which is a manual download and is not worth the time
+              before the freeze.
 
 ---
 
