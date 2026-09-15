@@ -68,7 +68,7 @@ the weight simplex map, `src/export` the JSON writers, and `web` the static fron
 reads that JSON.
 
 ## Documentation
-The reasoning behind this project is a deliverable, not scaffolding.
+The reasoning behind this project is a deliverable instead of a scaffolding.
 
 * [`docs/PROJECT_BRIEF.md`](docs/PROJECT_BRIEF.md) - Full specification, model design, data sources, and what may not be claimed.
 * [`docs/ASSUMPTIONS.md`](docs/ASSUMPTIONS.md) - Every belief the model rests on, with a status and a falsification condition.
