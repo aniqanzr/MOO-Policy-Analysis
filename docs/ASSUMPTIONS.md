@@ -43,6 +43,11 @@ and described May 2023 as one change rather than three. The verified table is
 guaranteed deregistrations come from Annex A. A-22 is new: Annex A's own arithmetic does not
 reproduce exactly from its printed inputs, by at most 1.25 COEs.
 
+**Freeze applied, 2026-09-24, retroactive to 29 August.** Findings after that date that were not
+already in the build are post-freeze rows F-01 to F-03 at the end of this file: the A-19 renewal
+test and its two datasets, the O3 framing question, and the cause of the A-20 break. None is
+adopted. Stages 5 to 9 still run as specified. See "The freeze date" in the brief.
+
 Everything below carries a source note. Where a source is secondary, that is stated and the
 row is medium-confidence until a primary document is opened.
 
@@ -523,7 +528,8 @@ Notes:        Every wide source in section 8 is a republished SingStat table, an
               sources from SingStat instead of data.gov.sg.
 
 ### A-19. The stage 3 residual is payment made at the prevailing quota premium without a bid
-Status:       unverified — NEW, and the leading explanation of the A-10 shortfall
+Status:       unverified, and frozen: moved to F-01 on 2026-09-24 and not tested. Still the
+              leading explanation of the A-10 shortfall
 Source:       consequence of the stage 3 run. Scheme mechanics from the SingStat M651121
               footnotes committed at `data/raw/singstat-metadata.json`, which define the
               prevailing quota premium and record that from 6 August 2012 taxis pay the
@@ -576,7 +582,7 @@ Notes:        A COE renewal is a payment of the prevailing quota premium with no
               a catalogue, and nothing reads them yet.
 
 ### A-20. The published revenue line is comparable with computed bid revenue across the sample
-Status:       falsified — NEW
+Status:       falsified. The unexplained cause is frozen as F-03
 Source:       `python -m src.model.revenue --series`, FY2002 to FY2024 against M130571
 Falsified by: n/a
 Touches:      4.4, stage 3, any use of the revenue line before FY2010
@@ -739,3 +745,36 @@ Would have changed: what in the model
 Cost to chase: rough estimate in days
 Decision: not chased, documented
 ```
+
+The freeze took effect on 24 September 2026, retroactive to 29 August. The rows below are the
+findings surfaced after 29 August that were not in the build when it was applied.
+
+### F-01. Whether renewals explain the revenue residual is untested
+Found:     2026-09-04, sharpened 2026-09-24
+Would have changed: A-19 from plausible to measured, and possibly a narrower revenue check over
+           FY2011 to FY2016 using the two open LTA revalidation datasets,
+           `d_71ce745d4e4ea9cd2fea0fdf46412fc8` (annual, 2006 to 2017) and
+           `d_11af4cacfdd459f8712fb903b1639d98` (monthly, 2015 to 2018). Neither is adopted.
+           Neither covers taxis, and neither reaches FY2024, so A-10 would stay failed either way.
+Cost to chase: half a day, the timebox set on 2026-09-24
+Decision: not chased, documented. A-10 stays a failed validation with an unverified mechanism.
+
+### F-02. Whether O3 should be total revenue rather than bid revenue is not decided
+Found:     2026-09-24, from the stage 3 residual
+Would have changed: the definition of O3 at stage 10. Bid revenue leaves out payments at the
+           prevailing quota premium with no bid. The case for keeping it: renewal volumes follow
+           quota decisions made about a decade earlier and barely respond to the levers. The case
+           against: the renewal price is the clearing premium averaged, so a lever that lowers
+           premiums lowers renewal revenue too. Both sides are in the decision log.
+Cost to chase: one to two days, since it needs F-01's data and a model of the renewal price
+           channel. An estimate, not measured.
+Decision: not chased, documented. O3 stays bid revenue as built, labelled as bid revenue
+           wherever it appears. The freeze closes the option by default, not on its merits.
+
+### F-03. The cause of the pre-2010 break in the published revenue line is unknown
+Found:     2026-09-04
+Would have changed: any long-run claim about COE revenue before FY2010. Nothing in the build
+           reads the published line before FY2010, so no model result depends on it. A-21 ruled
+           out the bidding data as the cause.
+Cost to chase: about half a day, for an MOF document from that era, downloaded by hand
+Decision: not chased, documented. The line is treated as usable from FY2010 onward.

@@ -535,3 +535,31 @@ log gets one entry covering all ten rows of `docs/break-table.md`: selected as a
 as a regime split, or left out, with the reason for each. The specification alone would show
 what went in and hide what did not.
 
+## 2026-09-24. The freeze applied retroactively to 29 August
+
+The brief froze at the end of week one, 29 August. It was never applied, and findings kept
+entering the build for four weeks. Applied now, retroactive to that date, on the user's
+instruction.
+
+What stays: everything already in the build, stages 2 to 4 and the brief edits made through
+today. What goes post-freeze and is not adopted: the A-19 renewal test and the two revalidation
+datasets (F-01), the O3 framing question (F-02), and the cause of the A-20 break (F-03).
+
+One reading had to be chosen, and it could have gone the other way. Stages 5 to 9 have not run,
+so they all run after the freeze. Read literally, "findings do not enter the build at all"
+would stop a stage 5 failure from triggering the lever redesign the build sequence prescribes
+for it, which makes the rule unmeetable. Decided: each stage runs as specified, including the
+on-failure branch it names, because that branch is part of the frozen plan. Anything beyond
+it is post-freeze. The alternative, treating any stage 5 to 9 outcome that changes the build as
+post-freeze, would mean a failed gate could only be written up and never acted on. Raised with
+the user for confirmation.
+
+F-02 closes the open O3 option from earlier today by default rather than on its merits. That is
+a consequence of the freeze and is stated as such in the row.
+
+## 2026-09-24. The brief records the calendar as it happened
+
+Planned: three weeks from 23 August. Actual, at 24 September: four working days across 33
+calendar days. Recorded in section 10 of the brief and in the case study, which carries the
+real timeline rather than the intended one.
+
