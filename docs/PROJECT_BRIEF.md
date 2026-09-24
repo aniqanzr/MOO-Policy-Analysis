@@ -123,6 +123,11 @@ Quota = growth allowance
                      guaranteed-deregistration redistribution, discretionary injection)
 ```
 
+This is the formula from February 2023. Before it, the replacement term used one quarter of
+deregistrations at 100 percent until July 2022, then a rolling two quarters at 50 percent from
+August 2022. Anything run over history needs the regime that applied at the time. See A-22 and
+`docs/break-table.md`.
+
 **The 25 percent in the replacement term is not a policy rate.** It is one quarter of the
 trailing annual figure, converting an annual count into a quarterly quota. Do not treat it
 as a lever. It is arithmetic.
@@ -296,6 +301,12 @@ tooltip on the chart.
 Published datasets flag some of these in footnotes and not others. There is no
 machine-readable break column. Build the break table yourself from the above, verify each
 date against a primary source, and treat the table as part of the deliverable.
+
+**The table above is the day one scan's and is superseded by `docs/break-table.md`,** verified
+at stage 4 against committed LTA primary sources. The verified table adds a regime the scan
+missed, a rolling two-quarter average from 1 August 2022, moves the end of the 2020 quota return
+from July to June 2021, and splits May 2023 into its three changes. Use that file, not this one.
+The rows here are left as the scan recorded them so the correction stays visible. See A-11.
 
 ### 4.2 Quota to vehicle population
 
@@ -512,7 +523,11 @@ detail sits in `data/raw/README.md` and rows A-12 to A-15 of the assumptions reg
   carry the same meaning across the whole span, so the 2002 to 2009 years are usable in the
   fits. See A-21 and `python -m src.ingest.verify_quota_premium`.
 - LTA quarterly quota press releases with Annex A, containing the full worked quota
-  arithmetic. Authoritative source for the formula in 3.1. Pull several quarters, not one.
+  arithmetic. Authoritative source for the formula in 3.1. Scripted at stage 4 by
+  `python -m src.ingest.pull_annex_a` from the LTA newsroom index, which reaches back to
+  February 2020: 29 Annex A tables and their release text, committed under
+  `data/raw/lta-annex-a/`. `python -m src.ingest.extract_annex_a` reads them into
+  `data/processed/annex-a-quota-arithmetic.csv`. See A-16 and A-22.
 
 **Vehicle population and registrations**
 - Motor vehicle population under the Vehicle Quota System, monthly,
@@ -528,8 +543,16 @@ detail sits in `data/raw/README.md` and rows A-12 to A-15 of the assumptions reg
   A-14.
 - LTA DataMall static data, MVP01 and MVP02 tables, including COE revalidation counts.
 
-Deregistration counts are not published as a standalone series. They appear inside LTA Annual
-Vehicle Statistics and as inputs to the Annex A arithmetic. Extract them from there.
+- Motor vehicles de-registered under the VQS, monthly, SingStat table `M650291`, LTA-sourced,
+  1990 May onward, on the VQS categories. Pulled by `python -m src.ingest.pull_deregistrations`.
+  Adopted at stage 4 as the deregistration series. It is exactly the quantity the quota formula
+  uses, matching Annex A's B1 line in every category of all 27 formula tables. It does not
+  separate guaranteed deregistrations, which the formula nets off; those come from the Annex A
+  line of their own from the August 2023 quarter. See A-16.
+
+The day one scan said deregistration counts were not published as a standalone series and
+would have to be extracted from Annex A and LTA Annual Vehicle Statistics. They are published,
+above, and Annual Vehicle Statistics is no longer needed for them.
 
 **Congestion**
 - Average speed during peak hours, LTA, `d_26f6afadf2f86b2004f9a1e28f5564cc`. Annual from

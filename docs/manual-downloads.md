@@ -70,7 +70,8 @@ Checked during stage 2, listed because section 8 reads as though they need a per
 newsroom index lists the releases at a stable URL pattern,
 `/content/ltagov/en/newsroom/{year}/{month}/news-releases/certificate-of-entitlement-quota-for-...`.
 The Annex A PDFs sit under `/content/dam/ltagov/news/press/` and download without
-authentication. One was fetched end to end as a check. These are scriptable at stage 4.
+authentication. Scripted at stage 4: `python -m src.ingest.pull_annex_a` pulls every release the
+newsroom index lists, February 2020 onward.
 
 **MOT newsroom and Parliamentary replies.** Reachable at
 `https://www.mot.gov.sg/news-resources/newsroom/`.
@@ -85,6 +86,10 @@ unreachable is describing its own headers, not the site.
 ---
 
 ## Deregistration counts, which stage 4 no longer has to extract
+
+**Resolved at stage 4, 2026-09-24.** M650291 is adopted. It equals Annex A's deregistration line in
+every category of all 27 formula tables. Guaranteed deregistrations, which it does not separate,
+come from Annex A. See A-16. The text below is the stage 2 record.
 
 Section 8 says deregistration counts are not published as a standalone series and that they
 have to come out of Annex A PDFs and LTA Annual Vehicle Statistics. Stage 4 budgets that as the

@@ -427,3 +427,91 @@ Alternative considered: fitting from 2010 on the long table, where there is a se
 cross-check every value. Rejected. It trades eight years of the period the project most needs
 for a value-level check on years that already agree to the cent across both tables.
 
+## 2026-09-24. Stage 4 takes every Annex A the index lists, not eight to twelve
+
+The build sequence asked for eight to twelve Annex A PDFs straddling the regime changes. That
+number was set for extraction by hand, where each table costs time. The LTA newsroom index lists
+every quota release from February 2020, the PDFs download without authentication, and the text
+layer is clean enough to parse.
+
+Decided: take all of them, 29 tables and three supplementary releases that are primary sources
+for break dates. A continuous run of quarters is what showed the August 2022 regime, because the
+window length changes from three months to six and then twelve in consecutive tables. A
+straddling sample could have skipped the six-month quarters.
+
+Alternative considered: hold to the stated number. Rejected, because picking which twelve would
+have been a judgement with no upside once the rest were free.
+
+Cost of the choice: 4.0 MB of committed PDFs, and a parser that has to cope with six years of
+layout drift. Nothing before February 2020 is in the index, so May 2017 rests on later LTA
+footnotes rather than its own announcement.
+
+## 2026-09-24. pypdf added to read the Annex A tables
+
+Section 7 fixes the stack and asks for a reason for anything else. The Annex A tables are PDFs,
+and nothing already in the stack reads PDF text. pypdf is pure Python, has no system
+dependencies, and is only imported by `src/ingest/extract_annex_a.py`.
+
+Alternative considered: extract once by hand and commit a CSV. Rejected, because the extraction
+could not then be re-run or audited, and the parser turned up faults a hand copy would have
+carried silently, a number split across a space, a label wrapped onto a line that looks like
+the next code.
+
+## 2026-09-24. The Annex A parser keeps only the one reading the row's own total allows
+
+The PDF text layer splits some numbers (`1 2,022` for 12,022, `7 1` for 71), leaves the
+Category E cell blank on some lines and prints `-` for zero on others. A parser that picks a
+plausible repair would be inventing numbers.
+
+Decided: each line is read in tiers of increasing repair, the raw tokens first, and a reading
+is accepted only if exactly one distinct set of values in that tier makes the categories sum to
+the published total. Two that both satisfy it make the line ambiguous, and an ambiguous line is
+left unread and reported. None ended up unread. 13 lines needed a repair, all of the split
+number kind, and every repaired table still passes the table-level identity that total quota
+equals its own subtotal lines.
+
+Alternative considered: fixed column positions from the PDF layout. Rejected because the layout
+drifts across six years and position extraction fails silently where the identity check fails
+loudly.
+
+## 2026-09-24. M650291 adopted as the deregistration series
+
+A-16 asked two things before M650291 could replace the Annex A extraction. Both are answered.
+It equals Annex A line B1 exactly, in every category of all 27 formula tables and across all
+three regimes. It does not separate guaranteed deregistrations, and Annex A does from the August
+2023 quarter.
+
+Decided: M650291 is the deregistration series, added to section 8, with the Annex A guaranteed
+deregistration line netted off from August 2023. Before May 2023 there was nothing to net.
+
+Alternative considered: use Annex A's B1 directly as the series. Rejected. It is quarterly and
+rolling, so it is a sum over overlapping windows rather than a series, and it starts in 2020.
+M650291 is monthly from 1990, which the accumulator at stage 7 needs.
+
+## 2026-09-24. The break table is a separate file and the brief's version is left visible
+
+Stage 4 found the scan's break table missing a regime, one date a month out, and one row that
+was three changes. The change protocol says new facts go to the register rather than into the
+brief.
+
+Decided: the verified table is `docs/break-table.md`, section 7's break table deliverable, with a
+quoted primary source on every row. The brief's table is left as the scan recorded it, with a
+note above the next section saying it is superseded and why, so the correction stays visible.
+
+It deliberately does not decide which breaks become dummies in the premium fit. That is a stage
+6 choice with defensible alternatives, dummies against regime splits against leaving
+supply-side changes out because they should move quota and not the price response. It gets
+made and logged there.
+
+## 2026-09-24. Four Annex A cells recorded as published deviations, not tolerated
+
+Checking the replacement line against its own printed formula found four category cells that
+no rounding of the product reproduces, each off by at most 1.25 COEs. The tempting fix was a
+tolerance of two, which would have made the check pass and the fact disappear.
+
+Decided: the check stays exact up to rounding, the four cells are named in A-22 and pinned in
+the tests, and a fifth appearing fails the suite. One explanation was tested, rounding the row
+total and apportioning it, and it does not fit because some published totals are not a rounding
+of the total product either. The mechanism is not recoverable from the table. What stage 10
+needs from this is the tolerance to use when comparing its own formula against Annex A.
+

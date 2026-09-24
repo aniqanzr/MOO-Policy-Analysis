@@ -4,6 +4,7 @@ Every dataset the build needs, with how it is obtained. Four methods:
 
 `datastore`  pulled by `fetch.py` from the data.gov.sg datastore API, no credential.
 `singstat`   pulled from the SingStat TableBuilder API by its own script, no credential.
+`lta`        pulled from www.lta.gov.sg by its own script, no credential.
 `manual`     a PDF or a table with no open API. Downloaded by hand and committed.
 `deferred`   not obtained, and not needed unless a later stage proves otherwise.
 
@@ -36,7 +37,7 @@ class Source:
 
     key         short name, also the stem of the file written under data/raw
     title       the dataset as section 8 names it
-    method      datastore | singstat | manual | deferred
+    method      datastore | singstat | lta | manual | deferred
     dataset_id  data.gov.sg dataset id, for datastore sources only
     url         where a human goes to get it, or the API endpoint
     needed_for  the build stages that consume it
@@ -93,14 +94,16 @@ SOURCES: tuple[Source, ...] = (
     Source(
         key="lta_annex_a_quota_releases",
         title="LTA quarterly quota press releases, Annex A",
-        method="manual",
-        url="https://www.lta.gov.sg/",
+        method="lta",
+        url="https://www.lta.gov.sg/content/ltagov/en/newsroom.html",
         needed_for=("4 deregistrations and break table", "10 quota formula"),
         notes=(
-            "PDF press releases, no API. Authoritative source for the formula in section 3.1 "
-            "and the only published place the deregistration inputs appear as arithmetic. "
-            "Stage 4 needs eight to twelve of them straddling the regime changes plus recent "
-            "quarters, not one."
+            "Pulled by `python -m src.ingest.pull_annex_a` from the newsroom index, which "
+            "reaches back to February 2020, into data/raw/lta-annex-a/ with a manifest. Read "
+            "by `python -m src.ingest.extract_annex_a`. The only published place the formula "
+            "appears as arithmetic, and the source of the guaranteed deregistration line from "
+            "August 2023. Release text and footnotes are the primary sources for the break "
+            "table. See A-11, A-16, A-22."
         ),
     ),
     # Vehicle population and registrations
@@ -147,14 +150,29 @@ SOURCES: tuple[Source, ...] = (
         ),
     ),
     Source(
+        key="singstat_vqs_deregistrations",
+        title=(
+            "Motor Vehicles De-Registered Under Vehicle Quota System, Monthly, SingStat table "
+            "M650291"
+        ),
+        method="singstat",
+        url="https://tablebuilder.singstat.gov.sg/api/table/tabledata/M650291",
+        needed_for=("4 deregistration series", "7 accumulator", "10 quota formula"),
+        notes=(
+            "Pulled by `python -m src.ingest.pull_deregistrations`. Adopted at stage 4: equals "
+            "Annex A line B1 in every category of all 27 formula tables. Does not separate "
+            "guaranteed deregistrations, which come from Annex A from August 2023. See A-16."
+        ),
+    ),
+    Source(
         key="lta_annual_vehicle_statistics",
         title="LTA Annual Vehicle Statistics",
         method="manual",
         url="https://www.lta.gov.sg/",
-        needed_for=("4 deregistrations and break table",),
+        needed_for=("none since stage 4, see notes",),
         notes=(
-            "Deregistration counts are not published as a standalone series. They appear here "
-            "and inside the Annex A arithmetic. PDF and spreadsheet, downloaded by hand."
+            "No longer needed for deregistrations, which M650291 publishes as a monthly series. "
+            "Kept listed because section 8 names it. Not downloaded."
         ),
     ),
     Source(

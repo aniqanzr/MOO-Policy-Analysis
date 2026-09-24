@@ -208,6 +208,11 @@ def run(keys: list[str] | None = None, check_only: bool = False) -> dict[str, An
             for s in SOURCES
             if s.method == "singstat"
         ],
+        "lta": [
+            {"key": s.key, "title": s.title, "url": s.url, "needed_for": list(s.needed_for)}
+            for s in SOURCES
+            if s.method == "lta"
+        ],
         "deferred": [
             {"key": s.key, "title": s.title, "url": s.url, "reason": s.notes}
             for s in SOURCES
@@ -232,6 +237,8 @@ def main(argv: list[str] | None = None) -> int:
     print("Not fetched by this script:")
     for item in manifest["singstat"]:
         print(f"  singstat  {item['key']}  {item['url']}")
+    for item in manifest["lta"]:
+        print(f"  lta       {item['key']}  {item['url']}")
     for item in manifest["manual"]:
         print(f"  manual    {item['key']}  {item['url']}")
     for item in manifest["deferred"]:

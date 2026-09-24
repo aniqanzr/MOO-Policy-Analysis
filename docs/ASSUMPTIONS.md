@@ -36,6 +36,13 @@ section 5.4 of the brief says the project runs on two validations rather than th
 corrected: renewal counts are published openly after all, for 2006 to 2017, which makes the
 mechanism testable without closing A-10.
 
+**Updated after stage 4, 2026-09-24.** A-11 falsified as stated and corrected: the break table
+missed the August 2022 two-quarter regime, dated the end of the 2020 quota return a month late,
+and described May 2023 as one change rather than three. The verified table is
+`docs/break-table.md`. A-16 resolved: M650291 is exactly the formula's deregistration term, and
+guaranteed deregistrations come from Annex A. A-22 is new: Annex A's own arithmetic does not
+reproduce exactly from its printed inputs, by at most 1.25 COEs.
+
 Everything below carries a source note. Where a source is secondary, that is stated and the
 row is medium-confidence until a primary document is opened.
 
@@ -277,8 +284,10 @@ Notes:        Run 2026-09-04 against FY2024, the latest financial year with actu
               measured without making the FY2024 number reconcile. See A-19.
 
 ### A-11. The structural break table is complete and correctly dated
-Status:       unverified — NEW
-Source:       compiled during the day one scan, mixed primary and secondary
+Status:       falsified as stated, then corrected and verified. The verified table is
+              `docs/break-table.md`
+Source:       compiled during the day one scan, mixed primary and secondary. Verified at stage 4
+              against LTA releases and Annex A tables committed under `data/raw/lta-annex-a/`
 Falsified by: a primary LTA or MOT document contradicting a date, or an unexplained
               discontinuity in the fitted series at a date not on the table
 Touches:      4.1
@@ -301,6 +310,32 @@ Notes:        Nine breaks currently listed in the brief. Some dates came from pr
               The same footnotes define PQP as a moving average of the quota premium over the
               last three months in which bidding was actually held, which is the definition
               A-04 needs for renewals and is not the same as a plain three-month average.
+
+              Stage 4, 2026-09-24. Every row now has a committed primary source, quoted in
+              `docs/break-table.md`. The scan's table was not complete and not all correctly
+              dated, so the claim as stated is falsified. Three corrections.
+
+              Missing: from 1 August 2022 the quota used a rolling two-quarter average, 50
+              percent of six months of deregistrations, before the four-quarter average of
+              February 2023. The Annex A arithmetic shows it without the prose: three-month
+              windows through the May 2022 quarter, six for August and November 2022, twelve
+              from February 2023.
+
+              Wrong: the 19,490 COEs from the 2020 suspension were returned from July 2020 to
+              June 2021, not to July 2021. The June 2020 release says so, and the Annex A
+              return lines sum to 19,490 exactly.
+
+              Under-described: May 2023 was three supply changes. Cut-and-fill from the second
+              exercise of the month, the Early Turnover Scheme deduction moving to a
+              four-quarter average, and Category D COEs returning to bidding earlier.
+
+              Remaining weak point. May 2017 is dated by LTA's own Annex A footnotes, in all 27
+              formula tables, but those are 2020 onward documents stating it in retrospect. The
+              2017 announcement itself was not opened. The pre-2002 dates this row once carried
+              fall before the left-truncation and were not verified, because nothing uses them.
+
+              The falsification test that remains is the practical one: an unexplained break in
+              the stage 6 residuals at a date not on the table.
 
 ### A-12. The two COE bidding sources agree where they overlap
 Status:       falsified
@@ -421,6 +456,23 @@ Notes:        Section 8 states these counts are not published standalone and tha
               says are large enough for LTA to account for explicitly. If it does not separate
               them, some Annex A extraction is still needed and this series becomes a check on
               it. That would still be a large saving.
+
+              Stage 4, 2026-09-24. Both questions answered from 27 Annex A tables, February 2020
+              to August 2026, extracted by `src/ingest/extract_annex_a.py`.
+
+              Same quantity: yes, exactly. Line B1 of every table equals the M650291 sum over
+              the window B1 names, in every category, in 27 of 27 tables and across all three
+              formula regimes. Not close, equal.
+
+              Guaranteed deregistrations: M650291 does not separate them and Annex A does, as a
+              line of its own from the August 2023 quarter. Before May 2023 there were none to
+              separate, since cut-and-fill began then. Annex A flips the sign it prints them
+              with in February 2024; the quantity is the same.
+
+              So the usable deregistration series is M650291, monthly from 1990, with the
+              Annex A guaranteed deregistration line netted off from August 2023. The week of
+              Annex A extraction stage 4 budgeted became a scripted pull and a parser, and the
+              manual part is gone.
 
 ### A-17. The MOF Vehicle Quota Premiums line is only available as a PDF
 Status:       falsified
@@ -640,6 +692,37 @@ Notes:        Opened because A-20 found a break at 2010 and the break has two po
               terms as the rest of the sample. Read a break in the fitted elasticity there as
               a break in the world, not as a change in the file. The regime changes that do
               sit in that span are in A-11 and belong in the break table.
+
+### A-22. The Annex A quota arithmetic can be reproduced exactly from its own printed inputs
+Status:       falsified — NEW, by at most 1.25 COEs per category
+Source:       `python -m src.ingest.extract_annex_a`, check 3, and `tests/test_annex_a.py`
+Falsified by: n/a
+Touches:      3.1, stage 10, any test that compares the implemented formula with Annex A
+Notes:        The replacement line is printed as a share of deregistrations: 25 percent of B1
+              net of guaranteed deregistrations under the current regime. Computed from the
+              B1 and B2 printed beside it, each category's published value is a rounding of
+              that product in all but four cells across 27 tables:
+
+                  Feb 2024  Category C  published 1,780  product 1,779.00
+                  May 2025  Category B  published 3,910  product 3,911.00
+                  Aug 2025  Category B  published 4,583  product 4,582.00
+                  Feb 2026  Category C  published 2,227  product 2,228.25
+
+              Rounding is also not in a fixed direction: some quarters round every category
+              up, others down, so a row total can sit up to two COEs from the rounded product
+              of the totals. Rounding the total first and apportioning it across categories was
+              tested as an explanation and does not fit, because some published totals are not
+              a rounding of the total product either.
+
+              Small, and it matters for one reason. Stage 10 implements this formula and will
+              want to check it against Annex A. An exact-match test would fail on these cells
+              and send someone looking for a bug in their own code. The honest tolerance is
+              about 1.25 COEs per category per quarter, and the four cells are known.
+
+              Separately, section 3.1 writes the formula in its February 2023 form. It had a
+              one-quarter window at 100 percent until July 2022 and a two-quarter window at 50
+              percent from August 2022. Anything that runs the formula over history needs the
+              regime that applied at the time. See A-11 and `docs/break-table.md`.
 
 ---
 
