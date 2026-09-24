@@ -53,6 +53,12 @@ which applies because `theta` cannot be modelled, the front is a curve if the pr
 elasticities are weaker than -1, the side the brief expects, and a surface otherwise. A-23
 records the placeholders. F-04 and F-05 are post-freeze.
 
+**Updated after option 3, 2026-09-24.** The fitted elasticities put A-08 on the curve side, and the
+user chose to report the collapse as a finding. A-01 gains the drift result: no change the usable
+specifications can distinguish. A-09 now records that O2, expected to be the weakest objective,
+is the only one left trading against anything. Its status is unchanged and its consequences are
+larger.
+
 Everything below carries a source note. Where a source is secondary, that is stated and the
 row is medium-confidence until a primary document is opened.
 
@@ -92,6 +98,18 @@ Notes:        Still the highest-risk row and still the first thing to test. The 
               -0.41 and -0.47, first differences -0.26 and -0.44. A specification with no demand
               control is not usable in this window. Whether the relationship is stable is still
               stage 6's question, and the answer will depend on what absorbs demand shifts.
+
+              2026-09-24, the drift test declared in the decision log before it ran. February
+              2014 to April 2022 against May 2022 onward, same three specifications. With a trend
+              or in first differences, no change in A, B or C that the 95 percent intervals can
+              distinguish. The first-difference point estimates lean the way brief 4.1
+              hypothesised, B from -0.08 to -0.44, and the interval includes zero. With no
+              controls every category shows the premium moving less per unit of quota than
+              before, which is the trend confound read a second time and is not used. The
+              falsification condition, a significant trend or break, is not met at this
+              precision. That is not the same as the relationship being shown stable. Across all
+              windows and the usable specifications, A, B, C and E stay on the weaker side of -1.
+              D does not: since 2022 its intervals all reach -1.
 
 ### A-02. Quota is a policy lever that can be set freely
 Status:       falsified, and more comprehensively than first recorded
@@ -270,7 +288,7 @@ Status:       unverified — NEW, and expected to end as accepted-as-limitation
 Source:       consequence of examining the speed dataset's granularity
 Falsified by: wide confidence intervals on the fitted BPR beta, or the sensitivity sweep
               showing the frontier moves substantially with congestion parameters alone
-Touches:      4.3, O2, section 6
+Touches:      4.3, O2, section 5.3, section 6, the recovered weight
 Notes:        The speed series is annual from 2004, so roughly twenty observations, over a
               period when the vehicle population moved slowly and mostly in one direction. The
               volume-capacity ratio barely varies across the sample, which is the worst
@@ -283,6 +301,21 @@ Notes:        The speed series is annual from 2004, so roughly twenty observatio
               Secondary note: published lane-km shows a large single-year jump between 2023
               and 2024 that looks like reclassification rather than construction. Flag it,
               do not smooth it. Published road length also covers only LTA-maintained roads.
+
+              **2026-09-24, O2 is now load-bearing.** Stage 5 and the fitted elasticities leave
+              cost and revenue moving together on the front (A-08). O2 is the only objective
+              that trades against anything, so the objective this row expected to be weakest
+              now carries the whole trade-off. The one number the inverse weight query still
+              recovers, congestion against cost and revenue combined, depends directly on O2's
+              scale. Consequences, all within the frozen plan: stage 9 moves onto the critical
+              path directly after stage 7, ahead of any optional work; the sweep in brief
+              section 6 is built around the BPR parameters, the base volume to capacity ratio,
+              capacity with and without the lane-km jump, and goods vehicle road load; and the
+              result is shown as a band if the sweep says so. Monotone rescaling of O2 cannot
+              change which policies are on the front, only where they sit and how the weight
+              query reads them. Status unchanged. Its falsification condition, the frontier
+              moving substantially with congestion parameters alone, is now the likely outcome
+              for the recovered weight.
 
 ### A-10. Computed revenue can be reconciled against published government figures
 Status:       falsified as stated. **This is not a passing test and must not be counted as
