@@ -1,0 +1,70 @@
+{
+  "generated": "2026-09-24T10:21:26Z",
+  "generated_by": "src/ingest/pull_deregistrations.py",
+  "endpoint": "https://tablebuilder.singstat.gov.sg/api/table/tabledata/M650291",
+  "table": {
+    "id": "M650291",
+    "title": "Motor Vehicles De-Registered Under Vehicle Quota System, Monthly",
+    "frequency": "Monthly",
+    "dataSource": "LAND TRANSPORT AUTHORITY",
+    "dataLastUpdated": "15/09/2026",
+    "footnote": "Figures include weekend/off-peak cars & tax exempted vehicles"
+  },
+  "series": [
+    {
+      "seriesNo": "1",
+      "rowText": "Total Motor Vehicles De-Registered",
+      "uoM": "Number",
+      "footnote": null
+    },
+    {
+      "seriesNo": "1.1",
+      "rowText": "Category A: Cars",
+      "uoM": "Number",
+      "footnote": "For cars registered with Certificates of Entitlement (COEs) obtained before Feb 2014 bidding exercises, Category A cars refer to cars with engine capacity up to 1600cc and Category B cars refer to cars with engine capacity above 1,600cc.  For cars registered with COEs obtained from Feb 2014 1st bidding exercise onwards but before the May 2022 1st bidding exercise, Category A cars refer to cars with engine capacity up to 1600cc and Maximum Power Output up to 97kW (130bhp) and Category B cars refer to cars with engine capacity above 1600cc or Maximum Power Output above 97kW (130bhp).  For cars registered with COEs obtained from the May 2022 1st bidding exercise onwards, Category A cars refer to cars, except fully electric cars, with engine capacity up to 1600cc and Maximum Power Output up to 97kW (130bhp); and fully electric cars with Maximum Power Output up to 110kW (147bhp) and Category B cars refer to cars, except fully electric cars, with engine capacity above 1600cc or Maximum Power Output above 97kW (130bhp); and fully electric cars with Maximum Power Output above 110kW (147bhp)."
+    },
+    {
+      "seriesNo": "1.2",
+      "rowText": "Category B: Cars",
+      "uoM": "Number",
+      "footnote": "For cars registered with Certificates of Entitlement (COEs) obtained before Feb 2014 bidding exercises, Category A cars refer to cars with engine capacity up to 1600cc and Category B cars refer to cars with engine capacity above 1,600cc.  For cars registered with COEs obtained from Feb 2014 1st bidding exercise onwards but before the May 2022 1st bidding exercise, Category A cars refer to cars with engine capacity up to 1600cc and Maximum Power Output up to 97kW (130bhp) and Category B cars refer to cars with engine capacity above 1600cc or Maximum Power Output above 97kW (130bhp).  For cars registered with COEs obtained from the May 2022 1st bidding exercise onwards, Category A cars refer to cars, except fully electric cars, with engine capacity up to 1600cc and Maximum Power Output up to 97kW (130bhp); and fully electric cars with Maximum Power Output up to 110kW (147bhp) and Category B cars refer to cars, except fully electric cars, with engine capacity above 1600cc or Maximum Power Output above 97kW (130bhp); and fully electric cars with Maximum Power Output above 110kW (147bhp)."
+    },
+    {
+      "seriesNo": "1.3",
+      "rowText": "Weekend Cars/Off Peak Cars",
+      "uoM": "Number",
+      "footnote": null
+    },
+    {
+      "seriesNo": "1.4",
+      "rowText": "Category C: Goods Vehicles & Buses",
+      "uoM": "Number",
+      "footnote": "Data include vehicles de-registered and eventually placed under the Early Turnover Scheme (ETS).  Between 24 Apr 2013 and 31 Jul 2017, vehicle owners can de-register their existing diesel-propelled Category C vehicles that were registered before 1 Jan 2001 and register a replacement vehicle within 1 month of de-registration by paying a discounted Prevailing Quota Premium (PQP) under the ETS.  From 1 Aug 2015, the ETS was extended to existing diesel-propelled Category C vehicles that were registered between 1 Jan 2001 and 30 Sep 2006 and will be de-registered between 1 Aug 2015 and 31 Mar 2021.  From 1 April 2021 to 31 March 2023, vehicle owners can deregister their existing Euro 2/3/4 Category C diesel vehicles and register an eligible replacement vehicle within 1 month of deregistration by paying a discounted Prevailing Quota Premium under the enhanced ETS."
+    },
+    {
+      "seriesNo": "1.5",
+      "rowText": "Category D: Motorcycles & Scooters",
+      "uoM": "Number",
+      "footnote": null
+    },
+    {
+      "seriesNo": "1.6",
+      "rowText": "Taxis",
+      "uoM": "Number",
+      "footnote": "Prior to Aug 2012, taxi operators can bid for a new Certificate of Entitlement (COE) or pay Prevailing Quota Premium (PQP) to register a taxi under Category A.  The latter is only in the case of a new taxi that replaces a deregistered one within 6 months.  From Aug 2012, all taxis pay for COEs based on the PQP of Category A."
+    },
+    {
+      "seriesNo": "1.7",
+      "rowText": "Vehicles Exempted From VQS",
+      "uoM": "Number",
+      "footnote": "Includes vehicles which are exempted from the Vehicle Quota System (VQS), for example, scheduled and school buses, emergency vehicles, diplomatic vehicles, vehicles under the Disabled Person Scheme and vehicles for off-the-road use."
+    }
+  ],
+  "file": "vqs-deregistrations-monthly.csv",
+  "rows": 8,
+  "periods": 436,
+  "period_first": "1990 May",
+  "period_last": "2026 Aug",
+  "sha256": "06752ac10fc00da2d1514df21af215706fbf82fd0c99d70ba0f63f9988adcc37",
+  "note": "Candidate stage 4 source, not yet adopted into section 8. Whether it is the quantity the quota formula's rolling average is built from, and whether it separates guaranteed deregistrations, is A-16's question and is answered against Annex A, not here."
+}

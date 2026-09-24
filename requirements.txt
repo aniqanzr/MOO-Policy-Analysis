@@ -9,3 +9,5 @@ plotly==6.9.0
 requests==2.34.2
 # Runs the section 5.4 validation suite. Logged 2026-08-23.
 pytest==9.1.1
+# Reads LTA Annex A quota tables at stage 4. Logged 2026-09-24.
+pypdf==6.16.2

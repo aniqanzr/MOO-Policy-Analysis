@@ -38,6 +38,8 @@ It is about a parameter that comes up for decision inside two years.
 - Every constraint value and coefficient
 - Objective normalisation method
 - Frontend view details
+- Validation status in section 5.4. Recording a test result is a factual update, not a design
+  change. What the tests are for is not provisional; whether each one passed is.
 
 ### Assumptions. In `docs/ASSUMPTIONS.md`, not here.
 
@@ -120,6 +122,11 @@ Quota = growth allowance
       + adjustments (taxi population change, expired TCOEs, Early Turnover Scheme,
                      guaranteed-deregistration redistribution, discretionary injection)
 ```
+
+This is the formula from February 2023. Before it, the replacement term used one quarter of
+deregistrations at 100 percent until July 2022, then a rolling two quarters at 50 percent from
+August 2022. Anything run over history needs the regime that applied at the time. See A-22 and
+`docs/break-table.md`.
 
 **The 25 percent in the replacement term is not a policy rate.** It is one quarter of the
 trailing annual figure, converting an annual count into a quarterly quota. Do not treat it
@@ -223,6 +230,19 @@ the output.
 
 Fit from LTA bidding results, two exercises per month per category from April 2002.
 
+**The fit runs on the full span, April 2002 onward, from `quota-premium-monthly`.** The LTA long
+table, `coe-bidding-results`, starts at 2010-01, so a fit built on it would silently lose the
+first eight years, and those are the years where a drift in the elasticity would show. The wide
+table covers April 2002 onward and was audited at stage 3 for exactly this: its quota and
+premium columns carry the same meaning before and after 2010, per exercise throughout. See
+A-21. So the elasticity path gets roughly twenty four years rather than sixteen.
+
+What the audit does not give. It shows the columns did not change meaning, not that each
+pre-2010 value is right, and no second published source exists to check those values one by
+one. A break in the fitted elasticity inside 2002 to 2009 that is not on the break table below
+sends you back to A-21 before it is reported as a finding. February and March 2002 still go,
+per the break table, because their first exercise was closed bidding.
+
 **The auction is uniform price.** Bidders submit confidential reserve prices, the current
 price increments until bids at or above it equal the quota, and every successful bidder in a
 category pays the same premium, set at the highest unsuccessful bid plus one dollar. This
@@ -281,6 +301,12 @@ tooltip on the chart.
 Published datasets flag some of these in footnotes and not others. There is no
 machine-readable break column. Build the break table yourself from the above, verify each
 date against a primary source, and treat the table as part of the deliverable.
+
+**The table above is the day one scan's and is superseded by `docs/break-table.md`,** verified
+at stage 4 against committed LTA primary sources. The verified table adds a regime the scan
+missed, a rolling two-quarter average from 1 August 2022, moves the end of the 2020 quota return
+from July to June 2021, and splits May 2023 into its three changes. Use that file, not this one.
+The rows here are left as the scan recorded them so the correction stays visible. See A-11.
 
 ### 4.2 Quota to vehicle population
 
@@ -396,15 +422,29 @@ omissions, not about LTA, and it is reported that way.
 
 ### 5.4 Validation
 
-Three tests, all passing before anything is trusted.
+Three tests were specified. **Two of them can pass. The third cannot, so the project runs on
+two validations rather than three.**
 
 - **Optimiser correctness.** ZDT1 for two objectives, DTLZ2 for three. Compare generated
   points against the analytically known front and report the error. Lives in the test suite,
-  needs no UI.
-- **Accumulator backtest.** Reproduce the published vehicle population series.
-- **Revenue reconciliation.** Against the MOF Vehicle Quota Premiums line. See 4.4.
+  needs no UI. Passing, stage 1.
+- **Accumulator backtest.** Reproduce the published vehicle population series. Not yet run,
+  stage 7.
+- **Revenue reconciliation.** Against the Vehicle Quota Premiums line. See 4.4. **Run at stage
+  3, and it does not pass.** Computed revenue is 79.3 percent of the published figure for
+  FY2024. The four candidate pipeline causes were excluded and A-19 gives the residual a
+  plausible mechanism, but plausible is not verified, and the gap cannot be closed against the
+  target year from any published series. A-10 carries the detail.
+
+What the loss costs, stated rather than worked around. The reconciliation was the only
+external check on the premium series handling and the quota accounting. A moderate error in
+either could sit inside a 20 percent residual without being visible. What remains is internal:
+A-12 comparing the two bidding sources over the 2010 onward overlap, and A-21 auditing the
+wide table against itself. Neither is ground truth, and neither would catch an error the two
+published bidding tables share.
 
 The answer to "how do you know this is right" should not be "the picture looked plausible."
+For O3 the honest answer is now weaker than this brief originally assumed.
 
 ---
 
@@ -479,9 +519,15 @@ detail sits in `data/raw/README.md` and rows A-12 to A-15 of the assumptions reg
   `d_22094bf608253d36c0c63b52d852dd6e`. Coverage 2002Feb to 2026Jul, so this is the only source
   for the 2002 to 2009 span and the reference where it conflicts with the long table. The 2020
   suspension shows as `-` for April, May and June. The footnotes themselves are not in the API
-  payload and have to come from the SingStat table page.
+  payload and have to come from the SingStat table page. Audited at stage 3 and its columns
+  carry the same meaning across the whole span, so the 2002 to 2009 years are usable in the
+  fits. See A-21 and `python -m src.ingest.verify_quota_premium`.
 - LTA quarterly quota press releases with Annex A, containing the full worked quota
-  arithmetic. Authoritative source for the formula in 3.1. Pull several quarters, not one.
+  arithmetic. Authoritative source for the formula in 3.1. Scripted at stage 4 by
+  `python -m src.ingest.pull_annex_a` from the LTA newsroom index, which reaches back to
+  February 2020: 29 Annex A tables and their release text, committed under
+  `data/raw/lta-annex-a/`. `python -m src.ingest.extract_annex_a` reads them into
+  `data/processed/annex-a-quota-arithmetic.csv`. See A-16 and A-22.
 
 **Vehicle population and registrations**
 - Motor vehicle population under the Vehicle Quota System, monthly,
@@ -497,8 +543,16 @@ detail sits in `data/raw/README.md` and rows A-12 to A-15 of the assumptions reg
   A-14.
 - LTA DataMall static data, MVP01 and MVP02 tables, including COE revalidation counts.
 
-Deregistration counts are not published as a standalone series. They appear inside LTA Annual
-Vehicle Statistics and as inputs to the Annex A arithmetic. Extract them from there.
+- Motor vehicles de-registered under the VQS, monthly, SingStat table `M650291`, LTA-sourced,
+  1990 May onward, on the VQS categories. Pulled by `python -m src.ingest.pull_deregistrations`.
+  Adopted at stage 4 as the deregistration series. It is exactly the quantity the quota formula
+  uses, matching Annex A's B1 line in every category of all 27 formula tables. It does not
+  separate guaranteed deregistrations, which the formula nets off; those come from the Annex A
+  line of their own from the August 2023 quarter. See A-16.
+
+The day one scan said deregistration counts were not published as a standalone series and
+would have to be extracted from Annex A and LTA Annual Vehicle Statistics. They are published,
+above, and Annual Vehicle Statistics is no longer needed for them.
 
 **Congestion**
 - Average speed during peak hours, LTA, `d_26f6afadf2f86b2004f9a1e28f5564cc`. Annual from
@@ -508,8 +562,16 @@ Vehicle Statistics and as inputs to the Annex A arithmetic. Extract them from th
   is unconfirmed. BPR capacity scales with it directly. See A-15.
 
 **Revenue**
-- Ministry of Finance Analysis of Revenue and Expenditure, annual. The Vehicle Quota Premiums
-  line under Operating Revenue.
+- Government Operating Revenue, annual, SingStat TableBuilder table `M130571`, series 1.2.1
+  Vehicle Quota Premiums, in millions of dollars, FY1997 to FY2026, sourced to the
+  Accountant-General's Department. This is the stage 3 reconciliation target, pulled by
+  `python -m src.ingest.pull_revenue`. Financial years beginning 1 April. The table footnote
+  says which years are actual figures and which are revised or budgeted estimates, and only
+  actuals are reconciliation targets. Usable from FY2010, see A-20.
+- Ministry of Finance Analysis of Revenue and Expenditure, annual. The same line, one financial
+  year per PDF. Not the target any more, and not needed as one. It is the second publication
+  the SingStat figure is checked against under A-17, and
+  `data/raw/mof-review-of-fy2025.pdf` is the year that check was run on.
 
 **Policy context**
 - MOT newsroom Parliamentary replies and ministerial statements.

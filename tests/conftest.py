@@ -1,13 +1,15 @@
-"""Shared fixtures, and the error report the stage 1 gate is read from.
+"""Shared fixtures, and the reports the stage gates are read from.
 
-The build sequence asks for the benchmark error to be reported, not just asserted. Collecting
-the measurements and printing them in the terminal summary means the numbers show up on every
-run rather than only when something fails.
+The build sequence asks for the numbers to be reported, not just asserted. Collecting the
+measurements and printing them in the terminal summary means they show up on every run rather
+than only when something fails. Stage 1 reports benchmark error, stage 3 reports the revenue
+residual.
 """
 
 import pytest
 
 _MEASUREMENTS = []
+_RECONCILIATIONS = []
 
 
 @pytest.fixture(scope="session")
@@ -15,7 +17,42 @@ def metrics_recorder():
     return _MEASUREMENTS
 
 
+@pytest.fixture(scope="session")
+def reconciliation_recorder():
+    return _RECONCILIATIONS
+
+
 def pytest_terminal_summary(terminalreporter, exitstatus, config):
+    _optimiser_summary(terminalreporter)
+    _reconciliation_summary(terminalreporter)
+
+
+def _reconciliation_summary(terminalreporter):
+    if not _RECONCILIATIONS:
+        return
+
+    write = terminalreporter.write_line
+    write("")
+    write("Revenue reconciliation, millions of dollars")
+    header = (
+        f"{'FY':<8}{'quota basis':>14}{'bids basis':>13}{'published':>12}"
+        f"{'residual':>11}{'share':>8}"
+    )
+    write(header)
+    write("-" * len(header))
+    for r in sorted(_RECONCILIATIONS, key=lambda r: r["fy"]):
+        write(
+            f"FY{r['fy']:<6}{r['computed_quota']:>14,.1f}{r['computed_successful']:>13,.1f}"
+            f"{r['published']:>12,.1f}{r['residual']:>11,.1f}{r['ratio']:>8.1%}"
+        )
+    write("")
+    write(
+        "share: computed as a fraction of the published Vehicle Quota Premiums line. "
+        "The gate expected agreement and did not get it. See A-10 and A-19."
+    )
+
+
+def _optimiser_summary(terminalreporter):
     if not _MEASUREMENTS:
         return
 

@@ -46,10 +46,16 @@ constraint-excluded policy was ruled out by a value judgement. Separate in the d
 visually distinct in the UI. Collapsing them destroys the distinction the whole project rests
 on.
 
-**Validation before trust.** Three tests pass before any COE frontier is taken seriously:
-ZDT1 and DTLZ2 against their analytic fronts, the population accumulator reproducing the
-historical series, and computed revenue reconciling against the MOF Vehicle Quota Premiums
-line. The reconciliation sums all five categories and aligns fiscal years first.
+**Validation before trust.** Two tests pass before any COE frontier is taken seriously:
+ZDT1 and DTLZ2 against their analytic fronts, and the population accumulator reproducing the
+historical series. That is the gate.
+
+The revenue reconciliation against the Vehicle Quota Premiums line is not a gate. It ran at
+stage 3 and failed: computed bid revenue is 79 percent of the published figure for FY2024, with
+a plausible mechanism and no way to close it for that year. It is recorded as failed in A-10.
+Do not count it as passing, do not cite it as support for anything, and do not make it pass by
+adding a fitted term. If it is re-run, it still sums all five categories, aligns financial
+years first, and uses only years the published table marks as actual figures.
 
 **Run the collinearity check early.** Assumption A-08. Sample the decision space and confirm
 the front is a surface, not a curve. If the three levers turn out to push total quota the same

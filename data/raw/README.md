@@ -62,38 +62,39 @@ quota formula.
 
 ## What is here
 
-Nothing yet. The scripted pull has not run successfully.
+The eight data.gov.sg CSVs are recorded in `manifest.json`, one entry each, with the resource
+id, row count, column names, coverage and a sha256. That file is the record for them and this
+table does not repeat it.
+
+Everything else here came from somewhere the pull script does not go.
 
 | File | Source | Method | Retrieved | URL |
 | ---- | ------ | ------ | --------- | --- |
-|      |        |        |           |     |
+| `singstat-metadata.json` | SingStat TableBuilder metadata for six tables. Units and footnotes, which data.gov.sg strips. | `python -m src.ingest.pull_singstat` | 2026-08-31 | <https://tablebuilder.singstat.gov.sg/api/table/metadata/{table_id}> |
+| `vehicle-quota-premiums-annual.csv` | SingStat table M130571 series 1.2.1, Vehicle Quota Premiums, annual, millions of dollars. The stage 3 reconciliation target. | `python -m src.ingest.pull_revenue` | 2026-09-04 | <https://tablebuilder.singstat.gov.sg/api/table/tabledata/M130571> |
+| `vehicle-quota-premiums-annual.meta.json` | Provenance for the file above, including the footnote that says which financial years are actual figures. | `python -m src.ingest.pull_revenue` | 2026-09-04 | same |
+| `mof-review-of-fy2025.pdf` | MOF, Review of Financial Year 2025, from the Revenue and Expenditure Estimates for FY2026. Table 2.1 carries Vehicle Quota Premiums actual FY2024. The A-17 spot check. | one-off download, no pull script | 2026-09-04 | <https://www.singaporebudget.gov.sg/revenue-and-expenditure/revenue-expenditure-estimates>, document at <https://cms.singaporebudget.gov.sg/assets/567a92bc-910e-4e19-a67e-a0016a2adbe1> |
+| `vqs-deregistrations-monthly.csv` | SingStat table M650291, motor vehicles de-registered under the VQS, monthly from 1990 May. The stage 4 deregistration series. | `python -m src.ingest.pull_deregistrations` | 2026-09-24 | <https://tablebuilder.singstat.gov.sg/api/table/tabledata/M650291> |
+| `vqs-deregistrations-monthly.meta.json` | Provenance and footnotes for the file above. | `python -m src.ingest.pull_deregistrations` | 2026-09-24 | same |
+| `lta-annex-a/` | 31 LTA releases from the newsroom index, February 2020 onward, each with its page text, and 29 Annex A quota tables plus an Annex B. `lta-annex-a/manifest.json` records the URL, retrieval time and sha256 of every file. | `python -m src.ingest.pull_annex_a` | 2026-09-24 | <https://www.lta.gov.sg/content/ltagov/en/newsroom.html> |
 
 ## What could not be reached automatically
 
-Stage 2 status as of 2026-08-31. The stage 2 gate, knowing exactly what you have and exactly
-what you must download by hand, is **not passed**.
-
-**Blocked by the network egress policy, not by the sources.** Every host in section 8 is
-refused at the proxy with a 403 on CONNECT, so no dataset id has been verified to resolve and
-no file has been downloaded. The affected hosts:
-
-```
-data.gov.sg                   api-production.data.gov.sg
-www.data.gov.sg               api-open.data.gov.sg
-tablebuilder.singstat.gov.sg  www.lta.gov.sg
-www.mof.gov.sg                datamall2.mytransport.sg
-```
-
-`python -m src.ingest.fetch --check-only` reproduces this and names each failure. Re-run it
-once the egress policy allows those hosts. Until then the eight scriptable sources are
-unverified, and section 8's warning that ids and coverage change has not been acted on.
+**Egress changes between sessions and the state below is what the last run found.** On
+2026-08-31 every section 8 host was refused at the proxy with a 403 on CONNECT. The pull ran
+later that day. On 2026-09-04 `tablebuilder.singstat.gov.sg`, `www.mof.gov.sg` and
+`www.singaporebudget.gov.sg` were all reachable, which is how the stage 3 target and the MOF
+spot check got here without a human. Do not treat a host recorded as blocked here as blocked
+now. Try it. `python -m src.ingest.fetch --check-only` names each failure without downloading
+anything.
 
 **Requires manual download regardless of network policy**, because there is no open API:
 
-- `lta_annex_a_quota_releases`, quarterly quota press releases with Annex A. Stage 4 needs
-  eight to twelve straddling the regime changes plus recent quarters.
-- `lta_annual_vehicle_statistics`, the other published home of deregistration counts.
-- `mof_revenue_and_expenditure`, the Vehicle Quota Premiums line, fiscal years.
+- `lta_annual_vehicle_statistics`, no longer needed: deregistrations are published as
+  M650291, and the Annex A quota releases are now scripted, see the table above.
+- `mof_revenue_and_expenditure`, the Vehicle Quota Premiums line, fiscal years. One document
+  is here now, for the A-17 spot check. The reconciliation itself runs against the SingStat
+  series, so no more of these are needed unless A-20 gets chased.
 - `mot_parliamentary_replies`, policy mechanics and framing.
 - `nlb_infopedia_select_committee`, 1990 history, secondary source, framing only.
 

@@ -20,21 +20,26 @@ next two stages.
 
 ## Please download by hand
 
+Item 1 below is done and is kept for the record.
+
 ### 1. MOF Analysis of Revenue and Expenditure, Vehicle Quota Premiums line
 
-Wanted for: A-10, the revenue reconciliation, stage 3.
-Why not scripted: `www.singaporebudget.gov.sg`, where `www.mof.gov.sg` redirects for revenue
-and expenditure, is blocked by egress policy. `www.mof.gov.sg` itself is reachable.
+**Done, 2026-09-04. Nothing wanted from you here.**
 
-**Not urgent, and not a blocker.** The same line is published as SingStat table M130571, series
-1.2.1 "Vehicle Quota Premiums", annual in millions of dollars from FY1997, sourced to the
-Accountant-General's Department. Stage 3 can run against that.
+`www.singaporebudget.gov.sg` was blocked at the proxy when this page was written and is
+reachable now, so the spot check ran in session rather than waiting on a human. Table 2.1 of
+"Review of Financial Year 2025", in the Revenue and Expenditure Estimates for FY2026, gives
+Vehicle Quota Premiums as 6.38 billion actual for FY2024. SingStat table M130571 series 1.2.1
+gives 6379.2 million for the same year. The two agree at the precision MOF publishes at.
 
-What is wanted from you is a **spot check of one year**, not the whole document. AGD and MOF
-publish from the same accounts and the line carries the same name in both, but that the two
-figures are identical is currently an assumption, and A-10 should not be run against a target
-that has itself only been assumed. One year from the MOF PDF, against the SingStat figure for
-the same financial year, settles it. See A-17.
+The PDF is committed at `data/raw/mof-review-of-fy2025.pdf` and the comparison is a test in
+`tests/test_revenue_reconciliation.py`. Stage 3 runs against the SingStat series. See A-17.
+
+One thing was left open by it. A-20: before FY2010 the published line and the computed bidding
+totals disagree in the other direction, by a factor of sixteen in FY2006, and no committed
+source explains why. Settling that needs an MOF document from that era. It is not worth the
+time before the freeze and nothing in the build depends on it, since the target is treated as
+usable from FY2010 onward.
 
 ### 2. LTA DataMall, MVP01 and MVP02 static tables
 
@@ -65,7 +70,8 @@ Checked during stage 2, listed because section 8 reads as though they need a per
 newsroom index lists the releases at a stable URL pattern,
 `/content/ltagov/en/newsroom/{year}/{month}/news-releases/certificate-of-entitlement-quota-for-...`.
 The Annex A PDFs sit under `/content/dam/ltagov/news/press/` and download without
-authentication. One was fetched end to end as a check. These are scriptable at stage 4.
+authentication. Scripted at stage 4: `python -m src.ingest.pull_annex_a` pulls every release the
+newsroom index lists, February 2020 onward.
 
 **MOT newsroom and Parliamentary replies.** Reachable at
 `https://www.mot.gov.sg/news-resources/newsroom/`.
@@ -80,6 +86,10 @@ unreachable is describing its own headers, not the site.
 ---
 
 ## Deregistration counts, which stage 4 no longer has to extract
+
+**Resolved at stage 4, 2026-09-24.** M650291 is adopted. It equals Annex A's deregistration line in
+every category of all 27 formula tables. Guaranteed deregistrations, which it does not separate,
+come from Annex A. See A-16. The text below is the stage 2 record.
 
 Section 8 says deregistration counts are not published as a standalone series and that they
 have to come out of Annex A PDFs and LTA Annual Vehicle Statistics. Stage 4 budgets that as the
