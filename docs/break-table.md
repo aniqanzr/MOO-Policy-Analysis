@@ -21,7 +21,7 @@ Every quoted line below can be found in the named file.
 | 1 | April 2002 exercise | Closed to open bidding. February and March 2002 ran one of each. Left-truncate here. | Auction mechanism | Verified |
 | 2 | 6 August 2012 | Taxis stop bidding. New taxi COEs are drawn from Category E and paid at the Category A prevailing quota premium. | Category composition | Verified, date refined to the day |
 | 3 | February 2014 exercise | Category A adds a 97kW maximum power criterion to the 1,600cc limit. | Category definition | Verified |
-| 4 | May 2017 | Category D deregistrations stop feeding Category E. Category E receives 10 percent of A, B and C deregistrations. | Supply formula | Verified from a later LTA document, see note |
+| 4 | May 2017 | Category D deregistrations stop feeding Category E. Category E receives 10 percent of A, B and C deregistrations. | Supply formula | Verified |
 | 5 | April to June 2020 | Bidding suspended. The accumulated 19,490 COEs were returned over the 24 exercises from **July 2020 to June 2021**, one third in July to September 2020, two thirds after. | Supply shock | Verified, end month corrected |
 | 6 | May 2022, first exercise | Category A threshold for fully electric cars raised from 97kW to 110kW. | Category definition | Verified |
 | 7 | **1 August 2022** | **Quota based on a rolling two-quarter average of deregistrations, 50 percent of six months, replacing one quarter at 100 percent.** | Supply formula | **Added. Missing from the scan's table** |
@@ -51,9 +51,9 @@ new engine power criterion of up to 97kW to the existing engine capacity thresho
 
 **4. May 2017.** All 27 formula tables, `2020-01-...annex-a.pdf` to `2026-07-...annex-a.pdf`: "From May 2017, Cat E
 receives 10% of the deregistrations from Cat A, B and C." and "From May 2017, Cat D
-deregistrations no longer contribute to Cat E." This is LTA stating the date, so it is primary,
-but it is a retrospective statement in a 2020 document. The 2017 announcement itself is not in
-the newsroom index and was not opened. Confidence is high, not complete.
+deregistrations no longer contribute to Cat E." This is LTA stating when LTA changed its own
+formula, which makes it primary regardless of when it was written. The 2017 announcement was not
+opened and does not need to be.
 
 **5. April to June 2020.** `M651121`: "COE bidding exercises were suspended in the months of
 April, May and June 2020". `2020-06-resumption-of-coe-bidding-exercises-from-6-july.txt`: "The
@@ -126,9 +126,14 @@ and neither was verified.
 
 ---
 
-## What this table does not decide
+## What this table does not decide, and what stage 6 owes
 
 Which breaks enter the premium fit as dummies, which as regime splits for the rolling
 elasticity, and which are left out as supply-side changes that should move quota rather than
-the price response. That is a stage 6 specification choice with defensible alternatives, and it
-gets made and logged there. The Kind column is there to inform that choice, not to make it.
+the price response. That is a stage 6 specification choice with defensible alternatives. The
+Kind column is there to inform it, not to make it.
+
+When stage 6 makes it, the decision log records every row of this table, not only the ones
+chosen: which were selected as dummies, which were handled as regime splits, which were left
+out, and the reason for each. A break left out of the specification without a log entry is a
+decision nobody can see, and this table exists to prevent that.

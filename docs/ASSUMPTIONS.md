@@ -329,10 +329,11 @@ Notes:        Nine breaks currently listed in the brief. Some dates came from pr
               exercise of the month, the Early Turnover Scheme deduction moving to a
               four-quarter average, and Category D COEs returning to bidding earlier.
 
-              Remaining weak point. May 2017 is dated by LTA's own Annex A footnotes, in all 27
-              formula tables, but those are 2020 onward documents stating it in retrospect. The
-              2017 announcement itself was not opened. The pre-2002 dates this row once carried
-              fall before the left-truncation and were not verified, because nothing uses them.
+              May 2017 is dated by LTA's own Annex A footnotes, in all 27 formula tables. They
+              were written from 2020 onward, but a footnote in which LTA describes a change LTA
+              made is primary whenever it was written. Accepted as sourced on 2026-09-24; the
+              2017 announcement was not opened. The pre-2002 dates this row once carried fall
+              before the left-truncation and were not verified, because nothing uses them.
 
               The falsification test that remains is the practical one: an unexplained break in
               the stage 6 residuals at a date not on the table.

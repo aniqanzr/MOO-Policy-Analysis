@@ -515,3 +515,23 @@ total and apportioning it, and it does not fit because some published totals are
 of the total product either. The mechanism is not recoverable from the table. What stage 10
 needs from this is the tolerance to use when comparing its own formula against Annex A.
 
+## 2026-09-24. May 2017 accepted as sourced from LTA's own later footnotes
+
+The May 2017 break is dated by the Annex A footnotes, which are LTA documents from 2020 onward
+stating when LTA changed its own formula. Stage 4 recorded that as a weak point because the 2017
+announcement itself was not opened.
+
+Decided: a footnote in which the agency describes a change it made is a primary source
+regardless of when it was written. The row is verified and the weak point is closed.
+
+Alternative considered: finding and opening the 2017 release. Not taken. It would confirm a date
+that LTA already states in 27 tables and could only disagree if LTA's own later account of its
+own formula were wrong, which is not a risk worth the time before the freeze.
+
+## 2026-09-24. Stage 6 logs every break it includes and every one it leaves out
+
+Recorded now so a later session cannot miss it. When the premium fit is specified, the decision
+log gets one entry covering all ten rows of `docs/break-table.md`: selected as a dummy, handled
+as a regime split, or left out, with the reason for each. The specification alone would show
+what went in and hide what did not.
+
