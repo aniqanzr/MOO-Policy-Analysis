@@ -74,7 +74,8 @@ Notes:        what happened when you checked
 ## Rows
 
 ### A-01. Quota released and clearing premium have a stable relationship over the sample
-Status:       unverified
+Status:       unverified. A first fit on the current regime, 2026-09-24, found the declared primary
+              specification wrong-signed. See the note
 Source:       original brief assumption
 Falsified by: rolling-window elasticity showing a significant trend or break
 Touches:      4.1, the entire frontier
@@ -84,6 +85,13 @@ Notes:        Still the highest-risk row and still the first thing to test. The 
               market-clearing quantity rather than an average across heterogeneous payments,
               which is what makes a reduced-form quantity-price relationship defensible at all.
               It says nothing about whether the elasticity is stable over time.
+
+              2026-09-24, option 1 before stage 6. `src/fit/premium.py`, a grid declared and
+              committed before it ran. From May 2022, ln P on ln Q with no controls gives a
+              positive elasticity for Category A, +0.22, and zero for B. Adding a trend gives
+              -0.41 and -0.47, first differences -0.26 and -0.44. A specification with no demand
+              control is not usable in this window. Whether the relationship is stable is still
+              stage 6's question, and the answer will depend on what absorbs demand shifts.
 
 ### A-02. Quota is a policy lever that can be set freely
 Status:       falsified, and more comprehensively than first recorded
@@ -180,9 +188,8 @@ Notes:        Cat E supply is set at 10 percent of the summed A, B and C replace
               yours and must be labelled as such.
 
 ### A-08. The three chosen policy levers are not collinear in their effect on the objectives
-Status:       not established at stage 5. Under the lever set the plan requires, the front is a
-              curve if the premium elasticities land on the side the brief expects and a surface
-              if enough of them land on the other. Stage 6 fits them
+Status:       falsified for the lever set the plan can build. The fitted elasticities land on the
+              side where the injection fallback's front is a curve
 Source:       consequence of the A-02 rebuild
 Falsified by: sampling the decision space and finding the front is a curve rather than a
               surface, or finding the three objectives are near-perfectly explained by total
@@ -247,6 +254,16 @@ Notes:        The rebuild replaced quota counts with policy parameters. The dang
               which one the real model is depends on a number stage 5 cannot know. The plan's
               stated fallback has already been used. What happens next is the user's decision,
               and the options are in the decision log.
+
+              2026-09-24, option 1. The number exists. Fitted elasticities for A, B and C are all
+              weaker than -1, in all 27 cells of the declared grid bar one interval that reaches
+              past it. With them in the stage 5 model, the injection front is a curve, ratio 0.028
+              to 0.035, under the trend specification at any goods vehicle load above a car's, and
+              0.076 to 0.134 under first differences. The declared primary gives a surface, but it
+              is wrong-signed for Category A and is not counted. `theta` is dead on data, and would
+              move car revenue by under 1 percent per 0.05 of share if it could be set. A-08 is
+              falsified for the lever set the plan can build. Option 3's cost is in the decision
+              log.
 
 ### A-09. The congestion objective can be identified from available data
 Status:       unverified — NEW, and expected to end as accepted-as-limitation

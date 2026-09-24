@@ -658,3 +658,154 @@ Not decided. The options, for the user:
 
 Option 1 does not rule out option 2. It only orders them.
 
+## 2026-09-24. Option 1 run first, as sequencing only
+
+The user chose to fit the Category A and B premium elasticities before deciding anything about
+the lever set. Recorded as an ordering, not a decision on option 2, which stays open. The lever
+set and the stage 5 specification are not changed until the numbers exist.
+
+What the fit can and cannot settle, stated before it runs. It cannot make `theta` a real lever:
+`theta` failed at stage 5 because no published data maps a power threshold onto a demand share,
+and no elasticity supplies that mapping. It can settle two other things. First, whether `theta`
+would move the objectives at all if it could be set: at the reference quarter, Category A and B
+revenue per unit of demand share are nearly equal, 1,589 and 1,615 million dollars, so theta's
+first-order effect on revenue nearly cancels unless the two elasticities differ. Second, whether
+the injection fallback's front is a curve or a surface, which stage 5 found turns on which side
+of -1 the elasticities fall.
+
+## 2026-09-24. The elasticity fit's specification, declared before it runs
+
+Declared here and committed before any estimate is looked at, so the reported number cannot be
+the one that happened to look best.
+
+Form, section 4.1: ln P = a + b ln Q, per category, one row per bidding exercise, clearing
+premium and exercise quota from `quota-premium-monthly`.
+
+Windows, all ending at the last exercise on file, July 2026:
+- W1, from May 2022. The primary window. The Category A definition has not changed since the
+  110 kW threshold for electric cars took effect in the first May 2022 exercise, and section 4.1
+  says to build the frontier on the current regime.
+- W2, from February 2023, the four-quarter formula.
+- W3, from February 2014, the 97 kW criterion. Longer, and crosses more breaks.
+
+Specifications:
+- S1, the form above with no controls. Primary.
+- S2, adding a linear time trend.
+- S3, first differences between consecutive exercises.
+
+Standard errors: Newey-West, 6 lags, one quarter of exercises, because quota is set per quarter
+and errors within a quarter are not independent.
+
+Primary estimate: S1 on W1. All nine are reported. If they disagree about which side of -1 the
+elasticity sits, that disagreement is the result.
+
+Breaks, every row of `docs/break-table.md`, as the stage 6 instruction requires. None enters as a
+dummy.
+- Rows 1 to 5, April 2002 to the 2020 suspension: before W1 and W2 starts. Inside W3, rows 4 and 5
+  are supply-side and are left out as dummies for the reason below. Row 3, February 2014, is W3's
+  start.
+- Row 6, May 2022, the electric car threshold, a change to Category A's definition: handled as a
+  regime split, by starting W1 there.
+- Rows 7 to 10, August 2022, February 2023, May 2023 and February 2025: supply-side changes to
+  how quota is computed or topped up. Left out. They move quota, which is the regressor, and a
+  dummy for any of them would absorb the quota variation that identifies b. February 2023 is
+  also W2's start.
+
+Known weakness, stated before the numbers: quota is set once a quarter, so W1 has about 17
+distinct quota levels per category however many exercises it covers. The estimate is identified
+from those, not from roughly 100 exercises.
+
+## 2026-09-24. Option 1 result: the declared primary is wrong-signed, and no estimate is stronger than -1
+
+`python -m src.fit.premium`, the grid declared in the previous entry, unchanged. Pinned in
+`tests/test_premium_fit.py`.
+
+Categories A and B side by side, window from May 2022:
+
+                                   Category A                Category B
+    S1, no controls, primary       +0.223 [+0.098, +0.348]   +0.062 [-0.082, +0.207]
+    S2, linear trend               -0.412 [-0.569, -0.255]   -0.472 [-0.754, -0.190]
+    S3, first differences          -0.264 [-0.391, -0.137]   -0.435 [-0.863, -0.007]
+
+The declared primary is a bad fit and is reported as one. Category A's elasticity is positive,
+premium rising with quota, and B's is indistinguishable from zero. Quota and premiums both rose
+from 2024 to 2026, and a specification with nothing to absorb a demand shift reads that as a
+positive elasticity. It is not replaced by the specification that looks right. S2 is not
+promoted to primary here; choosing the stage 6 specification is stage 6's job.
+
+What the fit was run for does not depend on which specification is right. Across all 27 cells,
+A, B and C in three windows and three specifications, no estimate is stronger than -1. One
+interval reaches past it, B on the window from February 2014 with no controls, point -0.836.
+Every other interval sits wholly on the weaker side. Category C, run on the same grid because
+stage 5 showed the injection verdict turns on it once A and B are weak, runs -0.32 to -0.01.
+
+A correction to the previous entry. It said the window from May 2022 has about 17 distinct quota
+levels per category. It has 84 for A, 78 for B and 70 for C. Quota is set once a quarter, but
+exercise quota also moves within a quarter, because quota not taken up in one exercise is added
+to later ones. That carry-over depends on demand, so part of the quota variation the fit uses
+is not exogenous. Recorded, not chased.
+
+## 2026-09-24. What option 1 settles
+
+`theta`. Dead on both counts. It cannot be set, because nothing published maps a power threshold
+onto a demand share, and the fit does not change that. And if it could be set, it would barely
+move anything. At the reference quarter, theta's effect on A and B revenue per 0.05 of demand
+share is between -0.3 and -0.9 percent in the primary window under every specification, with a
+95 percent interval that includes zero every time. For scale, `g_ab` at 1 percent moves the same
+revenue by 8.3 percent. Categories A and B are priced too alike and respond too alike for moving
+demand between them to trade cost against revenue.
+
+The injection fallback, with the fitted elasticities in place of the placeholders, same stage 5
+model and lever set, NSGA-II front ratio with O1 and O3 over A, B and C:
+
+                              goods vehicle PCU   1.0     1.5     2.0     3.0
+    S2 elasticities                               0.113   0.028   0.032   0.035
+    S3 elasticities                               0.133   0.092   0.134   0.076
+    S1 elasticities, wrong-signed                 0.431   0.530   0.564   0.414
+
+Under the two specifications with a negative sign the front is a curve, or within reach of one,
+at any road load for goods vehicles above a car's. Under the primary it is a surface, and that
+surface exists because Category A's premium rises with quota in a fit already reported as bad.
+It is not counted. Stage 8 is the formal version of this check and would repeat it on whatever
+stage 6 settles.
+
+Option 2 read off the same numbers, not tested. A lever that reallocates quota at a fixed total
+only trades cost against revenue if categories differ in what one more COE adds to revenue,
+premium times one plus b. Between A and B it is 73.9 against 67.5 thousand dollars under S2, and
+92.5 against 72.2 under S3: the same weakness as `theta`, so splitting the injection line between
+A and B would be thin. Category E is 114.4 and 128.1, well above A, B and C, so the Category E
+contribution rate would move revenue at a fixed total. But E's elasticity near zero is most
+likely the demand spillover from B that A-07 leaves unmodelled, and that lever's second dimension
+would rest on exactly that channel.
+
+## 2026-09-24. Option 3, costed for the gate
+
+Option 3: accept that the front is a curve and write up why, rather than build new levers. What
+it changes in the frozen items, and roughly what it costs. Estimates, not measured.
+
+Three objectives. Kept, and computed as specified. On the front, though, cost and revenue move
+together: with every elasticity between -1 and 0, more quota lowers the premium and raises
+revenue at once. The trade-off that survives is congestion against quota. Nothing in code
+changes. What the output says about the three changes.
+
+The inverse weight query. The code is unchanged and still runs. Its answer shrinks. With cost and
+revenue aligned along the front, any split of weight between them picks the same policy, so the
+query recovers one number, the weight on congestion against the combined weight on cost and
+revenue, and not three. Section 5.3's "report the revenue weight as a finding" cannot be done,
+by era or at all. That is the project's headline claim, and it goes.
+
+The ternary rendering. The code is unchanged. The map comes out banded, the winning policy set by
+one ratio, and needs an annotation saying why. About a quarter of a day.
+
+Not frozen, but following from the above: the headline claim in section 0, section 5.3, the
+README's "recovered weights" and a case study section on why the frontier collapsed. About half
+a day to a day of writing.
+
+Total: about 1 to 1.5 days, all writing and annotation, no engine or architecture change. It does
+not save stages 6 to 9. Stage 7 is one of the two remaining validation gates, stage 9 puts O2 on a
+calibrated axis, stage 6's elasticity path is a result in its own right, and stage 8 would
+confirm the curve on fitted values. The larger cost is not in days: the question the project was
+built to answer, what weight the policy implies for revenue, stops being answerable by this
+model. What can still be said is that under current elasticities, affordability and revenue are
+not in tension through quota, and the only live trade-off is road space against both.
+
