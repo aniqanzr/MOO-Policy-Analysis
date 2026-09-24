@@ -984,3 +984,54 @@ ratio, capacity with and without the 2023 to 2024 lane-km jump, goods vehicle ro
 to 3 PCU with 1.0 as a control, the horizon, and the fitted elasticity grid. The output is the
 curve as a band and the recovered ratio as a range. A wide band is an acceptable result and gets
 shown as one.
+
+## 2026-09-24. Stage 7 backtest, declared before it runs
+
+Brief 4.2: "prior population, minus deregistrations, plus released quota", run forward over the
+record and compared with the published population. A-04 is the gate. Declared here and committed
+before any of it runs, so the reading cannot be fitted to the result.
+
+Data, all committed: `vqs-population-monthly` (SingStat, stock by VQS category, from May 1990),
+`vqs-new-registrations-monthly` (to January 2026), `vqs-deregistrations-monthly` (M650291, to
+August 2026) and `quota-premium-monthly` (quota and successful bids per exercise, from February
+2002).
+
+Three levels.
+
+- **L1, the flows against the stock.** P(t) = P(t-1) + R(t) - D(t), published registrations and
+  deregistrations only, per category (A, B, C, D, taxis, exempted) and for the VQS total. A data
+  check, not the model. Residuals here mean the published stock is not the accumulation of the
+  published flows: conversions, reclassification, or a definition gap. L2 is read in light of it.
+- **L2, the brief's accumulator.** P(t) = P(t-1) + Q(t) - D(t), Q the quota released, first and
+  second bidding summed, February 2002 onward. Category E has no stock of its own: an E COE
+  registers a car or a goods vehicle. So L2 runs on A, B and C together with E's quota, and on D
+  alone, which E cannot register. The total A to D is reported too. Taxis draw on the car quota
+  through an Annex A adjustment and are left out of both sides; that is a known mismatch and is
+  named in the result. A variant with successful bids in place of quota released is reported
+  alongside, because unallocated quota rolls forward and never becomes a vehicle in the month it
+  is released. Quota released is primary because it is what the model's levers set.
+- **L3, A-04 as worded.** Stock against the sum of the previous 120 months of registrations.
+  Renewals push stock above it, early deregistration below. A diagnostic. The model does not use
+  a rolling decade: over the horizon it assumes replacement quota matches deregistrations, which
+  L2 tests directly.
+
+Metric. The model evaluates policy over a 5-year horizon (`config/placeholders.toml`), so the error
+that matters is over 5 years, not cumulated over 24. For every 60-month window, the accumulator's
+change in stock minus the published change, as a share of the published stock at the window's
+start. Reported: median and maximum absolute error, and the worst window.
+
+Reading rule, for L2 on quota released. It passes if the maximum absolute 60-month error is at
+most 1.25 percent of stock. Where that comes from: the smallest nonzero growth rate LTA has set is
+0.25 percent a year (Category C, which the Annex A footnote from February 2018 says "will
+remain" at that rate; `docs/break-table.md`), which adds
+(1.0025^5 - 1), 1.25 percent, over 5 years. An accumulator that errs by more than that cannot
+distinguish the smallest growth setting actually used from zero. The alternative considered was
+a tolerance tied to the lever bounds, 3 percent a year and so about 16 percent over 5 years. Not
+taken: it would pass an accumulator that cannot resolve the policy that is actually in force.
+The median is reported so a single bad window, the 2020 bidding suspension most likely, is
+visible as such rather than hidden or decisive. If the maximum fails and the median passes, the
+result is reported as that, with the windows named, and the gate is not called passed.
+
+On failure, as stage 7 says: the population model is wrong and O2 is built on it. Stop at the
+gate either way. Renewal counts from DataMall stay deferred and the post-freeze renewal datasets
+(F-01) are not used.
