@@ -834,3 +834,153 @@ Every break row placed as in the earlier declaration. Row 6, May 2022, is the sp
 2020 suspension, row 5, falls inside P1 and is left out as a dummy, being a supply shock that
 moved quota.
 
+
+## 2026-09-24. Drift test result, and the three windows side by side
+
+Run as declared above. `python -m src.fit.premium --drift --categories ABCDE`.
+
+The drift test. Change is b from May 2022 onward minus b from February 2014 to April 2022.
+
+| Cat | S2 change, 95% interval | S3 change, 95% interval |
+|---|---|---|
+| A | -0.107 [-0.321, 0.108] | -0.112 [-0.325, 0.100] |
+| B | +0.060 [-0.293, 0.414] | -0.351 [-0.812, 0.110] |
+| C | -0.010 [-0.183, 0.164] | -0.055 [-0.137, 0.028] |
+| D | +0.025 [-0.371, 0.421] | -0.821 [-2.112, 0.470] |
+| E | +0.487 [0.203, 0.772] | +0.042 [-0.112, 0.197] |
+
+Under S1, every category shows a significant change: A, B, C and E toward the premium moving
+less per unit of quota, D toward more. S1 is the specification already reported as wrong-signed
+in the recent window, and its drift is the same trend confound read a second time. Not used.
+
+Under the two specifications that fit, no change in A, B or C that the intervals can distinguish.
+The S3 point estimates for A, B and C all lean the way brief 4.1 hypothesised, and B's is the
+largest, but each interval includes zero. E under S2 moves the other way, and E's recent
+estimates are near zero in every specification, which is more likely the spillover from B that
+A-07 leaves unmodelled than a change in E's own demand.
+
+The three windows, trend and first-difference specifications, for comparison. They are nested,
+which is why they cannot show drift on their own: W1 sits inside W2's span and both inside W3.
+
+| Cat | W3 from Feb 2014, S2 / S3 | W2 from Feb 2023, S2 / S3 | W1 from May 2022, S2 / S3 |
+|---|---|---|---|
+| A | -0.285 / -0.163 | -0.483 / -0.272 | -0.412 / -0.264 |
+| B | -0.680 / -0.165 | -0.655 / -0.475 | -0.472 / -0.435 |
+| C | -0.254 / -0.061 | -0.234 / -0.069 | -0.307 / -0.109 |
+| D | -0.746 / -0.249 | -1.111 / -1.540 | -0.829 / -1.005 |
+| E | -0.678 / -0.046 | +0.062 / +0.029 | -0.115 / -0.009 |
+
+What this settles. The user's instruction was that if the windows showed flattening, that
+becomes a headline finding and goes into section 5.3 in place of the weight recovery. They do
+not show it. There is no change either way that the declared test can distinguish for A, B or C.
+Section 5.3 therefore reports the hypothesis as neither supported nor ruled out, and carries the
+level finding, not a drift finding. The option not taken: reading the S3 point estimates, which
+lean the hypothesised way, as weak evidence of drift. Rejected because the reading rule was fixed
+before the run, and it says an interval that includes zero is no change.
+
+What holds across all of it. In A, B, C and E no estimate, in any window, period or specification,
+has the premium falling faster than quota rises. D does. In the two recent windows every D
+interval reaches -1, and the point estimates run -0.83 to -1.54.
+
+## 2026-09-24. The headline says "price-elastic", not "inelastic"
+
+The user's statement of the first finding was "COE demand is inelastic across every category,
+window and specification tested". Two corrections before it went into the brief.
+
+The term. What the fit measures is b, the percentage change in premium per 1 percent change in
+quota, from the inverse demand curve. Every usable estimate for A, B, C and E has b between -1
+and 0. Demand elasticity, the percentage change in quantity demanded per 1 percent change in
+price, is 1/b, which is then more negative than -1. In the standard term that is price-elastic
+demand. Calling it inelastic reverses the term, and a reader who knows the term would read the
+claim backwards. Brief section 4.1 had the same reversal ("Inelastic demand means added quota
+barely moves price") and is corrected, with a note saying so. The alternative was to keep the
+user's wording as "the premium is inelastic with respect to quota", which is correct usage for
+b. Not taken because "inelastic" next to "demand" invites the reversed reading, and the headline
+is stated in plain terms first, the premium moving less than proportionally with quota, with the
+standard term second.
+
+The scope. "Every category" is not true. Category D is the exception in the recent windows.
+Section 0 says A, B, C and E, and names D.
+
+The substance of the finding is unchanged by either correction. It is what drives findings 2 and
+3: with b between -1 and 0, revenue rises with quota.
+
+## 2026-09-24. The framing finding is worded to what the sources support
+
+The user's second finding was that affordability and revenue are not in tension, "so the public
+framing that opposes them is wrong". Written into section 0 as "a framing that sets the two
+against each other, in which tight quota serves revenue at the buyer's expense, does not hold
+under these estimates".
+
+Two reasons for the narrower wording. First, CLAUDE.md requires a primary source for every
+claim, and the project has not collected one showing who holds the opposing framing or in what
+words. Asserting that "the public framing" is wrong needs that source; describing the framing and
+saying it does not hold does not. Section 5.3 says the case study needs the source before it
+names anyone. Second, the finding is on bid revenue from a reduced-form fit. Renewal revenue is
+outside the model (F-02). The wording keeps that scope visible.
+
+The option not taken: stating it as the user phrased it and sourcing it later. Rejected because
+the sourcing rule is non-negotiable in CLAUDE.md and the brief is the document most likely to be
+quoted.
+
+## 2026-09-24. Post-freeze amendment to frozen items, under option 3
+
+**This is a change to frozen items after the freeze.** Recorded explicitly as one, as the change
+protocol requires for anything frozen.
+
+What changed:
+
+- **The inverse weight query** (frozen). Code unchanged. Its stated output changes from a region
+  on the three-weight simplex, with a revenue weight read off as the finding, to one ratio: the
+  weight on congestion against cost and revenue combined, reported as a band.
+- **Three objectives** (frozen). Kept and computed. Reported as two that move together on the
+  front, plus congestion.
+- **The ternary rendering**, section 9 View 2. Code unchanged. Rendered banded with a fixed
+  annotation, and no longer the headline.
+- **The headline claim**, section 0. Replaced with three findings. The original wording is kept
+  in the brief as a quoted record.
+- **Section 5.3**, rewritten. Section 5.2 gains a note that normalisation now matters more.
+- **Section 6** gains a sweep plan built around the congestion parameters. **Section 4.3** and
+  A-09 record that O2 is load-bearing.
+- **README** and the case study updated to match.
+
+Not changed: the argument in section 1, the COE scenario, NSGA-II, static architecture. The
+argument survives the collapse. On a curve, a policy off the front has still failed, and
+differently weighted policies still sit at different points on it.
+
+The reason. Stage 5 found the front is a surface under the injection fallback only if premium
+elasticities are stronger than -1. Option 1 fitted them: none is, for A, B or C. `theta`, the lever
+that could have added a dimension, cannot be modelled and would move car revenue by under 1
+percent per 0.05 of demand share if it could. The alternatives were option 2, new levers such as
+the Category E contribution rate, and holding the headline claim while the weight query returned
+a degenerate answer. Option 2 was costed, stays open, and was not run, on the user's instruction.
+Holding the claim was not considered acceptable: the brief says a degenerate frontier is a
+finding and gets reported as one. The user chose option 3.
+
+Cost, estimated at the gate as 1 to 1.5 days of writing and annotation. The writing in this
+commit series is most of it. The ternary annotation is written into the brief and is built at
+stage 12 or 15.
+
+## 2026-09-24. O2 is load-bearing, and stage 9 moves up
+
+With cost and revenue aligned, O2 is the only objective that trades against anything, and the
+one number the weight query still recovers depends directly on how O2 is scaled. A-09 expected O2
+to be the weakest objective. It now carries the whole trade-off. A-09's status is unchanged;
+its Notes say so.
+
+Sequencing, within the frozen plan. `docs/BUILD_SEQUENCE.md` gains a critical path: stage 7, then
+stage 9, then the rest of stage 6 (break dummies, with the breaks selected and left out reported,
+and the elasticity path), then stage 8 as a confirmation and the first cut if time runs short. No
+stage is added or dropped, and no on-failure branch changes.
+
+Alternatives. Stage 6's remainder before stage 9, the original order. Not taken: the option 1
+grid and the drift test already answer the part of A-01 that decided option 3, and the weight
+query now depends on O2 more than on anything stage 6 has left to settle. Stage 9 before stage 7.
+Not taken: stage 7 is a validation gate and O2 is built on its output, and the user named stage 7
+next.
+
+The sweep in section 6 is planned around BPR `alpha` and `beta`, the base volume to capacity
+ratio, capacity with and without the 2023 to 2024 lane-km jump, goods vehicle road load from 1.5
+to 3 PCU with 1.0 as a control, the horizon, and the fitted elasticity grid. The output is the
+curve as a band and the recovered ratio as a range. A wide band is an acceptable result and gets
+shown as one.

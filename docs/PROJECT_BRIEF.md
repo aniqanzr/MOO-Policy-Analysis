@@ -10,9 +10,31 @@ call. What is demonstrated is the ability to take a contested public argument, f
 into an explicit formulation, and be honest about what that formulation cost. Every
 shortcut is visible in the output, not buried in a notebook.
 
-**Headline claim:** Singapore's COE settings imply a specific ratio of how much the state
-values congestion relief against car affordability against revenue. That ratio was never
-published. It can be recovered from public data.
+**Headline findings, from 24 September 2026.** Three, from the fitted premium response and the
+stage 5 front. Detail and caveats in section 5.3.
+
+1. **The COE premium moves less than proportionally with quota.** In Categories A, B, C and E,
+   in every window and specification tested between 2014 and 2026, a 1 percent rise in quota
+   lowers the premium by less than 1 percent. In standard terms, demand is price-elastic.
+   Motorcycles are the exception: since 2022 the Category D premium has moved about in
+   proportion to quota. No change in the response between 2014 to 2022 and 2022 onward can be
+   distinguished in the specifications that fit.
+2. **Affordability and revenue are not in tension through quota.** Because the premium moves less
+   than proportionally, more quota lowers the premium and raises bid revenue at the same time.
+   A framing that sets the two against each other, in which tight quota serves revenue at the
+   buyer's expense, does not hold under these estimates.
+3. **The frontier has no third dimension.** With cost and revenue moving together, the policies the
+   available levers can reach form a curve, road space against quota, not a surface. The one
+   lever that could have added a dimension, the power threshold between Categories A and B,
+   cannot be modelled from published data, and would barely move revenue if it could.
+
+These are reduced-form estimates on bid revenue only, not total COE revenue (F-02).
+
+**Original headline, superseded on 24 September 2026 under option 3 and kept here as the
+record:** "Singapore's COE settings imply a specific ratio of how much the state values
+congestion relief against car affordability against revenue. That ratio was never published.
+It can be recovered from public data." The ratio cannot be recovered. Cost and revenue are
+aligned on the front, so their weights cannot be separated. See the decision log.
 
 **Why it is timely.** The zero vehicle growth rate for Categories A, B and D is legislated
 only until 31 January 2028. This is not a counterfactual exercise about a settled policy.
@@ -30,6 +52,13 @@ It is about a parameter that comes up for decision inside two years.
 - The inverse weight query and its ternary rendering
 - Static architecture, no server, no database
 - Three objectives
+
+**Amended after the freeze, 24 September 2026, under option 3.** The ternary rendering is banded
+and carries an annotation. The inverse weight query runs as specified and now recovers one
+ratio, not three. Three objectives are kept and computed, and reported as two that move
+together. The argument in section 1 is unchanged: on a curve, a policy off the front has still
+failed, and differently weighted policies still sit at different points on it. The decision log
+records the amendment and the reason.
 
 ### Provisional. Expected to change, and changing them is routine.
 
@@ -289,9 +318,10 @@ of ownership. If that is right, price elasticity fell over time and one regressi
 - If the elasticity flattens, you have measured the phenomenon rather than repeating it. This
   is a result worth reporting on its own.
 - Build the frontier on the current regime only.
-- Expect the shape to differ from the naive version. Inelastic demand means added quota
-  barely moves price, so revenue trends closer to linear in quota rather than peaking, and the
-  cost against congestion trade-off steepens.
+- Expect the shape to differ from the naive version. When added quota barely moves the
+  premium, demand is price-elastic, so revenue rises with quota rather than peaking, and cost
+  and revenue move together. Corrected on 24 September 2026: this line first said "inelastic
+  demand", which reverses the standard term. What the fit found is in section 5.3.
 
 **Category coupling.** Categories are not independent. Category E supply is set at 10 percent
 of the summed Category A, B and C replacement quotas, and Category E is almost always used for
@@ -369,6 +399,13 @@ moved slowly and mostly in one direction. Calibrating a volume-delay curve from 
 and the fitted `beta` will be poorly identified. **Expect O2 to be the least defensible of
 the three objectives and say so rather than hiding it.** This is assumption A-09.
 
+**O2 is load-bearing, from 24 September 2026.** With cost and revenue aligned on the front
+(section 5.3), O2 is the only objective that trades against anything. The weakest objective now
+carries the whole trade-off. That does not make it better identified. It means stage 9 runs
+next after stage 7, ahead of anything optional, and the sensitivity sweep in section 6 is built
+around its parameters. The output may be a band rather than a line, and that is an acceptable
+result.
+
 Capacity anchors on published lane-kilometres by road category. Note a large single-year jump
 in expressway and total lane-km between 2023 and 2024 that looks like reclassification rather
 than construction. Flag it, do not smooth over it. Note also that published road length covers
@@ -427,23 +464,62 @@ Two things to handle rather than hide:
   cannot reach into a concavity. Those policies are non-dominated yet never optimal under any
   linear preference. Detect them, mark them differently, write about them.
 
+**Amended after the freeze, 24 September 2026.** The front is a curve (A-08). Cost and revenue
+move together along it, so any split of weight between them picks the same policy. The query
+runs as specified and recovers one number: the weight on congestion against the combined weight
+on cost and revenue. Normalisation matters more, not less. That one number depends directly on
+how O2 is scaled, which is why O2's calibration is now load-bearing (A-09).
+
 ### 5.3 The headline output
 
-Locate the current policy settings in the decision space. Under the rebuilt variables that
-means `g_ab` at 0 percent, `g_c` at 0.25 percent, and `theta` at the current 97kW and 110kW
-thresholds. Find the nearest front point and read off the implied weight region.
+Rewritten on 24 September 2026 under option 3. The section first asked for the revenue weight to
+be recovered and reported as a finding, and by era. That cannot be done: cost and revenue are
+aligned on the front, so their weights cannot be separated. What replaces it is below.
 
-**Report the revenue weight as a finding.** Near zero supports the official account that COE
-is a population control instrument. Substantial supports the revenue critique. Do not decide
-in advance which you expect.
+**Finding 1. The premium moves less than proportionally with quota.** `src/fit/premium.py`, a grid
+declared in the decision log before it ran: ln P on ln Q per category, three windows, three
+specifications, Newey-West errors. In Categories A, B, C and E no estimate in any window or
+specification has the premium falling faster than quota rises. From May 2022, with a trend,
+Category A is -0.41 and B -0.47; in first differences, -0.26 and -0.44. In standard terms demand
+is price-elastic.
 
-Then do it by era. The growth rate has stepped down through several distinct regimes over the
-scheme's life, so each is a separately observed policy position. Recover the implied weights
-for each and watch whether the revenue weight drifts. Drift would be your own evidence for a
-claim that currently rests on commentary.
+Three things limit it, and they ship with it. The specification with no controls is wrong-signed
+in the recent windows and is reported as a failed fit, not used. Quota within a quarter carries
+unused quota forward, so part of its variation depends on demand. Category D, motorcycles, is not
+on the same side: since 2022 its premium has moved about in proportion to quota, every interval
+reaching -1.
 
-If the actual policy sits well off the frontier, that is a finding about the model's
-omissions, not about LTA, and it is reported that way.
+**Whether the response has changed.** Section 4.1's hypothesis was that buyers came to absorb the
+premium as a cost of ownership, which would show as the premium moving more per unit of quota
+over time. Split into February 2014 to April 2022 and May 2022 onward, the specifications that fit
+show no change in A, B or C that the intervals can distinguish. The first-difference point
+estimates lean the hypothesised way, B from -0.08 to -0.44, and the intervals include zero. The
+hypothesis is neither supported nor ruled out at this precision. It is not a finding.
+
+**Finding 2. Affordability and revenue are not in tension through quota.** With the premium moving
+less than proportionally, more quota lowers the premium and raises bid revenue together. A
+framing that sets the two against each other does not hold under these estimates. Stated on bid
+revenue only. Renewals paid at the prevailing quota premium are outside the model (F-02), and
+their price falls with the premium too. Before the case study says who holds the opposing
+framing, it needs a primary source showing them holding it.
+
+**Finding 3. The frontier has no third dimension.** Cost times total quota is revenue, by
+definition, so cost and revenue can only trade off if something moves revenue at a given total
+quota. The lever meant to do that, `theta`, cannot be modelled: nothing published maps a power
+threshold to a demand share. If it could be set it would move car revenue by under 1 percent per
+0.05 of demand share, the interval including zero, because A and B are priced and respond too
+alike. The fallback injection lever adds car quota like `g_ab` does. With the fitted elasticities
+the front is a curve, road space against quota. Reported as a finding about the policy space the
+available levers reach, not as a failure of the tool.
+
+**What is still recovered.** The current policy, `g_ab` at 0 percent, `g_c` at 0.25 percent and the
+current injection line, is located on or off the curve, and the inverse weight query reads off
+one number: how heavily congestion is weighted against cost and revenue together. It is reported
+as a band from the sensitivity sweep in section 6, because it depends directly on O2's scale.
+By era, the same one number for each growth-rate regime.
+
+If the actual policy sits well off the curve, that is a finding about the model's omissions, not
+about LTA, and it is reported that way.
 
 ### 5.4 Validation
 
@@ -476,7 +552,8 @@ For O3 the honest answer is now weaker than this brief originally assumed.
 ## 6. Sensitivity
 
 Required, not extra. Everything rests on fitted coefficients carrying real uncertainty, and
-after the scan we know O2's coefficients are the weakest.
+after the scan we know O2's coefficients are the weakest. Since 24 September 2026 they are also
+the ones the result depends on most (A-09).
 
 Perturb coefficients across their confidence intervals, regenerate the frontier repeatedly,
 render as a band rather than a line. Narrow band, robust conclusion. Wide band, say so.
@@ -486,6 +563,25 @@ plausible parameter values, the honest statement is a range.
 
 Run the congestion parameters through this with particular care, since they are the least
 well identified.
+
+**Planned around the congestion parameters, 24 September 2026.** O2 is now the only axis that
+trades against anything (A-09), and the one number the weight query still recovers is set by how
+O2 is scaled. The sweep is built around it:
+
+- BPR exponent `beta` and coefficient `alpha`, across the range stage 9's calibration supports,
+  and the conventional values alongside for comparison.
+- The base volume to capacity ratio, across stage 9's interval.
+- Capacity with and without the 2023 to 2024 jump in lane-km that looks like reclassification.
+  Both are run and neither is picked.
+- Road load of a goods vehicle or bus against a car, 1.5 to 3 PCU. At 1.0 the curve's position
+  depends on total quota alone, so it is run as the control.
+- The horizon over which growth compounds into population.
+- The premium elasticities across the fitted grid, the trend and first-difference specifications
+  and their intervals.
+
+Monotone changes to O2 cannot reorder policies on the front, so these parameters mostly move
+where the curve sits on the congestion axis and how the weight query reads it. The output is the
+curve as a band and the recovered ratio as a range. If the band is wide, that is what gets shown.
 
 ---
 
@@ -618,8 +714,13 @@ dominated interior styled distinctly from constraint-excluded regions. Carries t
 ships first.
 
 **View 2, the ternary map.** Weight simplex coloured by winning policy, with the current
-policy position and the historical growth-rate regimes marked. This is the headline, ships
-second.
+policy position and the historical growth-rate regimes marked. Ships second.
+
+Amended after the freeze, 24 September 2026. The map comes out banded, not in regions, because
+cost and revenue pick the same policy under any split of weight between them. It carries this
+annotation: "Cost and revenue agree on every policy the levers can reach, so only the weight on
+congestion changes the winner. Moving along a band changes nothing." It is no longer the headline.
+The three findings in section 0 are.
 
 **View 3, the point inspector.** Click a front point to see its policy parameters, resulting
 quota, objective values, and what is traded off against neighbouring points.
@@ -715,8 +816,10 @@ and none show why.
 - The scope cuts with reasons. Three objectives rather than more, because dominance gets sparse
   in higher dimensions. Static rather than live. One scenario rather than two.
 - What was fitted, what was assumed, what sensitivity did to the conclusions. Be specific that
-  the congestion objective is the weakest, and why.
-- The elasticity path, if it shows anything
-- The headline result, with its range
+  the congestion objective is the weakest, and why, and that after stage 5 it is the only axis
+  left trading against anything.
+- The elasticity path, if it shows anything. As of 24 September 2026 it does not: no drift the
+  intervals can distinguish.
+- The three headline findings in section 0, with their ranges
 - **Limitations and future work.** Everything found after the week one freeze lands here. This
   section is a deliverable, not an apology.
