@@ -50,6 +50,25 @@ New facts about the world update a row. They do not edit this document.
 **Frozen at the end of week one.** After that, findings go to the limitations and future
 work sections of the case study, not into the build.
 
+**In effect as of 24 September 2026, retroactive to 29 August 2026.** The end of week one was
+29 August. The freeze was pinned to that date and then not applied, so findings kept entering
+the build for four weeks. It is applied now, back to the date it was meant to take.
+
+What that means in practice:
+
+- Work already in the build stays. Stages 2 to 4 and the brief edits made through 24 September
+  are the build as it stands.
+- Anything surfaced after 29 August that is not already in the build goes to the post-freeze
+  section of `docs/ASSUMPTIONS.md` and becomes a limitation in the case study. It is not adopted.
+  At the time of the freeze that is the A-19 renewal test, the two LTA revalidation datasets, the
+  open question of whether O3 should be total rather than bid revenue, and the cause of the
+  pre-2010 revenue break in A-20. They are F-01 to F-03.
+- Stages 5 to 9 have not run and run after the freeze. They run as the build sequence specifies,
+  including the on-failure branch each one names, because those branches are part of the
+  frozen plan. Stage 5 falling back to a discretionary injection lever is the plan working, not
+  a post-freeze change. Anything those stages surface beyond what the plan already specifies is
+  a post-freeze finding.
+
 ---
 
 ## 0.2 Day one scan: what it changed
@@ -163,6 +182,12 @@ confirm the resulting front is a surface rather than a curve. This is assumption
 is the first thing to verify after the fits are done. If `theta` turns out unmodellable
 because demand by power output is not published, fall back to a discretionary injection
 lever and accept that the frontier will be flatter.
+
+**What stage 5 found, 2026-09-24.** `theta` is unmodellable: nothing published gives car demand
+by power output. The fallback was applied. Under it, the front is a curve rather than a surface
+when the premium elasticities are weaker than -1, which is the side section 4.1 expects, and a
+surface when they are stronger. `theta` would have given a surface either way. The gate is not
+met and the next step is open. See A-08.
 
 **Bounds.** Anchor on what has actually happened rather than what is arithmetically
 possible.
@@ -624,6 +649,18 @@ this week the headline claim is either supported or it is not.
 
 The case study is a running document from day one, edited into shape at the end. Written last,
 it gets written from memory and the interesting decisions will be gone.
+
+### The calendar as it happened
+
+Planned: three weeks from Sunday 23 August 2026, with the freeze at the end of week one on
+Saturday 29 August and the whole budget spent by Saturday 12 September.
+
+Actual, as of Thursday 24 September 2026: four working days across 33 calendar days, just
+under five weeks. Work happened on 23 August (stages 0 and 1), 31 August (stage 2), 4 September
+(stage 3) and 24 September (stage 3 follow-ups and stage 4). Every day after 29 August was past
+the freeze date. The three-week budget ran out with stages 5 to 17 not started.
+
+The case study carries this timeline, not the planned one.
 
 ---
 

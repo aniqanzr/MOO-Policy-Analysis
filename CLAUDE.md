@@ -23,6 +23,11 @@ days. Raise it rather than acting on it.
 post-freeze section of `docs/ASSUMPTIONS.md` and become the limitations section of the case
 study. This applies even when the finding is correct and the fix looks quick.
 
+The freeze is in effect, retroactive to 29 August 2026. Stages 5 to 9 still run as the build
+sequence specifies, including the on-failure branch each stage names, because that branch is
+part of the frozen plan. Anything those stages surface beyond it is a post-freeze finding. See
+"The freeze date" in `docs/PROJECT_BRIEF.md`.
+
 ## Non-negotiable
 
 **Never invent a number.** Every coefficient, parameter and constant either comes from fitted

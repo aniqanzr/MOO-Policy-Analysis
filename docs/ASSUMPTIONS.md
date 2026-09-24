@@ -43,6 +43,16 @@ and described May 2023 as one change rather than three. The verified table is
 guaranteed deregistrations come from Annex A. A-22 is new: Annex A's own arithmetic does not
 reproduce exactly from its printed inputs, by at most 1.25 COEs.
 
+**Freeze applied, 2026-09-24, retroactive to 29 August.** Findings after that date that were not
+already in the build are post-freeze rows F-01 to F-03 at the end of this file: the A-19 renewal
+test and its two datasets, the O3 framing question, and the cause of the A-20 break. None is
+adopted. Stages 5 to 9 still run as specified. See "The freeze date" in the brief.
+
+**Updated after stage 5, 2026-09-24.** A-08 not established: under the injection fallback,
+which applies because `theta` cannot be modelled, the front is a curve if the premium
+elasticities are weaker than -1, the side the brief expects, and a surface otherwise. A-23
+records the placeholders. F-04 and F-05 are post-freeze.
+
 Everything below carries a source note. Where a source is secondary, that is stated and the
 row is medium-confidence until a primary document is opened.
 
@@ -170,7 +180,9 @@ Notes:        Cat E supply is set at 10 percent of the summed A, B and C replace
               yours and must be labelled as such.
 
 ### A-08. The three chosen policy levers are not collinear in their effect on the objectives
-Status:       unverified — NEW, and now the second-highest risk row
+Status:       not established at stage 5. Under the lever set the plan requires, the front is a
+              curve if the premium elasticities land on the side the brief expects and a surface
+              if enough of them land on the other. Stage 6 fits them
 Source:       consequence of the A-02 rebuild
 Falsified by: sampling the decision space and finding the front is a curve rather than a
               surface, or finding the three objectives are near-perfectly explained by total
@@ -189,6 +201,52 @@ Notes:        The rebuild replaced quota counts with policy parameters. The dang
               If `theta` proves unmodellable because car registrations by power output are not
               published, fall back to a discretionary injection lever and record that the
               frontier will be flatter as a consequence.
+
+              Stage 5, 2026-09-24. `src/optimise/collinearity.py`, placeholder values from
+              `config/placeholders.toml` (A-23), every combination in
+              `data/processed/stage5-sweep.csv`, the result pinned in
+              `tests/test_collinearity.py`.
+
+              `theta` is unmodellable. No published data gives car demand by power output, so
+              the fallback applied: `g_ab`, `g_c` and the Annex A redistribution and injection
+              line. `theta` was run alongside as an abstract demand share for comparison.
+
+              One identity decides most of it. O1 is revenue over total quota and O3 is
+              revenue, so O1 times total quota is O3. Cost and revenue can only pull apart if
+              something moves revenue at a given total quota. `theta` does that by moving demand
+              between A and B. Injection and `g_ab` both add car quota, so under the fallback the
+              only thing that can do it is revenue falling as quota rises, which needs a premium
+              elasticity stronger than -1.
+
+              Result, with O1 and O3 over the decision categories A, B and C, and the front's
+              dimension measured on NSGA-II fronts as the median ratio of the second to first
+              local singular value, near zero for a curve:
+
+                  injection, elasticity -0.5 everywhere     0.027   curve
+                  injection, elasticity -2.0 everywhere     0.490   surface
+                  theta, either                             0.62 to 0.63   surface
+
+              Across the sweep, injection gives a curve, a ratio under 0.10, only when both car
+              categories are weaker than -1. Within that, it collapses when Category C is weaker
+              than -1 too and goods vehicles load the roads more than cars: 8 of the 24
+              combinations with both car elasticities at -0.5, at 0.023 to 0.057. With Category C
+              stronger than -1, falling goods vehicle revenue keeps a surface alive, at 0.32 to
+              0.49. `theta` never went below 0.39 in 432 combinations.
+
+              Counting all five categories in O1 and O3 gives a surface on both sides. That
+              surface is not counted. It comes from injection putting about a quarter of its
+              COEs into motorcycles, whose low premium pulls the average down by composition.
+              See F-04.
+
+              The side that collapses is the side the brief expects. Section 4.1: "Inelastic
+              demand means added quota barely moves price, so revenue trends closer to linear
+              in quota". Added quota barely moving price is an elasticity weaker than -1.
+
+              So the gate, "the front is a surface under plausible placeholder values", is not
+              met. It is a surface under some plausible values and a curve under others, and
+              which one the real model is depends on a number stage 5 cannot know. The plan's
+              stated fallback has already been used. What happens next is the user's decision,
+              and the options are in the decision log.
 
 ### A-09. The congestion objective can be identified from available data
 Status:       unverified — NEW, and expected to end as accepted-as-limitation
@@ -329,10 +387,11 @@ Notes:        Nine breaks currently listed in the brief. Some dates came from pr
               exercise of the month, the Early Turnover Scheme deduction moving to a
               four-quarter average, and Category D COEs returning to bidding earlier.
 
-              Remaining weak point. May 2017 is dated by LTA's own Annex A footnotes, in all 27
-              formula tables, but those are 2020 onward documents stating it in retrospect. The
-              2017 announcement itself was not opened. The pre-2002 dates this row once carried
-              fall before the left-truncation and were not verified, because nothing uses them.
+              May 2017 is dated by LTA's own Annex A footnotes, in all 27 formula tables. They
+              were written from 2020 onward, but a footnote in which LTA describes a change LTA
+              made is primary whenever it was written. Accepted as sourced on 2026-09-24; the
+              2017 announcement was not opened. The pre-2002 dates this row once carried fall
+              before the left-truncation and were not verified, because nothing uses them.
 
               The falsification test that remains is the practical one: an unexplained break in
               the stage 6 residuals at a date not on the table.
@@ -522,7 +581,8 @@ Notes:        Every wide source in section 8 is a republished SingStat table, an
               sources from SingStat instead of data.gov.sg.
 
 ### A-19. The stage 3 residual is payment made at the prevailing quota premium without a bid
-Status:       unverified — NEW, and the leading explanation of the A-10 shortfall
+Status:       unverified, and frozen: moved to F-01 on 2026-09-24 and not tested. Still the
+              leading explanation of the A-10 shortfall
 Source:       consequence of the stage 3 run. Scheme mechanics from the SingStat M651121
               footnotes committed at `data/raw/singstat-metadata.json`, which define the
               prevailing quota premium and record that from 6 August 2012 taxis pay the
@@ -575,7 +635,7 @@ Notes:        A COE renewal is a payment of the prevailing quota premium with no
               a catalogue, and nothing reads them yet.
 
 ### A-20. The published revenue line is comparable with computed bid revenue across the sample
-Status:       falsified — NEW
+Status:       falsified. The unexplained cause is frozen as F-03
 Source:       `python -m src.model.revenue --series`, FY2002 to FY2024 against M130571
 Falsified by: n/a
 Touches:      4.4, stage 3, any use of the revenue line before FY2010
@@ -724,6 +784,40 @@ Notes:        The replacement line is printed as a share of deregistrations: 25 
               percent from August 2022. Anything that runs the formula over history needs the
               regime that applied at the time. See A-11 and `docs/break-table.md`.
 
+### A-23. Stage 5's placeholder values are plausible enough to test the lever geometry
+Status:       accepted as placeholders, stage 5 only. Replaced by fitted values at stages 6 and
+              9, and nothing past stage 5 reads them
+Source:       `config/placeholders.toml`, every value marked there as an assumption
+Falsified by: the fitted values landing outside the swept ranges, which would mean stage 5
+              tested geometry the real model does not have
+Touches:      stage 5, A-08, and stage 8, which repeats the check on fitted values
+Notes:        Assumed, and swept rather than set:
+
+                  premium elasticity b per category   -0.5, -1.0, -2.0, in every combination
+                                                      across A, B and C
+                  road load of a goods vehicle or bus 1.0, 1.5, 2.0, 3.0 PCU against 1.0 for
+                                                      a car. 1.0 is the control where road
+                                                      load is proportional to quota
+                  growth rate upper bound             1 and 3 percent a year
+                  categories O1 and O3 sum over       all five, or A, B and C
+
+              Assumed and not swept, because they cannot change which policies are on the
+              front: the BPR alpha and beta (0.15 and 4, the conventional Bureau of Public
+              Roads values, cited in the config), the base volume to capacity ratio 0.9, and
+              the five-year horizon. O2 is monotone in road load for any of them, and dominance
+              does not change under a monotone rescaling of one objective.
+
+              Not assumed, read from committed data: the reference quarter's quota, premiums,
+              populations, deregistrations and adjustments; the quota formula; the injection
+              lever's range, 0 to 5,155 COEs a quarter, and its allocation across categories,
+              both off the Annex A redistribution lines; the theta anchor, 0.588, the Category A
+              share of A and B bids received in the reference quarter.
+
+              The unit elasticity is a knife-edge. At b = -1 premium times quota is constant, so
+              O3 cannot move with quota at all. It stays in the sweep and is kept out of the
+              main table, because it would make any lever set look two-objective for a reason
+              that belongs to the placeholder and not to COE.
+
 ---
 
 ## Post-freeze findings
@@ -738,3 +832,61 @@ Would have changed: what in the model
 Cost to chase: rough estimate in days
 Decision: not chased, documented
 ```
+
+The freeze took effect on 24 September 2026, retroactive to 29 August. The rows below are the
+findings surfaced after 29 August that were not in the build when it was applied.
+
+### F-01. Whether renewals explain the revenue residual is untested
+Found:     2026-09-04, sharpened 2026-09-24
+Would have changed: A-19 from plausible to measured, and possibly a narrower revenue check over
+           FY2011 to FY2016 using the two open LTA revalidation datasets,
+           `d_71ce745d4e4ea9cd2fea0fdf46412fc8` (annual, 2006 to 2017) and
+           `d_11af4cacfdd459f8712fb903b1639d98` (monthly, 2015 to 2018). Neither is adopted.
+           Neither covers taxis, and neither reaches FY2024, so A-10 would stay failed either way.
+Cost to chase: half a day, the timebox set on 2026-09-24
+Decision: not chased, documented. A-10 stays a failed validation with an unverified mechanism.
+
+### F-02. Whether O3 should be total revenue rather than bid revenue is not decided
+Found:     2026-09-24, from the stage 3 residual
+Would have changed: the definition of O3 at stage 10. Bid revenue leaves out payments at the
+           prevailing quota premium with no bid. The case for keeping it: renewal volumes follow
+           quota decisions made about a decade earlier and barely respond to the levers. The case
+           against: the renewal price is the clearing premium averaged, so a lever that lowers
+           premiums lowers renewal revenue too. Both sides are in the decision log.
+Cost to chase: one to two days, since it needs F-01's data and a model of the renewal price
+           channel. An estimate, not measured.
+Decision: not chased, documented. O3 stays bid revenue as built, labelled as bid revenue
+           wherever it appears. The freeze closes the option by default, not on its merits.
+
+### F-03. The cause of the pre-2010 break in the published revenue line is unknown
+Found:     2026-09-04
+Would have changed: any long-run claim about COE revenue before FY2010. Nothing in the build
+           reads the published line before FY2010, so no model result depends on it. A-21 ruled
+           out the bidding data as the cause.
+Cost to chase: about half a day, for an MOF document from that era, downloaded by hand
+Decision: not chased, documented. The line is treated as usable from FY2010 onward.
+
+### F-04. O1 averaged over all five categories moves by composition as well as by price
+Found:     2026-09-24, stage 5
+Would have changed: the definition of O1 at stage 10. O1 is the quota-weighted mean premium.
+           Counted over all five categories, moving quota towards a cheap category lowers it
+           even if no buyer pays less: a motorcycle COE clears at about 10,000 dollars and a
+           car COE at about 125,000. The injection lever puts about a quarter of its COEs into
+           motorcycles, so under it, O1 over all five categories falls partly by composition.
+           At stage 5 this is what turns a curve into a surface on one side of unit elasticity.
+           Counting A, B and C only removes it.
+Cost to chase: under an hour to redefine and re-run stage 5. The redefinition is the choice,
+           not the work.
+Decision: not chased, documented. Stage 5 reports both category sets and reads its gate on
+           A, B and C, the decision categories, so the composition effect cannot pass it.
+
+### F-05. The brief's 30,813 injection anchor is not reproduced from Annex A
+Found:     2026-09-24, stage 5
+Would have changed: the calibration anchor section 3.1 gives for an injection lever's bounds,
+           "30,813 COEs redistributed and injected in total between May 2023 and November
+           2025". The Annex A redistribution lines sum to 31,894 over the quarters from August
+           2023 to January 2026, plus 1,914 in two mid-quarter revisions in 2023. The window the
+           figure was taken over is not stated, so it cannot be matched.
+Cost to chase: about an hour, if the original source can be found
+Decision: not chased, documented. Stage 5 bounds the injection lever by the largest quarterly
+           line Annex A prints, 5,155, which does not depend on the 30,813 figure.

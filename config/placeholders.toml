@@ -1,0 +1,71 @@
+# Stage 5 placeholders. Every value in this file is an ASSUMPTION, not a fitted or published
+# number. Stage 5 uses them to ask one question, whether the three levers collapse the front
+# into a curve, and runs that question across the sweep ranges below rather than at one guess.
+# Register row A-23 lists them. Stages 6 and 9 replace them with fitted values, and nothing
+# downstream of stage 5 may read this file.
+#
+# What is NOT here, because it comes from committed data: the reference quarter's quota,
+# premiums, populations, deregistrations and adjustments (src/model/reference.py), the quota
+# formula (src/model/quota.py), the Category A share of bids received used to anchor theta,
+# and the injection lever's allocation and range, read off Annex A.
+
+[premium]
+# ln(P_i) = a_i + b_i ln(Q_i), section 4.1. a_i is set so the model hits the reference quarter's
+# observed premium at its observed quota, so only b_i is assumed. ASSUMPTION: b_i is the
+# elasticity of premium to quota and is what stage 6 fits. Swept per category.
+elasticity_default = -1.0
+elasticity_sweep = [-0.5, -1.0, -2.0]
+# The main table reports either side of -1 and not at it. At exactly -1 premium times quota is
+# constant, so revenue cannot move with quota at all and O3 goes flat. That is a property of the
+# placeholder, not of COE, and it would make any lever set look two-objective. -1 stays in the
+# sweep, where the combinations mix it with other values across categories.
+elasticity_main = [-0.5, -2.0]
+
+[road_load]
+# Passenger car units per vehicle, for the road load behind O2. ASSUMPTION throughout. Cars are
+# 1.0 by definition of the unit. Goods vehicles and buses are heavier. The sweep includes 1.0 on
+# purpose: at equal load per vehicle, total quota alone sets O2, which is the collapse case
+# A-08 describes, so it is the control.
+car = 1.0
+motorcycle = 0.5
+goods_vehicle_and_bus_default = 2.0
+goods_vehicle_and_bus_sweep = [1.0, 1.5, 2.0, 3.0]
+
+[bpr]
+# speed = free_flow / (1 + alpha (V/C)^beta), section 4.3. alpha 0.15 and beta 4 are the
+# conventional Bureau of Public Roads values (US Bureau of Public Roads, Traffic Assignment
+# Manual, 1964). base_vc is the reference volume to capacity ratio and is an ASSUMPTION until
+# stage 9 calibrates it. None of the three can change the stage 5 verdict: O2 is monotone in
+# road load for any positive values, and dominance does not change under a monotone rescaling
+# of one objective. They set where points sit on the O2 axis, not which points are on the front.
+alpha = 0.15
+beta = 4.0
+base_vc = 0.9
+
+[horizon]
+# Years over which a growth rate compounds into vehicle population for O2. ASSUMPTION. Only
+# O2 reads it, and for growth rates this small the population change is close to linear in
+# the horizon, so it rescales O2 without reordering policies.
+years = 5
+
+[bounds]
+# ASSUMPTION for g_ab and g_c. Section 3.1 wants the historical envelope of growth rates,
+# which is not yet extracted from a primary source. The Annex A tables on file only ever show
+# 0 percent for A and B and 0.25 percent for C. Stage 5 needs a range wide enough to see the
+# geometry, and the upper bound is swept to show the verdict does not depend on it.
+g_ab = [0.0, 0.03]
+g_c = [0.0, 0.03]
+growth_upper_sweep = [0.01, 0.03]
+
+# Comparison run only. theta is the Category A share of car demand. Its anchor is observed,
+# 0.588 of A and B bids received in the reference quarter. Its range is an ASSUMPTION: no
+# published data maps a power output threshold to a demand share, which is why theta is not
+# the lever the gate decides on.
+theta_half_width = 0.15
+
+[objectives]
+# Which categories O1 and O3 sum over. Main run: all five, as the published revenue line does.
+# Variant: A, B and C only, the decision dimensions. D and E do not move with the growth
+# levers, so the choice changes the weighting in O1, and the verdict is checked under both.
+categories_default = ["A", "B", "C", "D", "E"]
+categories_variant = ["A", "B", "C"]

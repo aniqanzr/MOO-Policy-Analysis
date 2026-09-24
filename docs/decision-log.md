@@ -515,3 +515,146 @@ total and apportioning it, and it does not fit because some published totals are
 of the total product either. The mechanism is not recoverable from the table. What stage 10
 needs from this is the tolerance to use when comparing its own formula against Annex A.
 
+## 2026-09-24. May 2017 accepted as sourced from LTA's own later footnotes
+
+The May 2017 break is dated by the Annex A footnotes, which are LTA documents from 2020 onward
+stating when LTA changed its own formula. Stage 4 recorded that as a weak point because the 2017
+announcement itself was not opened.
+
+Decided: a footnote in which the agency describes a change it made is a primary source
+regardless of when it was written. The row is verified and the weak point is closed.
+
+Alternative considered: finding and opening the 2017 release. Not taken. It would confirm a date
+that LTA already states in 27 tables and could only disagree if LTA's own later account of its
+own formula were wrong, which is not a risk worth the time before the freeze.
+
+## 2026-09-24. Stage 6 logs every break it includes and every one it leaves out
+
+Recorded now so a later session cannot miss it. When the premium fit is specified, the decision
+log gets one entry covering all ten rows of `docs/break-table.md`: selected as a dummy, handled
+as a regime split, or left out, with the reason for each. The specification alone would show
+what went in and hide what did not.
+
+## 2026-09-24. The freeze applied retroactively to 29 August
+
+The brief froze at the end of week one, 29 August. It was never applied, and findings kept
+entering the build for four weeks. Applied now, retroactive to that date, on the user's
+instruction.
+
+What stays: everything already in the build, stages 2 to 4 and the brief edits made through
+today. What goes post-freeze and is not adopted: the A-19 renewal test and the two revalidation
+datasets (F-01), the O3 framing question (F-02), and the cause of the A-20 break (F-03).
+
+One reading had to be chosen, and it could have gone the other way. Stages 5 to 9 have not run,
+so they all run after the freeze. Read literally, "findings do not enter the build at all"
+would stop a stage 5 failure from triggering the lever redesign the build sequence prescribes
+for it, which makes the rule unmeetable. Decided: each stage runs as specified, including the
+on-failure branch it names, because that branch is part of the frozen plan. Anything beyond
+it is post-freeze. The alternative, treating any stage 5 to 9 outcome that changes the build as
+post-freeze, would mean a failed gate could only be written up and never acted on. Raised with
+the user for confirmation.
+
+F-02 closes the open O3 option from earlier today by default rather than on its merits. That is
+a consequence of the freeze and is stated as such in the row.
+
+## 2026-09-24. The brief records the calendar as it happened
+
+Planned: three weeks from 23 August. Actual, at 24 September: four working days across 33
+calendar days. Recorded in section 10 of the brief and in the case study, which carries the
+real timeline rather than the intended one.
+
+## 2026-09-24. Stage 5 runs on the injection fallback because theta cannot be modelled
+
+Section 3.1 and A-08 both say: if `theta` proves unmodellable because car demand by power output
+is not published, fall back to a discretionary injection lever. It is not published. The SingStat
+keyword index has no table of cars by power output or engine capacity, and a sweep of all 4,629
+data.gov.sg datasets finds none either; the nearest is new car registrations by make, with no
+power field. With nothing to map a kW threshold onto a demand share, `theta` has no policy
+setting to vary.
+
+Decided: the gate is run on `g_ab`, `g_c` and injection, as the plan specifies. The injection
+lever is the Annex A redistribution and injection line, bounded by the largest quarterly total
+printed, 5,155, and allocated across categories in the shares Annex A has used.
+
+Alternative considered: keep `theta` as an abstract Category A share of car demand, anchored at
+the observed share of bids received. Kept as a comparison run only. It shows what the lever set
+would have looked like, and it cannot carry the gate, because a share with no threshold behind
+it is not a policy anyone can set, and section 5.3 needs the current policy located in the same
+space.
+
+This is the plan's own branch, run after the freeze, so under the freeze reading of 24 September
+it is not a post-freeze change.
+
+## 2026-09-24. Placeholders live in config/placeholders.toml
+
+CLAUDE.md says a value with no fit and no source goes in config, marked as an assumption, with a
+register row and a sensitivity sweep. There was no config directory. Section 3.3 already speaks
+of "config" for constraints.
+
+Decided: `config/placeholders.toml`, read with the standard library's `tomllib`. Each value has
+a comment saying it is an assumption, the register row is A-23, and stage 5 sweeps it. The file
+says that nothing past stage 5 may read it.
+
+Alternative considered: constants at the top of the stage 5 module. Rejected, because a value in
+code reads as settled and a value in a file called placeholders does not.
+
+## 2026-09-24. Stage 5 measures the front on the NSGA-II front, not on a random sample
+
+Three measurements were planned: the rank of the Jacobian, how much of each objective total
+quota explains, and the dimension of the front by local principal component analysis. The first
+sweep took the front as the non-dominated points of a random sample of 4,096 policies.
+
+That measure turned out to be biased. The non-dominated points of a random sample sit near the
+front rather than on it, and the scatter reads as a second dimension. Combinations whose NSGA-II
+front ratio was 0.02 to 0.05, plainly curves, gave 0.09 to 0.14 from the sample, and one gave
+0.63 against 0.20. The sweep was re-run on NSGA-II fronts, 200 generations each, and the sample
+measure dropped.
+
+Alternative considered: keep the sample and use more points. Not taken. The bias comes from the
+sample being random, not from it being small, and the optimiser the project already validated at
+stage 1 finds the front directly.
+
+## 2026-09-24. Stage 5 reads its gate on O1 and O3 over the decision categories
+
+O1 over all five categories falls when quota moves to a cheap category, whether or not any buyer
+pays less (F-04). Under the injection lever, whose allocation includes motorcycles, that turns a
+curve into a surface on one side of unit elasticity.
+
+Decided: stage 5 reports both category sets and reads the gate on A, B and C, so a composition
+effect cannot pass it.
+
+Alternative considered: read it on all five, as the published revenue line counts. Rejected for
+the gate, because the question is whether the levers trade the objectives off against each
+other, and a trade-off that exists only because motorcycles are cheap is not one a policy maker
+faces.
+
+## 2026-09-24. Stage 5 gate not met; next step open
+
+Under the injection fallback, with O1 and O3 over the decision categories, the front is a curve
+when the premium elasticities are weaker than -1 and a surface when enough of them are
+stronger. A-08 has the numbers. The build sequence says not to proceed to the fits with a lever
+set that already collapses, and to redesign the levers. The injection fallback it names has
+already been used, and this set does not already collapse: it collapses on one side of a number
+nobody has estimated yet.
+
+Not decided. The options, for the user:
+
+1. Estimate the current-regime premium elasticities for A, B and C first, which is the core of
+   stage 6, and let the result decide. Stronger than -1 and the plan continues. Weaker and the
+   lever set collapses and needs redesign anyway. Costs part of stage 6 now instead of later,
+   and runs a fit on a lever set the build sequence would not yet trust.
+
+2. Reconsider the variable set now, the plan's remaining branch. What `theta` had and injection
+   lacks is a way to move revenue at a given total quota. Two levers in published data would do
+   that: the split of the injection line between Categories A and B, which LTA already varies
+   from quarter to quarter, and the 10 percent Category E contribution rate in the quota
+   formula. Neither has been tested. Each is a change to the decision variables, which the
+   brief lists as provisional, and each is roughly half a day to put through stage 5 again.
+   Estimates, not measured.
+
+3. Accept a curve if stage 6 lands on the weak side, and change what the project claims. A
+   curve front makes the ternary weight map degenerate, which touches the inverse weight query
+   and its rendering. Both are frozen, so this one is raised rather than acted on.
+
+Option 1 does not rule out option 2. It only orders them.
+

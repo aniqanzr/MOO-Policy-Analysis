@@ -138,6 +138,9 @@ congestion parameters extra weight in the sensitivity sweep, and flag the axis i
 End of week one. The brief is now fixed. Everything found from here goes to the post-freeze
 section of the assumptions register and becomes the limitations section of the case study.
 
+Applied on 24 September 2026, retroactive to 29 August, with stages 5 to 9 still to run. How
+they run under it is set out in "The freeze date" in `docs/PROJECT_BRIEF.md`.
+
 ---
 
 ## Week two
