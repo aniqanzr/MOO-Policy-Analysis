@@ -563,3 +563,68 @@ Planned: three weeks from 23 August. Actual, at 24 September: four working days 
 calendar days. Recorded in section 10 of the brief and in the case study, which carries the
 real timeline rather than the intended one.
 
+## 2026-09-24. Stage 5 runs on the injection fallback because theta cannot be modelled
+
+Section 3.1 and A-08 both say: if `theta` proves unmodellable because car demand by power output
+is not published, fall back to a discretionary injection lever. It is not published. The SingStat
+keyword index has no table of cars by power output or engine capacity, and a sweep of all 4,629
+data.gov.sg datasets finds none either; the nearest is new car registrations by make, with no
+power field. With nothing to map a kW threshold onto a demand share, `theta` has no policy
+setting to vary.
+
+Decided: the gate is run on `g_ab`, `g_c` and injection, as the plan specifies. The injection
+lever is the Annex A redistribution and injection line, bounded by the largest quarterly total
+printed, 5,155, and allocated across categories in the shares Annex A has used.
+
+Alternative considered: keep `theta` as an abstract Category A share of car demand, anchored at
+the observed share of bids received. Kept as a comparison run only. It shows what the lever set
+would have looked like, and it cannot carry the gate, because a share with no threshold behind
+it is not a policy anyone can set, and section 5.3 needs the current policy located in the same
+space.
+
+This is the plan's own branch, run after the freeze, so under the freeze reading of 24 September
+it is not a post-freeze change.
+
+## 2026-09-24. Placeholders live in config/placeholders.toml
+
+CLAUDE.md says a value with no fit and no source goes in config, marked as an assumption, with a
+register row and a sensitivity sweep. There was no config directory. Section 3.3 already speaks
+of "config" for constraints.
+
+Decided: `config/placeholders.toml`, read with the standard library's `tomllib`. Each value has
+a comment saying it is an assumption, the register row is A-23, and stage 5 sweeps it. The file
+says that nothing past stage 5 may read it.
+
+Alternative considered: constants at the top of the stage 5 module. Rejected, because a value in
+code reads as settled and a value in a file called placeholders does not.
+
+## 2026-09-24. Stage 5 measures the front on the NSGA-II front, not on a random sample
+
+Three measurements were planned: the rank of the Jacobian, how much of each objective total
+quota explains, and the dimension of the front by local principal component analysis. The first
+sweep took the front as the non-dominated points of a random sample of 4,096 policies.
+
+That measure turned out to be biased. The non-dominated points of a random sample sit near the
+front rather than on it, and the scatter reads as a second dimension. Combinations whose NSGA-II
+front ratio was 0.02 to 0.05, plainly curves, gave 0.09 to 0.14 from the sample, and one gave
+0.63 against 0.20. The sweep was re-run on NSGA-II fronts, 200 generations each, and the sample
+measure dropped.
+
+Alternative considered: keep the sample and use more points. Not taken. The bias comes from the
+sample being random, not from it being small, and the optimiser the project already validated at
+stage 1 finds the front directly.
+
+## 2026-09-24. Stage 5 reads its gate on O1 and O3 over the decision categories
+
+O1 over all five categories falls when quota moves to a cheap category, whether or not any buyer
+pays less (F-04). Under the injection lever, whose allocation includes motorcycles, that turns a
+curve into a surface on one side of unit elasticity.
+
+Decided: stage 5 reports both category sets and reads the gate on A, B and C, so a composition
+effect cannot pass it.
+
+Alternative considered: read it on all five, as the published revenue line counts. Rejected for
+the gate, because the question is whether the levers trade the objectives off against each
+other, and a trade-off that exists only because motorcycles are cheap is not one a policy maker
+faces.
+

@@ -731,6 +731,40 @@ Notes:        The replacement line is printed as a share of deregistrations: 25 
               percent from August 2022. Anything that runs the formula over history needs the
               regime that applied at the time. See A-11 and `docs/break-table.md`.
 
+### A-23. Stage 5's placeholder values are plausible enough to test the lever geometry
+Status:       accepted as placeholders, stage 5 only. Replaced by fitted values at stages 6 and
+              9, and nothing past stage 5 reads them
+Source:       `config/placeholders.toml`, every value marked there as an assumption
+Falsified by: the fitted values landing outside the swept ranges, which would mean stage 5
+              tested geometry the real model does not have
+Touches:      stage 5, A-08, and stage 8, which repeats the check on fitted values
+Notes:        Assumed, and swept rather than set:
+
+                  premium elasticity b per category   -0.5, -1.0, -2.0, in every combination
+                                                      across A, B and C
+                  road load of a goods vehicle or bus 1.0, 1.5, 2.0, 3.0 PCU against 1.0 for
+                                                      a car. 1.0 is the control where road
+                                                      load is proportional to quota
+                  growth rate upper bound             1 and 3 percent a year
+                  categories O1 and O3 sum over       all five, or A, B and C
+
+              Assumed and not swept, because they cannot change which policies are on the
+              front: the BPR alpha and beta (0.15 and 4, the conventional Bureau of Public
+              Roads values, cited in the config), the base volume to capacity ratio 0.9, and
+              the five-year horizon. O2 is monotone in road load for any of them, and dominance
+              does not change under a monotone rescaling of one objective.
+
+              Not assumed, read from committed data: the reference quarter's quota, premiums,
+              populations, deregistrations and adjustments; the quota formula; the injection
+              lever's range, 0 to 5,155 COEs a quarter, and its allocation across categories,
+              both off the Annex A redistribution lines; the theta anchor, 0.588, the Category A
+              share of A and B bids received in the reference quarter.
+
+              The unit elasticity is a knife-edge. At b = -1 premium times quota is constant, so
+              O3 cannot move with quota at all. It stays in the sweep and is kept out of the
+              main table, because it would make any lever set look two-objective for a reason
+              that belongs to the placeholder and not to COE.
+
 ---
 
 ## Post-freeze findings
@@ -778,3 +812,28 @@ Would have changed: any long-run claim about COE revenue before FY2010. Nothing 
            out the bidding data as the cause.
 Cost to chase: about half a day, for an MOF document from that era, downloaded by hand
 Decision: not chased, documented. The line is treated as usable from FY2010 onward.
+
+### F-04. O1 averaged over all five categories moves by composition as well as by price
+Found:     2026-09-24, stage 5
+Would have changed: the definition of O1 at stage 10. O1 is the quota-weighted mean premium.
+           Counted over all five categories, moving quota towards a cheap category lowers it
+           even if no buyer pays less: a motorcycle COE clears at about 10,000 dollars and a
+           car COE at about 125,000. The injection lever puts about a quarter of its COEs into
+           motorcycles, so under it, O1 over all five categories falls partly by composition.
+           At stage 5 this is what turns a curve into a surface on one side of unit elasticity.
+           Counting A, B and C only removes it.
+Cost to chase: under an hour to redefine and re-run stage 5. The redefinition is the choice,
+           not the work.
+Decision: not chased, documented. Stage 5 reports both category sets and reads its gate on
+           A, B and C, the decision categories, so the composition effect cannot pass it.
+
+### F-05. The brief's 30,813 injection anchor is not reproduced from Annex A
+Found:     2026-09-24, stage 5
+Would have changed: the calibration anchor section 3.1 gives for an injection lever's bounds,
+           "30,813 COEs redistributed and injected in total between May 2023 and November
+           2025". The Annex A redistribution lines sum to 31,894 over the quarters from August
+           2023 to January 2026, plus 1,914 in two mid-quarter revisions in 2023. The window the
+           figure was taken over is not stated, so it cannot be matched.
+Cost to chase: about an hour, if the original source can be found
+Decision: not chased, documented. Stage 5 bounds the injection lever by the largest quarterly
+           line Annex A prints, 5,155, which does not depend on the 30,813 figure.
