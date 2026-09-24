@@ -38,6 +38,8 @@ It is about a parameter that comes up for decision inside two years.
 - Every constraint value and coefficient
 - Objective normalisation method
 - Frontend view details
+- Validation status in section 5.4. Recording a test result is a factual update, not a design
+  change. What the tests are for is not provisional; whether each one passed is.
 
 ### Assumptions. In `docs/ASSUMPTIONS.md`, not here.
 
@@ -222,6 +224,19 @@ the output.
 ### 4.1 Quota to premium, and the elasticity problem
 
 Fit from LTA bidding results, two exercises per month per category from April 2002.
+
+**The fit runs on the full span, April 2002 onward, from `quota-premium-monthly`.** The LTA long
+table, `coe-bidding-results`, starts at 2010-01, so a fit built on it would silently lose the
+first eight years, and those are the years where a drift in the elasticity would show. The wide
+table covers April 2002 onward and was audited at stage 3 for exactly this: its quota and
+premium columns carry the same meaning before and after 2010, per exercise throughout. See
+A-21. So the elasticity path gets roughly twenty four years rather than sixteen.
+
+What the audit does not give. It shows the columns did not change meaning, not that each
+pre-2010 value is right, and no second published source exists to check those values one by
+one. A break in the fitted elasticity inside 2002 to 2009 that is not on the break table below
+sends you back to A-21 before it is reported as a finding. February and March 2002 still go,
+per the break table, because their first exercise was closed bidding.
 
 **The auction is uniform price.** Bidders submit confidential reserve prices, the current
 price increments until bids at or above it equal the quota, and every successful bidder in a

@@ -391,3 +391,39 @@ What is not in question either way. O3 as currently computed is bid revenue and 
 labelled as such wherever it appears, and the published line is not a calibration target for
 it while the residual is unexplained. That part is A-10 and is not open.
 
+## 2026-09-24. The validation rule is rewritten to what can actually be met
+
+`CLAUDE.md` required three tests to pass before a frontier is trusted, one of them the revenue
+reconciliation, which failed at stage 3 and cannot pass against FY2024. A rule that cannot be
+met teaches later sessions to treat every rule as approximate, which is a worse outcome than
+losing the test.
+
+Decided: the gate is ZDT1 and DTLZ2 plus the accumulator backtest. The reconciliation stays
+recorded as failed in A-10 and is not a gate. The rule now says so, and says not to cite it as
+support or rescue it with a fitted term.
+
+Alongside it, validation status in section 5.4 moves to the provisional list in section 0.1.
+Recording that a test passed or failed is a factual update. Without that line, marking a
+failure in the brief read as a design change needing the frozen-section protocol.
+
+Alternative considered: keep three tests and redefine the third as bid revenue against a
+target with renewals added back. Rejected for now. That target needs renewal counts that only
+exist to 2017, and A-19's test of the mechanism is queued behind stage 4. If that test works,
+a narrower reconciliation over FY2011 to FY2016 might come back as a check. It would not be the
+test the brief specified, and it would be named differently.
+
+## 2026-09-24. Section 4.1 names the wide table as the fit source, full span
+
+Section 4.1 said to fit from "LTA bidding results ... from April 2002". The LTA long table as
+published starts at 2010-01, so a literal reading of 4.1 produces a fit from 2010 and loses
+the first eight years without anyone deciding to. Those are the years an elasticity drift would
+show in.
+
+Decided: 4.1 now says the fit runs from April 2002 on `quota-premium-monthly`, which A-21 audited
+across the 2010 boundary. It also says what the audit does not cover, and that an unexplained
+elasticity break inside 2002 to 2009 goes back to A-21 before it becomes a finding.
+
+Alternative considered: fitting from 2010 on the long table, where there is a second source to
+cross-check every value. Rejected. It trades eight years of the period the project most needs
+for a value-level check on years that already agree to the cent across both tables.
+
