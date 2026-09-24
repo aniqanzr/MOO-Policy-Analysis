@@ -141,6 +141,25 @@ section of the assumptions register and becomes the limitations section of the c
 Applied on 24 September 2026, retroactive to 29 August, with stages 5 to 9 still to run. How
 they run under it is set out in "The freeze date" in `docs/PROJECT_BRIEF.md`.
 
+### Critical path from 24 September 2026, after option 3
+The front is a curve (A-08) and O2 is the only axis left trading against anything (A-09). The
+order of what remains in week one changes. The stages themselves do not.
+
+1. **Stage 7**, the accumulator backtest. A validation gate, and O2 is built on it.
+2. **Stage 9**, congestion calibration. Moved ahead of everything optional because the recovered
+   weight now depends directly on O2's scale. Its on-failure branch is unchanged, and a band is
+   an acceptable output.
+3. **Stage 6, the rest.** The break-dummy specification, with the breaks selected and left out
+   reported in the log, and the elasticity path. The option 1 grid and the drift test already
+   answer the part of A-01 that decided option 3.
+4. **Stage 8**, confirmatory. The fitted elasticities were already run through the stage 5 check
+   under option 1. Stage 8 re-runs it on the final stage 6 values. It is the first thing cut if
+   time runs short.
+
+Stage 13 changes with this. It recovers one ratio, congestion against cost and revenue
+together, and reports it as a band from stage 14. It does not report a revenue weight, because
+none can be separated. See section 5.3 of the brief.
+
 ---
 
 ## Week two
@@ -160,6 +179,9 @@ concave-region points that win under no weight vector.
 ### Stage 13. Headline recovery
 Locate the current policy position, recover the implied weight region, report the revenue weight.
 Repeat per historical growth-rate regime and look for drift.
+
+Amended 24 September 2026 under option 3: the revenue weight cannot be separated from the cost
+weight on a curve. Recover the congestion weight against the other two combined, as a band.
 
 ### Stage 14. Sensitivity and export
 Perturb fitted coefficients, regenerate repeatedly, produce bands. Extra attention on the
