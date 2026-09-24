@@ -507,6 +507,29 @@ Notes:        From FY2002 to FY2009 the computed figure runs above the published
               explain the line, it locates the thing that needs explaining, and the practical
               effect above is unchanged.
 
+              2026-09-24, re-run and pushed further, because a source mismatch is the cheaper
+              hypothesis and deserved more than one pass. Three things to record.
+
+              The reconciliation does not switch sources at 2010. `src/model/revenue.py` reads
+              `quota-premium-monthly` for every financial year in the series, FY2002 to
+              FY2024, and the long table is only ever a cross-check. One file produces both
+              sides of the break, so a file switch cannot be what shifts the ratio. If the
+              level shift came from the data it would have to be a change inside that one
+              file, which is what A-21 tests and does not find.
+
+              The long table's start is the publisher's, not a short pull. The data.gov.sg
+              metadata for `d_69b3380ad7e51aff3a7dcc84eba52b8a` gives coverageStart
+              2010-01-01. Section 8's claim of April 2002 was wrong, which A-12 already
+              recorded, and the file is not truncated at our end.
+
+              There is no second pre-2010 bidding source to check against. The SingStat
+              keyword index returns exactly one table carrying bidding or quota premium,
+              M651121, which is this file. A sweep of all 4,629 datasets in the data.gov.sg
+              catalogue returns no bidding-results dataset other than the two already in
+              section 8. So A-21's stated limit is now a searched-for absence rather than an
+              assumed one, and it does not move: the pre-2010 values cannot be checked one by
+              one against anything.
+
 ### A-21. The wide bidding table's columns mean the same thing across the whole span
 Status:       verified, with the limits below
 Source:       `python -m src.ingest.verify_quota_premium`, tests in
@@ -557,6 +580,14 @@ Notes:        Opened because A-20 found a break at 2010 and the break has two po
               since a COE won in one month can be registered in the next. And before August
               2012 a taxi could bid instead of paying the prevailing quota premium, so the
               early years subtract a few registrations that did involve a bid.
+
+              2026-09-24. The missing second table was looked for rather than assumed away.
+              The SingStat keyword index returns one table carrying bidding or quota premium,
+              which is this one, and a sweep of all 4,629 data.gov.sg datasets returns no
+              bidding-results dataset beyond the two in section 8. The limit stands and is now
+              known to be a property of what is published, not of what was pulled. The checks
+              above are therefore the whole of the evidence for the pre-2010 span, and the
+              re-run on 2026-09-24 reproduced every one of them unchanged.
 
               For stage 6. The 2002 to 2009 span is usable in the premium fits on the same
               terms as the rest of the sample. Read a break in the fitted elasticity there as

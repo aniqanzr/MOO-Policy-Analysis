@@ -322,3 +322,35 @@ identity and a COE won in one month can be registered in the next. Kept, because
 external series that covers both eras, and a check that would have caught a factor-of-two error
 is worth having even if it would not catch a five percent one.
 
+## 2026-09-24. A-20 re-tested on the source, and the absent second table was looked for
+
+The semantic-mismatch hypothesis was worth a second pass: stage 2 found a wrong coverage claim,
+two copy-down defects and a silent string coercion across these files, so a definitional
+mismatch in the pre-2010 span was the cheaper explanation of A-20 than anything about how MOF
+reported revenue in 2006.
+
+It does not survive. The audit of 2026-09-04 reran unchanged, and two things were added that
+were missing from it.
+
+First, the premise that the computation switches sources at 2010 is not true of this code.
+`src/model/revenue.py` reads `quota-premium-monthly` for every year of the series. The long
+table is only ever a cross-check, and over FY2010 to FY2024 the two agree to the cent. One file
+produces both sides of the break, so the level shift cannot come from a file switch, and any
+data explanation would have to be a change inside that one file. That is what the six checks
+test, and the sharpest of them, the prevailing quota premium identity, holds to within 83 cents
+in 100 percent of category-months in both eras.
+
+Second, A-21's stated limit was that no second table exists for the pre-2010 span. That was an
+assumption. It was checked: the SingStat keyword index returns one table carrying bidding or
+quota premium, and a sweep of all 4,629 data.gov.sg datasets returns no bidding-results dataset
+other than the two already in section 8. The limit holds and is now a searched-for absence.
+
+So A-20 stays a finding about the published revenue line. The practical effect is unchanged,
+the target is used from FY2010 onward, and the 2002 to 2009 span is usable at stage 6.
+
+Cost of the choice, stated plainly: the pre-2010 values still cannot be checked one by one
+against an independent source, because no such source is published. The evidence that the span
+is sound is internal consistency plus two external magnitude checks, not value-level agreement.
+If stage 6 finds an elasticity break at some date in that span that is not in the A-11 break
+table, this row is the first thing to revisit.
+
