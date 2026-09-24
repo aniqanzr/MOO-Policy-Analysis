@@ -7,5 +7,6 @@ window_months = 60
 # Pass threshold for L2 on quota released: maximum absolute window error, as a share of stock at
 # the window's start. Derived, not assumed: (1 + 0.0025)^5 - 1, the stock added over the horizon
 # by the smallest nonzero growth rate LTA has set (Category C, 0.25 percent a year, which the
-# Annex A footnote from February 2018 says "will remain"; docs/break-table.md). Rounded to 4 places.
-tolerance = 0.0125
+# Annex A footnote from February 2018 says "will remain"; docs/break-table.md). The declaration
+# wrote this as 1.25 percent; it is 1.2563 percent, set here to 6 places.
+tolerance = 0.012563
