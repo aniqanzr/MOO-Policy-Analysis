@@ -30,6 +30,12 @@ eras, so the columns mean the same thing across 2010 and the 2002 to 2009 span i
 the stage 6 fits. A-21 is the new row and holds the evidence. A-20 keeps its status and now
 says where the break is not.
 
+**Updated 2026-09-24.** A-20 was re-tested on the source and the absent second table was
+searched for rather than assumed. A-10 now says plainly that it is a failed validation, and
+section 5.4 of the brief says the project runs on two validations rather than three. A-19 is
+corrected: renewal counts are published openly after all, for 2006 to 2017, which makes the
+mechanism testable without closing A-10.
+
 Everything below carries a source note. Where a source is secondary, that is stated and the
 row is medium-confidence until a primary document is opened.
 
@@ -197,7 +203,8 @@ Notes:        The speed series is annual from 2004, so roughly twenty observatio
               do not smooth it. Published road length also covers only LTA-maintained roads.
 
 ### A-10. Computed revenue can be reconciled against published government figures
-Status:       falsified as stated. The residual is accepted as a limitation, not closed
+Status:       falsified as stated. **This is not a passing test and must not be counted as
+              one.** The residual is accepted as a limitation, not closed
 Source:       SingStat table M130571 series 1.2.1, the Vehicle Quota Premiums line, spot
               checked against the MOF document under A-17. Computation in
               `src/model/revenue.py`, tests in `tests/test_revenue_reconciliation.py`
@@ -251,6 +258,23 @@ Notes:        Run 2026-09-04 against FY2024, the latest financial year with actu
               government revenue from the COE system and must not be described as such, and
               the published line is not a calibration target for it while the missing term is
               missing.
+
+              2026-09-24, said plainly because the brief assumed otherwise. This is a failed
+              validation, not a validation with a caveat. Section 5.4 specified three tests
+              and the project now has two, of which one is still unrun at stage 7. A residual
+              of 20 percent with an explanation attached is wide enough to hide a moderate
+              error in the premium handling or the quota accounting, and nothing else in the
+              build would surface one: A-12 compares the two bidding sources only from 2010
+              and A-21 audits the wide table against itself, so neither is external and
+              neither would catch an error the two published tables share. Anywhere this test
+              is cited as support, it supports less than it appears to.
+
+              On whether it can ever close. Not against FY2024. Closing it needs renewal and
+              taxi volumes for the target year priced at the prevailing quota premium, and no
+              published series carries renewal counts that recently. What can be done is
+              weaker and worth doing: the mechanism in A-19 is testable on the years where
+              renewal counts do exist, which would turn the explanation from plausible to
+              measured without making the FY2024 number reconcile. See A-19.
 
 ### A-11. The structural break table is complete and correctly dated
 Status:       unverified — NEW
@@ -474,6 +498,29 @@ Notes:        A COE renewal is a payment of the prevailing quota premium with no
 
               Until then the residual stays unexplained rather than explained-by-assumption,
               and O3 stays labelled as bid revenue.
+
+              2026-09-24. The paragraph above is wrong about where renewal counts live, found
+              while sweeping the data.gov.sg catalogue for something else. Two open LTA
+              datasets publish them, no credential and no DataMall:
+
+                  d_71ce745d4e4ea9cd2fea0fdf46412fc8  annual, 2006 to 2017, 96 rows
+                  d_11af4cacfdd459f8712fb903b1639d98  monthly, 2015-01 to 2018-01, 296 rows
+
+              Both are LTA-managed, split by 5-year and 10-year COE and by category, and both
+              state that the count refers to revalidations using the prevailing quota premium
+              applicable in that period, which is exactly the quantity this row is about. The
+              monthly one also notes a two-month reporting lag from the one-month grace period.
+
+              What that changes. The falsification test is runnable now for the years both
+              series cover, which overlap the residual years FY2011 to FY2016. Priced at the
+              prevailing quota premium and added to bid revenue, renewals either account for
+              the residual in those years or they do not, and either answer is worth having.
+
+              What it does not change. Coverage stops in 2017 and 2018, so this cannot close
+              A-10 for FY2024 and the reconciliation stays failed. Neither series covers
+              taxis, which are the other half of the mechanism from August 2012. Adopting
+              these as sources is a section 8 decision rather than one to take while sweeping
+              a catalogue, and nothing reads them yet.
 
 ### A-20. The published revenue line is comparable with computed bid revenue across the sample
 Status:       falsified — NEW

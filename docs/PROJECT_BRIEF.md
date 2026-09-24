@@ -396,15 +396,29 @@ omissions, not about LTA, and it is reported that way.
 
 ### 5.4 Validation
 
-Three tests, all passing before anything is trusted.
+Three tests were specified. **Two of them can pass. The third cannot, so the project runs on
+two validations rather than three.**
 
 - **Optimiser correctness.** ZDT1 for two objectives, DTLZ2 for three. Compare generated
   points against the analytically known front and report the error. Lives in the test suite,
-  needs no UI.
-- **Accumulator backtest.** Reproduce the published vehicle population series.
-- **Revenue reconciliation.** Against the MOF Vehicle Quota Premiums line. See 4.4.
+  needs no UI. Passing, stage 1.
+- **Accumulator backtest.** Reproduce the published vehicle population series. Not yet run,
+  stage 7.
+- **Revenue reconciliation.** Against the Vehicle Quota Premiums line. See 4.4. **Run at stage
+  3, and it does not pass.** Computed revenue is 79.3 percent of the published figure for
+  FY2024. The four candidate pipeline causes were excluded and A-19 gives the residual a
+  plausible mechanism, but plausible is not verified, and the gap cannot be closed against the
+  target year from any published series. A-10 carries the detail.
+
+What the loss costs, stated rather than worked around. The reconciliation was the only
+external check on the premium series handling and the quota accounting. A moderate error in
+either could sit inside a 20 percent residual without being visible. What remains is internal:
+A-12 comparing the two bidding sources over the 2010 onward overlap, and A-21 auditing the
+wide table against itself. Neither is ground truth, and neither would catch an error the two
+published bidding tables share.
 
 The answer to "how do you know this is right" should not be "the picture looked plausible."
+For O3 the honest answer is now weaker than this brief originally assumed.
 
 ---
 
