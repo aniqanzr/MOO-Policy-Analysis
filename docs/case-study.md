@@ -37,3 +37,7 @@ From the assumptions register. The full wording is there.
   against a second source, because none is published. A-21.
 - LTA's own quota arithmetic does not reproduce exactly from the inputs it prints, by at most
   1.25 COEs per category. A-22.
+- The lever meant to reallocate demand between the two car categories, `theta`, could not be
+  modelled, because demand by power output is not published. Under the fallback lever the
+  three objectives only form a surface if the premium falls faster than quota rises, and the
+  brief expected the opposite. A-08.

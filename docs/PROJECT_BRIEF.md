@@ -183,6 +183,12 @@ is the first thing to verify after the fits are done. If `theta` turns out unmod
 because demand by power output is not published, fall back to a discretionary injection
 lever and accept that the frontier will be flatter.
 
+**What stage 5 found, 2026-09-24.** `theta` is unmodellable: nothing published gives car demand
+by power output. The fallback was applied. Under it, the front is a curve rather than a surface
+when the premium elasticities are weaker than -1, which is the side section 4.1 expects, and a
+surface when they are stronger. `theta` would have given a surface either way. The gate is not
+met and the next step is open. See A-08.
+
 **Bounds.** Anchor on what has actually happened rather than what is arithmetically
 possible.
 

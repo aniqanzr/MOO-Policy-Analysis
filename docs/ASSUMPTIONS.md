@@ -48,6 +48,11 @@ already in the build are post-freeze rows F-01 to F-03 at the end of this file: 
 test and its two datasets, the O3 framing question, and the cause of the A-20 break. None is
 adopted. Stages 5 to 9 still run as specified. See "The freeze date" in the brief.
 
+**Updated after stage 5, 2026-09-24.** A-08 not established: under the injection fallback,
+which applies because `theta` cannot be modelled, the front is a curve if the premium
+elasticities are weaker than -1, the side the brief expects, and a surface otherwise. A-23
+records the placeholders. F-04 and F-05 are post-freeze.
+
 Everything below carries a source note. Where a source is secondary, that is stated and the
 row is medium-confidence until a primary document is opened.
 
@@ -175,7 +180,9 @@ Notes:        Cat E supply is set at 10 percent of the summed A, B and C replace
               yours and must be labelled as such.
 
 ### A-08. The three chosen policy levers are not collinear in their effect on the objectives
-Status:       unverified — NEW, and now the second-highest risk row
+Status:       not established at stage 5. Under the lever set the plan requires, the front is a
+              curve if the premium elasticities land on the side the brief expects and a surface
+              if enough of them land on the other. Stage 6 fits them
 Source:       consequence of the A-02 rebuild
 Falsified by: sampling the decision space and finding the front is a curve rather than a
               surface, or finding the three objectives are near-perfectly explained by total
@@ -194,6 +201,52 @@ Notes:        The rebuild replaced quota counts with policy parameters. The dang
               If `theta` proves unmodellable because car registrations by power output are not
               published, fall back to a discretionary injection lever and record that the
               frontier will be flatter as a consequence.
+
+              Stage 5, 2026-09-24. `src/optimise/collinearity.py`, placeholder values from
+              `config/placeholders.toml` (A-23), every combination in
+              `data/processed/stage5-sweep.csv`, the result pinned in
+              `tests/test_collinearity.py`.
+
+              `theta` is unmodellable. No published data gives car demand by power output, so
+              the fallback applied: `g_ab`, `g_c` and the Annex A redistribution and injection
+              line. `theta` was run alongside as an abstract demand share for comparison.
+
+              One identity decides most of it. O1 is revenue over total quota and O3 is
+              revenue, so O1 times total quota is O3. Cost and revenue can only pull apart if
+              something moves revenue at a given total quota. `theta` does that by moving demand
+              between A and B. Injection and `g_ab` both add car quota, so under the fallback the
+              only thing that can do it is revenue falling as quota rises, which needs a premium
+              elasticity stronger than -1.
+
+              Result, with O1 and O3 over the decision categories A, B and C, and the front's
+              dimension measured on NSGA-II fronts as the median ratio of the second to first
+              local singular value, near zero for a curve:
+
+                  injection, elasticity -0.5 everywhere     0.027   curve
+                  injection, elasticity -2.0 everywhere     0.490   surface
+                  theta, either                             0.62 to 0.63   surface
+
+              Across the sweep, injection gives a curve, a ratio under 0.10, only when both car
+              categories are weaker than -1. Within that, it collapses when Category C is weaker
+              than -1 too and goods vehicles load the roads more than cars: 8 of the 24
+              combinations with both car elasticities at -0.5, at 0.023 to 0.057. With Category C
+              stronger than -1, falling goods vehicle revenue keeps a surface alive, at 0.32 to
+              0.49. `theta` never went below 0.39 in 432 combinations.
+
+              Counting all five categories in O1 and O3 gives a surface on both sides. That
+              surface is not counted. It comes from injection putting about a quarter of its
+              COEs into motorcycles, whose low premium pulls the average down by composition.
+              See F-04.
+
+              The side that collapses is the side the brief expects. Section 4.1: "Inelastic
+              demand means added quota barely moves price, so revenue trends closer to linear
+              in quota". Added quota barely moving price is an elasticity weaker than -1.
+
+              So the gate, "the front is a surface under plausible placeholder values", is not
+              met. It is a surface under some plausible values and a curve under others, and
+              which one the real model is depends on a number stage 5 cannot know. The plan's
+              stated fallback has already been used. What happens next is the user's decision,
+              and the options are in the decision log.
 
 ### A-09. The congestion objective can be identified from available data
 Status:       unverified — NEW, and expected to end as accepted-as-limitation

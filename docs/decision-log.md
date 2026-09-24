@@ -628,3 +628,33 @@ the gate, because the question is whether the levers trade the objectives off ag
 other, and a trade-off that exists only because motorcycles are cheap is not one a policy maker
 faces.
 
+## 2026-09-24. Stage 5 gate not met; next step open
+
+Under the injection fallback, with O1 and O3 over the decision categories, the front is a curve
+when the premium elasticities are weaker than -1 and a surface when enough of them are
+stronger. A-08 has the numbers. The build sequence says not to proceed to the fits with a lever
+set that already collapses, and to redesign the levers. The injection fallback it names has
+already been used, and this set does not already collapse: it collapses on one side of a number
+nobody has estimated yet.
+
+Not decided. The options, for the user:
+
+1. Estimate the current-regime premium elasticities for A, B and C first, which is the core of
+   stage 6, and let the result decide. Stronger than -1 and the plan continues. Weaker and the
+   lever set collapses and needs redesign anyway. Costs part of stage 6 now instead of later,
+   and runs a fit on a lever set the build sequence would not yet trust.
+
+2. Reconsider the variable set now, the plan's remaining branch. What `theta` had and injection
+   lacks is a way to move revenue at a given total quota. Two levers in published data would do
+   that: the split of the injection line between Categories A and B, which LTA already varies
+   from quarter to quarter, and the 10 percent Category E contribution rate in the quota
+   formula. Neither has been tested. Each is a change to the decision variables, which the
+   brief lists as provisional, and each is roughly half a day to put through stage 5 again.
+   Estimates, not measured.
+
+3. Accept a curve if stage 6 lands on the weak side, and change what the project claims. A
+   curve front makes the ternary weight map degenerate, which touches the inverse weight query
+   and its rendering. Both are frozen, so this one is raised rather than acted on.
+
+Option 1 does not rule out option 2. It only orders them.
+
