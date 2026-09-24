@@ -809,3 +809,28 @@ built to answer, what weight the policy implies for revenue, stops being answera
 model. What can still be said is that under current elasticities, affordability and revenue are
 not in tension through quota, and the only live trade-off is road space against both.
 
+## 2026-09-24. Drift test declared before it runs
+
+The three windows in the declared grid are nested, so comparing them cannot show drift: the
+window from May 2022 is inside the window from February 2014. To answer whether the premium's
+response to quota has changed, the fit is split into two periods that do not overlap. Declared
+here and committed before it runs.
+
+- P1, February 2014 to April 2022, from the 97 kW criterion to the month before the electric car
+  threshold changed.
+- P2, May 2022 to the last exercise on file, identical to W1.
+
+All five categories, specifications S1, S2 and S3 as declared before, Newey-West errors with 6
+lags. The change is b in P2 minus b in P1, with standard error the root of the sum of the two
+squared standard errors, the periods being separate samples.
+
+Reading rule, fixed now. The brief's hypothesis in section 4.1 is that buyers came to absorb the
+premium as a cost of ownership, so demand became less responsive to price. In terms of b that is
+the premium moving more per unit of quota, b more negative in P2 than in P1. A drift is reported
+where the 95 percent interval on the change excludes zero, in either direction, and a result
+that depends on the specification is reported as depending on it.
+
+Every break row placed as in the earlier declaration. Row 6, May 2022, is the split itself. The
+2020 suspension, row 5, falls inside P1 and is left out as a dummy, being a supply shock that
+moved quota.
+
