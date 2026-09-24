@@ -53,6 +53,11 @@ which applies because `theta` cannot be modelled, the front is a curve if the pr
 elasticities are weaker than -1, the side the brief expects, and a surface otherwise. A-23
 records the placeholders. F-04 and F-05 are post-freeze.
 
+**Updated after stage 7, 2026-09-24.** A-04 falsified. The published flows reproduce the published
+stock, but the brief's accumulator, quota released in, misses the 5-year change in stock by 2 to 3
+percent at the median, against a 1.26 percent tolerance. F-06 records the likely mechanism. It
+was not tested and not fixed.
+
 **Updated after option 3, 2026-09-24.** The fitted elasticities put A-08 on the curve side, and the
 user chose to report the collapse as a finding. A-01 gains the drift result: no change the usable
 specifications can distinguish. A-09 now records that O2, expected to be the weakest objective,
@@ -148,7 +153,8 @@ Notes:        The factual question is settled. No Singapore minister has framed 
               commentary.
 
 ### A-04. The ten-year COE term makes vehicle stock a rolling decade of registrations
-Status:       unverified, and known to be more complicated than first written
+Status:       falsified, 2026-09-24, stage 7. The wording and the accumulator both fail. The data
+              does not
 Source:       COE scheme design
 Falsified by: accumulator backtest failing to reproduce the published population series
 Touches:      4.2
@@ -167,6 +173,27 @@ Notes:        Three complications confirmed by the scan. COEs can be renewed by 
               the reason, the files get downloaded by hand and committed. That is the point at
               which this row's falsification test would otherwise be answered by a data gap
               rather than by the model.
+
+              2026-09-24, stage 7, declared in the decision log before it ran. Three levels over
+              60-month windows, the model's horizon, error as a share of stock.
+
+              The data holds. Since 2002, published registrations minus deregistrations reproduce
+              the published stock to within 0.21 percent in each of A, B, C and D.
+
+              The accumulator fails. Quota released in, published deregistrations out: median
+              error 2.87 percent of stock for A, B and C with E's quota, 1.95 for D, 2.18 for A to
+              D; maxima 4.65, 6.36 and 4.07. The tolerance was 1.26 percent, the 5-year effect of
+              the smallest growth rate LTA has set. Successful bids in place of quota do not help.
+              The gap is quota against registrations: vehicles enter outside the bidding, most
+              visibly Category C under the Early Turnover Scheme from 2013, and motorcycle quota
+              runs ahead of motorcycle registrations. F-06.
+
+              The wording fails. Stock over the previous ten years of registrations runs from
+              0.77 to 1.36 since 2000. The model does not rely on the wording.
+
+              Renewals are not the reason for the accumulator's failure: deregistrations are the
+              published series, which already nets them out. So the DataMall condition above is
+              not triggered, and nothing is downloaded.
 
 ### A-05. The BPR volume-delay function adequately maps vehicle population to congestion
 Status:       unverified
@@ -940,3 +967,20 @@ Would have changed: the calibration anchor section 3.1 gives for an injection le
 Cost to chase: about an hour, if the original source can be found
 Decision: not chased, documented. Stage 5 bounds the injection lever by the largest quarterly
            line Annex A prints, 5,155, which does not depend on the 30,813 figure.
+
+### F-06. Vehicles enter the stock outside the bidding, and the accumulator does not see them
+Found:     2026-09-24, stage 7
+Would have changed: the accumulator in brief 4.2, "prior population, minus deregistrations, plus
+           released quota". Over 5-year windows it misses the published change in stock by 2 to 3
+           percent at the median and up to 6.4 percent, where the published flows reconcile to
+           0.2 percent. For A, B and C the gap is positive in the 2000s and negative from 2013.
+           Registrations under the Early Turnover Scheme begin in May 2013, are published as their
+           own row, and are 3.7 to 5.2 percent of stock in the worst windows. Annex A adjusts quota
+           for ETS replacement and for taxi population change, which fits vehicles entering
+           outside the bidding. For D, motorcycle quota and successful bids run ahead of
+           registrations, unexplained.
+Cost to chase: about half a day to add ETS registrations and taxi flows as inflows, declared
+           first, and re-run. The D gap has no candidate mechanism and no estimate.
+Decision: raised at the stage 7 gate, not chased. Stage 7 names no remedy, so a fix would change
+           the build after the freeze.
+

@@ -1035,3 +1035,64 @@ result is reported as that, with the windows named, and the gate is not called p
 On failure, as stage 7 says: the population model is wrong and O2 is built on it. Stop at the
 gate either way. Renewal counts from DataMall stay deferred and the post-freeze renewal datasets
 (F-01) are not used.
+
+## 2026-09-24. Stage 7 result: the accumulator on quota released fails the gate
+
+Run as declared. `python -m src.model.accumulator`, tests in `tests/test_accumulator.py`.
+
+**L1, published flows against published stock.** Since 2002, registrations minus deregistrations
+reproduce the published change in stock to within 0.21 percent of stock over every 60-month
+window, in each of A, B, C and D. The VQS total reconciles to within 0.08 percent across the whole
+record from 1990. Before 2002, A and B separately miss by up to 4.6 percent in windows from 1994,
+in opposite directions, which looks like vehicles moved between the two categories; exempted
+vehicles miss by up to 21 percent. Neither is in L2's span. The data is sound. What follows is
+not a data problem.
+
+**L2, the brief's accumulator, quota released in.** Fails.
+
+| Group | Windows | Median abs error | Max abs error | Worst window |
+|---|---|---|---|---|
+| A+B+C with E's quota | 233 | 2.87% | 4.65% | from Sep 2015, -4.65% |
+| D | 225 | 1.95% | 6.36% | from Nov 2014, +6.36% |
+| A to D with E | 225 | 2.18% | 4.07% | from Jan 2003, +4.07% |
+
+Tolerance 1.2563 percent. Even the median fails in every group. With successful bids in place of
+quota released, medians are 2.91, 0.86 and 2.38 percent and maxima 5.34, 4.86 and 3.83. Unused
+quota is not the explanation.
+
+Because L1 holds, L2's error is the gap between quota and registrations over the window. What the
+decomposition shows, as a description and not a tested mechanism:
+
+- A, B and C with E. Quota runs ahead of registrations in the 2000s, every window starting before
+  2008 positive, up to +3.96 percent. From windows starting in 2013 it runs behind, every one
+  negative, down to -4.65 percent. Registrations of Category C vehicles under the Early Turnover
+  Scheme begin in May 2013, are published as their own row, and amount to 3.7 to 5.2 percent of
+  stock over the windows where the gap is largest. Annex A names "replacement of commercial
+  vehicles under the Early Turnover Scheme" as an adjustment to quota. That is consistent with
+  those vehicles entering the stock outside the bidding. Taxi registrations, 4.2 to 4.5 percent of
+  stock in the early windows, are of similar size to the positive gap then, and Annex A adjusts
+  quota for taxi population change. Neither was tested.
+- D. Motorcycle quota exceeds motorcycle registrations in every era, and successful bids exceed
+  them by 3.5 to 4.9 percent of stock in the windows since 2014. No explanation found.
+
+**L3, A-04 as worded.** The stock is not a rolling decade of registrations. Stock over the previous
+120 months of registrations runs from 0.77 in March 2009 to 1.36 in April 2000. The model does not
+use a rolling decade, so this falsifies the wording of A-04 without touching the model.
+
+**Two handling corrections, reported with the result.** First, the quota table leaves April to June
+2020 blank. The first run read them as missing and dropped every window touching them, 63 of 233
+for A, B and C. No exercise was held, so no quota was released: they are now zero, with LTA's
+resumption release cited in the code. With them dropped, the result was the same, a median of 2.16
+percent and a maximum of 4.41 for A, B and C. Second, the declaration and first config wrote the
+tolerance as 1.25 percent; (1.0025^5 - 1) is 1.2563 percent. It is now set exactly. Neither
+changes the reading.
+
+**Reading.** By the declared rule, the gate is not passed. Stage 7's on-failure branch says the
+population model is wrong and O2 is built on it. The stage names no remedy, so any fix would be
+a change to the build after the freeze. It is raised, not made. The mechanism above is F-06.
+
+What is and is not affected, as reasoning, not a test. The inflows outside the bidding do not
+depend on `g_ab`, `g_c` or the injection lever as the model defines them. If that holds, the error
+shifts every policy's road load by about the same amount, which is a monotone change to O2 and
+cannot change which policies are on the front. It does move where the curve sits and how the
+weight query reads it, which is the one number option 3 still recovers.

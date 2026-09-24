@@ -68,3 +68,7 @@ From the assumptions register. The full wording is there.
   through carried-forward unused quota. A-01.
 - The congestion objective, calibrated on about twenty annual observations, carries the only
   live trade-off. A-09.
+- The accumulator, quota released in and deregistrations out, misses the 5-year change in vehicle
+  stock by 2 to 3 percent at the median and up to 6.4 percent, against a tolerance of 1.26
+  percent. The published flows themselves reconcile. Vehicles appear to enter outside the bidding.
+  A-04, F-06.
