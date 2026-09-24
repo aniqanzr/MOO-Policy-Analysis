@@ -1,0 +1,567 @@
+{
+  "generated": "2026-09-24T10:31:38Z",
+  "generated_by": "src/ingest/pull_annex_a.py",
+  "index": "https://www.lta.gov.sg/content/ltagov/en/newsroom.html",
+  "note": "LTA quarterly COE quota releases listed in the newsroom index, with the page text and the Annex A PDF each links to. The index reaches back to February 2020.",
+  "releases": [
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2020/1/news-releases/certificate-of-entitlement-quota-for-february-2020-to-april-2020.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2020-01-certificate-of-entitlement-quota-for-february-2020-to-april-2020.txt",
+      "release_sha256": "8097d036133a7ce2ff9f02ee4696eef36a468e58cb18a09d4eba00a6f90fe840",
+      "retrieved": "2026-09-24T10:31:17Z",
+      "attachments": [
+        {
+          "file": "2020-01-certificate-of-entitlement-quota-for-february-2020-to-april-2020.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2020/20200114_coe_quota_feb-apr.pdf",
+          "anchor_text": "Annex A",
+          "is_annex_a": true,
+          "sha256": "be21caca62d00dd630b78c531a1d009696f58ac5d8ca74cc6c580d75db6a242f",
+          "bytes": 31369
+        }
+      ],
+      "annex_a": "2020-01-certificate-of-entitlement-quota-for-february-2020-to-april-2020.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2020/10/news-releases/Certificate_of_entitlement_quota_for_Nov20_to_Jan21.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2020-10-Certificate_of_entitlement_quota_for_Nov20_to_Jan21.txt",
+      "release_sha256": "1c9f75b76bfc256cb6be1c876cf1ab3f8a86234d4f07e5ded75d01a950a4d425",
+      "retrieved": "2026-09-24T10:31:17Z",
+      "attachments": [
+        {
+          "file": "2020-10-Certificate_of_entitlement_quota_for_Nov20_to_Jan21.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2020/201013_Monthly_COEquota_Nov20-Jan21_AnnexA.pdf",
+          "anchor_text": "Annex A: Monthly COE Quota for November 2020 to January 2021",
+          "is_annex_a": true,
+          "sha256": "3c159f155bb2ad3afc7195e0b5fbb5c8f43f50a68e91b55ff6a21853663f08fd",
+          "bytes": 101346
+        }
+      ],
+      "annex_a": "2020-10-Certificate_of_entitlement_quota_for_Nov20_to_Jan21.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2020/4/news-releases/suspension-of-coe-bidding-exercises-in-april-during-elevated-saf.html",
+      "why": "start of the April to June 2020 bidding suspension",
+      "release_text": "2020-04-suspension-of-coe-bidding-exercises-in-april-during-elevated-saf.txt",
+      "release_sha256": "a11b9d00052bb4b30ddcb697caf0ca4ee4f8ace68ff34382f3064f659b11ae82",
+      "retrieved": "2026-09-24T10:31:18Z",
+      "attachments": [],
+      "annex_a": null,
+      "note": "0 attachments identified as Annex A"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2020/6/news-releases/resumption-of-coe-bidding-exercises-from-6-july.html",
+      "why": "size and schedule of the quota returned after the 2020 suspension",
+      "release_text": "2020-06-resumption-of-coe-bidding-exercises-from-6-july.txt",
+      "release_sha256": "742e0c42134b47b4d1c6ba364210bed75f28e33cf9296a965ca0ffd883a3dcdb",
+      "retrieved": "2026-09-24T10:31:18Z",
+      "attachments": [
+        {
+          "file": "2020-06-resumption-of-coe-bidding-exercises-from-6-july.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2020/20200618_COEBidAnnex-A.pdf",
+          "anchor_text": "Annex A",
+          "is_annex_a": true,
+          "sha256": "614ca7fb05cfc36f9a6d77a9f900e38a62fe421d92fcdd88fc720cf85908df8e",
+          "bytes": 34865
+        }
+      ],
+      "annex_a": "2020-06-resumption-of-coe-bidding-exercises-from-6-july.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2020/7/news-releases/certificate-of-entitlement-quota-for-august-2020-to-october-2020.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2020-07-certificate-of-entitlement-quota-for-august-2020-to-october-2020.txt",
+      "release_sha256": "3c0dc26bbc50b34a1194d9a72da47bfc364f353cdc3fcc3ebdfc2d00a3549478",
+      "retrieved": "2026-09-24T10:31:19Z",
+      "attachments": [
+        {
+          "file": "2020-07-certificate-of-entitlement-quota-for-august-2020-to-october-2020.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2020/20200725_annex-a-coe-quota.pdf",
+          "anchor_text": "Annex A",
+          "is_annex_a": true,
+          "sha256": "51a353cef06a6f94b461cf28e0e54e278c20465541d84b3e8e1449ad167cfe8d",
+          "bytes": 35035
+        }
+      ],
+      "annex_a": "2020-07-certificate-of-entitlement-quota-for-august-2020-to-october-2020.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2021/1/news-releases/certificate-of-entitlement-quota-for-february-2021-to-april-2021.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2021-01-certificate-of-entitlement-quota-for-february-2021-to-april-2021.txt",
+      "release_sha256": "1a9bea2e8b3fa1088571946adea1152c9fb25c6605e7aa0225540518f60cd3e7",
+      "retrieved": "2026-09-24T10:31:20Z",
+      "attachments": [
+        {
+          "file": "2021-01-certificate-of-entitlement-quota-for-february-2021-to-april-2021.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2021/20210113_COEQuota.pdf",
+          "anchor_text": "Annex A",
+          "is_annex_a": true,
+          "sha256": "42f837aa2374dd8bf7104b469ddae93091c75f3d55ebcc04b190d5f59fd9dd6a",
+          "bytes": 33567
+        }
+      ],
+      "annex_a": "2021-01-certificate-of-entitlement-quota-for-february-2021-to-april-2021.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2021/10/news-releases/COE_quota_for_Nov21_to_Jan_22.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2021-10-COE_quota_for_Nov21_to_Jan_22.txt",
+      "release_sha256": "2732507032ff128507ad60361893378330e556688cb379188f3791f6978ddba5",
+      "retrieved": "2026-09-24T10:31:20Z",
+      "attachments": [
+        {
+          "file": "2021-10-COE_quota_for_Nov21_to_Jan_22.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2021/211015_Monthly_COEquota_Nov21toJan22_AnnexA.pdf",
+          "anchor_text": "Annex A: Monthly COE Quota for   November 2021 to January 2022",
+          "is_annex_a": true,
+          "sha256": "7bc85d9c26a9179235e7525e9f85dbabb6f95936a9789c5ec2f699400e97cf23",
+          "bytes": 213029
+        }
+      ],
+      "annex_a": "2021-10-COE_quota_for_Nov21_to_Jan_22.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2021/4/news-releases/COE_quota_for_May_to_Jul_21.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2021-04-COE_quota_for_May_to_Jul_21.txt",
+      "release_sha256": "a233ceb0571bb16f6b69dc05c39c2c7406b2de02d5f1fa8ab65a1c4a77e07998",
+      "retrieved": "2026-09-24T10:31:21Z",
+      "attachments": [
+        {
+          "file": "2021-04-COE_quota_for_May_to_Jul_21.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2021/210415_Monthly_COEquota_May_to_Jul_21_AnnexA.pdf",
+          "anchor_text": "Annex A: Monthly COE Quota for May 2021 to July 2021",
+          "is_annex_a": true,
+          "sha256": "59340aea45435e41a54882d8c917aea47ce7590022e245aa4f0be84f22f8d086",
+          "bytes": 146044
+        }
+      ],
+      "annex_a": "2021-04-COE_quota_for_May_to_Jul_21.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2021/7/news-releases/coe-quota-aug-2021-oct-2021.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2021-07-coe-quota-aug-2021-oct-2021.txt",
+      "release_sha256": "ffb253fafd77f27f816be2d95f3bf2b23a9160a3fc156c4b6eda95cd0c59a537",
+      "retrieved": "2026-09-24T10:31:22Z",
+      "attachments": [
+        {
+          "file": "2021-07-coe-quota-aug-2021-oct-2021.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2021/14072021-coe-quota-aug-oct-2021.pdf",
+          "anchor_text": "Annex A",
+          "is_annex_a": true,
+          "sha256": "212ac1e7ac4bf08c4ed642ec5688d011dff91367af5f4c54cd35b04c45b4bf8f",
+          "bytes": 22929
+        }
+      ],
+      "annex_a": "2021-07-coe-quota-aug-2021-oct-2021.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2022/1/news-releases/COE_quota_for_Feb22_to_Apr22.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2022-01-COE_quota_for_Feb22_to_Apr22.txt",
+      "release_sha256": "1a97632665d05fb8ed0e2edeb73b4e761297b14045f3031f9adce200ae780d08",
+      "retrieved": "2026-09-24T10:31:23Z",
+      "attachments": [
+        {
+          "file": "2022-01-COE_quota_for_Feb22_to_Apr22.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2022/220114_Monthly_COE%20quota_Feb22_to_Apr22_AnnexA.pdf",
+          "anchor_text": "Annex A: Monthly COE Quota for   February 2022 to April 2022",
+          "is_annex_a": true,
+          "sha256": "f5e72eb4e1e0694986b043c6e5fd19cb067994f7e688818917630ced6c1e6f7a",
+          "bytes": 256116
+        }
+      ],
+      "annex_a": "2022-01-COE_quota_for_Feb22_to_Apr22.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2022/10/news-releases/COE_quota_for_Nov22_to_Jan23.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2022-10-COE_quota_for_Nov22_to_Jan23.txt",
+      "release_sha256": "163efa3140a3fdcd13d896f4ddfd70ea9e4abdd1827ca06e18dce9e46e39f6b3",
+      "retrieved": "2026-09-24T10:31:23Z",
+      "attachments": [
+        {
+          "file": "2022-10-COE_quota_for_Nov22_to_Jan23.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2022/221014_COE_quota_Nov22-Jan23_Annex.pdf",
+          "anchor_text": "Annex A: Monthly COE Quota for November 2022 to January 2023",
+          "is_annex_a": true,
+          "sha256": "de1ffa96f97f7be7159a1d07ef596a26f69b4060256551dcebf3638edf95e1fc",
+          "bytes": 163211
+        }
+      ],
+      "annex_a": "2022-10-COE_quota_for_Nov22_to_Jan23.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2022/4/news-releases/certificate-of-entitlement-quota-for-may-2022-to-july-2022.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2022-04-certificate-of-entitlement-quota-for-may-2022-to-july-2022.txt",
+      "release_sha256": "eb8264e664ecf8a3520ec469c20ed8c5a86459e7dddd073a81ced315cb0d5696",
+      "retrieved": "2026-09-24T10:31:24Z",
+      "attachments": [
+        {
+          "file": "2022-04-certificate-of-entitlement-quota-for-may-2022-to-july-2022.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2022/140421-annex-a2Q2022-coe-quota.pdf",
+          "anchor_text": "Annex A",
+          "is_annex_a": true,
+          "sha256": "a9e3b002adbb035b084a7ad1f073255b678f30503f304def6d3ba20a89ccbe1b",
+          "bytes": 48833
+        }
+      ],
+      "annex_a": "2022-04-certificate-of-entitlement-quota-for-may-2022-to-july-2022.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2022/7/news-releases/certificate-of-entitlement-quota-for-august-2022-to-october-2022.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2022-07-certificate-of-entitlement-quota-for-august-2022-to-october-2022.txt",
+      "release_sha256": "5a5a6d5c6736e7249f218ef7340247387e23d0a5b95770146ea98618f7354d95",
+      "retrieved": "2026-09-24T10:31:25Z",
+      "attachments": [
+        {
+          "file": "2022-07-certificate-of-entitlement-quota-for-august-2022-to-october-2022.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2022/22072022-annex-a-coe-quota.pdf",
+          "anchor_text": "Annex A: Monthly COE Quota for August 2022 to October 2022",
+          "is_annex_a": true,
+          "sha256": "8e0049594962a6ca76e9c235cbc6c930d15ff62c2e9744c7d7f567e1857d1776",
+          "bytes": 47878
+        },
+        {
+          "file": "2022-07-certificate-of-entitlement-quota-for-august-2022-to-october-2022.attachment-2.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2022/22072022-annex-b-coe-quota.pdf",
+          "anchor_text": "Annex B: Worked Example of Adjusted COE Quota Allocation Method",
+          "is_annex_a": false,
+          "sha256": "35ce8a32c9be49b47241008c37af9c5b381ef8b141ba4f094070047f61d283db",
+          "bytes": 32442
+        }
+      ],
+      "annex_a": "2022-07-certificate-of-entitlement-quota-for-august-2022-to-october-2022.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2023/1/news-releases/certificate-of-entitlement-quota-for-february-2023-to-april-2023.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2023-01-certificate-of-entitlement-quota-for-february-2023-to-april-2023.txt",
+      "release_sha256": "acdb69c4dadd1931b44a6518db5f53f86675464c67030d7a021e266eeeff1133",
+      "retrieved": "2026-09-24T10:31:26Z",
+      "attachments": [
+        {
+          "file": "2023-01-certificate-of-entitlement-quota-for-february-2023-to-april-2023.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2023/230120-1q2023-coe-quota.pdf",
+          "anchor_text": "Annex A",
+          "is_annex_a": true,
+          "sha256": "bef94e2818086aaedab957ce31e402df1e127ab88e547ea64b8497da9cef694f",
+          "bytes": 104881
+        }
+      ],
+      "annex_a": "2023-01-certificate-of-entitlement-quota-for-february-2023-to-april-2023.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2023/10/news-releases/COE_quota_for_Nov23_to_Jan24.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2023-10-COE_quota_for_Nov23_to_Jan24.txt",
+      "release_sha256": "1b326869b6767c77f59ccb3d7c2d48ba52a5b47c4bef42bba38f5dc0e937597d",
+      "retrieved": "2026-09-24T10:31:26Z",
+      "attachments": [
+        {
+          "file": "2023-10-COE_quota_for_Nov23_to_Jan24.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2023/231013_Monthly_COEquota_Nov23-Jan24_AnnexA.pdf",
+          "anchor_text": "Annex A: Monthly COE Quota for November 2023 to January 2024",
+          "is_annex_a": true,
+          "sha256": "19b288f2b0a5d6885fd1b9e97cffae514f78bb031e4527d3d970f5c4b0ba4b8b",
+          "bytes": 191191
+        }
+      ],
+      "annex_a": "2023-10-COE_quota_for_Nov23_to_Jan24.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2023/11/news-releases/further_increases_in_coe_quota.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2023-11-further_increases_in_coe_quota.txt",
+      "release_sha256": "ffadea4520db8d8eb74abda4389005ea809f91af0613a89e8461b0a23f07d4a8",
+      "retrieved": "2026-09-24T10:31:27Z",
+      "attachments": [
+        {
+          "file": "2023-11-further_increases_in_coe_quota.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2023/231103_Revised_monthly_COEquota_Nov23-Jan24.pdf",
+          "anchor_text": "Annex A: Revised Monthly COE Quota for November 2023 to January 2024",
+          "is_annex_a": true,
+          "sha256": "28d62103bc04622b072b29a82f518269f95b96dac333fc71379efbacae34634e",
+          "bytes": 93163
+        }
+      ],
+      "annex_a": "2023-11-further_increases_in_coe_quota.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2023/4/news-releases/coe_quota_for_May23-Jul23.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2023-04-coe_quota_for_May23-Jul23.txt",
+      "release_sha256": "f2ffb4a9a9e476282fcf3421f0ab6b78fdaef3f23bc246c7e40ff368388e77d9",
+      "retrieved": "2026-09-24T10:31:28Z",
+      "attachments": [
+        {
+          "file": "2023-04-coe_quota_for_May23-Jul23.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2023/230421_Monthly_COEquota_May23-Jul23_AnnexA.pdf",
+          "anchor_text": "Annex A: Monthly COE Quota for May 2023 to July 2023",
+          "is_annex_a": true,
+          "sha256": "c68937e5b28ac2cd297514df1e43420f825975f78a970e0dcb143bc0b87b9f8f",
+          "bytes": 33049
+        }
+      ],
+      "annex_a": "2023-04-coe_quota_for_May23-Jul23.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2023/7/news-releases/COEs_quota_for_Aug23_to_Oct23.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2023-07-COEs_quota_for_Aug23_to_Oct23.txt",
+      "release_sha256": "dc0e3856e96779672f1d0b203414e66b35a549128f19fa3b10f122bd13d13f2f",
+      "retrieved": "2026-09-24T10:31:28Z",
+      "attachments": [
+        {
+          "file": "2023-07-COEs_quota_for_Aug23_to_Oct23.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2023/230714_COE_quota_Aug_to_Oct23_AnnexA.pdf",
+          "anchor_text": "Annex A: Monthly COE Quota for August 2023 to October 2023",
+          "is_annex_a": true,
+          "sha256": "ca456044871525368bae1baf300f7f0e90aebe649e9dd91ebdfdf10625118b65",
+          "bytes": 227587
+        }
+      ],
+      "annex_a": "2023-07-COEs_quota_for_Aug23_to_Oct23.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2023/9/news-releases/additional-adjustments-to-coe-category-a.html",
+      "why": "reallocation adjustments during the 2023 cut-and-fill period",
+      "release_text": "2023-09-additional-adjustments-to-coe-category-a.txt",
+      "release_sha256": "dd29294adec44611970d6cfbb554a7786fad2d7dba45a866a877dc03401dced5",
+      "retrieved": "2026-09-24T10:31:29Z",
+      "attachments": [
+        {
+          "file": "2023-09-additional-adjustments-to-coe-category-a.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2023/230929-oct-coe-quota-annex-a.pdf",
+          "anchor_text": "Annex A",
+          "is_annex_a": true,
+          "sha256": "8b0e9a6d8580f104d99cf2c3e40580934204529ba0bc6dede4852ab3c3576a83",
+          "bytes": 16139
+        }
+      ],
+      "annex_a": "2023-09-additional-adjustments-to-coe-category-a.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2024/1/news-releases/coe_quota_for_feb24_to_apr24.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2024-01-coe_quota_for_feb24_to_apr24.txt",
+      "release_sha256": "9bf7479609bde5cf860d1188392364b2eca7cb255599904d5f3f8b07cc79962c",
+      "retrieved": "2026-09-24T10:31:30Z",
+      "attachments": [
+        {
+          "file": "2024-01-coe_quota_for_feb24_to_apr24.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2024/240129_Monthly_COE_quota_Feb24-Apr24_AnnexA.pdf",
+          "anchor_text": "Annex A:  Monthly COE Quota for February 2024 to April 2024",
+          "is_annex_a": true,
+          "sha256": "435de9a8685ab697f7bc11284fddb36ed1bf37062a5ee55e6f86203f5f70664a",
+          "bytes": 240629
+        }
+      ],
+      "annex_a": "2024-01-coe_quota_for_feb24_to_apr24.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2024/10/news-releases/certificate-of-entitlement--coes--quota-for-november-2024-to-jan.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2024-10-certificate-of-entitlement--coes--quota-for-november-2024-to-jan.txt",
+      "release_sha256": "1f04dc48cbd7500f4c54173e790e748198027009081269ee242cfa09c0bb7bc2",
+      "retrieved": "2026-09-24T10:31:31Z",
+      "attachments": [
+        {
+          "file": "2024-10-certificate-of-entitlement--coes--quota-for-november-2024-to-jan.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2024/241004-4q24-coequota.pdf",
+          "anchor_text": "Annex A: Monthly COE Quota for November 2024 to January 2025",
+          "is_annex_a": true,
+          "sha256": "341bedf8a6cf83ec75a23a3264a2d24467ef924d77c6b56ebc8fda8262839798",
+          "bytes": 24651
+        }
+      ],
+      "annex_a": "2024-10-certificate-of-entitlement--coes--quota-for-november-2024-to-jan.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2024/10/news-releases/injection-of-additional-coe-quota-with-reduced-usage---erp-2-0-t.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2024-10-injection-of-additional-coe-quota-with-reduced-usage---erp-2-0-t.txt",
+      "release_sha256": "289564131c9d77c5265c49f86e41fd8482d7f31cac300891679eb0e2ef4d7dad",
+      "retrieved": "2026-09-24T10:31:32Z",
+      "attachments": [
+        {
+          "file": "2024-10-injection-of-additional-coe-quota-with-reduced-usage---erp-2-0-t.attachment-1.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2024/241029-vgr-erp.pdf",
+          "anchor_text": "Annexes A and B",
+          "is_annex_a": false,
+          "sha256": "e4a754c5fe3b110f95129adb9a0bd2579c58a60c7f494fe8beac9150398ba551",
+          "bytes": 422364
+        }
+      ],
+      "annex_a": null,
+      "note": "0 attachments identified as Annex A"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2024/4/news-releases/certificate-of-entitlement--coes--quota-for-may-2024-to-july-202.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2024-04-certificate-of-entitlement--coes--quota-for-may-2024-to-july-202.txt",
+      "release_sha256": "0fa79b58f8ba72e39142fb02b2dfedd6f13de28e23c785cad7bec2e10f89fa48",
+      "retrieved": "2026-09-24T10:31:32Z",
+      "attachments": [
+        {
+          "file": "2024-04-certificate-of-entitlement--coes--quota-for-may-2024-to-july-202.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2024/240424-annexa-2q-coe-quota.pdf",
+          "anchor_text": "Annex A: Monthly COE Quota for May 2024 to July 2024",
+          "is_annex_a": true,
+          "sha256": "60135743bfb8889ed37df82997d87c4d2720d610ccf6b6d78477bce7fd32bb73",
+          "bytes": 24819
+        }
+      ],
+      "annex_a": "2024-04-certificate-of-entitlement--coes--quota-for-may-2024-to-july-202.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2024/7/news-releases/COEs_quota_for_Aug24-Oct24.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2024-07-COEs_quota_for_Aug24-Oct24.txt",
+      "release_sha256": "8728d99d61caa750bd1d1e9728dc4f8e1eef00ad7c4aad1def1962b48f8fbabc",
+      "retrieved": "2026-09-24T10:31:33Z",
+      "attachments": [
+        {
+          "file": "2024-07-COEs_quota_for_Aug24-Oct24.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2024/240723_Monthly_COEquota_Aug24-Oct24_AnnexA.pdf",
+          "anchor_text": "Annex A:  Monthly COE Quota for August 2024 to October 2024",
+          "is_annex_a": true,
+          "sha256": "8798e4090bff0b1c1836f3b2205d799f57aded268fdf89d634ab372533ba5994",
+          "bytes": 218350
+        }
+      ],
+      "annex_a": "2024-07-COEs_quota_for_Aug24-Oct24.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2025/1/news-releases/coe_quota_for_feb25_to_apr25.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2025-01-coe_quota_for_feb25_to_apr25.txt",
+      "release_sha256": "369a4dde2325ba686577b49b1b6f56406306cefb8ec28e5775ce750d3edb7c1d",
+      "retrieved": "2026-09-24T10:31:34Z",
+      "attachments": [
+        {
+          "file": "2025-01-coe_quota_for_feb25_to_apr25.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2025/250116_Monthly_COE_quota_Feb25-Apr25_AnnexA.pdf",
+          "anchor_text": "Annex A:  Monthly COE Quota for February 2025 to April 2025",
+          "is_annex_a": true,
+          "sha256": "fbb21462aa6f4c15522db68d78a4a13d02636e4e07dd79a2333788661e2f4192",
+          "bytes": 72084
+        }
+      ],
+      "annex_a": "2025-01-coe_quota_for_feb25_to_apr25.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2025/10/news-releases/coe_quota_Nov25-Jan26.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2025-10-coe_quota_Nov25-Jan26.txt",
+      "release_sha256": "bc4759d334b08ba7c7d0f610c283650c153ac31c6100846e0adebe960f7d39e6",
+      "retrieved": "2026-09-24T10:31:34Z",
+      "attachments": [
+        {
+          "file": "2025-10-coe_quota_Nov25-Jan26.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2025/251024_COEQuota_Nov2025-Jan2026_AnnexA.pdf",
+          "anchor_text": "Annex A:  Monthly COE Quota for November 2025 to January 2026",
+          "is_annex_a": true,
+          "sha256": "9de322a2d727b6b162ac2a5a860aa62d855a6c02fa2e99ffcd29e8477a607d79",
+          "bytes": 219311
+        }
+      ],
+      "annex_a": "2025-10-coe_quota_Nov25-Jan26.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2025/4/news-releases/COE_quota_May-Jul25.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2025-04-COE_quota_May-Jul25.txt",
+      "release_sha256": "32292f084940cdd0a68547de7eb169cb59b012fdbdb5028308e1e680e8016e98",
+      "retrieved": "2026-09-24T10:31:35Z",
+      "attachments": [
+        {
+          "file": "2025-04-COE_quota_May-Jul25.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2025/250416_COEQuota_May-Jul2025_AnnexA.pdf",
+          "anchor_text": "Annex A:  Monthly COE Quota for May 2025 to July 2025",
+          "is_annex_a": true,
+          "sha256": "9e03ec17c9710b51a6826b236cb2ab666777a85651953a9fd91dcf618d953332",
+          "bytes": 108745
+        }
+      ],
+      "annex_a": "2025-04-COE_quota_May-Jul25.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2025/7/news-releases/COE_quota_Aug-Oct25.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2025-07-COE_quota_Aug-Oct25.txt",
+      "release_sha256": "0cb56b26a81e9bc478130b2fceb21d0bbdc0b062c2010ec798198067d345cabb",
+      "retrieved": "2026-09-24T10:31:36Z",
+      "attachments": [
+        {
+          "file": "2025-07-COE_quota_Aug-Oct25.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2025/250728_COEQuota_Aug-Oct2025_AnnexA.pdf",
+          "anchor_text": "Annex A:  Monthly COE Quota for August 2025 to October 2025",
+          "is_annex_a": true,
+          "sha256": "6c9e3025ac25ab76292743965a2f4f9e74f9920a326b06e7699e0c88f086575a",
+          "bytes": 254611
+        }
+      ],
+      "annex_a": "2025-07-COE_quota_Aug-Oct25.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2026/1/news-releases/coe_quota_feb26-apr26.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2026-01-coe_quota_feb26-apr26.txt",
+      "release_sha256": "9e737c6885282a5fb160c613d28188223593d52cfb18cd5bdb81bb34c17719ec",
+      "retrieved": "2026-09-24T10:31:37Z",
+      "attachments": [
+        {
+          "file": "2026-01-coe_quota_feb26-apr26.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2026/260122_COEQuota_Feb-Apr26_AnnexA.pdf",
+          "anchor_text": "Annex A: Monthly COE Quota for February 2026 to April 2026",
+          "is_annex_a": true,
+          "sha256": "3d1e5a1881e24ac757ca26f80193321609851b6e71c75a5f9593465c0ccc0796",
+          "bytes": 193635
+        }
+      ],
+      "annex_a": "2026-01-coe_quota_feb26-apr26.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2026/4/news-releases/certificate-of-entitlement--coes--quota-for-may-2026-to-july-202.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2026-04-certificate-of-entitlement--coes--quota-for-may-2026-to-july-202.txt",
+      "release_sha256": "8c49f929e607a7c80cbf7f2b6bbd019ab92cdb4b7e56e5a0d5c000c10af52fee",
+      "retrieved": "2026-09-24T10:31:37Z",
+      "attachments": [
+        {
+          "file": "2026-04-certificate-of-entitlement--coes--quota-for-may-2026-to-july-202.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2026/260424-coe-quota.pdf",
+          "anchor_text": "Annex A: Monthly COE Quota for May 2026 to July 2026",
+          "is_annex_a": true,
+          "sha256": "65783d771cb6ac587692965dcc064c12063fafe91ac89652c11a358dd99377c1",
+          "bytes": 119247
+        }
+      ],
+      "annex_a": "2026-04-certificate-of-entitlement--coes--quota-for-may-2026-to-july-202.annex-a.pdf"
+    },
+    {
+      "release_url": "https://www.lta.gov.sg/content/ltagov/en/newsroom/2026/7/news-releases/coe_quota_aug26-oct26.html",
+      "why": "quarterly COE quota release",
+      "release_text": "2026-07-coe_quota_aug26-oct26.txt",
+      "release_sha256": "275f7dfb0345025f33a0842092a75bca5fbe7e8d2021c5b6d0a54c42863f043d",
+      "retrieved": "2026-09-24T10:31:38Z",
+      "attachments": [
+        {
+          "file": "2026-07-coe_quota_aug26-oct26.annex-a.pdf",
+          "url": "https://www.lta.gov.sg/content/dam/ltagov/news/press/2026/260724_COEQuota_Aug-Oct26_AnnexA.pdf",
+          "anchor_text": "Annex A:  Monthly COE Quota for August 2026 to October 2026",
+          "is_annex_a": true,
+          "sha256": "625ba3c6dadc33f3172138af671bded5ca7850bc5fd4367ed4dc682a8ea88c60",
+          "bytes": 176760
+        }
+      ],
+      "annex_a": "2026-07-coe_quota_aug26-oct26.annex-a.pdf"
+    }
+  ]
+}
