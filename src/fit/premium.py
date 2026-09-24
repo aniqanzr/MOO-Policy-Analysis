@@ -56,6 +56,13 @@ WINDOWS = {
     "W3": (2014, 2),
 }
 SPECIFICATIONS = ("S1", "S2", "S3")
+
+# The drift test, declared 2026-09-24: two periods that do not overlap, split where Category A's
+# definition last changed. End is inclusive; None runs to the last exercise on file.
+PERIODS = {
+    "P1": ((2014, 2), (2022, 4)),
+    "P2": ((2022, 5), None),
+}
 PRIMARY = ("W1", "S1")
 HAC_LAGS = 6
 
@@ -103,8 +110,14 @@ def exercises(category, raw=RAW):
 
 
 def fit(category, window, specification, raw=RAW) -> Estimate:
-    start = WINDOWS[window]
-    data = [row for row in exercises(category, raw) if (row[0], row[1]) >= start]
+    if window in PERIODS:
+        start, end = PERIODS[window]
+    else:
+        start, end = WINDOWS[window], None
+    data = [
+        row for row in exercises(category, raw)
+        if (row[0], row[1]) >= start and (end is None or (row[0], row[1]) <= end)
+    ]
     q = np.log([row[3] for row in data])
     p = np.log([row[4] for row in data])
 
@@ -134,10 +147,59 @@ def grid(categories):
     return [fit(c, w, s) for c in categories for w in WINDOWS for s in SPECIFICATIONS]
 
 
+@dataclass(frozen=True)
+class Drift:
+    category: str
+    specification: str
+    before: Estimate
+    after: Estimate
+
+    @property
+    def change(self) -> float:
+        return self.after.b - self.before.b
+
+    @property
+    def se(self) -> float:
+        return float(np.hypot(self.before.se, self.after.se))
+
+    @property
+    def interval(self) -> tuple[float, float]:
+        return self.change - 1.96 * self.se, self.change + 1.96 * self.se
+
+    @property
+    def reading(self) -> str:
+        """The declared reading rule, in words."""
+        low, high = self.interval
+        if high < 0:
+            return "premium moves more per unit of quota than before"
+        if low > 0:
+            return "premium moves less per unit of quota than before"
+        return "no change the interval can distinguish"
+
+
+def drift(categories):
+    return [
+        Drift(c, s, fit(c, "P1", s), fit(c, "P2", s))
+        for c in categories for s in SPECIFICATIONS
+    ]
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--categories", default="AB")
+    parser.add_argument("--drift", action="store_true",
+                        help="the declared drift test instead of the window grid")
     args = parser.parse_args(argv)
+
+    if args.drift:
+        print(f"\n{'cat':<5}{'spec':<6}{'b, 2014 to Apr 2022':>21}{'b, May 2022 on':>16}"
+              f"{'change':>9}{'95% interval':>20}   reading")
+        for d in drift(list(args.categories)):
+            low, high = d.interval
+            print(f"{d.category:<5}{d.specification:<6}{d.before.b:>21.3f}{d.after.b:>16.3f}"
+                  f"{d.change:>9.3f}{f'[{low:.3f}, {high:.3f}]':>20}   {d.reading}")
+        print()
+        return 0
 
     estimates = grid(list(args.categories))
     print(f"\n{'cat':<5}{'window':<8}{'spec':<6}{'b':>8}{'se':>8}{'95% interval':>20}"
