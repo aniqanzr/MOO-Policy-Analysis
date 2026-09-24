@@ -354,3 +354,40 @@ is sound is internal consistency plus two external magnitude checks, not value-l
 If stage 6 finds an elasticity break at some date in that span that is not in the A-11 break
 table, this row is the first thing to revisit.
 
+## 2026-09-24. Open: is total revenue the right target for O3, or is bid revenue
+
+Not decided. Recorded now so the option is on the table when O3 is assembled at stage 10,
+rather than being settled by default by whatever the code happens to compute.
+
+The position. Computed O3 is bid revenue, quota times clearing premium summed across the five
+categories, and it comes to roughly four fifths of the published Vehicle Quota Premiums line.
+A-19 says the residual is payment at the prevailing quota premium with no bid attached, which
+is renewals and, since August 2012, taxis. Stage 3 established that the gap is one-signed and
+not a pipeline artefact.
+
+The case for bid revenue being the right objective, not a shortfall to be patched. Renewal
+revenue in a given year is a consequence of quota decisions taken about a decade earlier. The
+vehicles renewing now got their COEs under settings that are not the settings this model
+varies, so that component barely responds to `g_ab`, `g_c` or `theta` within the horizon the
+frontier describes. An objective that is largely insensitive to the levers adds a constant to
+O3 and changes the recovered weights without carrying information about the choice being made.
+On this reading the fix is relabelling O3 as bid revenue and stating the scope, not hunting a
+missing term.
+
+The case against. The two components are not independent. Raising quota lowers the clearing
+premium, the prevailing quota premium is a moving average of that same clearing premium, so
+renewal revenue falls too and it falls because of the lever. The insensitivity above is about
+the quantity renewed, which is set a decade back, not about the price paid, which is set now.
+A lever that moves premiums moves both halves of the published line in the same direction, and
+an objective covering only one half understates the revenue consequence of a quota change.
+
+What would settle it. The size of the price channel relative to the quantity channel. That is
+an empirical question and it needs renewal counts, which A-19 now has a route to. If renewal
+volumes are small relative to bid volumes, or if the price elasticity of the renewal decision
+is material, the two readings give different answers and the difference is measurable rather
+than a matter of taste.
+
+What is not in question either way. O3 as currently computed is bid revenue and must be
+labelled as such wherever it appears, and the published line is not a calibration target for
+it while the residual is unexplained. That part is A-10 and is not open.
+
