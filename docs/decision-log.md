@@ -658,3 +658,60 @@ Not decided. The options, for the user:
 
 Option 1 does not rule out option 2. It only orders them.
 
+## 2026-09-24. Option 1 run first, as sequencing only
+
+The user chose to fit the Category A and B premium elasticities before deciding anything about
+the lever set. Recorded as an ordering, not a decision on option 2, which stays open. The lever
+set and the stage 5 specification are not changed until the numbers exist.
+
+What the fit can and cannot settle, stated before it runs. It cannot make `theta` a real lever:
+`theta` failed at stage 5 because no published data maps a power threshold onto a demand share,
+and no elasticity supplies that mapping. It can settle two other things. First, whether `theta`
+would move the objectives at all if it could be set: at the reference quarter, Category A and B
+revenue per unit of demand share are nearly equal, 1,589 and 1,615 million dollars, so theta's
+first-order effect on revenue nearly cancels unless the two elasticities differ. Second, whether
+the injection fallback's front is a curve or a surface, which stage 5 found turns on which side
+of -1 the elasticities fall.
+
+## 2026-09-24. The elasticity fit's specification, declared before it runs
+
+Declared here and committed before any estimate is looked at, so the reported number cannot be
+the one that happened to look best.
+
+Form, section 4.1: ln P = a + b ln Q, per category, one row per bidding exercise, clearing
+premium and exercise quota from `quota-premium-monthly`.
+
+Windows, all ending at the last exercise on file, July 2026:
+- W1, from May 2022. The primary window. The Category A definition has not changed since the
+  110 kW threshold for electric cars took effect in the first May 2022 exercise, and section 4.1
+  says to build the frontier on the current regime.
+- W2, from February 2023, the four-quarter formula.
+- W3, from February 2014, the 97 kW criterion. Longer, and crosses more breaks.
+
+Specifications:
+- S1, the form above with no controls. Primary.
+- S2, adding a linear time trend.
+- S3, first differences between consecutive exercises.
+
+Standard errors: Newey-West, 6 lags, one quarter of exercises, because quota is set per quarter
+and errors within a quarter are not independent.
+
+Primary estimate: S1 on W1. All nine are reported. If they disagree about which side of -1 the
+elasticity sits, that disagreement is the result.
+
+Breaks, every row of `docs/break-table.md`, as the stage 6 instruction requires. None enters as a
+dummy.
+- Rows 1 to 5, April 2002 to the 2020 suspension: before W1 and W2 starts. Inside W3, rows 4 and 5
+  are supply-side and are left out as dummies for the reason below. Row 3, February 2014, is W3's
+  start.
+- Row 6, May 2022, the electric car threshold, a change to Category A's definition: handled as a
+  regime split, by starting W1 there.
+- Rows 7 to 10, August 2022, February 2023, May 2023 and February 2025: supply-side changes to
+  how quota is computed or topped up. Left out. They move quota, which is the regressor, and a
+  dummy for any of them would absorb the quota variation that identifies b. February 2023 is
+  also W2's start.
+
+Known weakness, stated before the numbers: quota is set once a quarter, so W1 has about 17
+distinct quota levels per category however many exercises it covers. The estimate is identified
+from those, not from roughly 100 exercises.
+
