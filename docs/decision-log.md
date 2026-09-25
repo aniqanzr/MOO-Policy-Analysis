@@ -1127,3 +1127,53 @@ to be told apart from noise, say so and do not present the central estimate as t
 test for that is declared before stage 14 runs, not after.
 
 Next: stage 9.
+
+## 2026-09-25. Stage 9 congestion calibration, declared before it runs
+
+Brief 4.3 and stage 9: calibrate BPR against the annual peak-hour speeds and lane-km, and report
+the interval on the exponent honestly. Declared here and committed before any fit is looked at.
+
+**What can be identified.** BPR in travel-time form: pace = p0 (1 + alpha (V/C)^beta), pace the
+inverse of speed, p0 the free-flow pace. No traffic volume is published, so V is proxied by
+vehicle stock and V/C = k x, with x = PCU-weighted stock per lane-km and k an unknown scale. Then
+alpha and k enter only as a = alpha k^beta, and the fit can identify p0, a and beta, not alpha and
+the base volume to capacity ratio separately. O2 = pace / p0 = 1 + a x^beta, so it needs exactly
+a and beta. Nothing O2 uses is lost; the base V/C placeholder of stage 5 stops being a separate
+parameter.
+
+**Estimation.** For fixed beta the model is linear: pace = c0 + c1 x^beta, with p0 = c0 and a =
+c1 / c0. Profile over beta on a log-spaced grid from 0.1 to 20, OLS at each point. The 95 percent
+profile interval for beta is every grid value with (SSR(beta) - SSR_min) / (SSR_min / (n - 3))
+at most the F(1, n - 3) 0.95 quantile. Errors are treated as independent. An annual series is
+likely autocorrelated, so the interval is if anything too narrow, and that is stated with it.
+
+**Data.** `peak-hour-speed-annual` (LTA, 2004 to 2025, expressway and arterial), `public-roads-annual`
+(lane-km by road class), `vqs-population-monthly`. Stock is the annual mean of the monthly stock,
+because speeds are annual averages. From 2020 the speed series is published to whole km/h,
+earlier to 0.1; noted, not corrected.
+
+x per road class: stock of A, B, C, D and taxis, weighted car 1.0, taxi 1.0, motorcycle 0.5, goods
+vehicle and bus 2.0, divided by that class's lane-km. The weights are the stage 5 placeholders,
+copied into `config/congestion.toml` with their assumption flag, since the placeholder file is
+not read after stage 5. Exempted vehicles are left out, as the model leaves them out.
+
+**Fits.** Expressways and arterial roads separately. For each, all years as primary, and 2020 and
+2021 excluded as a variant: in those years traffic fell with the pandemic while stock did not, so
+stock stops being a proxy for volume. For expressways, capacity as published, and capacity held
+at the 2023 figure for 2024 and 2025, since the 40 percent jump looks like reclassification. Both
+run, neither picked. Six fits in all.
+
+**Reading rule.** In each fit beta counts as identified if both hold: the best fit has c1 > 0, pace
+rising with load; and the profile interval is bounded inside the grid, not reaching 0.1 or 20.
+Reported with every fit: beta and its interval, whether the conventional 4 lies inside it, a and
+p0 at the best fit, implied free-flow speed, O2 at the latest year, and RMSE in km/h (A-05's test).
+
+If beta is not identified in the primary fits, A-09 resolves to accepted-as-limitation, as stage 9
+anticipates. The range the sweep then uses for beta is set at the gate as an assumption with a
+register row, not chosen here and not chosen from the fit.
+
+**The F-06 comparison.** The recovered ratio scales with how steeply O2 rises with road load. At the
+latest year's x, compare the slope dO2/dx across the beta interval, with a and p0 refitted at each
+beta, against the slope at the best beta when x is offset by plus and minus 2.87 percent. The
+user's reasoning holds if the offset's range sits inside the beta interval's range. If beta is not
+identified, the comparison is made against whatever range the gate sets, and reported as that.
