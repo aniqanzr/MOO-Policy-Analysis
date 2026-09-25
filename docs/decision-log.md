@@ -1096,3 +1096,34 @@ depend on `g_ab`, `g_c` or the injection lever as the model defines them. If tha
 shifts every policy's road load by about the same amount, which is a monotone change to O2 and
 cannot change which policies are on the front. It does move where the curve sits and how the
 weight query reads it, which is the one number option 3 still recovers.
+
+## 2026-09-25. Stage 7 gate: option 1, accept the accumulator error as a limitation
+
+The user's decision at the stage 7 gate. The accumulator is not rebuilt. Its error goes into the
+congestion sweep as a road load offset, plus and minus 2.87 percent (median) and 4.65 percent
+(worst window), the A, B and C figures from the backtest. Brief section 6 records it.
+
+The reasoning accepted is the one given at the gate: inflows outside the bidding do not respond to
+the levers, so the error offsets every policy by about the same amount and shifts the recovered
+ratio, not the ordering. F-06 records that this is assumed and untested.
+
+The user also stated that the 2 to 3 percent median error sits inside the uncertainty A-09 assigns
+to the BPR exponent. Recorded in F-06 as assumed. At the time A-09 carried no number, so the
+comparison is made in the stage 9 result, where the effect on O2 of a 2.87 percent change in road
+load is set against the effect of the fitted exponent's interval. Comparing a percentage error in
+volume with an interval on an exponent directly would not mean anything; the common currency is
+O2.
+
+Alternatives, from the gate: rebuild the accumulator with ETS and taxi inflows (about half a day,
+a post-freeze change to the build, and no help for the motorcycle gap), or treat the failure as
+blocking. Not taken.
+
+A-04's status now states the finding in numbers: the stock is not a rolling decade of
+registrations, and the ratio of stock to the previous ten years of registrations runs 0.77 to 1.36
+since 2000.
+
+A reporting rule for the sweep, set by the user: if the band is too wide for the frontier's shape
+to be told apart from noise, say so and do not present the central estimate as the result. The
+test for that is declared before stage 14 runs, not after.
+
+Next: stage 9.

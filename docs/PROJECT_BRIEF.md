@@ -583,6 +583,20 @@ Monotone changes to O2 cannot reorder policies on the front, so these parameters
 where the curve sits on the congestion axis and how the weight query reads it. The output is the
 curve as a band and the recovered ratio as a range. If the band is wide, that is what gets shown.
 
+**Added 25 September 2026, after stage 7.** The accumulator misses the 5-year change in stock by
+2.87 percent at the median and 4.65 percent at worst for A, B and C (F-06). Accepted as a
+limitation, it enters the sweep as a road load offset of plus and minus those two figures. That
+makes five uncertain inputs to O2, the only live axis: the BPR exponent, the BPR level (`alpha`
+and the base volume to capacity ratio, which enter O2 only as one product), capacity with or
+without the lane-km jump, goods vehicle road load, and the accumulator offset. The horizon is a
+sixth input, set by choice rather than uncertain.
+
+**Reporting rule for the sweep, set 25 September 2026.** If the band is wide enough that the
+frontier's shape cannot be told apart from noise, the write-up says so directly and does not
+present the central estimate as the result. A band too wide to support a conclusion is a finding
+and goes in the case study as one. The test for "cannot be told apart" is declared in the
+decision log before stage 14 runs.
+
 ---
 
 ## 7. Architecture

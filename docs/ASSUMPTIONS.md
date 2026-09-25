@@ -58,6 +58,9 @@ stock, but the brief's accumulator, quota released in, misses the 5-year change 
 percent at the median, against a 1.26 percent tolerance. F-06 records the likely mechanism. It
 was not tested and not fixed.
 
+**Updated 2026-09-25.** A-04's status now states the observed ratio. F-06 accepted as a limitation
+under option 1 at the stage 7 gate, with its two untested assumptions written into the row.
+
 **Updated after option 3, 2026-09-24.** The fitted elasticities put A-08 on the curve side, and the
 user chose to report the collapse as a finding. A-01 gains the drift result: no change the usable
 specifications can distinguish. A-09 now records that O2, expected to be the weakest objective,
@@ -153,8 +156,11 @@ Notes:        The factual question is settled. No Singapore minister has framed 
               commentary.
 
 ### A-04. The ten-year COE term makes vehicle stock a rolling decade of registrations
-Status:       falsified, 2026-09-24, stage 7. The wording and the accumulator both fail. The data
-              does not
+Status:       falsified, 2026-09-24, stage 7. The stock is not a rolling decade of
+              registrations: stock over the previous 120 months of registrations, A to D, runs
+              from 0.77 (March 2009) to 1.36 (April 2000) since 2000. The accumulator built on
+              quota released also fails its backtest, and is accepted as a limitation (F-06).
+              The published flows themselves reconcile
 Source:       COE scheme design
 Falsified by: accumulator backtest failing to reproduce the published population series
 Touches:      4.2
@@ -982,5 +988,16 @@ Would have changed: the accumulator in brief 4.2, "prior population, minus dereg
 Cost to chase: about half a day to add ETS registrations and taxi flows as inflows, declared
            first, and re-run. The D gap has no candidate mechanism and no estimate.
 Decision: raised at the stage 7 gate, not chased. Stage 7 names no remedy, so a fix would change
-           the build after the freeze.
+           the build after the freeze. 2026-09-25, the user chose to accept it as a limitation and
+           not rebuild. The error enters the congestion sweep in brief section 6 as an offset to
+           road load.
+Assumed, not tested: the inflows outside the bidding (ETS replacements, taxi flows, the
+           motorcycle gap) do not respond to `g_ab`, `g_c` or the injection lever. If so, the
+           error shifts every policy's road load by about the same amount, which moves the
+           recovered ratio and not the ordering of policies on the front. Nothing in this project
+           checks that the inflows are lever-independent.
+Also assumed: that the 2 to 3 percent median error sits inside the uncertainty A-09 assigns
+           to the BPR exponent. When this was accepted, A-09 carried no numerical interval: stage
+           9 had not run. The comparison is made with numbers in the stage 9 result and recorded
+           there, and if it does not hold, that is stated rather than this line being dropped.
 
