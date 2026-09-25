@@ -369,8 +369,9 @@ Notes:        The speed series is annual from 2004, so roughly twenty observatio
 
               Not one identifies beta. In the two primary fits and both pandemic variants the
               best fit has pace falling as load rises: across 2004 to 2023 expressway speed stays
-              between 59.8 and 64.1 km/h while stock per lane-km rises 17 percent, and arterial
-              speed rises from 24.8 to about 30 km/h. With expressway capacity held at 2023, pace
+              between 59.0 and 64.1 km/h while stock per lane-km rises 17 percent, and arterial
+              speed rises from 24.8 to 31 km/h. (First written as 59.8, the minimum to 2019 only;
+              corrected 2026-09-25.) With expressway capacity held at 2023, pace
               rises with load, but the best fit needs a negative free-flow speed. Every profile
               interval reaches the bottom of the grid, and four of six cover all of it. Annual
               network-average speed against vehicle stock carries no volume-delay signal these
@@ -393,6 +394,12 @@ Notes:        The speed series is annual from 2004, so roughly twenty observatio
 
               Stage 9's on-failure branch applies: recorded here, the congestion parameters get
               extra weight in the sweep, and the congestion axis is flagged in the UI.
+
+              2026-09-25, at the stage 9 gate, the user chose to report the recovered ratio as a
+              function of beta rather than assume a range. No beta range is set or averaged over.
+              The speed observation is written up as finding 4 in brief section 5.3, stated as
+              the cost of congestion being inseparable from road building, road pricing, mode
+              shift and vehicle use in the published series, not as its absence.
 
 ### A-10. Computed revenue can be reconciled against published government figures
 Status:       falsified as stated. **This is not a passing test and must not be counted as

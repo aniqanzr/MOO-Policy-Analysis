@@ -183,6 +183,9 @@ Repeat per historical growth-rate regime and look for drift.
 Amended 24 September 2026 under option 3: the revenue weight cannot be separated from the cost
 weight on a curve. Recover the congestion weight against the other two combined, as a band.
 
+Amended 25 September 2026 after stage 9: beta is not identified, so the congestion weight is
+reported as a function of beta, not as a band over an assumed range.
+
 ### Stage 14. Sensitivity and export
 Perturb fitted coefficients, regenerate repeatedly, produce bands. Extra attention on the
 congestion parameters. Write all JSON artifacts.

@@ -1229,3 +1229,39 @@ for the sweep likely to apply: the band may well be too wide to support a conclu
 
 Stop at the gate. The declaration left the assumed range for beta and a to be set here, with a
 register row, and not chosen from the fit.
+
+## 2026-09-25. Stage 9 gate: the recovered ratio as a function of beta
+
+The user's decision. The congestion weight the inverse query recovers is reported as a function of
+the BPR exponent beta, not as a band over an assumed range and not averaged over one. The
+conventional 4 is marked on it and labelled as convention. Brief 5.3, section 6 and stage 13
+amended. The other O2 inputs, the level a, capacity, goods vehicle load and the accumulator
+offset, are still swept at each beta.
+
+Alternatives offered at the gate: assume a range, beta 2 to 8, and report a band (rejected by
+the user: the band's width would reflect the range chosen, not the data); or drop the recovered
+ratio and keep the findings (not taken).
+
+## 2026-09-25. The speed observation becomes finding 4
+
+Also the user's decision. What stage 9 found about the speed series is written into brief 5.3 as
+a fourth finding, with the confounders in the same paragraph: road building, road pricing, mode
+shift and vehicle use. It is stated as the congestion cost being inseparable from those in the
+published aggregate series, not as vehicle growth not causing congestion.
+
+Correction to the stage 9 result entry above: "Expressway speed stays between 59.8 and 64.1 km/h
+from 2004 to 2023" is wrong. 2023 was 59.0; 59.8 is the minimum to 2019. The range is 59.0 to
+64.1. Corrected in A-09 and used correctly in 5.3. It does not change the reading.
+
+On the consequence. The user's wording was that the frontier's collapse is partly because the
+objective meant to oppose affordability and revenue has no measurable signal. As written into
+5.3 it is narrower. The collapse from a surface to a curve comes from cost and revenue moving
+together, which follows from the fitted premium response and does not involve O2. What O2's
+missing signal does is leave the curve that remains, road space against quota, resting on
+assumed values. So: the frontier is reduced to one dimension by what was measured, and that one
+dimension rests on what was not. The alternative, the user's wording, was not used because
+stage 5 shows the collapse happens with any positive BPR values, so O2's calibration cannot be
+among its causes.
+
+Section 0 still lists three findings. Adding the fourth there would be a further amendment to the
+headline, and was not asked for.

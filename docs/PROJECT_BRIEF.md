@@ -512,11 +512,34 @@ alike. The fallback injection lever adds car quota like `g_ab` does. With the fi
 the front is a curve, road space against quota. Reported as a finding about the policy space the
 available levers reach, not as a failure of the tool.
 
+**Finding 4. Published aggregate speeds carry no measurable congestion cost of vehicle growth.**
+Added 25 September 2026 from stage 9. From 2004 to 2023, PCU-weighted vehicle stock per lane-km of
+expressway rose 17 percent. Over the same years average peak-hour expressway speed stayed between
+59.0 and 64.1 km/h, and arterial speed rose from 24.8 to 31 km/h. Fitted to these series, the BPR
+curve is not identified in any declared specification, and in the main fits it runs the wrong
+way. This is not evidence that vehicle growth does not cause congestion. It is evidence that in
+the published annual series the congestion cost of more vehicles cannot be separated from what
+else changed at the same time: road building, with expressway lane-km up from 963 to 1,122 and
+arterial from 2,834 to 3,397 over those years; road pricing; mode shift to public transport as
+the rail network grew; and how much each vehicle is driven, since the model counts vehicles
+owned, not vehicle-kilometres. None of these is in the model, and 22 annual observations cannot
+separate them from load. A-09.
+
+The consequence for the frontier. Findings 2 and 3 are observed: cost and revenue align because
+of the fitted premium response. The trade-off that is left, road space against quota, is not.
+The one objective still opposing affordability and revenue has no measurable signal in the data
+the project uses, so the curve's shape along the congestion axis comes from assumed BPR values.
+The frontier is reduced to one dimension by what was measured, and that one dimension rests on
+what was not.
+
 **What is still recovered.** The current policy, `g_ab` at 0 percent, `g_c` at 0.25 percent and the
 current injection line, is located on or off the curve, and the inverse weight query reads off
-one number: how heavily congestion is weighted against cost and revenue together. It is reported
-as a band from the sensitivity sweep in section 6, because it depends directly on O2's scale.
-By era, the same one number for each growth-rate regime.
+one number: how heavily congestion is weighted against cost and revenue together. Amended 25
+September 2026 after stage 9: that number is reported as a function of the BPR exponent beta,
+not as a band. The data do not identify beta, so no range for it is assumed and nothing is
+averaged over one. The output reads as "if beta is this, the current policy implies this
+weight", across the values a reader might hold, with the conventional 4 marked and labelled as
+convention rather than estimate. By era, the same function for each growth-rate regime.
 
 If the actual policy sits well off the curve, that is a finding about the model's omissions, not
 about LTA, and it is reported that way.
@@ -590,6 +613,10 @@ makes five uncertain inputs to O2, the only live axis: the BPR exponent, the BPR
 and the base volume to capacity ratio, which enter O2 only as one product), capacity with or
 without the lane-km jump, goods vehicle road load, and the accumulator offset. The horizon is a
 sixth input, set by choice rather than uncertain.
+
+**Beta is not swept, 25 September 2026.** Stage 9 found the data do not identify it. The recovered
+ratio is reported as a function of beta (section 5.3), so beta is an axis of the output, not a
+parameter drawn from a range. The other O2 inputs are still swept at each value of beta.
 
 **Reporting rule for the sweep, set 25 September 2026.** If the band is wide enough that the
 frontier's shape cannot be told apart from noise, the write-up says so directly and does not
