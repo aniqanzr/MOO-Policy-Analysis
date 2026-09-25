@@ -1,0 +1,26 @@
+# Stage 9 congestion calibration. Declared in docs/decision-log.md, 2026-09-25, before it ran.
+
+[pcu]
+# Passenger car units per vehicle. ASSUMPTION throughout, copied from the stage 5 placeholders
+# (config/placeholders.toml, register row A-23), which are not read after stage 5. Cars are 1.0
+# by definition of the unit. Taxis are cars. Goods vehicle weight is swept at stage 14.
+A = 1.0
+B = 1.0
+taxis = 1.0
+C = 2.0
+D = 0.5
+
+[fit]
+# Profile grid for the BPR exponent. Log-spaced; the ends are where "unbounded" is read.
+beta_min = 0.1
+beta_max = 20.0
+beta_points = 400
+confidence = 0.95
+# Years excluded in the pandemic variant.
+pandemic_years = [2020, 2021]
+# Expressway lane-km is held at this year's figure for later years in the held-capacity variant.
+hold_capacity_from = 2023
+
+[f06]
+# Median 60-month accumulator error for A, B and C, stage 7 (tests/test_accumulator.py).
+road_load_offset = 0.0287

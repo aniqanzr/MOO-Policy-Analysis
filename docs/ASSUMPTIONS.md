@@ -53,6 +53,25 @@ which applies because `theta` cannot be modelled, the front is a curve if the pr
 elasticities are weaker than -1, the side the brief expects, and a surface otherwise. A-23
 records the placeholders. F-04 and F-05 are post-freeze.
 
+**Updated after stage 7, 2026-09-24.** A-04 falsified. The published flows reproduce the published
+stock, but the brief's accumulator, quota released in, misses the 5-year change in stock by 2 to 3
+percent at the median, against a 1.26 percent tolerance. F-06 records the likely mechanism. It
+was not tested and not fixed.
+
+**Updated after stage 9, 2026-09-25.** A-09 falsified and accepted as a limitation: no declared
+fit identifies the BPR exponent, and in the primary fits speed rises with load. O2's shape comes
+from assumed values. A-05 could not be tested in the form written. F-06's comparison with the
+exponent's uncertainty could not be made against data and is recorded as conditional.
+
+**Updated 2026-09-25.** A-04's status now states the observed ratio. F-06 accepted as a limitation
+under option 1 at the stage 7 gate, with its two untested assumptions written into the row.
+
+**Updated after option 3, 2026-09-24.** The fitted elasticities put A-08 on the curve side, and the
+user chose to report the collapse as a finding. A-01 gains the drift result: no change the usable
+specifications can distinguish. A-09 now records that O2, expected to be the weakest objective,
+is the only one left trading against anything. Its status is unchanged and its consequences are
+larger.
+
 Everything below carries a source note. Where a source is secondary, that is stated and the
 row is medium-confidence until a primary document is opened.
 
@@ -93,6 +112,18 @@ Notes:        Still the highest-risk row and still the first thing to test. The 
               control is not usable in this window. Whether the relationship is stable is still
               stage 6's question, and the answer will depend on what absorbs demand shifts.
 
+              2026-09-24, the drift test declared in the decision log before it ran. February
+              2014 to April 2022 against May 2022 onward, same three specifications. With a trend
+              or in first differences, no change in A, B or C that the 95 percent intervals can
+              distinguish. The first-difference point estimates lean the way brief 4.1
+              hypothesised, B from -0.08 to -0.44, and the interval includes zero. With no
+              controls every category shows the premium moving less per unit of quota than
+              before, which is the trend confound read a second time and is not used. The
+              falsification condition, a significant trend or break, is not met at this
+              precision. That is not the same as the relationship being shown stable. Across all
+              windows and the usable specifications, A, B, C and E stay on the weaker side of -1.
+              D does not: since 2022 its intervals all reach -1.
+
 ### A-02. Quota is a policy lever that can be set freely
 Status:       falsified, and more comprehensively than first recorded
 Source:       LTA quarterly quota press releases, Annex A
@@ -130,7 +161,11 @@ Notes:        The factual question is settled. No Singapore minister has framed 
               commentary.
 
 ### A-04. The ten-year COE term makes vehicle stock a rolling decade of registrations
-Status:       unverified, and known to be more complicated than first written
+Status:       falsified, 2026-09-24, stage 7. The stock is not a rolling decade of
+              registrations: stock over the previous 120 months of registrations, A to D, runs
+              from 0.77 (March 2009) to 1.36 (April 2000) since 2000. The accumulator built on
+              quota released also fails its backtest, and is accepted as a limitation (F-06).
+              The published flows themselves reconcile
 Source:       COE scheme design
 Falsified by: accumulator backtest failing to reproduce the published population series
 Touches:      4.2
@@ -150,12 +185,36 @@ Notes:        Three complications confirmed by the scan. COEs can be renewed by 
               which this row's falsification test would otherwise be answered by a data gap
               rather than by the model.
 
+              2026-09-24, stage 7, declared in the decision log before it ran. Three levels over
+              60-month windows, the model's horizon, error as a share of stock.
+
+              The data holds. Since 2002, published registrations minus deregistrations reproduce
+              the published stock to within 0.21 percent in each of A, B, C and D.
+
+              The accumulator fails. Quota released in, published deregistrations out: median
+              error 2.87 percent of stock for A, B and C with E's quota, 1.95 for D, 2.18 for A to
+              D; maxima 4.65, 6.36 and 4.07. The tolerance was 1.26 percent, the 5-year effect of
+              the smallest growth rate LTA has set. Successful bids in place of quota do not help.
+              The gap is quota against registrations: vehicles enter outside the bidding, most
+              visibly Category C under the Early Turnover Scheme from 2013, and motorcycle quota
+              runs ahead of motorcycle registrations. F-06.
+
+              The wording fails. Stock over the previous ten years of registrations runs from
+              0.77 to 1.36 since 2000. The model does not rely on the wording.
+
+              Renewals are not the reason for the accumulator's failure: deregistrations are the
+              published series, which already nets them out. So the DataMall condition above is
+              not triggered, and nothing is downloaded.
+
 ### A-05. The BPR volume-delay function adequately maps vehicle population to congestion
 Status:       unverified
 Source:       standard transport literature
 Falsified by: calibrated capacity producing speeds far from published LTA figures
 Touches:      4.3, O2
-Notes:        Data exists and is better than expected: annual average peak-hour speeds from
+Notes:        2026-09-25, stage 9. Not tested in the form written. The fitted BPR curves do not
+              rise with load, so there is no calibrated capacity to test. See A-09.
+
+              Data exists and is better than expected: annual average peak-hour speeds from
               2004, split expressway and arterial, peak hour defined as 8 to 9am and 6 to 7pm
               weekdays. Capacity available by road category from 1990, described in section 8
               as lane-km, though the unit is not stated in the file itself and is now A-15. But
@@ -266,11 +325,13 @@ Notes:        The rebuild replaced quota counts with policy parameters. The dang
               log.
 
 ### A-09. The congestion objective can be identified from available data
-Status:       unverified — NEW, and expected to end as accepted-as-limitation
+Status:       falsified, 2026-09-25, stage 9, and accepted as a limitation. The published data
+              do not identify the BPR exponent in any declared fit, and in the primary fits
+              speed rises with load. O2's shape comes from assumed values, not from data
 Source:       consequence of examining the speed dataset's granularity
 Falsified by: wide confidence intervals on the fitted BPR beta, or the sensitivity sweep
               showing the frontier moves substantially with congestion parameters alone
-Touches:      4.3, O2, section 6
+Touches:      4.3, O2, section 5.3, section 6, the recovered weight
 Notes:        The speed series is annual from 2004, so roughly twenty observations, over a
               period when the vehicle population moved slowly and mostly in one direction. The
               volume-capacity ratio barely varies across the sample, which is the worst
@@ -283,6 +344,62 @@ Notes:        The speed series is annual from 2004, so roughly twenty observatio
               Secondary note: published lane-km shows a large single-year jump between 2023
               and 2024 that looks like reclassification rather than construction. Flag it,
               do not smooth it. Published road length also covers only LTA-maintained roads.
+
+              **2026-09-24, O2 is now load-bearing.** Stage 5 and the fitted elasticities leave
+              cost and revenue moving together on the front (A-08). O2 is the only objective
+              that trades against anything, so the objective this row expected to be weakest
+              now carries the whole trade-off. The one number the inverse weight query still
+              recovers, congestion against cost and revenue combined, depends directly on O2's
+              scale. Consequences, all within the frozen plan: stage 9 moves onto the critical
+              path directly after stage 7, ahead of any optional work; the sweep in brief
+              section 6 is built around the BPR parameters, the base volume to capacity ratio,
+              capacity with and without the lane-km jump, and goods vehicle road load; and the
+              result is shown as a band if the sweep says so. Monotone rescaling of O2 cannot
+              change which policies are on the front, only where they sit and how the weight
+              query reads them. Status unchanged. Its falsification condition, the frontier
+              moving substantially with congestion parameters alone, is now the likely outcome
+              for the recovered weight.
+
+              **2026-09-25, stage 9, declared in the decision log before it ran.** BPR in
+              travel-time form, pace = p0 (1 + a x^beta), x the PCU-weighted stock per lane-km,
+              profiled over beta from 0.1 to 20. Without volume data, alpha and the base volume
+              to capacity ratio are not separable and enter only as a. Six fits: expressway and
+              arterial, all years and without 2020 to 2021, and expressway capacity as published
+              and held at 2023.
+
+              Not one identifies beta. In the two primary fits and both pandemic variants the
+              best fit has pace falling as load rises: across 2004 to 2023 expressway speed stays
+              between 59.0 and 64.1 km/h while stock per lane-km rises 17 percent, and arterial
+              speed rises from 24.8 to 31 km/h. (First written as 59.8, the minimum to 2019 only;
+              corrected 2026-09-25.) With expressway capacity held at 2023, pace
+              rises with load, but the best fit needs a negative free-flow speed. Every profile
+              interval reaches the bottom of the grid, and four of six cover all of it. Annual
+              network-average speed against vehicle stock carries no volume-delay signal these
+              fits can find. The stock is not traffic volume, and speed depends on road
+              building, signals, demand management and mode shift that the model leaves out.
+
+              Consequence. O2's shape, beta and the level a, comes entirely from assumed values.
+              O2 is the only live axis and the recovered ratio scales with O2's slope, so the
+              recovered ratio is set by those assumptions, not by data. The range for beta and a
+              in the sweep is set at the stage 9 gate as an assumption with its own register
+              row. The conventional values, alpha 0.15 and beta 4, are cited to the US Bureau of
+              Public Roads Traffic Assignment Manual of 1964; the manual itself was not found
+              online and the values are confirmed only through secondary sources, so the
+              citation is medium confidence.
+
+              F-06's comparison cannot be made as planned: there is no fitted interval for beta.
+              At beta 4, the plus and minus 2.87 percent accumulator offset moves O2's slope by a
+              factor of 0.92 to 1.09. Whether that is inside the uncertainty depends on the range
+              the gate sets for beta and a together, and is checked when that range is set.
+
+              Stage 9's on-failure branch applies: recorded here, the congestion parameters get
+              extra weight in the sweep, and the congestion axis is flagged in the UI.
+
+              2026-09-25, at the stage 9 gate, the user chose to report the recovered ratio as a
+              function of beta rather than assume a range. No beta range is set or averaged over.
+              The speed observation is written up as finding 4 in brief section 5.3, stated as
+              the cost of congestion being inseparable from road building, road pricing, mode
+              shift and vehicle use in the published series, not as its absence.
 
 ### A-10. Computed revenue can be reconciled against published government figures
 Status:       falsified as stated. **This is not a passing test and must not be counted as
@@ -907,3 +1024,34 @@ Would have changed: the calibration anchor section 3.1 gives for an injection le
 Cost to chase: about an hour, if the original source can be found
 Decision: not chased, documented. Stage 5 bounds the injection lever by the largest quarterly
            line Annex A prints, 5,155, which does not depend on the 30,813 figure.
+
+### F-06. Vehicles enter the stock outside the bidding, and the accumulator does not see them
+Found:     2026-09-24, stage 7
+Would have changed: the accumulator in brief 4.2, "prior population, minus deregistrations, plus
+           released quota". Over 5-year windows it misses the published change in stock by 2 to 3
+           percent at the median and up to 6.4 percent, where the published flows reconcile to
+           0.2 percent. For A, B and C the gap is positive in the 2000s and negative from 2013.
+           Registrations under the Early Turnover Scheme begin in May 2013, are published as their
+           own row, and are 3.7 to 5.2 percent of stock in the worst windows. Annex A adjusts quota
+           for ETS replacement and for taxi population change, which fits vehicles entering
+           outside the bidding. For D, motorcycle quota and successful bids run ahead of
+           registrations, unexplained.
+Cost to chase: about half a day to add ETS registrations and taxi flows as inflows, declared
+           first, and re-run. The D gap has no candidate mechanism and no estimate.
+Decision: raised at the stage 7 gate, not chased. Stage 7 names no remedy, so a fix would change
+           the build after the freeze. 2026-09-25, the user chose to accept it as a limitation and
+           not rebuild. The error enters the congestion sweep in brief section 6 as an offset to
+           road load.
+Assumed, not tested: the inflows outside the bidding (ETS replacements, taxi flows, the
+           motorcycle gap) do not respond to `g_ab`, `g_c` or the injection lever. If so, the
+           error shifts every policy's road load by about the same amount, which moves the
+           recovered ratio and not the ordering of policies on the front. Nothing in this project
+           checks that the inflows are lever-independent.
+Also assumed: that the 2 to 3 percent median error sits inside the uncertainty A-09 assigns
+           to the BPR exponent. When this was accepted, A-09 carried no numerical interval: stage
+           9 had not run. The comparison is made with numbers in the stage 9 result and recorded
+           there, and if it does not hold, that is stated rather than this line being dropped.
+           2026-09-25, stage 9: the fit gives no interval, so the comparison could not be made
+           against data. At beta 4 the offset moves O2's slope by 0.92 to 1.09 times. Checked
+           against the assumed range once the stage 9 gate sets it. Still assumed.
+

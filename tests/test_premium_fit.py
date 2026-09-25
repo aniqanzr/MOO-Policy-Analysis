@@ -45,3 +45,33 @@ def test_the_specifications_with_a_negative_sign_agree_on_the_side(grid):
         for specification in ("S2", "S3"):
             e = grid[(category, "W1", specification)]
             assert -1 < e.b < 0, (category, specification, e.b)
+
+
+def test_motorcycles_are_the_exception():
+    """Category D, recent windows: every interval reaches -1. Not on the weaker side."""
+    for window in ("W1", "W2"):
+        for specification in pm.SPECIFICATIONS:
+            e = pm.fit("D", window, specification)
+            assert e.side == "straddles -1", (window, specification, e.b)
+
+
+def test_categories_a_b_c_e_never_stronger_than_minus_one():
+    for category in "ABCE":
+        for window in pm.WINDOWS:
+            for specification in pm.SPECIFICATIONS:
+                e = pm.fit(category, window, specification)
+                assert e.high > -1, (category, window, specification)
+
+
+def test_no_drift_the_usable_specifications_can_distinguish():
+    """The declared drift test. Under S2 and S3, A, B and C show no change either way.
+
+    The only drift in A, B and C is under S1, the specification already reported as a bad fit,
+    and it is the same trend confound read a second time.
+    """
+    for d in pm.drift(["A", "B", "C"]):
+        if d.specification == "S1":
+            assert d.reading == "premium moves less per unit of quota than before"
+        else:
+            assert d.reading == "no change the interval can distinguish", (
+                d.category, d.specification, d.change)
