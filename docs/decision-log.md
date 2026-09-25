@@ -1177,3 +1177,55 @@ latest year's x, compare the slope dO2/dx across the beta interval, with a and p
 beta, against the slope at the best beta when x is offset by plus and minus 2.87 percent. The
 user's reasoning holds if the offset's range sits inside the beta interval's range. If beta is not
 identified, the comparison is made against whatever range the gate sets, and reported as that.
+
+## 2026-09-25. Stage 9 result: the published data do not identify the BPR curve
+
+Run as declared. `python -m src.fit.congestion`, tests in `tests/test_congestion_fit.py`.
+
+| Road | Variant | n | Best beta | 95% profile | Pace rises with load | Bounded | Free-flow km/h |
+|---|---|---|---|---|---|---|---|
+| Expressway | all years, published capacity (primary) | 22 | 0.10 | [0.10, 6.05] | no | no | 18.3 |
+| Expressway | no 2020-21, published capacity | 20 | 0.10 | [0.10, 7.01] | no | no | 18.8 |
+| Expressway | all years, capacity held at 2023 | 22 | 0.10 | [0.10, 20] | yes | no | -84.2 |
+| Expressway | no 2020-21, capacity held at 2023 | 20 | 0.10 | [0.10, 20] | yes | no | -69.8 |
+| Arterial | all years (primary) | 22 | 0.10 | [0.10, 20] | no | no | 6.5 |
+| Arterial | no 2020-21 | 20 | 0.10 | [0.10, 20] | no | no | 5.9 |
+
+By the declared rule, beta is identified in none of the six. Where pace falls with load, the curve
+runs the wrong way for a volume-delay function and its intervals include 4 only because they
+include almost everything. The held-capacity fits get pace rising with load only by putting
+free-flow speed below zero. That condition was not in the declared rule; it is reported because
+it makes those two fits meaningless physically, and it does not change the reading. RMSE of 1.4
+to 2.0 km/h is about the spread of the speeds themselves, so A-05's test, fitted speeds against
+published ones, says nothing here.
+
+What the data look like, from the inputs printed by the module. Expressway speed stays between
+59.8 and 64.1 km/h from 2004 to 2023 while PCU-weighted stock per expressway lane-km rises from
+794 to 929, then falls to 58 and 55 in 2024 and 2025 as published capacity jumps 40 percent.
+Arterial speed rises from 24.8 to about 30 km/h over a period when stock per arterial lane-km rose
+and then fell. Vehicle stock is not traffic volume, and network speeds move with road building,
+signal timing, road pricing and mode shift, none of which the model has. Twenty-two annual points
+cannot separate those from load.
+
+Why not look further. A constrained fit forcing pace to rise with load, a different load measure,
+or other speed years would each be a specification chosen after seeing that the declared one
+failed. Not run. Traffic counts that would identify volume are DataMall material, deferred.
+
+The F-06 comparison. The plan was to set the accumulator offset's effect on O2's slope against
+the fitted exponent's interval. There is no fitted interval. At beta 4, the plus and minus 2.87
+percent offset moves the slope by a factor of 0.92 to 1.09. That goes in F-06 as conditional,
+to be checked against the range the gate sets.
+
+The conventional values, alpha 0.15 and beta 4, trace to the US Bureau of Public Roads Traffic
+Assignment Manual of 1964. The manual itself was not found online; the values are confirmed
+through secondary sources only. Medium confidence, per CLAUDE.md.
+
+Reading. A-09 falsified, accepted as a limitation, as stage 9 anticipated. Its on-failure branch
+applies: record the limitation, extra weight on the congestion parameters in the sweep, the
+congestion axis flagged in the UI. O2's shape is now assumed, not calibrated. Because O2 is the
+only live axis and the recovered ratio scales with its slope, the one number option 3 still
+recovers will be set by the assumed range for beta and a. That makes the user's reporting rule
+for the sweep likely to apply: the band may well be too wide to support a conclusion.
+
+Stop at the gate. The declaration left the assumed range for beta and a to be set here, with a
+register row, and not chosen from the fit.

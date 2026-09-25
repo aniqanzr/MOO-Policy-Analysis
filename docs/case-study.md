@@ -16,6 +16,7 @@ Actual: four working days across 33 calendar days, to Thursday 24 September.
 | 31 August | Stage 2, ingestion. |
 | 4 September | Stage 3, revenue reconciliation, which failed. Audit of the pre-2010 bidding data. |
 | 24 September | Stage 3 follow-ups. Stage 4, deregistration series and break table. Freeze applied, retroactive to 29 August. Stage 5, which found the front is a curve on one side of unit elasticity. Premium fits, which put it on that side. Option 3 adopted. |
+| 25 September | Stage 7, accumulator backtest, which failed and was accepted as a limitation. Stage 9, congestion calibration, which found nothing to calibrate. |
 
 The freeze date passed with stage 2 not yet run and was not applied for four weeks. Findings
 from those weeks entered the build when the plan said they should not have. Applied on 24
@@ -72,3 +73,8 @@ From the assumptions register. The full wording is there.
   stock by 2 to 3 percent at the median and up to 6.4 percent, against a tolerance of 1.26
   percent. The published flows themselves reconcile. Vehicles appear to enter outside the bidding.
   A-04, F-06.
+- The congestion curve could not be calibrated. Against 22 years of annual peak-hour speeds, no
+  declared fit identifies the BPR exponent, and in the main fits speed rises as vehicles per
+  lane-km rise. O2's shape comes from assumed values, and O2 is the only axis that trades against
+  anything. A-09.
+

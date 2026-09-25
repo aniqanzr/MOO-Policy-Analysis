@@ -58,6 +58,11 @@ stock, but the brief's accumulator, quota released in, misses the 5-year change 
 percent at the median, against a 1.26 percent tolerance. F-06 records the likely mechanism. It
 was not tested and not fixed.
 
+**Updated after stage 9, 2026-09-25.** A-09 falsified and accepted as a limitation: no declared
+fit identifies the BPR exponent, and in the primary fits speed rises with load. O2's shape comes
+from assumed values. A-05 could not be tested in the form written. F-06's comparison with the
+exponent's uncertainty could not be made against data and is recorded as conditional.
+
 **Updated 2026-09-25.** A-04's status now states the observed ratio. F-06 accepted as a limitation
 under option 1 at the stage 7 gate, with its two untested assumptions written into the row.
 
@@ -206,7 +211,10 @@ Status:       unverified
 Source:       standard transport literature
 Falsified by: calibrated capacity producing speeds far from published LTA figures
 Touches:      4.3, O2
-Notes:        Data exists and is better than expected: annual average peak-hour speeds from
+Notes:        2026-09-25, stage 9. Not tested in the form written. The fitted BPR curves do not
+              rise with load, so there is no calibrated capacity to test. See A-09.
+
+              Data exists and is better than expected: annual average peak-hour speeds from
               2004, split expressway and arterial, peak hour defined as 8 to 9am and 6 to 7pm
               weekdays. Capacity available by road category from 1990, described in section 8
               as lane-km, though the unit is not stated in the file itself and is now A-15. But
@@ -317,7 +325,9 @@ Notes:        The rebuild replaced quota counts with policy parameters. The dang
               log.
 
 ### A-09. The congestion objective can be identified from available data
-Status:       unverified — NEW, and expected to end as accepted-as-limitation
+Status:       falsified, 2026-09-25, stage 9, and accepted as a limitation. The published data
+              do not identify the BPR exponent in any declared fit, and in the primary fits
+              speed rises with load. O2's shape comes from assumed values, not from data
 Source:       consequence of examining the speed dataset's granularity
 Falsified by: wide confidence intervals on the fitted BPR beta, or the sensitivity sweep
               showing the frontier moves substantially with congestion parameters alone
@@ -349,6 +359,40 @@ Notes:        The speed series is annual from 2004, so roughly twenty observatio
               query reads them. Status unchanged. Its falsification condition, the frontier
               moving substantially with congestion parameters alone, is now the likely outcome
               for the recovered weight.
+
+              **2026-09-25, stage 9, declared in the decision log before it ran.** BPR in
+              travel-time form, pace = p0 (1 + a x^beta), x the PCU-weighted stock per lane-km,
+              profiled over beta from 0.1 to 20. Without volume data, alpha and the base volume
+              to capacity ratio are not separable and enter only as a. Six fits: expressway and
+              arterial, all years and without 2020 to 2021, and expressway capacity as published
+              and held at 2023.
+
+              Not one identifies beta. In the two primary fits and both pandemic variants the
+              best fit has pace falling as load rises: across 2004 to 2023 expressway speed stays
+              between 59.8 and 64.1 km/h while stock per lane-km rises 17 percent, and arterial
+              speed rises from 24.8 to about 30 km/h. With expressway capacity held at 2023, pace
+              rises with load, but the best fit needs a negative free-flow speed. Every profile
+              interval reaches the bottom of the grid, and four of six cover all of it. Annual
+              network-average speed against vehicle stock carries no volume-delay signal these
+              fits can find. The stock is not traffic volume, and speed depends on road
+              building, signals, demand management and mode shift that the model leaves out.
+
+              Consequence. O2's shape, beta and the level a, comes entirely from assumed values.
+              O2 is the only live axis and the recovered ratio scales with O2's slope, so the
+              recovered ratio is set by those assumptions, not by data. The range for beta and a
+              in the sweep is set at the stage 9 gate as an assumption with its own register
+              row. The conventional values, alpha 0.15 and beta 4, are cited to the US Bureau of
+              Public Roads Traffic Assignment Manual of 1964; the manual itself was not found
+              online and the values are confirmed only through secondary sources, so the
+              citation is medium confidence.
+
+              F-06's comparison cannot be made as planned: there is no fitted interval for beta.
+              At beta 4, the plus and minus 2.87 percent accumulator offset moves O2's slope by a
+              factor of 0.92 to 1.09. Whether that is inside the uncertainty depends on the range
+              the gate sets for beta and a together, and is checked when that range is set.
+
+              Stage 9's on-failure branch applies: recorded here, the congestion parameters get
+              extra weight in the sweep, and the congestion axis is flagged in the UI.
 
 ### A-10. Computed revenue can be reconciled against published government figures
 Status:       falsified as stated. **This is not a passing test and must not be counted as
@@ -1000,4 +1044,7 @@ Also assumed: that the 2 to 3 percent median error sits inside the uncertainty A
            to the BPR exponent. When this was accepted, A-09 carried no numerical interval: stage
            9 had not run. The comparison is made with numbers in the stage 9 result and recorded
            there, and if it does not hold, that is stated rather than this line being dropped.
+           2026-09-25, stage 9: the fit gives no interval, so the comparison could not be made
+           against data. At beta 4 the offset moves O2's slope by 0.92 to 1.09 times. Checked
+           against the assumed range once the stage 9 gate sets it. Still assumed.
 
